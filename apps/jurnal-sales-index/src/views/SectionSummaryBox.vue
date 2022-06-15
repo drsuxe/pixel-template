@@ -84,7 +84,7 @@
 <script>
 import { MpGrid, MpFlex, MpBox, MpHeading, MpBadge, MpText } from "@mekari/pixel";
 export default {
-  name: "SummaryBoxSection",
+  name: "SectionSummaryBox",
   components: {
     MpGrid,
     MpFlex,

@@ -4,10 +4,10 @@
     <mp-flex as="main" max-height="calc(100vh - 60px)">
       <Sidebar />
       <mp-box as="section" data-id="content" width="100%" height="calc(100vh - 60px)" overflow-y="auto" background-color="background">
-        <SalesHeader />
+        <SectionSalesHeader />
 
         <mp-box min-height="calc(100vh - 132px)" border-top-width="1px" background-color="white" padding="6">
-          <SummaryBoxSection />
+          <SectionSummaryBox />
 
           <!-- 
           // TODO : Ask designer, have different color with token.
@@ -18,8 +18,25 @@
 
           <mp-box as="content">
             <mp-heading as="h2" font-size="xl" mb="1  "> Transaksi Penjualan</mp-heading>
-            <SalesTabNavigation />
-            <SalesInvoiceTable />
+
+            <mp-tabs id="sales-index-tab" :default-index="defaultIndex" @change="handleChange">
+              <mp-tab-list>
+                <mp-tab id="sales-invoice"> Faktur pembelian </mp-tab>
+                <mp-tab id="sales-delivery"> Pengiriman </mp-tab>
+                <mp-tab> Pemesanan </mp-tab>
+                <mp-tab> Penawaran </mp-tab>
+                <mp-tab>
+                  Membutuhkan persetujuan
+                  <mp-badge ml="2" variant="subtle" :variant-color="currentTab === 'require-approval' ? 'blue' : 'gray'"> 2 </mp-badge>
+                </mp-tab>
+              </mp-tab-list>
+            </mp-tabs>
+
+            <TableSalesInvoice v-if="currentTab === 'sales-invoice'" />
+            <TableSalesDelivery v-if="currentTab === 'sales-delivery'" />
+            <TableSalesOrder v-if="currentTab === 'sales-order'" />
+            <TableSalesQuotation v-if="currentTab === 'sales-quotation'" />
+            <TableRequireApproval v-if="currentTab === 'require-approval'" />
           </mp-box>
         </mp-box>
       </mp-box>
@@ -28,13 +45,16 @@
 </template>
 
 <script>
-import { MpBox, MpFlex, MpText, MpHeading } from "@mekari/pixel";
+import { MpBox, MpFlex, MpText, MpTabs, MpTabList, MpTab, MpBadge, MpHeading } from "@mekari/pixel";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
-import SalesHeader from "../views/SalesHeader.vue";
-import SummaryBoxSection from "./SummaryBoxSection.vue";
-import SalesTabNavigation from "./SalesTabNavigation.vue";
-import SalesInvoiceTable from "./SalesInvoiceTable.vue";
+import SectionSalesHeader from "../views/SectionSalesHeader.vue";
+import SectionSummaryBox from "./SectionSummaryBox.vue";
+import TableSalesInvoice from "./TableSalesInvoice.vue";
+import TableSalesDelivery from "./TableSalesDelivery.vue";
+import TableSalesOrder from "./TableSalesOrder.vue";
+import TableSalesQuotation from "./TableSalesQuotation.vue";
+import TableRequireApproval from "./TableRequireApproval.vue";
 
 export default {
   name: "SalesIndex",
@@ -42,14 +62,35 @@ export default {
     MpBox,
     MpFlex,
     MpText,
+    MpTabs,
+    MpTabList,
+    MpTab,
+    MpBadge,
     MpHeading,
-    //
     Header,
     Sidebar,
-    SalesHeader,
-    SummaryBoxSection,
-    SalesTabNavigation,
-    SalesInvoiceTable,
+    SectionSalesHeader,
+    SectionSummaryBox,
+    TableSalesInvoice,
+    TableSalesDelivery,
+    TableSalesOrder,
+    TableSalesQuotation,
+    TableRequireApproval,
+  },
+  data() {
+    return {
+      tabs: ["sales-invoice", "sales-delivery", "sales-order", "sales-quotation", "require-approval"],
+      defaultIndex: 0,
+      currentTab: null,
+    };
+  },
+  mounted() {
+    this.handleChange(this.defaultIndex);
+  },
+  methods: {
+    handleChange(e) {
+      this.currentTab = this.tabs[e];
+    },
   },
 };
 </script>

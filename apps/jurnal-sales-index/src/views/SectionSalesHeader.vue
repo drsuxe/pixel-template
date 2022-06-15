@@ -50,7 +50,7 @@ import {
 } from "@mekari/pixel";
 
 export default {
-  name: "SalesHeader",
+  name: "SectionSalesHeader",
   components: {
     MpBox,
     MpButton,
