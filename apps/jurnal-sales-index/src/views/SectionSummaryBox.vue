@@ -70,11 +70,11 @@
       </mp-flex>
     </mp-flex>
     <mp-flex flex-direction="column" rounded="sm" border="1px" border-color="gray.100">
-      <mp-flex>
+      <mp-flex align-items="center" gap="1">
         <img src="../assets/illustration.svg" alt="" />
-        <mp-flex flex-direction="column">
-          <mp-text>Pembayaran jadi mudah dengan Mekari Pay!</mp-text>
-          <mp-text>Pelajari lebih lanjut</mp-text>
+        <mp-flex flex-direction="column" gap="2">
+          <mp-text font-weight="semibold" font-size="md" line-height="md">Pembayaran jadi mudah dengan Mekari Pay!</mp-text>
+          <mp-text is-link font-size="md" line-height="md">Pelajari lebih lanjut</mp-text>
         </mp-flex>
       </mp-flex>
     </mp-flex>
