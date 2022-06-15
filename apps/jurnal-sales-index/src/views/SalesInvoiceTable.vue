@@ -61,7 +61,7 @@
       <mp-table-body>
         <mp-table-row v-for="index in 4" :key="index">
           <mp-box as="td" scope="row" v-bind="tableCellStyles">
-            <mp-checkbox id="row-1" />
+            <mp-checkbox :id="`checkbox-${index}`" />
           </mp-box>
           <mp-box as="td" scope="row" v-bind="tableCellStyles">
             19/04/2022

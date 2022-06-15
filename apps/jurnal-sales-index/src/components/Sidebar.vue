@@ -24,32 +24,14 @@
         :_groupHover="{ opacity: '1' }"
       >
         <mp-tooltip position="right" :label="isToggle ? 'Expand' : 'Collapsed'">
-          <mp-button-icon
-            size="sm"
-            is-round
-            :name="isToggle ? 'chevrons-right' : 'chevrons-left'"
-            @click="isToggle = !isToggle"
-          />
+          <mp-button-icon size="sm" is-round :name="isToggle ? 'chevrons-right' : 'chevrons-left'" @click="isToggle = !isToggle" />
         </mp-tooltip>
       </mp-pseudo-box>
     </mp-box>
-    <mp-box
-      as="section"
-      data-id="sidebar"
-      width="full"
-      height="calc(100vh - 60px)"
-      overflow-y="auto"
-      overflow-x="hidden"
-      padding-y="4"
-      padding-x="2"
-    >
+    <mp-box as="section" data-id="sidebar" width="full" height="calc(100vh - 60px)" overflow-y="auto" overflow-x="hidden" padding-y="4" padding-x="2">
       <mp-box>
-        <mp-flex flex-direction="column">
-          <mp-tooltip
-            position="right"
-            label="Add"
-            :visibility="isToggle ? 'visible' : 'hidden'"
-          >
+        <mp-flex flex-direction="column" pb="2">
+          <mp-tooltip position="right" label="Add" :visibility="isToggle ? 'visible' : 'hidden'">
             <mp-pseudo-box
               role="group"
               display="flex"
@@ -66,27 +48,20 @@
                 cursor: 'pointer',
               }"
             >
-              <mp-text font-weight="semibold" color="blue.400" line-height="md">
-                Add transaction
-              </mp-text>
-              <mp-icon size="sm" name="caret-down" color="blue.400" ml="0.5" />
+              <!-- 
+          // TODO : Ask designer : Icon size gag sama.
+          -->
+              <mp-text v-if="!isToggle" font-weight="semibold" color="blue.400" line-height="md"> Add transaction </mp-text>
+              <mp-icon size="sm" :name="isToggle ? 'add' : 'caret-down'" color="blue.400" ml="0.5" />
             </mp-pseudo-box>
           </mp-tooltip>
         </mp-flex>
       </mp-box>
 
       <mp-divider />
-      <mp-box v-for="sidebarMenu in sidebarMenus" :key="sidebarMenu.id">
-        <mp-flex
-          v-for="menu in sidebarMenu.menus"
-          :key="menu.id"
-          flex-direction="column"
-        >
-          <mp-tooltip
-            position="right"
-            :label="menu.name"
-            :visibility="isToggle ? 'visible' : 'hidden'"
-          >
+      <mp-box v-for="sidebarMenu in sidebarMenus" :key="sidebarMenu.menu">
+        <mp-flex v-for="(menu, index) in sidebarMenu.menus" :key="`${menu.name}-${index}`" flex-direction="column">
+          <mp-tooltip position="right" :label="menu.name" :visibility="isToggle ? 'visible' : 'hidden'">
             <mp-pseudo-box
               role="group"
               flex="1"
@@ -108,15 +83,8 @@
               }"
             >
               <mp-stack direction="row" align="center">
-                <mp-icon
-                  :name="menu.icon"
-                  :variant="menu.isActive ? 'duotone' : 'outline'"
-                />
-                <mp-text
-                  white-space="nowrap"
-                  transition="all .2s ease"
-                  :opacity="isToggle ? '0' : '1'"
-                >
+                <mp-icon :name="menu.icon" :variant="menu.isActive ? 'duotone' : 'outline'" />
+                <mp-text white-space="nowrap" transition="all .2s ease" :opacity="isToggle ? '0' : '1'">
                   {{ menu.name }}
                 </mp-text>
               </mp-stack>
@@ -130,17 +98,7 @@
 </template>
 
 <script>
-import {
-  MpBox,
-  MpFlex,
-  MpIcon,
-  MpText,
-  MpStack,
-  MpPseudoBox,
-  MpDivider,
-  MpButtonIcon,
-  MpTooltip,
-} from "@mekari/pixel";
+import { MpBox, MpFlex, MpIcon, MpText, MpStack, MpPseudoBox, MpDivider, MpButtonIcon, MpTooltip } from "@mekari/pixel";
 
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
@@ -162,107 +120,41 @@ export default {
   data: function () {
     return {
       isToggle: this.isCollapsed ? true : false,
-
       sidebarMenus: [
         {
-          id: 1,
+          name: "outputs",
           menus: [
-            {
-              id: 1,
-              name: "Dashboard",
-              icon: "home",
-            },
-            {
-              id: 2,
-              name: "Reports",
-              icon: "reports",
-            },
+            { name: "Dashboard", icon: "home" },
+            { name: "Reports", icon: "reports" },
           ],
         },
         {
-          id: 2,
+          name: "transactions",
           menus: [
-            {
-              id: 1,
-              name: "Cash & Bank",
-              icon: "bank",
-            },
-            {
-              id: 2,
-              name: "Sales",
-              icon: "sales",
-              isActive: true,
-            },
-            {
-              id: 3,
-              name: "Purchases",
-              icon: "cart",
-            },
-            {
-              id: 4,
-              name: "Expenses",
-              icon: "expenses",
-            },
+            { name: "Cash & Bank", icon: "bank" },
+            { name: "Sales", icon: "sales", isActive: true },
+            { name: "Purchases", icon: "cart" },
+            { name: "Expenses", icon: "expenses" },
           ],
         },
         {
-          id: 3,
+          name: "inputs",
           menus: [
-            {
-              id: 1,
-              name: "Contact",
-              icon: "contact",
-            },
-            {
-              id: 2,
-              name: "Products",
-              icon: "products",
-            },
-            {
-              id: 3,
-              name: "Assets",
-              icon: "assets",
-            },
-            {
-              id: 4,
-              name: "Chart of account",
-              icon: "chart-of-account",
-            },
+            { name: "Contact", icon: "contact" },
+            { name: "Products", icon: "products" },
+            { name: "Assets", icon: "assets" },
+            { name: "Chart of account", icon: "chart-of-account" },
           ],
         },
         {
-          id: 4,
+          name: "others",
           menus: [
-            {
-              id: 1,
-              name: "Mekari Pay",
-              icon: "mekari pay",
-            },
-            {
-              id: 2,
-              name: "Mekari Capital",
-              icon: "loan",
-            },
-            {
-              id: 3,
-              name: "Calculator",
-              icon: "calculator",
-            },
-            {
-              id: 4,
-              name: "Other Lists",
-              icon: "doc",
-            },
-            {
-              id: 5,
-              name: "Integrations",
-              icon: "add-ons",
-            },
-            {
-              id: 6,
-              name: "Settings",
-              icon: "settings",
-            },
+            { name: "Mekari Pay", icon: "mekari pay" },
+            { name: "Mekari Capital", icon: "loan" },
+            { name: "Calculator", icon: "calculator" },
+            { name: "Other Lists", icon: "doc" },
+            { name: "Integrations", icon: "add-ons" },
+            { name: "Settings", icon: "settings" },
           ],
         },
       ],

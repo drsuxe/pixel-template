@@ -1,42 +1,20 @@
 <template>
   <mp-box width="full">
-    <mp-tabs
-      id="tabs-with-badge"
-      :default-index="defaultIndex"
-      @change="handleChange"
-    >
+    <mp-tabs id="sales-index-tab" :default-index="defaultIndex" @change="handleChange">
       <mp-tab-list>
         <mp-tab>
           Faktur pembelian
-          <mp-badge
-            ml="2"
-            variant="subtle"
-            :variant-color="currentTab === 'everything-else' ? 'blue' : 'gray'"
-          >
-            0
-          </mp-badge>
+          <mp-badge ml="2" variant="subtle" :variant-color="currentTab === 'everything-else' ? 'blue' : 'gray'"> 0 </mp-badge>
         </mp-tab>
         <mp-tab>
           Pengiriman
-          <mp-badge
-            ml="2"
-            variant="subtle"
-            :variant-color="currentTab === 'unread' ? 'blue' : 'gray'"
-          >
-            0
-          </mp-badge>
+          <mp-badge ml="2" variant="subtle" :variant-color="currentTab === 'unread' ? 'blue' : 'gray'"> 0 </mp-badge>
         </mp-tab>
         <mp-tab> Pemesanan </mp-tab>
         <mp-tab> Penawaran </mp-tab>
         <mp-tab>
           Membutuhkan persetujuan
-          <mp-badge
-            ml="2"
-            variant="subtle"
-            :variant-color="currentTab === 'unread' ? 'blue' : 'gray'"
-          >
-            0
-          </mp-badge>
+          <mp-badge ml="2" variant="subtle" :variant-color="currentTab === 'unread' ? 'blue' : 'gray'"> 0 </mp-badge>
         </mp-tab>
       </mp-tab-list>
     </mp-tabs>
