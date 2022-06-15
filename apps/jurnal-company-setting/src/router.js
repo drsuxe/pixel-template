@@ -1,13 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
-function prefixRoutes(prefix, routes) {
-  return routes.map((route) => {
-    route.path = prefix + "" + route.path;
-    return route;
-  });
-}
-
 Vue.use(VueRouter);
 
 const routes = [
@@ -16,13 +9,6 @@ const routes = [
     name: "Jurnal",
     component: () => import("./views/CompanySetting.vue"),
   },
-  ...prefixRoutes("/company-setting", [
-    {
-      path: "/",
-      name: "Jurnal - Company setting",
-      component: () => import("./views/CompanySetting.vue"),
-    },
-  ]),
 ];
 
 const router = new VueRouter({
