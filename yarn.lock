@@ -1172,6 +1172,19 @@
     "@mekari/pixel-pseudo-box" "^0.0.7"
     "@mekari/pixel-utils" "^0.1.0"
 
+"@mekari/pixel-autocomplete@0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@mekari/pixel-autocomplete/-/pixel-autocomplete-0.2.0.tgz#5575d16e7edafcc7ec6b0e34187d2999a484d637"
+  integrity sha512-XYo1icGfbKzj1oUqRnujMSiDOP6Ar/kryMuSH6X5qahB3xChwnv/eFwPZqXPme1qLFm0KMv9g296zhc361yNog==
+  dependencies:
+    "@mekari/pixel-box" "^0.0.7"
+    "@mekari/pixel-icon" "^0.4.0"
+    "@mekari/pixel-input" "^0.3.1"
+    "@mekari/pixel-popover" "^0.2.0"
+    "@mekari/pixel-spinner" "^0.0.8"
+    "@mekari/pixel-text" "^0.0.9"
+    "@mekari/pixel-utils" "^0.1.0"
+
 "@mekari/pixel-avatar@0.2.0":
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@mekari/pixel-avatar/-/pixel-avatar-0.2.0.tgz#f082fcd60076faed5caa556624b69006abec62a7"
@@ -1320,7 +1333,16 @@
   dependencies:
     "@mekari/pixel-utils" "^0.1.0"
 
-"@mekari/pixel-input@0.3.0", "@mekari/pixel-input@^0.3.0":
+"@mekari/pixel-input@0.3.1", "@mekari/pixel-input@^0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@mekari/pixel-input/-/pixel-input-0.3.1.tgz#0e10c2de12a2b5338aa3a2c95eb66a7ee10aac66"
+  integrity sha512-Pl/6RfHVQIfAkcU3dnf214rByHv3O8ZCjkDVmQRUGDeJUQv+LJtghLYpml3lq9osj8zmpAuTVEzXLeFSRi4sAA==
+  dependencies:
+    "@mekari/pixel-box" "^0.0.7"
+    "@mekari/pixel-button-icon" "^0.4.1"
+    "@mekari/pixel-utils" "^0.1.0"
+
+"@mekari/pixel-input@^0.3.0":
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@mekari/pixel-input/-/pixel-input-0.3.0.tgz#1b167da56ecb351ca2f605515d5710eac4b3ab5d"
   integrity sha512-hwhPOOuQLX0FR1Locqgsccgsg0FXpnB5EAZrEV5UY+MCtgdfdWfaZEcHxcmYdvtlNg9aj2SbRgO04LFWk974lQ==
@@ -1352,7 +1374,7 @@
   dependencies:
     "@mekari/pixel-utils" "^0.1.0"
 
-"@mekari/pixel-popover@0.2.0":
+"@mekari/pixel-popover@0.2.0", "@mekari/pixel-popover@^0.2.0":
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@mekari/pixel-popover/-/pixel-popover-0.2.0.tgz#6a88d6a89c47cb89d402717b0aa30197bb4483ec"
   integrity sha512-tvSFz5MjGeNcaZSuBbOFe5OOi+4oCZj4dGhixpa51NbzFhvm0woR8LnXS9sxCcAi8yqxarUJ2KWIp9YnD7Edxw==
@@ -1482,18 +1504,18 @@
   dependencies:
     "@chakra-ui/styled-system" "^1.12.2"
 
-"@mekari/pixel-table@0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@mekari/pixel-table/-/pixel-table-0.1.1.tgz#d39dcdc1bb2103745f30e1e56669a3f809cf61fd"
-  integrity sha512-PWsjOXM6/635QVBP6cegd2EuHSYS0B/xkGr6S4b1i+Zs9auscWLq3iXblQs+zlq2hgZcwPu7o+oB8Fc+gDVTZw==
+"@mekari/pixel-table@0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@mekari/pixel-table/-/pixel-table-0.2.0.tgz#dae6129bb271881f3f6ffd3bd9e900bbe636d135"
+  integrity sha512-w6VKS0kHVOCTgWSxbmIsSC4C7lHP73h/kXt9Qg+X5YcNIRONziEWqDaIsDYSgwwZ9n1N5Ugj+kesYuxNY7cCyQ==
   dependencies:
     "@mekari/pixel-box" "^0.0.7"
     "@mekari/pixel-utils" "^0.1.0"
 
-"@mekari/pixel-tabs@0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@mekari/pixel-tabs/-/pixel-tabs-0.0.3.tgz#d696b4a635e8922b07050fcda4a3ff6f80e75c5e"
-  integrity sha512-4bL9xK3W2YXmt30Lge4h49trjozb3gtRQjWNLBztoNnl36Q2tCP1dZ+I4jmiiB+C29sSdMuxdSs7TBzhHgz/3A==
+"@mekari/pixel-tabs@0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@mekari/pixel-tabs/-/pixel-tabs-0.0.4.tgz#a3ec3bd4ae6b81fdb4389380003d340355129366"
+  integrity sha512-MAFLS/nUCPz72mFjVWiQrvNQC/xjZiNTBsihInzOsnRgdqQbxSGJXy9G8t9WxQmZHA++ta+VBOYOHIymcqD+HQ==
   dependencies:
     "@mekari/pixel-utils" "^0.1.0"
 
@@ -1521,15 +1543,15 @@
     "@mekari/pixel-input" "^0.3.0"
     "@mekari/pixel-utils" "^0.1.0"
 
-"@mekari/pixel-theme@0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@mekari/pixel-theme/-/pixel-theme-0.1.0.tgz#b4e27b2f63b79cd962a88079398ed6476098712b"
-  integrity sha512-suo97dU73LUaNgLUY1798vEBrCy/706DD3eqiqNOgsPzTaJsmOr0ujEIZLZcVyyNIkLgunygoywYJVrihQ7xgg==
+"@mekari/pixel-theme@0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@mekari/pixel-theme/-/pixel-theme-0.1.1.tgz#bdd673ba0911dddf476215cd1d639704901eb093"
+  integrity sha512-qBCuETZcaRECj2rc8yRwJZh0PNNj73x5PydwX31e9H9wRLafWpX3qQmxoTAdZB3qtDMSeWo4NJllF4N9aCNbrA==
 
-"@mekari/pixel-timeline@0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@mekari/pixel-timeline/-/pixel-timeline-0.1.0.tgz#51e9a27a80bd81fdda010711c5c4a544c96e2557"
-  integrity sha512-LZ5Sq6Os1fHHOnJtCPEbbmhL8JaNiqTBFXvIqrLTmbcy/Tqrb/1GGhRChExuEO1bZw+Xn0DSK2v0OlepCFdGUw==
+"@mekari/pixel-timeline@0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@mekari/pixel-timeline/-/pixel-timeline-0.1.1.tgz#69dd8bb07bc3c6ba44cf8ada432ac86e392e0d01"
+  integrity sha512-gKtw48jWuC6kvSMsK7Lg5dMQf8gRj33lSzLJi0g6YSvD9qEiRObECVXbAt22JzFq1UA5haVhrxh4vz83qYjdxA==
   dependencies:
     "@mekari/pixel-box" "^0.0.7"
     "@mekari/pixel-collapse" "^0.2.1"
@@ -1607,13 +1629,14 @@
   dependencies:
     "@mekari/pixel-utils" "^0.1.0"
 
-"@mekari/pixel@^0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@mekari/pixel/-/pixel-0.6.0.tgz#d966f9c14e5944c1bbf7386de95debd88804a610"
-  integrity sha512-R59QhgkyoRzgS3q90rMH47AIzsQ58882PmoOvunZ4iS03SFp2PXqiJpg7S7cDrhpo3MotZuqDhEdWb6+HRpf0w==
+"@mekari/pixel@^0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@mekari/pixel/-/pixel-0.7.0.tgz#553d4efdbdad50d2d57195a39d3d46376fb04c91"
+  integrity sha512-P0BakAbSEZ4JRHpYoelf1v+j6pTr5HJTr/zokuQZ3FRzo2jOKWymIm199YywfyoyWA9z3p74CJQ/DMjLk+ydIA==
   dependencies:
     "@fontsource/inter" "^4.5.0"
     "@mekari/pixel-accordion" "0.1.4"
+    "@mekari/pixel-autocomplete" "0.2.0"
     "@mekari/pixel-avatar" "0.2.0"
     "@mekari/pixel-badge" "0.2.0"
     "@mekari/pixel-banner" "0.2.0"
@@ -1631,7 +1654,7 @@
     "@mekari/pixel-grid" "0.0.7"
     "@mekari/pixel-heading" "0.0.10"
     "@mekari/pixel-icon" "0.4.0"
-    "@mekari/pixel-input" "0.3.0"
+    "@mekari/pixel-input" "0.3.1"
     "@mekari/pixel-modal" "0.1.6"
     "@mekari/pixel-popover" "0.2.0"
     "@mekari/pixel-progress" "0.1.1"
@@ -1645,13 +1668,13 @@
     "@mekari/pixel-spinner" "0.0.8"
     "@mekari/pixel-stack" "0.0.7"
     "@mekari/pixel-styled-system" "0.0.3"
-    "@mekari/pixel-table" "0.1.1"
-    "@mekari/pixel-tabs" "0.0.3"
+    "@mekari/pixel-table" "0.2.0"
+    "@mekari/pixel-tabs" "0.0.4"
     "@mekari/pixel-tag" "0.2.2"
     "@mekari/pixel-text" "0.0.9"
     "@mekari/pixel-textarea" "0.1.3"
-    "@mekari/pixel-theme" "0.1.0"
-    "@mekari/pixel-timeline" "0.1.0"
+    "@mekari/pixel-theme" "0.1.1"
+    "@mekari/pixel-timeline" "0.1.1"
     "@mekari/pixel-toast" "0.0.8"
     "@mekari/pixel-toggle" "0.1.1"
     "@mekari/pixel-tooltip" "0.0.8"
