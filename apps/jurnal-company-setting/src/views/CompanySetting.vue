@@ -297,7 +297,7 @@
                 <!-- Pengaturan fitur tambahan -->
                 <mp-box>
                   <mp-flex pb="1" justify-content="space-between">
-                    <mp-heading as="h3" fontSize="lg">Pengaturan fitur tambahan</mp-heading>
+                    <mp-heading as="h3" fontSize="lg">Pengaturan fitur tambahan {{ alreadyHaveTranscaction }} </mp-heading>
                     <mp-tooltip label="Ubah info" id="pengaturanFiturTambahan">
                       <mp-button-icon
                         @click="handleOpenPengaturanFiturTambahan()"
@@ -312,7 +312,7 @@
                   <mp-flex v-if="open === 'pengaturanFiturTambahan'" flex-direction="column" id="edit-pengaturan-fitur-tambahan">
                     <mp-flex py="1.5">
                       <mp-tooltip
-                        :visibility="alreadyHaveTranscaction === 'yes' ? 'visible' : 'hidden'"
+                        :visibility="alreadyHaveTranscaction === 'yes' ? '' : 'hidden'"
                         id="deactive-approval"
                         label="Untuk menonaktifkan Approval, silakan hapus transaksi yang sudah tercatat di fitur ini."
                         position="top"
