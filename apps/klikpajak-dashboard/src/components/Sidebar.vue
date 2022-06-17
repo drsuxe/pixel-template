@@ -24,25 +24,11 @@
         :_groupHover="{ opacity: '1' }"
       >
         <mp-tooltip position="right" :label="isToggle ? 'Expand' : 'Collapsed'">
-          <mp-button-icon
-            size="sm"
-            is-round
-            :name="isToggle ? 'chevrons-right' : 'chevrons-left'"
-            @click="isToggle = !isToggle"
-          />
+          <mp-button-icon size="sm" is-round :name="isToggle ? 'chevrons-right' : 'chevrons-left'" @click="isToggle = !isToggle" />
         </mp-tooltip>
       </mp-pseudo-box>
     </mp-box>
-    <mp-box
-      as="section"
-      data-id="sidebar"
-      width="full"
-      height="calc(100vh - 60px)"
-      overflow-y="auto"
-      overflow-x="hidden"
-      padding-y="4"
-      padding-x="2"
-    >
+    <mp-box as="section" data-id="sidebar" width="full" height="calc(100vh - 60px)" overflow-y="auto" overflow-x="hidden" padding-y="4" padding-x="4">
       <mp-box v-for="sidebarMenu in sidebarMenus" :key="sidebarMenu.id">
         <mp-flex v-for="menu in sidebarMenu.menus" :key="menu.id" flex-direction="column">
           <mp-tooltip position="right" :label="menu.name" :visibility="isToggle ? 'visible' : 'hidden'">

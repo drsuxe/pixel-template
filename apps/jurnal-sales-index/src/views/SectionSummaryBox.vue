@@ -1,5 +1,5 @@
 <template>
-  <mp-grid gap="2" template-columns=" repeat(4, minmax(0, 1fr))">
+  <mp-grid gap="5" template-columns=" repeat(4, minmax(0, 1fr))">
     <mp-flex flex-direction="column" rounded="sm" border="1px" border-color="gray.100">
       <mp-flex
         px="3"
