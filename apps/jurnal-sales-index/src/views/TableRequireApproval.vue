@@ -35,9 +35,6 @@
             <mp-box cursor="pointer"> Status <mp-icon name="sort-default" /> </mp-box>
           </mp-table-cell>
           <mp-table-cell as="th" scope="col">
-            <mp-box cursor="pointer" text-align="right"> Sisa tagihan <mp-icon name="sort-default" /> </mp-box>
-          </mp-table-cell>
-          <mp-table-cell as="th" scope="col">
             <mp-box cursor="pointer" text-align="right"> Total <mp-icon name="sort-default" /> </mp-box>
           </mp-table-cell>
           <mp-table-cell as="th" scope="col" width="150px">
@@ -93,9 +90,6 @@
             <mp-badge variant="subtle" :variant-color="getBadgeVariantColor(invoice.status)">
               {{ invoice.status }}
             </mp-badge>
-          </mp-table-cell>
-          <mp-table-cell as="td" scope="row">
-            <mp-text text-align="right">{{ invoice.balance }}</mp-text>
           </mp-table-cell>
           <mp-table-cell as="td" scope="row">
             <mp-text text-align="right">{{ invoice.total }}</mp-text>

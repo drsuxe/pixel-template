@@ -237,7 +237,7 @@ export default {
           id: 2,
           checked: false,
           date: "18/04/2022",
-          number: "Sales Invoice with super ultra long title Sales Invoice with super ultra long title Sales Invoice with super ultra long title #0004",
+          number: "Sales Invoice #0004",
           attachment: true,
           join: true,
           description: "",

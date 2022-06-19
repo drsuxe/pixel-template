@@ -29,34 +29,48 @@
       </mp-pseudo-box>
     </mp-box>
     <mp-box as="section" data-id="sidebar" width="full" height="calc(100vh - 60px)" overflow-y="auto" overflow-x="hidden" padding-y="4" padding-x="2">
-      <mp-box>
-        <mp-flex flex-direction="column" pb="2">
-          <mp-tooltip position="right" label="Add" :visibility="isToggle ? 'visible' : 'hidden'">
-            <mp-pseudo-box
-              role="group"
-              display="flex"
-              align-items="center"
-              justify-content="center"
-              rounded="md"
-              borderWidth="1px"
-              borderColor="blue.400"
-              transition="all .2s ease"
-              padding-y="2"
-              :_hover="{
-                backgroundColor: 'ice.50',
-                color: 'blue.400',
-                cursor: 'pointer',
-              }"
-            >
-              <!-- 
+      <mp-flex align="center" justify="center" padding-bottom="2" padding-x="1">
+        <mp-tooltip position="right" label="Add" :visibility="isToggle ? 'visible' : 'hidden'">
+          <mp-popover id="add-transaction">
+            <mp-popover-trigger>
+              <mp-pseudo-box
+                :width="isToggle ? '' : 'full'"
+                role="group"
+                display="flex"
+                align-items="center"
+                justify-content="center"
+                rounded="md"
+                border="1px"
+                borderColor="blue.400"
+                transition="all .2s ease"
+                :p="isToggle ? '1' : '2'"
+                :_hover="{
+                  backgroundColor: 'ice.50',
+                  color: 'blue.400',
+                  cursor: 'pointer',
+                }"
+              >
+                <!-- 
           // TODO : Ask designer : Icon size gag sama.
           -->
-              <mp-text v-if="!isToggle" font-weight="semibold" color="blue.400" line-height="md"> Add transaction </mp-text>
-              <mp-icon size="sm" :name="isToggle ? 'add' : 'caret-down'" color="blue.400" ml="0.5" />
-            </mp-pseudo-box>
-          </mp-tooltip>
-        </mp-flex>
-      </mp-box>
+                <mp-icon v-if="isToggle" size="sm" name="add" color="blue.400" />
+
+                <mp-text v-else font-weight="semibold" color="blue.400" line-height="md">
+                  Add transaction
+                  <mp-icon size="sm" name="caret-down" color="blue.400" ml="0.5" />
+                </mp-text>
+              </mp-pseudo-box>
+            </mp-popover-trigger>
+            <mp-popover-content max-width="64" bg="white" z-index="popover" rounded="md" shadow="lg" border-width="1px" border-color="gray.400">
+              <mp-popover-list>
+                <mp-popover-list-item> Penagihan Penjualan </mp-popover-list-item>
+                <mp-popover-list-item> Penagihan Pembelian </mp-popover-list-item>
+                <mp-popover-list-item> Biaya Pengeluaran </mp-popover-list-item>
+              </mp-popover-list>
+            </mp-popover-content>
+          </mp-popover>
+        </mp-tooltip>
+      </mp-flex>
 
       <mp-divider />
       <mp-box v-for="sidebarMenu in sidebarMenus" :key="sidebarMenu.menu">
@@ -98,7 +112,22 @@
 </template>
 
 <script>
-import { MpBox, MpFlex, MpIcon, MpText, MpStack, MpPseudoBox, MpDivider, MpButtonIcon, MpTooltip } from "@mekari/pixel";
+import {
+  MpBox,
+  MpFlex,
+  MpIcon,
+  MpText,
+  MpStack,
+  MpPseudoBox,
+  MpDivider,
+  MpButtonIcon,
+  MpTooltip,
+  MpPopover,
+  MpPopoverTrigger,
+  MpPopoverContent,
+  MpPopoverList,
+  MpPopoverListItem,
+} from "@mekari/pixel";
 
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
@@ -116,6 +145,11 @@ export default {
     MpDivider,
     MpButtonIcon,
     MpTooltip,
+    MpPopover,
+    MpPopoverTrigger,
+    MpPopoverContent,
+    MpPopoverList,
+    MpPopoverListItem,
   },
   data: function () {
     return {

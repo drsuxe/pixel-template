@@ -5,7 +5,7 @@
     </mp-box>
     <mp-flex align-items="center">
       <mp-button-group>
-        <mp-button variant="ghost" default="Default">Kembali ke tampilan lama</mp-button>
+        <mp-button @click="isModalSwitchToOldView = true" variant="ghost" default="Default">Kembali ke tampilan lama</mp-button>
         <mp-popover id="impor">
           <mp-popover-trigger>
             <mp-button variant="outline" marginRight="2" right-icon="caret-down"> Impor </mp-button>
@@ -32,6 +32,8 @@
         </mp-popover>
       </mp-button-group>
     </mp-flex>
+
+    <ModalSwitchToOldView :is-open="isModalSwitchToOldView" @handleClose="isModalSwitchToOldView = false" />
   </mp-flex>
 </template>
 
@@ -49,6 +51,8 @@ import {
   MpPopoverListItem,
 } from "@mekari/pixel";
 
+import ModalSwitchToOldView from "./ModalSwitchToOldView.vue";
+
 export default {
   name: "SectionSalesHeader",
   components: {
@@ -62,6 +66,12 @@ export default {
     MpPopoverContent,
     MpPopoverList,
     MpPopoverListItem,
+    ModalSwitchToOldView,
+  },
+  data() {
+    return {
+      isModalSwitchToOldView: false,
+    };
   },
 };
 </script>
