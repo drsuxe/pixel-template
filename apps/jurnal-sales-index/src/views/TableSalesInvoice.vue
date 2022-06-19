@@ -18,45 +18,45 @@
 
     <mp-table :isHoverable="false" style="table-layout: fixed">
       <mp-table-head>
-        <mp-table-row v-if="showBulkAction" background-color="ice.50" position="relative">
-          <mp-table-cell as="th" scope="col" width="30px">
+        <mp-table-row background-color="ice.50" :position="showBulkAction ? 'relative' : ''">
+          <mp-table-cell as="th" scope="col" width="39px">
             <mp-checkbox :is-checked="isCheckedAll" :is-indeterminate="isIndeterminate" @change="handleCheckAll" id="head" />
           </mp-table-cell>
           <mp-table-cell as="th" scope="col" width="100px">
-            <mp-flex position="absolute" top="9px" align-items="center" gap="6">
+            <mp-flex v-if="showBulkAction" position="absolute" top="9px" align-items="center" gap="6">
               <mp-text> 5 transaksi dipilih</mp-text>
               <mp-flex gap="4">
                 <mp-button size="sm" @click="isModalPrintPdfOpen = true"> Cetak PDF</mp-button>
                 <mp-button size="sm" variant="ghost" @click="isModalDeleteOpen = true"> Hapus</mp-button>
               </mp-flex>
             </mp-flex>
+
+            <mp-box cursor="pointer" v-else>
+              Tanggal
+              <mp-icon name="sort-default" />
+            </mp-box>
           </mp-table-cell>
-          <mp-table-cell as="th" scope="col" width="300px"> </mp-table-cell>
-          <mp-table-cell as="th" scope="col"> </mp-table-cell>
-          <mp-table-cell as="th" scope="col"> </mp-table-cell>
-          <mp-table-cell as="th" scope="col"> </mp-table-cell>
-          <mp-table-cell as="th" scope="col"> </mp-table-cell>
-          <mp-table-cell as="th" scope="col"> </mp-table-cell>
-          <mp-table-cell as="th" scope="col" width="150px"> </mp-table-cell>
-        </mp-table-row>
-        <mp-table-row v-else background-color="ice.50">
-          <mp-table-cell as="th" scope="col" width="30px">
-            <mp-checkbox :is-checked="isCheckedAll" :is-indeterminate="isIndeterminate" @change="handleCheckAll" id="head" />
+          <mp-table-cell as="th" scope="col" width="243px">
+            <mp-box v-if="!showBulkAction" cursor="pointer"> No Transaksi <mp-icon name="sort-default" /> </mp-box>
           </mp-table-cell>
-          <mp-table-cell as="th" scope="col" width="100px">
-            Tanggal
-            <mp-icon name="sort-default" />
+          <mp-table-cell as="th" scope="col" width="155px">
+            <mp-box v-if="!showBulkAction" cursor="pointer"> Pelanggan <mp-icon name="sort-default" /> </mp-box>
           </mp-table-cell>
-          <mp-table-cell as="th" scope="col" width="300px">
-            No Transaksi
-            <mp-icon name="sort-default" />
+          <mp-table-cell as="th" scope="col">
+            <mp-box v-if="!showBulkAction" cursor="pointer"> Jatuh tempo <mp-icon name="sort-default" /> </mp-box>
           </mp-table-cell>
-          <mp-table-cell as="th" scope="col"> Pelanggan <mp-icon name="sort-default" /> </mp-table-cell>
-          <mp-table-cell as="th" scope="col"> Jatuh tempo <mp-icon name="sort-default" /> </mp-table-cell>
-          <mp-table-cell as="th" scope="col"> Status <mp-icon name="sort-default" /> </mp-table-cell>
-          <mp-table-cell as="th" scope="col"> Sisa tagihan <mp-icon name="sort-default" /> </mp-table-cell>
-          <mp-table-cell as="th" scope="col"> Total <mp-icon name="sort-default" /> </mp-table-cell>
-          <mp-table-cell as="th" scope="col" width="150px"> Tag <mp-icon name="sort-default" /> </mp-table-cell>
+          <mp-table-cell as="th" scope="col" width="79px">
+            <mp-box v-if="!showBulkAction" cursor="pointer"> Status <mp-icon name="sort-default" /> </mp-box>
+          </mp-table-cell>
+          <mp-table-cell as="th" scope="col">
+            <mp-box v-if="!showBulkAction" cursor="pointer" text-align="right"> Sisa tagihan <mp-icon name="sort-default" /> </mp-box>
+          </mp-table-cell>
+          <mp-table-cell as="th" scope="col">
+            <mp-box v-if="!showBulkAction" cursor="pointer" text-align="right"> Total <mp-icon name="sort-default" /> </mp-box>
+          </mp-table-cell>
+          <mp-table-cell as="th" scope="col" width="150px">
+            <mp-box v-if="!showBulkAction"> Tag <mp-icon name="sort-default" /> </mp-box>
+          </mp-table-cell>
         </mp-table-row>
       </mp-table-head>
       <mp-table-body>
@@ -110,8 +110,12 @@
               {{ invoice.status }}
             </mp-badge>
           </mp-table-cell>
-          <mp-table-cell as="td" scope="row" text-align="right"> {{ invoice.balance }} </mp-table-cell>
-          <mp-table-cell as="td" scope="row" text-align="right"> {{ invoice.total }} </mp-table-cell>
+          <mp-table-cell as="td" scope="row">
+            <mp-text text-align="right">{{ invoice.balance }}</mp-text>
+          </mp-table-cell>
+          <mp-table-cell as="td" scope="row">
+            <mp-text text-align="right">{{ invoice.total }}</mp-text>
+          </mp-table-cell>
           <mp-table-cell as="td" scope="row">
             <mp-flex gap="3" align-items="center" flex-wrap="wrap">
               <mp-tag
@@ -147,7 +151,7 @@
 
     <TablePagination />
 
-    <ModalDelete @handleClose="isModalDeleteOpen = false" name="Sales" :isOpen="isModalDeleteOpen" />
+    <ModalDelete @handleClose="isModalDeleteOpen = false" name="Sales Invoice" :isOpen="isModalDeleteOpen" />
     <ModalPrintPdf @handleClose="isModalPrintPdfOpen = false" :isOpen="isModalPrintPdfOpen" />
   </mp-box>
 </template>

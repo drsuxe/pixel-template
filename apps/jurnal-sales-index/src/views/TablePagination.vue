@@ -38,11 +38,7 @@
       <mp-flex align-items="center">
         <mp-tooltip label="Jump to page" position="bottom">
           <mp-box>
-            <mp-select :value="3" size="sm" min-width="16">
-              <option v-for="index in 25" :key="index" :value="index">
-                {{ index }}
-              </option>
-            </mp-select>
+            <mp-autocomplete width="16" height="7.5" :data="['1', '2', '3', '4', '5']" is-searchable />
           </mp-box>
         </mp-tooltip>
         <mp-text color="gray.600" line-height="md" padding-left="2" padding-right="4" padding-y="1"> of 24 page </mp-text>
@@ -70,8 +66,8 @@ import {
   MpPopoverContent,
   MpPopoverList,
   MpPopoverListItem,
-  MpSelect,
   MpButtonIcon,
+  MpAutocomplete,
 } from "@mekari/pixel";
 
 export default {
@@ -88,8 +84,13 @@ export default {
     MpPopoverContent,
     MpPopoverList,
     MpPopoverListItem,
-    MpSelect,
     MpButtonIcon,
+    MpAutocomplete,
+  },
+  data() {
+    return {
+      pages: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    };
   },
 };
 </script>

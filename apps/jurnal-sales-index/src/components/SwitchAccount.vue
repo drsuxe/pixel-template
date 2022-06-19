@@ -10,50 +10,18 @@
           padding-y="1"
           :_hover="{ bg: 'background', cursor: 'pointer' }"
         >
-          <mp-avatar
-            name="Rizal Chandra"
-            src="https://i.pravatar.cc/300"
-            size="md"
-            margin-right="2"
-            :show-border="false"
-          />
+          <mp-avatar name="Rizal Chandra" size="md" margin-right="2" />
           <mp-flex flex-direction="column">
-            <mp-text font-weight="semibold" line-height="md">
-              Rizal Chandra
-            </mp-text>
-            <mp-text font-size="sm" color="gray.600">
-              PT Central Perk Indonesia
-            </mp-text>
+            <mp-text font-weight="semibold" line-height="md"> Rizal Chandra </mp-text>
+            <mp-text font-size="sm" color="gray.600"> PT Central Perk Indonesia </mp-text>
           </mp-flex>
         </mp-flex>
       </mp-button>
     </mp-popover-trigger>
-    <mp-popover-content
-      z-index="4"
-      max-width="65"
-      border-radius="md"
-      box-shadow="lg"
-      border="1px solid"
-      border-color="gray.400"
-      background-color="white"
-    >
-      <mp-box
-        background-color="background"
-        border-bottom="1px"
-        border-color="gray.100"
-        padding-y="4"
-      >
-        <mp-flex
-          justify-content="center"
-          align-items="center"
-          flex-direction="column"
-        >
-          <mp-avatar
-            name="Rizal Chandra"
-            src="https://i.pravatar.cc/300"
-            size="lg"
-            margin-bottom="2"
-          />
+    <mp-popover-content z-index="4" max-width="65" border-radius="md" box-shadow="lg" border="1px solid" border-color="gray.400" background-color="white">
+      <mp-box background-color="background" border-bottom="1px" border-color="gray.100" padding-y="4">
+        <mp-flex justify-content="center" align-items="center" flex-direction="column">
+          <mp-avatar name="Rizal Chandra" size="lg" margin-bottom="2" />
           <mp-text font-weight="semibold">Rizal Chandra</mp-text>
           <mp-text color="gray.600">PT Central Perk Indonesia</mp-text>
         </mp-flex>
@@ -71,9 +39,7 @@
       <mp-flex gap="3" flex-wrap="wrap" padding-x="3" padding-y="4">
         <mp-text font-size="xs" color="gray.600">Privacy</mp-text>
         <mp-text font-size="xs" color="gray.600">Terms of Use</mp-text>
-        <mp-text font-size="xs" color="gray.600">
-          About Mekari Account
-        </mp-text>
+        <mp-text font-size="xs" color="gray.600"> About Mekari Account </mp-text>
         <mp-text font-size="xs" color="gray.600">Mekari © 2021</mp-text>
       </mp-flex>
     </mp-popover-content>

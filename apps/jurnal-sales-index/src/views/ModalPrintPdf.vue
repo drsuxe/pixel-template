@@ -64,9 +64,6 @@ export default {
   props: {
     isOpen: { type: [Boolean] },
   },
-  methods: {
-    name() {},
-  },
 };
 </script>
 
