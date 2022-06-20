@@ -4,7 +4,7 @@
       <mp-modal-content>
         <mp-modal-header>Templates</mp-modal-header>
         <mp-modal-close-button @click="$emit('handleClose')" />
-        <mp-modal-body>
+        <mp-modal-body max-height="xl" overflow-y="auto">
           <mp-form-control margin-bottom="5" max-w="314px">
             <mp-flex justify="space-between">
               <mp-text font-weight="semibold" margin-bottom="1"> Pilih template </mp-text>

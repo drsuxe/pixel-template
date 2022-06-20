@@ -27,7 +27,7 @@
                 <mp-tab> Penawaran </mp-tab>
                 <mp-tab>
                   Membutuhkan persetujuan
-                  <mp-badge ml="2" variant="subtle" :variant-color="currentTab === 'require-approval' ? 'blue' : 'gray'"> 2 </mp-badge>
+                  <mp-badge ml="2" variant="subtle" :variant-color="currentTab === 'require-approval' ? 'blue' : 'gray'"> 3 </mp-badge>
                 </mp-tab>
               </mp-tab-list>
             </mp-tabs>

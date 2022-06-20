@@ -2,8 +2,8 @@
   <mp-box>
     <mp-flex width="full" justify-content="space-between" mb="6">
       <mp-flex gap="4">
-        <mp-autocomplete placeholder="Penagihan" width="172px" id="penagihan" :data="['Penagihan', 'Faktur proforma', 'Tukar faktur']" />
-        <mp-autocomplete placeholder="Semua status" width="172px" id="semua-status" :data="['Semua status', 'Open', 'Overdue', 'Paid', 'Partial', 'Unpaid']" />
+        <mp-autocomplete value="Penagihan" width="172px" id="penagihan" :data="['Penagihan', 'Faktur proforma', 'Tukar faktur']" />
+        <mp-autocomplete value="Semua status" width="172px" id="semua-status" :data="['Semua status', 'Open', 'Overdue', 'Paid', 'Partial', 'Unpaid']" />
       </mp-flex>
 
       <mp-flex>
@@ -24,7 +24,7 @@
           </mp-table-cell>
           <mp-table-cell as="th" scope="col" width="100px">
             <mp-flex v-if="showBulkAction" position="absolute" top="9px" align-items="center" gap="6">
-              <mp-text> 5 transaksi dipilih</mp-text>
+              <mp-text> {{ this.datas.filter((item) => item.checked === true).length }} transaksi dipilih</mp-text>
               <mp-flex gap="4">
                 <mp-button size="sm" @click="isModalPrintPdfOpen = true"> Cetak PDF</mp-button>
                 <mp-button size="sm" variant="ghost" @click="isModalDeleteOpen = true"> Hapus</mp-button>

@@ -2,8 +2,7 @@
   <mp-box>
     <mp-flex width="full" justify-content="space-between" mb="6">
       <mp-flex gap="4">
-        <mp-autocomplete placeholder="Penagihan" width="172px" id="penagihan" :data="['Penagihan', 'Faktur proforma', 'Tukar faktur']" />
-        <mp-autocomplete placeholder="Semua status" width="172px" id="semua-status" :data="['Semua status', 'Open', 'Overdue', 'Paid', 'Partial', 'Unpaid']" />
+        <mp-autocomplete value="Semua status" width="172px" id="sales-delivery-semua-status" :data="['Semua status', 'Open', 'Closed']" />
       </mp-flex>
 
       <mp-flex>
@@ -24,7 +23,7 @@
           </mp-table-cell>
           <mp-table-cell as="th" scope="col" width="100px">
             <mp-flex v-if="showBulkAction" position="absolute" top="9px" align-items="center" gap="6">
-              <mp-text> 5 transaksi dipilih</mp-text>
+              <mp-text> {{ this.datas.filter((item) => item.checked === true).length }} transaksi dipilih</mp-text>
               <mp-flex gap="4">
                 <mp-button size="sm" @click="isModalPrintPdfOpen = true"> Cetak PDF</mp-button>
                 <mp-button size="sm" variant="ghost" @click="isModalDeleteOpen = true"> Hapus</mp-button>
@@ -51,7 +50,7 @@
           <mp-table-cell as="th" scope="col">
             <mp-box v-if="!showBulkAction" cursor="pointer" text-align="right"> Sisa tagihan <mp-icon name="sort-default" /> </mp-box>
           </mp-table-cell>
-          <mp-table-cell as="th" scope="col" bg="red.50">
+          <mp-table-cell as="th" scope="col">
             <mp-box v-if="!showBulkAction" cursor="pointer" text-align="right"> Total <mp-icon name="sort-default" /> </mp-box>
           </mp-table-cell>
           <mp-table-cell as="th" scope="col" width="150px">
@@ -113,7 +112,7 @@
           <mp-table-cell as="td" scope="row">
             <mp-text text-align="right">{{ invoice.balance }}</mp-text>
           </mp-table-cell>
-          <mp-table-cell as="td" scope="row" bg="red.50">
+          <mp-table-cell as="td" scope="row">
             <mp-text text-align="right">{{ invoice.total }}</mp-text>
           </mp-table-cell>
           <mp-table-cell as="td" scope="row">
@@ -151,7 +150,7 @@
 
     <TablePagination />
 
-    <ModalDelete @handleClose="isModalDeleteOpen = false" name="Sales Invoice" :isOpen="isModalDeleteOpen" />
+    <ModalDelete @handleClose="isModalDeleteOpen = false" name="Sales Delivery" :isOpen="isModalDeleteOpen" />
     <ModalPrintPdf @handleClose="isModalPrintPdfOpen = false" :isOpen="isModalPrintPdfOpen" />
   </mp-box>
 </template>
@@ -247,54 +246,6 @@ export default {
           balance: "Rp 5.000.000",
           total: "Rp 5.000.000",
           tag: ["Merak", "Surabaya", "Yogyakarta"],
-          tagExpanded: false,
-        },
-        {
-          id: 3,
-          checked: false,
-          date: "17/04/2022",
-          number: "Sales Invoice #0003",
-          attachment: false,
-          join: false,
-          description: "",
-          customer: "Tommy Soeharto",
-          dueDate: "19/04/2022",
-          status: "Partial",
-          balance: "Rp 2.000.000",
-          total: "Rp 3.000.000",
-          tag: ["Gresik", "Mojokerto", "Sidoarjo"],
-          tagExpanded: false,
-        },
-        {
-          id: 4,
-          checked: false,
-          date: "16/04/2022",
-          number: "Sales Invoice #0002",
-          attachment: false,
-          join: false,
-          description: "",
-          customer: "CV Abadi",
-          dueDate: "20/04/2022",
-          status: "Open",
-          balance: "Rp 500.000",
-          total: "Rp 500.000",
-          tag: ["Joglo", "Surabaya", "Yogyakarta", "Medan", "Batam"],
-          tagExpanded: false,
-        },
-        {
-          id: 5,
-          checked: false,
-          date: "15/04/2022",
-          number: "Sales Invoice #0001",
-          attachment: false,
-          join: true,
-          description: "",
-          customer: "CV Jangka Nusantara",
-          dueDate: "20/04/2022",
-          status: "Paid",
-          balance: "Rp 0",
-          total: "Rp 500.000",
-          tag: ["Solo", "Yogyakarta", "Semarang", "Klaten", "Ngawi"],
           tagExpanded: false,
         },
       ],

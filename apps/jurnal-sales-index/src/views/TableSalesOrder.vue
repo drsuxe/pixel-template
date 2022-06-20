@@ -2,8 +2,8 @@
   <mp-box>
     <mp-flex width="full" justify-content="space-between" mb="6">
       <mp-flex gap="4">
-        <mp-autocomplete placeholder="Pemesanan" width="172px" id="pemesanan" :data="['Pemesanan', 'Proforma pemesanan']" />
-        <mp-autocomplete placeholder="Semua status" width="172px" id="pemesanan" :data="['Semua status', 'Open', 'Partially sent', 'Closed']" />
+        <mp-autocomplete value="Pemesanan" width="172px" id="pemesanan" :data="['Pemesanan', 'Proforma pemesanan']" />
+        <mp-autocomplete value="Semua status" width="172px" id="pemesanan" :data="['Semua status', 'Open', 'Partially sent', 'Closed']" />
       </mp-flex>
 
       <mp-flex>
@@ -18,30 +18,51 @@
 
     <mp-table :isHoverable="false" style="table-layout: fixed">
       <mp-table-head>
-        <mp-table-row background-color="ice.50">
-          <mp-table-cell as="th" scope="col" width="30px">
-            <mp-checkbox id="head" />
+        <mp-table-row background-color="ice.50" :position="showBulkAction ? 'relative' : ''">
+          <mp-table-cell as="th" scope="col" width="39px">
+            <mp-checkbox :is-checked="isCheckedAll" :is-indeterminate="isIndeterminate" @change="handleCheckAll" id="head" />
+          </mp-table-cell>
+          <mp-table-cell as="th" scope="col" width="100px">
+            <mp-flex v-if="showBulkAction" position="absolute" top="9px" align-items="center" gap="6">
+              <mp-text> {{ this.datas.filter((item) => item.checked === true).length }} transaksi dipilih</mp-text>
+              <mp-flex gap="4">
+                <mp-button size="sm" @click="isModalPrintPdfOpen = true"> Cetak PDF</mp-button>
+                <mp-button size="sm" variant="ghost" @click="isModalDeleteOpen = true"> Hapus</mp-button>
+              </mp-flex>
+            </mp-flex>
+
+            <mp-box cursor="pointer" v-else>
+              Tanggal
+              <mp-icon name="sort-default" />
+            </mp-box>
+          </mp-table-cell>
+          <mp-table-cell as="th" scope="col" width="243px">
+            <mp-box v-if="!showBulkAction" cursor="pointer"> No Transaksi <mp-icon name="sort-default" /> </mp-box>
+          </mp-table-cell>
+          <mp-table-cell as="th" scope="col" width="155px">
+            <mp-box v-if="!showBulkAction" cursor="pointer"> Pelanggan <mp-icon name="sort-default" /> </mp-box>
           </mp-table-cell>
           <mp-table-cell as="th" scope="col">
-            Tanggal
-            <mp-icon name="sort-default" />
+            <mp-box v-if="!showBulkAction" cursor="pointer"> Jatuh tempo <mp-icon name="sort-default" /> </mp-box>
           </mp-table-cell>
-          <mp-table-cell as="th" scope="col" width="300px">
-            No Transaksi
-            <mp-icon name="sort-default" />
+          <mp-table-cell as="th" scope="col" width="79px">
+            <mp-box v-if="!showBulkAction" cursor="pointer"> Status <mp-icon name="sort-default" /> </mp-box>
           </mp-table-cell>
-          <mp-table-cell as="th" scope="col"> Pelanggan <mp-icon name="sort-default" /> </mp-table-cell>
-          <mp-table-cell as="th" scope="col"> Jatuh tempo <mp-icon name="sort-default" /> </mp-table-cell>
-          <mp-table-cell as="th" scope="col"> Status <mp-icon name="sort-default" /> </mp-table-cell>
-          <mp-table-cell as="th" scope="col"> Sisa tagihan <mp-icon name="sort-default" /> </mp-table-cell>
-          <mp-table-cell as="th" scope="col"> Total <mp-icon name="sort-default" /> </mp-table-cell>
-          <mp-table-cell as="th" scope="col" width="150px"> Tag <mp-icon name="sort-default" /> </mp-table-cell>
+          <mp-table-cell as="th" scope="col">
+            <mp-box v-if="!showBulkAction" cursor="pointer" text-align="right"> Sisa tagihan <mp-icon name="sort-default" /> </mp-box>
+          </mp-table-cell>
+          <mp-table-cell as="th" scope="col">
+            <mp-box v-if="!showBulkAction" cursor="pointer" text-align="right"> Total <mp-icon name="sort-default" /> </mp-box>
+          </mp-table-cell>
+          <mp-table-cell as="th" scope="col" width="150px">
+            <mp-box v-if="!showBulkAction"> Tag <mp-icon name="sort-default" /> </mp-box>
+          </mp-table-cell>
         </mp-table-row>
       </mp-table-head>
       <mp-table-body>
         <mp-table-row v-for="(invoice, index) in datas" :key="invoice.id" style="white-space: normal">
           <mp-table-cell as="td" scope="row">
-            <mp-checkbox :isChecked="invoice.checked" v-model="datas[index].checked" :id="`checkbox-${index}`" />
+            <mp-checkbox :isChecked="invoice.checked" @change="(_, $e) => (datas[index].checked = $e.target.checked)" :id="`checkbox-${index}`" />
           </mp-table-cell>
           <mp-table-cell as="td" scope="row">
             <mp-text>{{ invoice.date }}</mp-text>
@@ -55,12 +76,12 @@
                 <mp-flex gap="1">
                   <mp-box v-if="invoice.attachment" cursor="pointer">
                     <mp-tooltip label="Attachment" :id="`attachment-${index}`">
-                      <mp-icon size="sm" name="attachment" color="gray.100" />
+                      <mp-icon size="sm" name="attachment" color="gray.600" />
                     </mp-tooltip>
                   </mp-box>
                   <mp-box v-if="invoice.join" cursor="pointer">
-                    <mp-tooltip label="Join" :id="`attachment-${index}`">
-                      <mp-icon size="sm" name="doc" color="gray.100" />
+                    <mp-tooltip label="Join" :id="`join-${index}`">
+                      <mp-icon size="sm" name="doc" color="gray.600" />
                     </mp-tooltip>
                   </mp-box>
                 </mp-flex>
@@ -89,11 +110,24 @@
               {{ invoice.status }}
             </mp-badge>
           </mp-table-cell>
-          <mp-table-cell as="td" scope="row"> {{ invoice.balance }} </mp-table-cell>
-          <mp-table-cell as="td" scope="row"> {{ invoice.total }} </mp-table-cell>
+          <mp-table-cell as="td" scope="row">
+            <mp-text text-align="right">{{ invoice.balance }}</mp-text>
+          </mp-table-cell>
+          <mp-table-cell as="td" scope="row">
+            <mp-text text-align="right">{{ invoice.total }}</mp-text>
+          </mp-table-cell>
           <mp-table-cell as="td" scope="row">
             <mp-flex gap="3" align-items="center" flex-wrap="wrap">
-              <mp-tag size="sm" variant="gray" v-for="value in invoice.tag.slice(0, 1)" :key="value">
+              <mp-tag
+                size="sm"
+                variant="gray"
+                max-width="224px"
+                text-overflow="ellipsis"
+                white-space="nowrap"
+                overflow="hidden"
+                v-for="value in invoice.tag.slice(0, 1)"
+                :key="value"
+              >
                 {{ value }}
               </mp-tag>
 
@@ -101,7 +135,7 @@
                 <mp-popover-trigger>
                   <mp-text v-if="invoice.tag.length !== 1" is-link font-size="sm"> {{ `+${invoice.tag.length - 1}` }} more </mp-text>
                 </mp-popover-trigger>
-                <mp-popover-content max-width="48" bg="white" rounded="md" shadow="lg" border-width="1px" p="4" border-color="gray.400" z-index="popover">
+                <mp-popover-content max-width="48" bg="white" rounded="md" shadow="lg" border-width="1px" p="2" border-color="gray.400" z-index="popover">
                   <mp-flex gap="1" flex-wrap="wrap">
                     <mp-tag size="sm" variant="gray" v-for="value in invoice.tag" :key="value">
                       {{ value }}
@@ -116,6 +150,9 @@
     </mp-table>
 
     <TablePagination />
+
+    <ModalDelete @handleClose="isModalDeleteOpen = false" name="Sales Order" :isOpen="isModalDeleteOpen" />
+    <ModalPrintPdf @handleClose="isModalPrintPdfOpen = false" :isOpen="isModalPrintPdfOpen" />
   </mp-box>
 </template>
 
@@ -141,12 +178,15 @@ import {
   MpPopover,
   MpPopoverTrigger,
   MpPopoverContent,
+  MpButton,
 } from "@mekari/pixel";
 
 import TablePagination from "./TablePagination.vue";
+import ModalDelete from "./ModalDelete.vue";
+import ModalPrintPdf from "./ModalPrintPdf.vue";
 
 export default {
-  name: "TableSalesOrder",
+  name: "TableSalesInvoice",
   components: {
     MpTable,
     MpTableHead,
@@ -169,6 +209,9 @@ export default {
     MpPopoverTrigger,
     MpPopoverContent,
     TablePagination,
+    ModalDelete,
+    ModalPrintPdf,
+    MpButton,
   },
   data() {
     return {
@@ -177,7 +220,7 @@ export default {
           id: 1,
           checked: false,
           date: "19/04/2022",
-          number: "Sales Order #0001",
+          number: "Sales Invoice with long title #0005",
           attachment: true,
           join: false,
           description:
@@ -194,7 +237,7 @@ export default {
           id: 2,
           checked: false,
           date: "18/04/2022",
-          number: "Sales Order #0002",
+          number: "Sales Invoice #0004",
           attachment: true,
           join: true,
           description: "",
@@ -210,7 +253,7 @@ export default {
           id: 3,
           checked: false,
           date: "17/04/2022",
-          number: "Sales Order #0003",
+          number: "Sales Invoice #0003",
           attachment: false,
           join: false,
           description: "",
@@ -223,7 +266,42 @@ export default {
           tagExpanded: false,
         },
       ],
+      isModalDeleteOpen: false,
+      isModalPrintPdfOpen: false,
     };
+  },
+  computed: {
+    showBulkAction() {
+      return this.datas.filter((item) => item.checked === true).length >= 1;
+    },
+    isIndeterminate() {
+      const checks = this.datas.map((value) => {
+        return value.checked;
+      });
+
+      const totalData = checks.length;
+      const totalSelectedData = checks.filter(Boolean).length;
+
+      if (totalSelectedData < totalData && totalSelectedData !== 0) {
+        return true;
+      }
+
+      return false;
+    },
+    isCheckedAll() {
+      const checks = this.datas.map((value) => {
+        return value.checked;
+      });
+
+      const totalData = checks.length;
+      const totalSelectedData = checks.filter(Boolean).length;
+
+      if (totalData === totalSelectedData) {
+        return true;
+      }
+
+      return false;
+    },
   },
   methods: {
     getBadgeVariantColor(status) {
@@ -234,6 +312,23 @@ export default {
 
       return "gray";
     },
+    handleCheckAll(e) {
+      console.log(e);
+      this.datas = this.datas.map((value) => {
+        return {
+          ...value,
+          ...{
+            checked: e,
+          },
+        };
+      });
+    },
   },
 };
 </script>
+
+<style scoped>
+td {
+  word-wrap: break-word;
+}
+</style>

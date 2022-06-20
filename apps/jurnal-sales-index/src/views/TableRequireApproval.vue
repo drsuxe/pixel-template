@@ -130,20 +130,25 @@
 
               <mp-popover :id="`${invoice.id}-${index}`">
                 <mp-popover-trigger>
-                  <mp-button-icon is-round name="time" />
+                  <mp-button-icon name="time" />
                 </mp-popover-trigger>
                 <mp-popover-content max-width="392px" z-index="popover">
                   <mp-popover-panel bg="white" px="4">
                     <mp-text font-weight="semibold" mb="4">Approval Log</mp-text>
 
-                    <TimelineApproval v-if="index === 0" />
-                    <mp-box v-if="index === 1" my="8">
+                    <PopoverTimelineAccordion v-if="index === 0" />
+                    <PopoverTimeline v-if="index === 1" />
+                    <mp-box v-if="index === 2" my="8">
                       <mp-text text-align="center">No approval logs for this transaction.</mp-text>
                     </mp-box>
                   </mp-popover-panel>
                 </mp-popover-content>
               </mp-popover>
-              <mp-button-icon is-round name="comment" @click="handleOpenModalChat('comments')" />
+
+              <mp-box position="relative">
+                <mp-button-icon name="comment" @click="handleOpenModalChat(index)" />
+                <mp-badge v-if="index === 0" position="absolute" top="-1" right="-1" box-shadow="0 0 0 2px #fff" size="sm">5</mp-badge>
+              </mp-box>
             </mp-flex>
           </mp-table-cell>
         </mp-table-row>
@@ -152,7 +157,7 @@
 
     <TablePagination />
 
-    <ModalChat type="comments" :is-open="isModalChatOpen" @handleClose="isModalChatOpen = false" />
+    <ModalChat :type="modalChatType" :isApproved="modalChatApproved" :is-open="isModalChatOpen" @handleClose="isModalChatOpen = false" />
   </mp-box>
 </template>
 
@@ -181,7 +186,8 @@ import {
   MpButtonIcon,
 } from "@mekari/pixel";
 
-import TimelineApproval from "./TimelineApproval.vue";
+import PopoverTimelineAccordion from "./PopoverTimelineAccordion.vue";
+import PopoverTimeline from "./PopoverTimeline.vue";
 import TablePagination from "./TablePagination.vue";
 import ModalChat from "./ModalChat.vue";
 
@@ -209,7 +215,8 @@ export default {
     MpPopoverPanel,
     MpButton,
     MpButtonIcon,
-    TimelineApproval,
+    PopoverTimelineAccordion,
+    PopoverTimeline,
     TablePagination,
     ModalChat,
   },
@@ -267,6 +274,7 @@ export default {
         },
       ],
       modalChatType: "blank", // blank & comments
+      modalChatApproved: false,
       isApproveLoading: false,
       isModalChatOpen: false,
     };
@@ -287,8 +295,22 @@ export default {
         this.datas[0].approved = true;
       }, 1000);
     },
-    handleOpenModalChat(type) {
-      this.modalChatType = type;
+    handleOpenModalChat(index) {
+      if (index === 0) {
+        this.modalChatType = "comments";
+        this.modalChatApproved = false;
+      }
+
+      if (index === 1) {
+        this.modalChatType = "comments";
+        this.modalChatApproved = true;
+      }
+
+      if (index === 2) {
+        this.modalChatType = "blank";
+        this.modalChatApproved = false;
+      }
+
       this.isModalChatOpen = true;
     },
   },

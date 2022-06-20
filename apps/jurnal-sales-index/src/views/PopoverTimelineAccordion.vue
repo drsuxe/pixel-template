@@ -65,7 +65,7 @@
 import { MpTimeline, MpTimelineItem, MpTimelineTitle, MpTimelineCaption, MpTimelineAccordion, MpText } from "@mekari/pixel";
 
 export default {
-  name: "TimelineWithAccordion",
+  name: "PopoverTimelineAccordion",
   components: {
     MpTimeline,
     MpTimelineItem,
