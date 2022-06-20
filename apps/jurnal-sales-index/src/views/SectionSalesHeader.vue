@@ -12,8 +12,8 @@
           </mp-popover-trigger>
           <mp-popover-content max-width="48" bg="white" rounded="md" shadow="lg" border-width="1px" border-color="gray.400">
             <mp-popover-list>
-              <mp-popover-list-item>Template dari Jurnal</mp-popover-list-item>
-              <mp-popover-list-item> Template dari aplikasi lain </mp-popover-list-item>
+              <mp-popover-list-item @click="isModalImportFromJurnal = true">Template dari Jurnal</mp-popover-list-item>
+              <mp-popover-list-item @click="isModalImportFromOtherApp = true"> Template dari aplikasi lain </mp-popover-list-item>
             </mp-popover-list>
           </mp-popover-content>
         </mp-popover>
@@ -34,6 +34,8 @@
     </mp-flex>
 
     <ModalSwitchToOldView :is-open="isModalSwitchToOldView" @handleClose="isModalSwitchToOldView = false" />
+    <ModalImportFromJurnal :is-open="isModalImportFromJurnal" @handleClose="isModalImportFromJurnal = false" />
+    <ModalImportFromOtherApp :is-open="isModalImportFromOtherApp" @handleClose="isModalImportFromOtherApp = false" />
   </mp-flex>
 </template>
 
@@ -52,6 +54,8 @@ import {
 } from "@mekari/pixel";
 
 import ModalSwitchToOldView from "./ModalSwitchToOldView.vue";
+import ModalImportFromJurnal from "./ModalImportFromJurnal.vue";
+import ModalImportFromOtherApp from "./ModalImportFromOtherApp.vue";
 
 export default {
   name: "SectionSalesHeader",
@@ -67,10 +71,14 @@ export default {
     MpPopoverList,
     MpPopoverListItem,
     ModalSwitchToOldView,
+    ModalImportFromJurnal,
+    ModalImportFromOtherApp,
   },
   data() {
     return {
       isModalSwitchToOldView: false,
+      isModalImportFromJurnal: false,
+      isModalImportFromOtherApp: false,
     };
   },
 };
