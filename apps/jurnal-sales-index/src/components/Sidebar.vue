@@ -61,7 +61,7 @@
                 </mp-text>
               </mp-pseudo-box>
             </mp-popover-trigger>
-            <mp-popover-content max-width="64" bg="white" z-index="popover" rounded="md" shadow="lg" border-width="1px" border-color="gray.400">
+            <mp-popover-content max-width="190px" bg="white" z-index="popover" rounded="md" shadow="lg" border-width="1px" border-color="gray.400">
               <mp-popover-list>
                 <mp-popover-list-item> Penagihan Penjualan </mp-popover-list-item>
                 <mp-popover-list-item> Penagihan Pembelian </mp-popover-list-item>

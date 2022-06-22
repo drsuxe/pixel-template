@@ -21,7 +21,7 @@
           <mp-popover-trigger>
             <mp-button right-icon="caret-down">Buat penjualan baru</mp-button>
           </mp-popover-trigger>
-          <mp-popover-content max-width="48" bg="white" rounded="md" shadow="lg" border-width="1px" border-color="gray.400">
+          <mp-popover-content max-width="200px" bg="white" rounded="md" shadow="lg" border-width="1px" border-color="gray.400">
             <mp-popover-list>
               <mp-popover-list-item>Penagihan penjualan</mp-popover-list-item>
               <mp-popover-list-item> Tukar faktur </mp-popover-list-item>
@@ -35,7 +35,12 @@
 
     <ModalSwitchToOldView :is-open="isModalSwitchToOldView" @handleClose="isModalSwitchToOldView = false" />
     <ModalImportFromJurnal :is-open="isModalImportFromJurnal" @handleClose="isModalImportFromJurnal = false" />
-    <ModalImportFromOtherApp :is-open="isModalImportFromOtherApp" @handleClose="isModalImportFromOtherApp = false" />
+    <ModalImportFromOtherApp
+      :is-open="isModalImportFromOtherApp"
+      @handleClose="isModalImportFromOtherApp = false"
+      @handleContinue="isModalImportProcessing = true"
+    />
+    <ModalImportProcessing :is-open="isModalImportProcessing" @handleClose="isModalImportProcessing = false" />
   </mp-flex>
 </template>
 
@@ -56,6 +61,7 @@ import {
 import ModalSwitchToOldView from "./ModalSwitchToOldView.vue";
 import ModalImportFromJurnal from "./ModalImportFromJurnal.vue";
 import ModalImportFromOtherApp from "./ModalImportFromOtherApp.vue";
+import ModalImportProcessing from "./ModalImportProcessing.vue";
 
 export default {
   name: "SectionSalesHeader",
@@ -73,12 +79,14 @@ export default {
     ModalSwitchToOldView,
     ModalImportFromJurnal,
     ModalImportFromOtherApp,
+    ModalImportProcessing,
   },
   data() {
     return {
       isModalSwitchToOldView: false,
       isModalImportFromJurnal: false,
       isModalImportFromOtherApp: false,
+      isModalImportProcessing: false,
     };
   },
 };

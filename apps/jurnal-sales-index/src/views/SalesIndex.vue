@@ -5,20 +5,10 @@
       <Sidebar />
       <mp-box as="section" data-id="content" width="100%" height="calc(100vh - 60px)" overflow-y="auto" background-color="background">
         <SectionSalesHeader />
-
         <mp-box min-height="calc(100vh - 132px)" border-top-width="1px" background-color="white" padding="6">
           <SectionSummaryBox />
-
-          <!-- 
-          // TODO : Ask designer, have different color with token.
-          -->
-          <mp-flex justify-content="end" my="2">
-            <mp-text font-size="sm" color="gray.600">Saldo adalah untuk semua jangka waktu, kecuali ada pernyataan</mp-text>
-          </mp-flex>
-
-          <mp-box as="content">
-            <mp-heading as="h2" font-size="xl" mb="1  "> Transaksi Penjualan</mp-heading>
-
+          <mp-box>
+            <mp-heading as="h2" font-size="xl" mb="1"> Transaksi Penjualan</mp-heading>
             <mp-tabs id="sales-index-tab" :default-index="defaultIndex" @change="handleChange">
               <mp-tab-list>
                 <mp-tab id="sales-invoice"> Faktur pembelian </mp-tab>
@@ -27,7 +17,7 @@
                 <mp-tab> Penawaran </mp-tab>
                 <mp-tab>
                   Membutuhkan persetujuan
-                  <mp-badge ml="2" variant="subtle" :variant-color="currentTab === 'require-approval' ? 'blue' : 'gray'"> 3 </mp-badge>
+                  <mp-badge ml="2" variant="solid" :variant-color="currentTab === 'require-approval' ? 'blue' : 'gray'"> 3 </mp-badge>
                 </mp-tab>
               </mp-tab-list>
             </mp-tabs>
@@ -45,7 +35,7 @@
 </template>
 
 <script>
-import { MpBox, MpFlex, MpText, MpTabs, MpTabList, MpTab, MpBadge, MpHeading } from "@mekari/pixel";
+import { MpBox, MpFlex, MpTabs, MpTabList, MpTab, MpBadge, MpHeading } from "@mekari/pixel";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import SectionSalesHeader from "../views/SectionSalesHeader.vue";
@@ -61,7 +51,6 @@ export default {
   components: {
     MpBox,
     MpFlex,
-    MpText,
     MpTabs,
     MpTabList,
     MpTab,

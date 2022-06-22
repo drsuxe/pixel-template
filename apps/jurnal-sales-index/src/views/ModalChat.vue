@@ -166,7 +166,7 @@
                       <mp-text>Cool! <mp-text as="span" color="brand.jurnal"> @Dwight Schrute </mp-text> </mp-text>
                     </mp-box>
 
-                    <mp-box flex="none" width="80px">
+                    <mp-box flex="none" width="50px">
                       <mp-flex align="end" h="full" justify="end">
                         <mp-text font-size="xs" color="blackAlpha.500">08:12 AM</mp-text>
                       </mp-flex>
@@ -267,6 +267,7 @@ export default {
   data() {
     return {
       comment: "",
+      isMentionOpen: false,
     };
   },
   methods: {

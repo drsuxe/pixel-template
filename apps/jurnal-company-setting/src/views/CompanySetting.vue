@@ -297,7 +297,7 @@
                 <!-- Pengaturan fitur tambahan -->
                 <mp-box>
                   <mp-flex pb="1" justify-content="space-between">
-                    <mp-heading as="h3" fontSize="lg">Pengaturan fitur tambahan {{ alreadyHaveTranscaction }} </mp-heading>
+                    <mp-heading as="h3" fontSize="lg">Pengaturan fitur tambahan </mp-heading>
                     <mp-tooltip label="Ubah info" id="pengaturanFiturTambahan">
                       <mp-button-icon
                         @click="handleOpenPengaturanFiturTambahan()"
@@ -312,7 +312,7 @@
                   <mp-flex v-if="open === 'pengaturanFiturTambahan'" flex-direction="column" id="edit-pengaturan-fitur-tambahan">
                     <mp-flex py="1.5">
                       <mp-tooltip
-                        :visibility="alreadyHaveTranscaction === 'yes' ? '' : 'hidden'"
+                        :visibility="alreadyHaveTranscaction === 'yes' ? 'visible' : 'hidden'"
                         id="deactive-approval"
                         label="Untuk menonaktifkan Approval, silakan hapus transaksi yang sudah tercatat di fitur ini."
                         position="top"
@@ -470,8 +470,6 @@
                           id="pengaturan-fitur-tambahan-mata-uang"
                           :value="tempPengaturanFiturTambahan.mataUang"
                           :data="['IDR - Indonesia', 'AUD - Australia', 'USD - United States', 'CAD - Canada', 'MYR - Malaysia']"
-                          is-searchable
-                          is-clearable
                           @change="(value) => (tempPengaturanFiturTambahan.mataUang = value)"
                         />
                         <mp-text color="gray.600">Pemilihan mata uang hanya dapat dilakukan 1 kali.</mp-text>
@@ -482,8 +480,6 @@
                           id="pengaturan-fitur-tambahan-format-mata-uang"
                           :value="tempPengaturanFiturTambahan.formatMataUang"
                           :data="['Tanpa desimal', 'Dengan desimal', 'Dalam ribuan', 'Dalam jutaan']"
-                          is-searchable
-                          is-clearable
                           @change="(value) => (tempPengaturanFiturTambahan.formatMataUang = value)"
                         />
                       </mp-box>
@@ -714,7 +710,7 @@ export default {
       emailStatus: "unverified", // "verified", "unverified"
       userSubscription: "starter", // "pro", "starter"
       alreadyHaveTranscaction: "yes", // "yes", "no"
-      alreadySetCurrency: "no", // "yes", "no"
+      alreadySetCurrency: "yes", // "yes", "no"
       open: null,
       nextOpen: null,
       isModalOpen: false,

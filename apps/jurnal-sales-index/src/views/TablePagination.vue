@@ -38,7 +38,7 @@
       <mp-flex align-items="center">
         <mp-tooltip label="Jump to page" position="bottom">
           <mp-box>
-            <mp-autocomplete value="1" width="16" height="7.5" :data="['1', '2', '3', '4', '5']" is-searchable />
+            <mp-autocomplete value="1" min-width="20" width="20" height="7.5" :data="['1', '2', '3', '4', '5']" is-searchable />
           </mp-box>
         </mp-tooltip>
         <mp-text color="gray.600" line-height="md" padding-left="2" padding-right="4" padding-y="1"> of 24 page </mp-text>

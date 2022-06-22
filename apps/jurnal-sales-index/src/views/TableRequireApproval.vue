@@ -45,10 +45,10 @@
       </mp-table-head>
       <mp-table-body>
         <mp-table-row v-for="(invoice, index) in datas" :key="invoice.id" style="white-space: normal">
-          <mp-table-cell as="td" scope="row">
-            <mp-text>{{ invoice.date }}</mp-text>
+          <mp-table-cell as="td" scope="row" vertical-align="top">
+            <mp-text font-size="md" line-height="md">{{ invoice.date }}</mp-text>
           </mp-table-cell>
-          <mp-table-cell as="td" scope="row">
+          <mp-table-cell as="td" scope="row" vertical-align="top">
             <mp-flex gap="1">
               <mp-box flex-grow="1">
                 <mp-text is-link font-size="md" line-height="md"> {{ invoice.number }} </mp-text>
@@ -62,7 +62,7 @@
                   </mp-box>
                   <mp-box v-if="invoice.join" cursor="pointer">
                     <mp-tooltip label="Join" :id="`join-${index}`">
-                      <mp-icon size="sm" name="doc" color="gray.600" />
+                      <mp-icon size="sm" name="join-invoice" color="gray.600" />
                     </mp-tooltip>
                   </mp-box>
                 </mp-flex>
@@ -80,21 +80,21 @@
               {{ invoice.description }}
             </mp-text>
           </mp-table-cell>
-          <mp-table-cell as="td" scope="row">
-            <mp-text is-link text-overflow="ellipsis" white-space="nowrap" overflow="hidden"> {{ invoice.customer }} </mp-text>
+          <mp-table-cell as="td" scope="row" vertical-align="top">
+            <mp-text is-link text-overflow="ellipsis" white-space="nowrap" overflow="hidden" font-size="md" line-height="md"> {{ invoice.customer }} </mp-text>
           </mp-table-cell>
-          <mp-table-cell as="td" scope="row">
-            <mp-text>{{ invoice.dueDate }}</mp-text>
+          <mp-table-cell as="td" scope="row" vertical-align="top">
+            <mp-text font-size="md" line-height="md">{{ invoice.dueDate }}</mp-text>
           </mp-table-cell>
-          <mp-table-cell as="td" scope="row">
+          <mp-table-cell as="td" scope="row" vertical-align="top">
             <mp-badge variant="subtle" :variant-color="getBadgeVariantColor(invoice.status)">
               {{ invoice.status }}
             </mp-badge>
           </mp-table-cell>
-          <mp-table-cell as="td" scope="row">
-            <mp-text text-align="right">{{ invoice.total }}</mp-text>
+          <mp-table-cell as="td" scope="row" vertical-align="top">
+            <mp-text text-align="right" font-size="md" line-height="md">{{ invoice.total }}</mp-text>
           </mp-table-cell>
-          <mp-table-cell as="td" scope="row">
+          <mp-table-cell as="td" scope="row" vertical-align="top">
             <mp-flex gap="3" align-items="center" flex-wrap="wrap">
               <mp-tag
                 size="sm"
@@ -124,13 +124,17 @@
             </mp-flex>
           </mp-table-cell>
 
-          <mp-table-cell as="td" scope="row">
-            <mp-flex align-items="center" gap="2">
+          <mp-table-cell as="td" scope="row" vertical-align="top">
+            <mp-flex align="center" justify="end" gap="2">
               <mp-button v-if="!invoice.approved" size="sm" @click="handleApprove" :is-loading="isApproveLoading">Approve</mp-button>
 
-              <mp-popover :id="`${invoice.id}-${index}`">
+              <mp-popover :id="`popover-approval-log-${index}`">
                 <mp-popover-trigger>
-                  <mp-button-icon name="time" />
+                  <mp-box>
+                    <mp-tooltip label="Log persetujuan" :id="`tooltip-approval-log-${index}`">
+                      <mp-button-icon name="time" />
+                    </mp-tooltip>
+                  </mp-box>
                 </mp-popover-trigger>
                 <mp-popover-content max-width="392px" z-index="popover">
                   <mp-popover-panel bg="white" px="4">
@@ -139,16 +143,18 @@
                     <PopoverTimelineAccordion v-if="index === 0" />
                     <PopoverTimeline v-if="index === 1" />
                     <mp-box v-if="index === 2" my="8">
-                      <mp-text text-align="center">No approval logs for this transaction.</mp-text>
+                      <mp-text text-align="center" color="gray.400">No approval logs for this transaction.</mp-text>
                     </mp-box>
                   </mp-popover-panel>
                 </mp-popover-content>
               </mp-popover>
 
-              <mp-box position="relative">
-                <mp-button-icon name="comment" @click="handleOpenModalChat(index)" />
-                <mp-badge v-if="index === 0" position="absolute" top="-1" right="-1" box-shadow="0 0 0 2px #fff" size="sm">5</mp-badge>
-              </mp-box>
+              <mp-tooltip label="Komentar" :id="`tooltip-comment-${index}`">
+                <mp-box position="relative">
+                  <mp-button-icon name="comment" @click="handleOpenModalChat(index)" />
+                  <mp-badge v-if="index === 0" position="absolute" top="-1" right="-1" box-shadow="0 0 0 2px #fff" size="sm">5</mp-badge>
+                </mp-box>
+              </mp-tooltip>
             </mp-flex>
           </mp-table-cell>
         </mp-table-row>
@@ -293,6 +299,12 @@ export default {
 
       setTimeout(() => {
         this.datas[0].approved = true;
+
+        this.$toast({
+          variant: "success",
+          title: "Transaksi telah disetujui",
+          position: "top",
+        });
       }, 1000);
     },
     handleOpenModalChat(index) {
@@ -320,5 +332,8 @@ export default {
 <style scoped>
 td {
   word-wrap: break-word;
+  height: auto;
+  padding-top: 0.875rem;
+  padding-bottom: 0.875rem;
 }
 </style>

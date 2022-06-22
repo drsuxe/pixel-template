@@ -120,14 +120,14 @@
                 .xls.
               </mp-text>
 
-              <mp-upload mt="3" />
+              <mp-upload mt="3" :change="handleChange" @clear="handleClear" :key="uploadKey" />
             </mp-box>
           </mp-flex>
         </mp-stack>
       </mp-modal-body>
       <mp-modal-footer>
         <mp-button variant="ghost" mr="3" @click="$emit('handleClose')">Batalkan</mp-button>
-        <mp-button is-disabled>Impor</mp-button>
+        <mp-button :is-disabled="!files">Impor</mp-button>
       </mp-modal-footer>
     </mp-modal-content>
     <mp-modal-overlay />
@@ -187,7 +187,20 @@ export default {
   data() {
     return {
       isShowImportantData: false,
+      uploadKey: 0,
+      files: "",
     };
+  },
+  methods: {
+    handleChange(e) {
+      console.log(e.target.files);
+      this.files = e.target.files[0];
+    },
+    handleClear(e, files, clear) {
+      console.log(e, files, clear);
+      this.uploadKey += 1;
+      this.files = "";
+    },
   },
 };
 </script>
