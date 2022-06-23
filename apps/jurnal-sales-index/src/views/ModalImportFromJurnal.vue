@@ -7,11 +7,11 @@
         <mp-text>Silakan ikuti ada langkah-langkah dibawah ini untuk melalukan impor data.</mp-text>
         <mp-stack mt="6" spacing="4">
           <mp-flex>
-            <mp-box flex="none" bg="brand.jurnal" w="34px" h="34px" rounded="full" display="flex" align-items="center" justify-content="center">
+            <mp-box flex="none" bg="blue.400" w="34px" h="34px" rounded="full" display="flex" align-items="center" justify-content="center">
               <mp-text color="white">1</mp-text>
             </mp-box>
             <mp-box ml="6">
-              <mp-heading>Download file template Jurnal</mp-heading>
+              <mp-heading font-size="xl">Download file template Jurnal</mp-heading>
               <mp-text>
                 Anda perlu memiliki file template Jurnal untuk mengisi data yang akan diimpor. Lewati langkah ini apabila Anda sudah memiliki file template ini.
               </mp-text>
@@ -74,11 +74,11 @@
           <mp-divider />
 
           <mp-flex>
-            <mp-box flex="none" bg="brand.jurnal" w="34px" h="34px" rounded="full" display="flex" align-items="center" justify-content="center">
+            <mp-box flex="none" bg="blue.400" w="34px" h="34px" rounded="full" display="flex" align-items="center" justify-content="center">
               <mp-text color="white">2</mp-text>
             </mp-box>
             <mp-box ml="6">
-              <mp-heading>Lengkapi data import Anda</mp-heading>
+              <mp-heading font-size="xl">Lengkapi data import Anda</mp-heading>
               <mp-text>
                 Silakan lengkapi data yang akan diimpor di dalam file template Jurnal yang telah Anda download sebelumnya. Pastikan data yang Anda masukkan
                 sudah sesuai dengan ketentuan pengisian. <mp-text as="span" font-weight="semibold" is-link>Download contoh pengisian</mp-text> atau
@@ -110,11 +110,11 @@
           <mp-divider />
 
           <mp-flex>
-            <mp-box flex="none" bg="brand.jurnal" w="34px" h="34px" rounded="full" display="flex" align-items="center" justify-content="center">
+            <mp-box flex="none" bg="blue.400" w="34px" h="34px" rounded="full" display="flex" align-items="center" justify-content="center">
               <mp-text color="white">3</mp-text>
             </mp-box>
             <mp-box ml="6">
-              <mp-heading>Upload file template</mp-heading>
+              <mp-heading font-size="xl">Upload file template</mp-heading>
               <mp-text>
                 Silakan upload file template yang sudah And lengkapi sesuai ketentuan. File yang diupload harus dalam format dengan ekstensi .csv, .xlsx, atau
                 .xls.

@@ -8,11 +8,11 @@
           <mp-text>Silakan ikuti ada langkah-langkah dibawah ini untuk melalukan impor data.</mp-text>
           <mp-stack mt="6" spacing="4">
             <mp-flex>
-              <mp-box flex="none" bg="brand.jurnal" w="34px" h="34px" rounded="full" display="flex" align-items="center" justify-content="center">
+              <mp-box flex="none" bg="blue.400" w="34px" h="34px" rounded="full" display="flex" align-items="center" justify-content="center">
                 <mp-text color="white">1</mp-text>
               </mp-box>
               <mp-box ml="6" w="full">
-                <mp-heading>Pilih aplikasi</mp-heading>
+                <mp-heading font-size="xl">Pilih aplikasi</mp-heading>
                 <mp-text> Pilih aplikasi yang akan digunakan untuk membuat penjualan </mp-text>
 
                 <mp-grid grid-template-columns="repeat(3, 1fr)" gap="3" mt="3">
@@ -97,26 +97,27 @@
             <mp-divider />
 
             <mp-flex>
-              <mp-box flex="none" bg="brand.jurnal" w="34px" h="34px" rounded="full" display="flex" align-items="center" justify-content="center">
+              <mp-box flex="none" bg="blue.400" w="34px" h="34px" rounded="full" display="flex" align-items="center" justify-content="center">
                 <mp-text color="white">2</mp-text>
               </mp-box>
               <mp-box ml="6">
-                <mp-heading>Masukkan data anda dengan benar</mp-heading>
-                <mp-text>
-                  Silakan lengkapi data yang akan diimpor di dalam file template Jurnal yang telah Anda download sebelumnya. Pastikan data yang Anda masukkan
-                  sudah sesuai dengan ketentuan pengisian. <mp-text as="span" font-weight="semibold" is-link>Download contoh pengisian</mp-text> atau
-                  <mp-text as="span" font-weight="semibold" is-link>pelajari lebih lanjut.</mp-text>
-                </mp-text>
+                <mp-heading font-size="xl">Masukkan data anda dengan benar</mp-heading>
+                <mp-text> Pastikan file anda sudah benar sebelum mengimpor ke jurnal </mp-text>
+
+                <mp-flex align="center" cursor="pointer" mt="3">
+                  <mp-icon size="sm" name="newtab" color="blue.400" mr="2" />
+                  <mp-text color="blue.400"> Lihat tutorial</mp-text>
+                </mp-flex>
               </mp-box>
             </mp-flex>
             <mp-divider />
 
             <mp-flex>
-              <mp-box flex="none" bg="brand.jurnal" w="34px" h="34px" rounded="full" display="flex" align-items="center" justify-content="center">
+              <mp-box flex="none" bg="blue.400" w="34px" h="34px" rounded="full" display="flex" align-items="center" justify-content="center">
                 <mp-text color="white">3</mp-text>
               </mp-box>
               <mp-box ml="6">
-                <mp-heading>Upload file</mp-heading>
+                <mp-heading font-size="xl">Upload file</mp-heading>
                 <mp-text>
                   Silakan upload file template yang sudah And lengkapi sesuai ketentuan. File yang diupload harus dalam format dengan ekstensi .csv, .xlsx, atau
                   .xls.
@@ -214,6 +215,7 @@ import {
   MpCheckbox,
   MpInput,
   MpTooltip,
+  MpIcon,
 } from "@mekari/pixel";
 export default {
   name: "ModalImportFromOtherApp",
@@ -238,6 +240,7 @@ export default {
     MpCheckbox,
     MpInput,
     MpTooltip,
+    MpIcon,
   },
   props: {
     isOpen: { type: [Boolean] },
