@@ -8,7 +8,7 @@
           Rizal Candra
         </mp-text>
       </mp-timeline-title>
-      <mp-timeline-caption>27 Dec 2021, 11:32 AM</mp-timeline-caption>
+      <mp-timeline-caption>27 December 2021 at 11:32 (GMT+7)</mp-timeline-caption>
     </mp-timeline-item>
     <mp-timeline-accordion label="Approval Layer 1">
       <mp-timeline-item status="approved">
@@ -19,7 +19,7 @@
             Dwight Schrute
           </mp-text>
         </mp-timeline-title>
-        <mp-timeline-caption> 28 Dec 2021, 11:32 AM </mp-timeline-caption>
+        <mp-timeline-caption> 28 Desember 2021 at 09:24 (GMT+7) </mp-timeline-caption>
       </mp-timeline-item>
     </mp-timeline-accordion>
     <mp-timeline-accordion label="Approval Layer 2">
@@ -27,11 +27,11 @@
         <mp-timeline-title>
           <mp-text font-size="md" line-height="md" font-weight="semibold">
             Need Approval
-            <mp-text as="span" color="gray.400" font-weight="regular"> by </mp-text>
+            <mp-text as="span" color="gray.400" font-weight="regular"> from </mp-text>
             Jim Halpert
           </mp-text>
         </mp-timeline-title>
-        <mp-timeline-caption> 27 Dec 2021, 11:32 AM </mp-timeline-caption>
+        <mp-timeline-caption> 27 December 2021 at 11:32 (GMT+7) </mp-timeline-caption>
       </mp-timeline-item>
       <mp-timeline-item status="approved">
         <mp-timeline-title>
@@ -41,7 +41,7 @@
             Mark Calaway
           </mp-text>
         </mp-timeline-title>
-        <mp-timeline-caption> 02 Apr 2022, 21:12 PM </mp-timeline-caption>
+        <mp-timeline-caption> 28 Desember 2021 at 11:32 (GMT+7) </mp-timeline-caption>
       </mp-timeline-item>
     </mp-timeline-accordion>
     <mp-timeline-accordion is-open label="Approval Layer 3">
@@ -49,13 +49,13 @@
         <mp-timeline-title>
           <mp-text font-size="md" line-height="md" font-weight="semibold">
             Need approval
-            <mp-text as="span" color="gray.400" font-weight="regular"> by </mp-text>
+            <mp-text as="span" color="gray.400" font-weight="regular"> from </mp-text>
             Andy Bernard
             <mp-text as="span" color="gray.400" font-weight="regular"> or </mp-text>
             Michael Scott
           </mp-text>
         </mp-timeline-title>
-        <mp-timeline-caption> 27 Dec 2021, 11:32 AM </mp-timeline-caption>
+        <mp-timeline-caption> 27 December 2021 at 11:32 (GMT+7) </mp-timeline-caption>
       </mp-timeline-item>
     </mp-timeline-accordion>
   </mp-timeline>

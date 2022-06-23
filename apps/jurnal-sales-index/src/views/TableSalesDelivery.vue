@@ -10,12 +10,12 @@
           <mp-input-left-addon :with-background="false">
             <mp-icon name="search" size="sm" />
           </mp-input-left-addon>
-          <mp-input width="276px" placeholder="Cari transaksi..." />
+          <mp-input width="276px" transition-property="box-shadow, border-color" placeholder="Cari transaksi..." />
         </mp-input-group>
       </mp-flex>
     </mp-flex>
 
-    <mp-table :isHoverable="false" style="table-layout: fixed">
+    <mp-table :isHoverable="false">
       <mp-table-head>
         <mp-table-row background-color="ice.50" :position="showBulkAction ? 'relative' : ''">
           <mp-table-cell as="th" scope="col" width="39px">
@@ -58,7 +58,7 @@
         </mp-table-row>
       </mp-table-head>
       <mp-table-body>
-        <mp-table-row v-for="(invoice, index) in datas" :key="invoice.id" style="white-space: normal">
+        <mp-table-row v-for="(invoice, index) in datas" :key="invoice.id">
           <mp-table-cell as="td" scope="row" vertical-align="top">
             <mp-checkbox
               min-height="5"
@@ -311,6 +311,14 @@ export default {
 </script>
 
 <style scoped>
+table {
+  table-layout: fixed;
+}
+
+tbody > tr {
+  white-space: normal;
+}
+
 td {
   word-wrap: break-word;
   height: auto;

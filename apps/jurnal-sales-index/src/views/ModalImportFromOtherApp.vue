@@ -141,7 +141,7 @@
             <mp-grid grid-template-columns="repeat(2, 1fr)">
               <mp-text>Metode pembayaran <mp-text as="span" color="red.500">*</mp-text></mp-text>
               <mp-box>
-                <mp-autocomplete id="metode-pembayaran" placeholder="Metode Pembayaran" value="" :data="['Cash', 'Debit']" />
+                <mp-autocomplete id="metode-pembayaran" placeholder="Metode Pembayaran" value="" :data="['Cash', 'Check', 'Bank Transfer', 'Credit Card']" />
               </mp-box>
             </mp-grid>
             <mp-grid grid-template-columns="repeat(2, 1fr)">
@@ -153,7 +153,11 @@
             <mp-grid grid-template-columns="repeat(2, 1fr)">
               <mp-text>Tampilan status transaksi</mp-text>
               <mp-box>
-                <mp-autocomplete id="tampilan-status-transaksi" value="Sama seperti marketplace" :data="['Sama seperti marketplace']" />
+                <mp-autocomplete
+                  id="tampilan-status-transaksi"
+                  value="Sama seperti marketplace"
+                  :data="['Buat semua status lunas', 'Sama seperti marketplace']"
+                />
               </mp-box>
             </mp-grid>
             <mp-grid grid-template-columns="repeat(2, 1fr)">
@@ -170,9 +174,11 @@
             </mp-grid>
             <mp-grid grid-template-columns="repeat(2, 1fr)">
               <mp-text>Gunakan pajak inklusif (10%)</mp-text>
-              <mp-box>
-                <mp-checkbox />
-              </mp-box>
+              <mp-tooltip id="gunakan-pajak-inklusif" label="Jika dicentang, semua transaksi akan termasuk pajak.">
+                <mp-box>
+                  <mp-checkbox />
+                </mp-box>
+              </mp-tooltip>
             </mp-grid>
           </mp-stack>
         </mp-box>
@@ -207,6 +213,7 @@ import {
   MpAutocomplete,
   MpCheckbox,
   MpInput,
+  MpTooltip,
 } from "@mekari/pixel";
 export default {
   name: "ModalImportFromOtherApp",
@@ -230,6 +237,7 @@ export default {
     MpAutocomplete,
     MpCheckbox,
     MpInput,
+    MpTooltip,
   },
   props: {
     isOpen: { type: [Boolean] },

@@ -271,14 +271,16 @@ export default {
     };
   },
   methods: {
-    handleOpenPopover(e) {
-      const lastStr = e.target.value.slice(-1);
+    handleOpenPopover() {
+      const lastStr = this.comment.slice(-1);
 
       if (lastStr === "@") {
         this.$refs.popoverMention.openPopover();
 
         const inputElement = document.getElementById("input");
         inputElement.focus();
+      } else {
+        this.$refs.popoverMention.closePopover();
       }
     },
   },

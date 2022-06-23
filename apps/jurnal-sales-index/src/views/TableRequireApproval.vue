@@ -8,12 +8,12 @@
           <mp-input-left-addon :with-background="false">
             <mp-icon name="search" size="sm" />
           </mp-input-left-addon>
-          <mp-input width="276px" placeholder="Cari transaksi..." />
+          <mp-input width="276px" transition-property="box-shadow, border-color" placeholder="Cari transaksi..." />
         </mp-input-group>
       </mp-flex>
     </mp-flex>
 
-    <mp-table :isHoverable="false" style="table-layout: fixed">
+    <mp-table :isHoverable="false">
       <mp-table-head>
         <mp-table-row background-color="ice.50">
           <mp-table-cell as="th" scope="col" width="100px">
@@ -44,7 +44,7 @@
         </mp-table-row>
       </mp-table-head>
       <mp-table-body>
-        <mp-table-row v-for="(invoice, index) in datas" :key="invoice.id" style="white-space: normal">
+        <mp-table-row v-for="(invoice, index) in datas" :key="invoice.id">
           <mp-table-cell as="td" scope="row" vertical-align="top">
             <mp-text font-size="md" line-height="md">{{ invoice.date }}</mp-text>
           </mp-table-cell>
@@ -68,17 +68,11 @@
                 </mp-flex>
               </mp-box>
             </mp-flex>
-            <mp-text
-              v-if="invoice.description"
-              text-overflow="ellipsis"
-              white-space="nowrap"
-              font-size="sm"
-              line-height="sm"
-              color="gray.600"
-              overflow="hidden"
-            >
-              {{ invoice.description }}
-            </mp-text>
+            <Ellipsis :id="`invoice-description-${index}`" v-if="invoice.description">
+              <mp-text text-overflow="ellipsis" white-space="nowrap" font-size="sm" line-height="sm" color="gray.600" overflow="hidden">
+                {{ invoice.description }}
+              </mp-text>
+            </Ellipsis>
           </mp-table-cell>
           <mp-table-cell as="td" scope="row" vertical-align="top">
             <mp-text is-link text-overflow="ellipsis" white-space="nowrap" overflow="hidden" font-size="md" line-height="md"> {{ invoice.customer }} </mp-text>
@@ -192,6 +186,7 @@ import {
   MpButtonIcon,
 } from "@mekari/pixel";
 
+import { Ellipsis } from "../components/Ellipsis";
 import PopoverTimelineAccordion from "./PopoverTimelineAccordion.vue";
 import PopoverTimeline from "./PopoverTimeline.vue";
 import TablePagination from "./TablePagination.vue";
@@ -225,6 +220,7 @@ export default {
     PopoverTimeline,
     TablePagination,
     ModalChat,
+    Ellipsis,
   },
   data() {
     return {
@@ -330,6 +326,14 @@ export default {
 </script>
 
 <style scoped>
+table {
+  table-layout: fixed;
+}
+
+tbody > tr {
+  white-space: normal;
+}
+
 td {
   word-wrap: break-word;
   height: auto;

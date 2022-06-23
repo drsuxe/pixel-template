@@ -7,7 +7,7 @@
           <mp-text as="span" color="gray.400" font-weight="regular"> by </mp-text> Rizal Candra
         </mp-text>
       </mp-timeline-title>
-      <mp-timeline-caption> 03 Apr 2022, 21:12 PM </mp-timeline-caption>
+      <mp-timeline-caption> 27 December 2021 at 11:32 (GMT+7) </mp-timeline-caption>
     </mp-timeline-item>
     <mp-timeline-item status="need-approval">
       <mp-timeline-title>
@@ -16,7 +16,7 @@
           <mp-text as="span" color="gray.400" font-weight="regular"> by </mp-text> Dwight Schrute
         </mp-text>
       </mp-timeline-title>
-      <mp-timeline-caption> 03 Apr 2022, 21:12 PM </mp-timeline-caption>
+      <mp-timeline-caption> 27 December 2021 at 11:32 (GMT+7) </mp-timeline-caption>
     </mp-timeline-item>
   </mp-timeline>
 </template>
