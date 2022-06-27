@@ -10,7 +10,7 @@
       </mp-timeline-title>
       <mp-timeline-caption>27 December 2021 at 11:32 (GMT+7)</mp-timeline-caption>
     </mp-timeline-item>
-    <mp-timeline-accordion label="Approval Layer 1">
+    <mp-timeline-accordion is-open label="Approval Layer 1">
       <mp-timeline-item status="approved">
         <mp-timeline-title>
           <mp-text font-size="md" line-height="md" font-weight="semibold">
@@ -22,7 +22,7 @@
         <mp-timeline-caption> 28 Desember 2021 at 09:24 (GMT+7) </mp-timeline-caption>
       </mp-timeline-item>
     </mp-timeline-accordion>
-    <mp-timeline-accordion label="Approval Layer 2">
+    <mp-timeline-accordion is-open label="Approval Layer 2">
       <mp-timeline-item status="need-approval">
         <mp-timeline-title>
           <mp-text font-size="md" line-height="md" font-weight="semibold">

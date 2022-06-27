@@ -129,57 +129,89 @@
           </mp-stack>
         </mp-box>
 
-        <mp-box v-if="showOptions">
+        <mp-box v-else>
           <mp-text>Impor detail data transaksi anda ke jurnal</mp-text>
-
           <mp-stack spacing="6" mt="6">
-            <mp-grid grid-template-columns="repeat(2, 1fr)">
-              <mp-text>Akun pembayaran <mp-text as="span" color="red.500">*</mp-text> </mp-text>
-              <mp-box>
-                <mp-autocomplete id="akun-pembayaran" value="(1-11002) - Bank BCA" :data="['(1-11002) - Bank BCA', 'Option 2', 'Option 3']" />
-              </mp-box>
-            </mp-grid>
-            <mp-grid grid-template-columns="repeat(2, 1fr)">
-              <mp-text>Metode pembayaran <mp-text as="span" color="red.500">*</mp-text></mp-text>
-              <mp-box>
-                <mp-autocomplete id="metode-pembayaran" placeholder="Metode Pembayaran" value="" :data="['Cash', 'Check', 'Bank Transfer', 'Credit Card']" />
-              </mp-box>
-            </mp-grid>
-            <mp-grid grid-template-columns="repeat(2, 1fr)">
-              <mp-text>Pelanggan </mp-text>
-              <mp-box>
-                <mp-autocomplete id="pelanggan" placeholder="Pilih kontak" value="" :data="['Pelanggan 1', 'Pelanggan 2', 'Pelanggan 3']" />
-              </mp-box>
-            </mp-grid>
-            <mp-grid grid-template-columns="repeat(2, 1fr)">
-              <mp-text>Tampilan status transaksi</mp-text>
-              <mp-box>
+            <mp-grid grid-template-columns="repeat(12, 1fr)">
+              <mp-grid-item col-span="5">
+                <mp-text>Akun pembayaran <mp-text as="span" color="red.500">*</mp-text> </mp-text>
+              </mp-grid-item>
+              <mp-grid-item col-span="7">
                 <mp-autocomplete
+                  id="akun-pembayaran"
+                  :content-style="{ zIndex: 'popover' }"
+                  value="(1-11002) - Bank BCA"
+                  :data="['(1-11002) - Bank BCA', 'Option 2', 'Option 3']"
+                />
+              </mp-grid-item>
+            </mp-grid>
+            <mp-grid grid-template-columns="repeat(12, 1fr)">
+              <mp-grid-item col-span="5">
+                <mp-text>Metode pembayaran <mp-text as="span" color="red.500">*</mp-text></mp-text>
+              </mp-grid-item>
+              <mp-grid-item col-span="7">
+                <mp-autocomplete
+                  id="metode-pembayaran"
+                  :content-style="{ zIndex: 'popover' }"
+                  placeholder="Metode Pembayaran"
+                  value=""
+                  :data="['Cash', 'Check', 'Bank Transfer', 'Credit Card']"
+                />
+              </mp-grid-item>
+            </mp-grid>
+            <mp-grid grid-template-columns="repeat(12, 1fr)">
+              <mp-grid-item col-span="5">
+                <mp-text>Pelanggan </mp-text>
+              </mp-grid-item>
+              <mp-grid-item col-span="7">
+                <mp-autocomplete
+                  id="pelanggan"
+                  placeholder="Pilih kontak"
+                  value=""
+                  :content-style="{ zIndex: 'popover' }"
+                  :data="['Pelanggan 1', 'Pelanggan 2', 'Pelanggan 3']"
+                />
+              </mp-grid-item>
+            </mp-grid>
+            <mp-grid grid-template-columns="repeat(12, 1fr)">
+              <mp-grid-item col-span="5">
+                <mp-text>Tampilan status transaksi</mp-text>
+              </mp-grid-item>
+              <mp-grid-item col-span="7">
+                <mp-autocomplete
+                  style="width: 100%; min-width: 172px"
+                  :content-style="{ zIndex: 'popover' }"
                   id="tampilan-status-transaksi"
                   value="Sama seperti marketplace"
                   :data="['Buat semua status lunas', 'Sama seperti marketplace']"
                 />
-              </mp-box>
+              </mp-grid-item>
             </mp-grid>
-            <mp-grid grid-template-columns="repeat(2, 1fr)">
-              <mp-text>Tag</mp-text>
-              <mp-box>
-                <mp-input placeholder="Pilih tag" />
-              </mp-box>
+            <mp-grid grid-template-columns="repeat(12, 1fr)">
+              <mp-grid-item col-span="5">
+                <mp-text>Tag</mp-text>
+              </mp-grid-item>
+              <mp-grid-item col-span="7" width="100%">
+                <mp-input-tag id="input-tag" placeholder="Create new tag" :suggestions="suggestions" :is-show-suggestions="true" :is-invalid="isInvalid" />
+              </mp-grid-item>
             </mp-grid>
-            <mp-grid grid-template-columns="repeat(2, 1fr)">
-              <mp-text>Gudang</mp-text>
-              <mp-box>
+            <mp-grid grid-template-columns="repeat(12, 1fr)">
+              <mp-grid-item col-span="5">
+                <mp-text>Gudang</mp-text>
+              </mp-grid-item>
+              <mp-grid-item col-span="7">
                 <mp-autocomplete id="gudang" placeholder="Pilih gudang" value="Tangerang" :data="['Tangerang', 'Depok', 'Bekasi']" />
-              </mp-box>
+              </mp-grid-item>
             </mp-grid>
-            <mp-grid grid-template-columns="repeat(2, 1fr)">
-              <mp-text>Gunakan pajak inklusif (10%)</mp-text>
-              <mp-tooltip id="gunakan-pajak-inklusif" label="Jika dicentang, semua transaksi akan termasuk pajak.">
-                <mp-box>
+            <mp-grid grid-template-columns="repeat(12, 1fr)">
+              <mp-grid-item col-span="5">
+                <mp-text>Gunakan pajak inklusif (10%)</mp-text>
+              </mp-grid-item>
+              <mp-grid-item col-span="7">
+                <mp-tooltip id="gunakan-pajak-inklusif" label="Jika dicentang, semua transaksi akan termasuk pajak.">
                   <mp-checkbox />
-                </mp-box>
-              </mp-tooltip>
+                </mp-tooltip>
+              </mp-grid-item>
             </mp-grid>
           </mp-stack>
         </mp-box>
@@ -211,12 +243,14 @@ import {
   MpDivider,
   MpUpload,
   MpGrid,
+  MpGridItem,
   MpAutocomplete,
   MpCheckbox,
-  MpInput,
   MpTooltip,
   MpIcon,
+  MpInputTag,
 } from "@mekari/pixel";
+
 export default {
   name: "ModalImportFromOtherApp",
   components: {
@@ -236,11 +270,12 @@ export default {
     MpDivider,
     MpUpload,
     MpGrid,
+    MpGridItem,
     MpAutocomplete,
     MpCheckbox,
-    MpInput,
     MpTooltip,
     MpIcon,
+    MpInputTag,
   },
   props: {
     isOpen: { type: [Boolean] },
@@ -251,6 +286,8 @@ export default {
       showOptions: false,
       uploadKey: 0,
       files: "",
+      suggestions: ["Jakarta", "Medan", "Bandung", "Surabaya"],
+      isInvalid: false,
     };
   },
   methods: {

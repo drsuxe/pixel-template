@@ -1,66 +1,31 @@
 <template>
-  <mp-box
-    as="nav"
-    border-bottom-color="gray.100"
-    border-bottom-width="1px"
-    border-style="solid"
-    background-color="white"
-    padding-x="6"
-    padding-y="1.5"
-  >
-    <mp-flex
-      flex-direction="row"
-      justify-content="space-between"
-      align-items="center"
-    >
+  <mp-box as="nav" border-bottom-color="gray.100" border-bottom-width="1px" border-style="solid" background-color="white" padding-x="6" padding-y="1.5">
+    <mp-flex flex-direction="row" justify-content="space-between" align-items="center">
       <mp-box as="router-link" to="/">
         <!-- <mp-icon name="jurnal-brand" size="lg" /> -->
-        <img
-          src="../assets/logo-jurnal-default.svg"
-          style="height: 2.5rem"
-          alt=""
-        />
+        <img src="../assets/logo-jurnal-default.svg" style="height: 2.5rem" alt="" />
       </mp-box>
       <mp-box>
         <mp-flex justify-content="space-between" align-items="center">
           <mp-stack is-inline spacing="5">
             <mp-tooltip position="bottom" label="Search">
-              <mp-button-icon
-                name="search"
-                size="md"
-                @click="isSwitchAppOpen = true"
-              />
+              <mp-button-icon name="search" size="md" @click="isSwitchAppOpen = true" />
             </mp-tooltip>
             <mp-tooltip position="bottom" label="Inbox">
-              <mp-button-icon
-                name="inbox"
-                size="md"
-                @click="isSwitchAppOpen = true"
-              />
+              <mp-button-icon name="inbox" size="md" @click="isSwitchAppOpen = true" />
             </mp-tooltip>
             <mp-tooltip position="bottom" label="Switch app">
-              <mp-button-icon
-                name="help"
-                size="md"
-                @click="isSwitchAppOpen = true"
-              />
+              <mp-button-icon name="help" size="md" @click="isSwitchAppOpen = true" />
             </mp-tooltip>
             <mp-tooltip position="bottom" label="Switch app">
-              <mp-button-icon
-                name="shortcuts"
-                size="md"
-                @click="isSwitchAppOpen = true"
-              />
+              <mp-button-icon name="shortcuts" size="md" @click="isSwitchAppOpen = true" />
             </mp-tooltip>
           </mp-stack>
           <SwitchAccount />
         </mp-flex>
       </mp-box>
     </mp-flex>
-    <SwitchApp
-      :isSwitchAppOpen="isSwitchAppOpen"
-      :onSwitchAppToggle="onSwitchAppToggle"
-    />
+    <SwitchApp :isSwitchAppOpen="isSwitchAppOpen" :onSwitchAppToggle="onSwitchAppToggle" />
   </mp-box>
 </template>
 

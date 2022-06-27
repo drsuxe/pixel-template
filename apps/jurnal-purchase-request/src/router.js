@@ -6,8 +6,13 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    name: "Jurnal",
-    component: () => import("./views/SalesIndex.vue"),
+    name: "Jurnal - Create Purchase Request",
+    component: () => import("./views/CreatePurhcaseRequestView.vue"),
+  },
+  {
+    path: "/detail",
+    name: "Jurnal - Detail Purchase Request",
+    component: () => import("./views/DetailPurchaseRequestView.vue"),
   },
 ];
 
