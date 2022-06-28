@@ -14,6 +14,11 @@ const routes = [
     name: "Jurnal - Detail Purchase Request",
     component: () => import("./views/DetailPurchaseRequestView.vue"),
   },
+  {
+    path: "/edit",
+    name: "Jurnal - Edit Purchase Request",
+    component: () => import("./views/EditPurchaseRequestView.vue"),
+  },
 ];
 
 const router = new VueRouter({

@@ -2,7 +2,13 @@
   <mp-box>
     <mp-flex width="full" justify-content="space-between" mb="6">
       <mp-flex gap="4">
-        <mp-autocomplete value="Semua status" width="172px" id="semua-status" :data="['Semua status', 'Open', 'Closed']" />
+        <mp-autocomplete
+          style="width: 172px; min-width: 172px"
+          :content-style="{ zIndex: 'popover', width: '172px' }"
+          value="Semua status"
+          id="sales-quote-semua-status"
+          :data="['Semua status', 'Open', 'Closed']"
+        />
       </mp-flex>
 
       <mp-flex>

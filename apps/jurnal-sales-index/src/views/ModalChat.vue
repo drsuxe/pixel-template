@@ -184,12 +184,8 @@
           </mp-flex>
 
           <mp-flex v-else w="full" mt="2">
-            <mp-popover id="input-popover-input" ref="popoverMention" initialFocusRef="#$input">
-              <mp-popover-trigger>
-                <mp-box w="full">
-                  <mp-input v-model="comment" id="input" @change="handleOpenPopover" placeholder="Type a comment..." />
-                </mp-box>
-              </mp-popover-trigger>
+            <mp-popover initialFocusRef="#$input" :is-open="isMentionOpen" is-manual>
+              <mp-popover-trigger> <mp-box></mp-box></mp-popover-trigger>
               <mp-popover-content max-width="64" bg="white" rounded="md" shadow="lg" border-width="1px" border-color="gray.400">
                 <mp-popover-list>
                   <mp-popover-list-item v-for="index in 4" :key="index">
@@ -204,7 +200,9 @@
                 </mp-popover-list>
               </mp-popover-content>
             </mp-popover>
-
+            <mp-box w="full">
+              <mp-input v-model="comment" @change="handleOpenPopover" placeholder="Type a comment..." />
+            </mp-box>
             <mp-button ml="2">Submit</mp-button>
           </mp-flex>
         </mp-modal-footer>
@@ -272,15 +270,14 @@ export default {
   },
   methods: {
     handleOpenPopover() {
-      const lastStr = this.comment.slice(-1);
+      const string = this.comment.split(" ");
+      const lastStr = string.slice(-1);
+      const lastStrFirstCharater = lastStr.toString().charAt(0);
 
-      if (lastStr === "@") {
-        this.$refs.popoverMention.openPopover();
-
-        const inputElement = document.getElementById("input");
-        inputElement.focus();
+      if (lastStrFirstCharater === "@") {
+        this.isMentionOpen = true;
       } else {
-        this.$refs.popoverMention.closePopover();
+        this.isMentionOpen = false;
       }
     },
   },

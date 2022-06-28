@@ -21,171 +21,215 @@
         </mp-flex>
 
         <mp-box min-height="calc(100vh - 132px)" border-top-width="1px" background-color="white" padding="6">
-          <mp-grid grid-template-columns="repeat(3, 1fr)" gap="6">
-            <mp-flex>
-              <mp-box flex="40%">
-                <mp-text color="gray.600">Requestor</mp-text>
-              </mp-box>
-              <mp-box flex="60%">
-                <mp-text>Bregga Tedy</mp-text>
-              </mp-box>
-            </mp-flex>
-            <mp-flex>
-              <mp-box flex="40%">
-                <mp-text color="gray.600">Urgency</mp-text>
-              </mp-box>
-              <mp-box flex="60%">
-                <mp-flex align="center">
-                  <mp-icon name="priority-high" mr="2" />
-                  <mp-text>Tinggi</mp-text>
-                </mp-flex>
-              </mp-box>
-            </mp-flex>
+          <mp-grid template-columns="repeat(12, 1fr)" gap="6">
+            <mp-grid-item col-span="4">
+              <mp-grid template-columns="repeat(12, 1fr)">
+                <mp-grid-item col-span="5">
+                  <mp-text color="gray.600">Requestor</mp-text>
+                </mp-grid-item>
+                <mp-grid-item col-span="7">
+                  <mp-text>Bregga Tedy</mp-text>
+                </mp-grid-item>
+              </mp-grid>
+            </mp-grid-item>
+            <mp-grid-item col-span="4">
+              <mp-grid template-columns="repeat(12, 1fr)">
+                <mp-grid-item col-span="5">
+                  <mp-text color="gray.600">Urgency</mp-text>
+                </mp-grid-item>
+                <mp-grid-item col-span="7">
+                  <mp-flex align="center">
+                    <mp-icon name="priority-high" mr="2" />
+                    <mp-text>Tinggi</mp-text>
+                  </mp-flex>
+                </mp-grid-item>
+              </mp-grid>
+            </mp-grid-item>
           </mp-grid>
+
           <mp-divider border-style="dashed" my="8" />
 
-          <mp-grid grid-template-columns="repeat(3, 1fr)" gap="6">
-            <mp-box>
-              <mp-flex>
-                <mp-box flex="40%">
-                  <mp-text color="gray.600">Approving staff</mp-text>
-                </mp-box>
-                <mp-box flex="60%">
-                  <mp-text>Jaka Permadi</mp-text>
-                </mp-box>
-              </mp-flex>
-              <mp-flex>
-                <mp-box flex="40%">
-                  <mp-text color="gray.600">Approving email</mp-text>
-                </mp-box>
-                <mp-box flex="60%">
-                  <mp-text>jaka.permadi@mekari.com</mp-text>
-                </mp-box>
-              </mp-flex>
-              <mp-flex>
-                <mp-box flex="40%">
-                  <mp-text color="gray.600">Approving email</mp-text>
-                </mp-box>
-                <mp-box flex="60%">
-                  <mp-text>jaka.permadi@mekari.com</mp-text>
-                </mp-box>
-              </mp-flex>
-              <mp-flex>
-                <mp-box flex="40%">
-                  <mp-text color="gray.600">Approving email</mp-text>
-                </mp-box>
-                <mp-box flex="60%">
-                  <mp-text>jaka.permadi@mekari.com</mp-text>
-                </mp-box>
-              </mp-flex>
-            </mp-box>
-            <mp-box>
-              <mp-flex>
-                <mp-box flex="40%">
-                  <mp-text color="gray.600">Approving staff</mp-text>
-                </mp-box>
-                <mp-box flex="60%">
-                  <mp-text>Jaka Permadi</mp-text>
-                </mp-box>
-              </mp-flex>
-              <mp-flex>
-                <mp-box flex="40%">
-                  <mp-text color="gray.600">Approving email</mp-text>
-                </mp-box>
-                <mp-box flex="60%">
-                  <mp-text>jaka.permadi@mekari.com</mp-text>
-                </mp-box>
-              </mp-flex>
-              <mp-flex>
-                <mp-box flex="40%">
-                  <mp-text color="gray.600">Approving email</mp-text>
-                </mp-box>
-                <mp-box flex="60%">
-                  <mp-text>jaka.permadi@mekari.com</mp-text>
-                </mp-box>
-              </mp-flex>
-              <mp-flex>
-                <mp-box flex="40%">
-                  <mp-text color="gray.600">Approving email</mp-text>
-                </mp-box>
-                <mp-box flex="60%">
-                  <mp-text>jaka.permadi@mekari.com</mp-text>
-                </mp-box>
-              </mp-flex>
-            </mp-box>
-            <mp-box>
-              <mp-flex>
-                <mp-box flex="40%">
-                  <mp-text color="gray.600">Approving staff</mp-text>
-                </mp-box>
-                <mp-box flex="60%">
-                  <mp-text>Jaka Permadi</mp-text>
-                </mp-box>
-              </mp-flex>
-              <mp-flex>
-                <mp-box flex="40%">
-                  <mp-text color="gray.600">Approving email</mp-text>
-                </mp-box>
-                <mp-box flex="60%">
-                  <mp-text>jaka.permadi@mekari.com</mp-text>
-                </mp-box>
-              </mp-flex>
-              <mp-flex>
-                <mp-box flex="40%">
-                  <mp-text color="gray.600">Approving email</mp-text>
-                </mp-box>
-                <mp-box flex="60%">
-                  <mp-text>jaka.permadi@mekari.com</mp-text>
-                </mp-box>
-              </mp-flex>
-              <mp-flex>
-                <mp-box flex="40%">
-                  <mp-text color="gray.600">Approving email</mp-text>
-                </mp-box>
-                <mp-box flex="60%">
-                  <mp-text>jaka.permadi@mekari.com</mp-text>
-                </mp-box>
-              </mp-flex>
-            </mp-box>
+          <mp-grid template-columns="repeat(12, 1fr)" gap="6">
+            <mp-grid-item col-span="4">
+              <mp-stack spacing="4">
+                <mp-grid template-columns="repeat(12, 1fr)">
+                  <mp-grid-item col-span="5">
+                    <mp-text color="gray.600">Approving staff</mp-text>
+                  </mp-grid-item>
+                  <mp-grid-item col-span="7">
+                    <mp-text>Jaka Permadi</mp-text>
+                  </mp-grid-item>
+                </mp-grid>
+                <mp-grid template-columns="repeat(12, 1fr)">
+                  <mp-grid-item col-span="5">
+                    <mp-text color="gray.600">Approving email</mp-text>
+                  </mp-grid-item>
+                  <mp-grid-item col-span="7">
+                    <mp-text>jaka.permadi@mekari.com</mp-text>
+                  </mp-grid-item>
+                </mp-grid>
+                <mp-grid template-columns="repeat(12, 1fr)">
+                  <mp-grid-item col-span="5">
+                    <mp-text color="gray.600">Transaction date</mp-text>
+                  </mp-grid-item>
+                  <mp-grid-item col-span="7">
+                    <mp-text>31/01/2022</mp-text>
+                  </mp-grid-item>
+                </mp-grid>
+                <mp-grid template-columns="repeat(12, 1fr)">
+                  <mp-grid-item col-span="5">
+                    <mp-text color="gray.600">Due date</mp-text>
+                  </mp-grid-item>
+                  <mp-grid-item col-span="7">
+                    <mp-text>15/02/2022</mp-text>
+                  </mp-grid-item>
+                </mp-grid>
+              </mp-stack>
+            </mp-grid-item>
+            <mp-grid-item col-span="4">
+              <mp-stack spacing="4">
+                <mp-grid template-columns="repeat(12, 1fr)">
+                  <mp-grid-item col-span="5">
+                    <mp-text color="gray.600">Vendor name</mp-text>
+                  </mp-grid-item>
+                  <mp-grid-item col-span="7">
+                    <mp-text>Alnect</mp-text>
+                  </mp-grid-item>
+                </mp-grid>
+                <mp-grid template-columns="repeat(12, 1fr)">
+                  <mp-grid-item col-span="5">
+                    <mp-text color="gray.600">Vendor email</mp-text>
+                  </mp-grid-item>
+                  <mp-grid-item col-span="7">
+                    <mp-text>alnect@gmail.com</mp-text>
+                  </mp-grid-item>
+                </mp-grid>
+                <mp-grid template-columns="repeat(12, 1fr)">
+                  <mp-grid-item col-span="5">
+                    <mp-text color="gray.600">Vendor address</mp-text>
+                  </mp-grid-item>
+                  <mp-grid-item col-span="7">
+                    <mp-text>Jalan laksda adisucipto no 70, Sarimulyo, Banguntapan, Bantul, Yogyakarta, 66281</mp-text>
+                  </mp-grid-item>
+                </mp-grid>
+              </mp-stack>
+            </mp-grid-item>
+            <mp-grid-item col-span="4">
+              <mp-stack spacing="4">
+                <mp-grid template-columns="repeat(12, 1fr)">
+                  <mp-grid-item col-span="5">
+                    <mp-text color="gray.600">Related budget year</mp-text>
+                  </mp-grid-item>
+                  <mp-grid-item col-span="7">
+                    <mp-text>2021</mp-text>
+                  </mp-grid-item>
+                </mp-grid>
+                <mp-grid template-columns="repeat(12, 1fr)">
+                  <mp-grid-item col-span="5">
+                    <mp-text color="gray.600">Tag</mp-text>
+                  </mp-grid-item>
+                  <mp-grid-item col-span="7">
+                    <mp-flex gap="2">
+                      <mp-tag variant="gray" size="sm"> Divisi IT </mp-tag>
+                      <mp-tag variant="gray" size="sm"> Divisi Sales </mp-tag>
+                    </mp-flex>
+                  </mp-grid-item>
+                </mp-grid>
+              </mp-stack>
+            </mp-grid-item>
           </mp-grid>
-          <mp-divider border-style="dashed" my="8" />
-          <mp-divider border-style="dashed" my="8" />
 
-          <mp-box>
-            <mp-table>
-              <mp-table-head>
-                <mp-table-row>
-                  <mp-table-cell as="th" scope="col">Table Header 1</mp-table-cell>
-                  <mp-table-cell as="th" scope="col">Table Header 3</mp-table-cell>
-                  <mp-table-cell as="th" scope="col">Table Header 3</mp-table-cell>
-                </mp-table-row>
-              </mp-table-head>
-              <mp-table-body>
-                <mp-table-row>
-                  <mp-table-cell as="td" scope="row">Table Content 1 Row 1</mp-table-cell>
-                  <mp-table-cell as="td" scope="row">Table Content 2 Row 1</mp-table-cell>
-                  <mp-table-cell as="td" scope="row">Table Content 3 Row 1</mp-table-cell>
-                </mp-table-row>
-                <mp-table-row>
-                  <mp-table-cell as="td" scope="row">Table Content 1 Row 2</mp-table-cell>
-                  <mp-table-cell as="td" scope="row">Table Content 2 Row 2</mp-table-cell>
-                  <mp-table-cell as="td" scope="row">Table Content 3 Row 2</mp-table-cell>
-                </mp-table-row>
-                <mp-table-row>
-                  <mp-table-cell as="td" scope="row">Table Content 1 Row 3</mp-table-cell>
-                  <mp-table-cell as="td" scope="row">Table Content 2 Row 3</mp-table-cell>
-                  <mp-table-cell as="td" scope="row">Table Content 3 Row 3</mp-table-cell>
-                </mp-table-row>
-              </mp-table-body>
-            </mp-table>
+          <mp-box mt="8">
+            <mp-box max-height="calc(75vh)" overflow-y="auto">
+              <mp-table>
+                <mp-table-head isFixed>
+                  <mp-table-row>
+                    <mp-table-cell as="th" scope="col" width="25%">Product</mp-table-cell>
+                    <mp-table-cell as="th" scope="col" width="45%">Description</mp-table-cell>
+                    <mp-table-cell as="th" scope="col" width="5%">Quantity</mp-table-cell>
+                    <mp-table-cell as="th" scope="col" width="15%">Unit</mp-table-cell>
+                  </mp-table-row>
+                </mp-table-head>
+                <mp-table-body>
+                  <mp-table-row v-for="product in products" :key="product.id">
+                    <mp-table-cell as="td" scope="row" vertical-align="top">
+                      <mp-text is-link> {{ product.product }} </mp-text>
+                    </mp-table-cell>
+                    <mp-table-cell as="td" scope="row" vertical-align="top">
+                      <mp-flex>
+                        <mp-text isTruncated>
+                          {{ product.description }}
+                        </mp-text>
+                        <mp-text isLink> Lihat</mp-text>
+                      </mp-flex>
+                    </mp-table-cell>
+                    <mp-table-cell as="td" scope="row" vertical-align="top">
+                      <mp-text> {{ product.quantity }} </mp-text>
+                    </mp-table-cell>
+                    <mp-table-cell as="td" scope="row" vertical-align="top">
+                      <mp-text> {{ product.unit }} </mp-text>
+                    </mp-table-cell>
+                  </mp-table-row>
+                </mp-table-body>
+              </mp-table>
+            </mp-box>
+
+            <mp-box mt="6">
+              <mp-text color="gray.600">Showing 4 of 4 products</mp-text>
+            </mp-box>
           </mp-box>
-          <mp-divider border-style="dashed" my="8" />
 
-          <mp-grid grid-template-columns="repeat(3, 1fr)" gap="6">
+          <mp-divider border-style="dashed" my="6" />
+
+          <mp-grid template-columns="repeat(3, 1fr)" gap="6">
             <mp-grid-item col-span="1">
-              <mp-text> Message </mp-text>
-              <mp-text> Memo </mp-text>
-              <mp-text> Attachment </mp-text>
+              <mp-stack spacing="2">
+                <mp-flex>
+                  <mp-flex flex="none" width="150px">
+                    <mp-text color="gray.600"> Message </mp-text>
+                  </mp-flex>
+                  <mp-text line-height="md"> Pak minta segera di proses buat ngerjain editing buat Imlek </mp-text>
+                </mp-flex>
+                <mp-flex>
+                  <mp-flex flex="none" width="150px">
+                    <mp-text color="gray.600"> Memo </mp-text>
+                  </mp-flex>
+                  <mp-text> Nomor 20/09/2022 </mp-text>
+                </mp-flex>
+                <mp-box>
+                  <mp-text color="gray.600" mb="2"> Attachment (2) </mp-text>
+                  <mp-stack spacing="2" mb="2">
+                    <mp-flex>
+                      <mp-box flex="none">
+                        <mp-icon name="pdf-document" />
+                      </mp-box>
+                      <mp-box flex="1 1 0%" pl="3">
+                        <mp-text is-truncated is-link line-height="md"> the_attachment-is-to...ike_this.pdf </mp-text>
+                        <mp-text color="gray.400" line-height="md"> 1.3 MB </mp-text>
+                      </mp-box>
+                      <mp-box flex="none">
+                        <mp-button-icon name="download" />
+                      </mp-box>
+                    </mp-flex>
+                    <mp-flex>
+                      <mp-box flex="none">
+                        <mp-icon name="word-document" />
+                      </mp-box>
+                      <mp-box flex="1 1 0%" pl="3">
+                        <mp-text is-truncated is-link line-height="md"> the_attachment-is-to...ike_this.pdf </mp-text>
+                        <mp-text color="gray.400" line-height="md"> 1.3 MB </mp-text>
+                      </mp-box>
+                      <mp-box flex="none">
+                        <mp-button-icon name="download" />
+                      </mp-box>
+                    </mp-flex>
+                  </mp-stack>
+                </mp-box>
+              </mp-stack>
+
+              <mp-box mt="8">
+                <mp-text @click.native="isModalAuditOpen = true" font-size="sm" is-link>Last modified by system on 02 February 2022 at 12:13 (GMT+7)</mp-text>
+              </mp-box>
             </mp-grid-item>
 
             <mp-grid-item col-start="3" col-span="4">
@@ -197,7 +241,69 @@
               </mp-box>
             </mp-grid-item>
           </mp-grid>
+
+          <mp-divider border-style="dashed" my="6" />
+
+          <mp-box>
+            <mp-heading as="h3" fontSize="lg">Riwayat</mp-heading>
+            <mp-table>
+              <mp-table-head>
+                <mp-table-row>
+                  <mp-table-cell as="th" scope="col">Date</mp-table-cell>
+                  <mp-table-cell as="th" scope="col">Number</mp-table-cell>
+                  <mp-table-cell as="th" scope="col">Status</mp-table-cell>
+                </mp-table-row>
+              </mp-table-head>
+              <mp-table-body>
+                <mp-table-row>
+                  <mp-table-cell as="td" scope="row">15/02/2022</mp-table-cell>
+                  <mp-table-cell as="td" scope="row">PO #0002</mp-table-cell>
+                  <mp-table-cell as="td" scope="row">
+                    <mp-badge variant="subtle" variant-color="orange"> Belum dibayar </mp-badge>
+                  </mp-table-cell>
+                </mp-table-row>
+              </mp-table-body>
+            </mp-table>
+          </mp-box>
         </mp-box>
+
+        <mp-flex as="bottom-action" justify="space-between" py="5" px="6" background-color="white" border-top="1px" border-top-color="gray.100">
+          <mp-box>
+            <mp-button variant="ghost" @click="isModalDeleteThisRequestOpen = true"> Delete </mp-button>
+          </mp-box>
+          <mp-box>
+            <mp-flex gap="2">
+              <mp-button variant="ghost" @click="handleEditPurchaseRequest"> Edit </mp-button>
+              <mp-popover>
+                <mp-popover-trigger>
+                  <mp-button variant="outline" right-icon="caret-down"> Print & preview </mp-button>
+                </mp-popover-trigger>
+                <mp-popover-content max-width="164px" bg="white" rounded="md" shadow="lg" border-width="1px" border-color="gray.400">
+                  <mp-popover-list>
+                    <mp-popover-list-item @click="isModalPrintPdfOpen = true"> Lihat template </mp-popover-list-item>
+                  </mp-popover-list>
+                </mp-popover-content>
+              </mp-popover>
+
+              <mp-popover>
+                <mp-popover-trigger>
+                  <mp-button variant="solid" right-icon="caret-down"> Action </mp-button>
+                </mp-popover-trigger>
+                <mp-popover-content max-width="164px" bg="white" rounded="md" shadow="lg" border-width="1px" border-color="gray.400">
+                  <mp-popover-list>
+                    <mp-popover-list-item> Buat pemesanan </mp-popover-list-item>
+                    <mp-popover-list-item @click="isModalRejectThisRequestOpen = true"> Tolak permintaan </mp-popover-list-item>
+                  </mp-popover-list>
+                </mp-popover-content>
+              </mp-popover>
+            </mp-flex>
+          </mp-box>
+        </mp-flex>
+
+        <ModalAudit :is-open="isModalAuditOpen" @handleClose="isModalAuditOpen = false" />
+        <ModalDeleteThisRequest :is-open="isModalDeleteThisRequestOpen" @handleClose="isModalDeleteThisRequestOpen = false" />
+        <ModalRejectThisRequest :is-open="isModalRejectThisRequestOpen" @handleClose="isModalRejectThisRequestOpen = false" />
+        <ModalPrintPdf :is-open="isModalPrintPdfOpen" @handleClose="isModalPrintPdfOpen = false" />
       </mp-box>
     </mp-flex>
   </mp-box>
@@ -218,12 +324,24 @@ import {
   MpTableCell,
   MpButton,
   MpButtonGroup,
+  MpButtonIcon,
   MpHeading,
   MpBadge,
   MpIcon,
+  MpStack,
+  MpTag,
+  MpPopover,
+  MpPopoverTrigger,
+  MpPopoverContent,
+  MpPopoverList,
+  MpPopoverListItem,
 } from "@mekari/pixel";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
+import ModalDeleteThisRequest from "./ModalDeleteThisRequest.vue";
+import ModalRejectThisRequest from "./ModalRejectThisRequest.vue";
+import ModalPrintPdf from "./ModalPrintPdf.vue";
+import ModalAudit from "./ModalAudit.vue";
 
 export default {
   name: "SalesIndex",
@@ -241,17 +359,150 @@ export default {
     MpTableCell,
     MpButton,
     MpButtonGroup,
+    MpButtonIcon,
     MpHeading,
     MpBadge,
     MpIcon,
+    MpStack,
+    MpTag,
+    MpPopover,
+    MpPopoverTrigger,
+    MpPopoverContent,
+    MpPopoverList,
+    MpPopoverListItem,
     //
     Header,
     Sidebar,
+    ModalAudit,
+    ModalDeleteThisRequest,
+    ModalRejectThisRequest,
+    ModalPrintPdf,
+  },
+  data() {
+    return {
+      isModalAuditOpen: false,
+      isModalDeleteThisRequestOpen: false,
+      isModalRejectThisRequestOpen: false,
+      isModalPrintPdfOpen: false,
+      products: [
+        {
+          id: 1,
+          product: "Macbook Pro M1",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed purus risus, finibus in elementum quis, euismod at lacus. Vivamus nec accumsan est. Donec magna eros, volutpat id dui vitae, sagittis tempus ex. Vestibulum volutpat commodo sollicitudin. Morbi vitae nibh ut dui molestie volutpat vitae eu ante. Nulla eget dictum dolor. Pellentesque consequat velit tellus, sit amet fringilla augue accumsan eu. Suspendisse potenti. Integer laoreet quam ac nisl eleifend rhoncus. Maecenas in interdum eros. Cras iaculis consequat laoreet. In odio ligula, ultrices eget euismod nec, aliquet at sapien. Ut molestie mauris vulputate, dignissim lacus non, tincidunt neque. Phasellus porttitor accumsan lectus a venenatis.",
+          quantity: 1,
+          unit: "Unit",
+        },
+        {
+          id: 2,
+          product: "Macbook Pro M1 Pro 256Gb",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed purus risus, finibus in elementum quis, euismod at lacus. Vivamus nec accumsan est. Donec magna eros, volutpat id dui vitae, sagittis tempus ex. Vestibulum volutpat commodo sollicitudin. Morbi vitae nibh ut dui molestie volutpat vitae eu ante. Nulla eget dictum dolor. Pellentesque consequat velit tellus, sit amet fringilla augue accumsan eu. Suspendisse potenti. Integer laoreet quam ac nisl eleifend rhoncus. Maecenas in interdum eros. Cras iaculis consequat laoreet. In odio ligula, ultrices eget euismod nec, aliquet at sapien. Ut molestie mauris vulputate, dignissim lacus non, tincidunt neque. Phasellus porttitor accumsan lectus a venenatis.",
+          quantity: 1,
+          unit: "Unit",
+        },
+        {
+          id: 3,
+          product: "Macbook Pro M1 Pro 256Gb",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed purus risus, finibus in elementum quis, euismod at lacus. Vivamus nec accumsan est. Donec magna eros, volutpat id dui vitae, sagittis tempus ex. Vestibulum volutpat commodo sollicitudin. Morbi vitae nibh ut dui molestie volutpat vitae eu ante. Nulla eget dictum dolor. Pellentesque consequat velit tellus, sit amet fringilla augue accumsan eu. Suspendisse potenti. Integer laoreet quam ac nisl eleifend rhoncus. Maecenas in interdum eros. Cras iaculis consequat laoreet. In odio ligula, ultrices eget euismod nec, aliquet at sapien. Ut molestie mauris vulputate, dignissim lacus non, tincidunt neque. Phasellus porttitor accumsan lectus a venenatis.",
+          quantity: 1,
+          unit: "Unit",
+        },
+        {
+          id: 4,
+          product: "Macbook Pro M1 Pro 256Gb",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed purus risus, finibus in elementum quis, euismod at lacus. Vivamus nec accumsan est. Donec magna eros, volutpat id dui vitae, sagittis tempus ex. Vestibulum volutpat commodo sollicitudin. Morbi vitae nibh ut dui molestie volutpat vitae eu ante. Nulla eget dictum dolor. Pellentesque consequat velit tellus, sit amet fringilla augue accumsan eu. Suspendisse potenti. Integer laoreet quam ac nisl eleifend rhoncus. Maecenas in interdum eros. Cras iaculis consequat laoreet. In odio ligula, ultrices eget euismod nec, aliquet at sapien. Ut molestie mauris vulputate, dignissim lacus non, tincidunt neque. Phasellus porttitor accumsan lectus a venenatis.",
+          quantity: 1,
+          unit: "Unit",
+        },
+        {
+          id: 1,
+          product: "Macbook Pro M1",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed purus risus, finibus in elementum quis, euismod at lacus. Vivamus nec accumsan est. Donec magna eros, volutpat id dui vitae, sagittis tempus ex. Vestibulum volutpat commodo sollicitudin. Morbi vitae nibh ut dui molestie volutpat vitae eu ante. Nulla eget dictum dolor. Pellentesque consequat velit tellus, sit amet fringilla augue accumsan eu. Suspendisse potenti. Integer laoreet quam ac nisl eleifend rhoncus. Maecenas in interdum eros. Cras iaculis consequat laoreet. In odio ligula, ultrices eget euismod nec, aliquet at sapien. Ut molestie mauris vulputate, dignissim lacus non, tincidunt neque. Phasellus porttitor accumsan lectus a venenatis.",
+          quantity: 1,
+          unit: "Unit",
+        },
+        {
+          id: 2,
+          product: "Macbook Pro M1 Pro 256Gb",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed purus risus, finibus in elementum quis, euismod at lacus. Vivamus nec accumsan est. Donec magna eros, volutpat id dui vitae, sagittis tempus ex. Vestibulum volutpat commodo sollicitudin. Morbi vitae nibh ut dui molestie volutpat vitae eu ante. Nulla eget dictum dolor. Pellentesque consequat velit tellus, sit amet fringilla augue accumsan eu. Suspendisse potenti. Integer laoreet quam ac nisl eleifend rhoncus. Maecenas in interdum eros. Cras iaculis consequat laoreet. In odio ligula, ultrices eget euismod nec, aliquet at sapien. Ut molestie mauris vulputate, dignissim lacus non, tincidunt neque. Phasellus porttitor accumsan lectus a venenatis.",
+          quantity: 1,
+          unit: "Unit",
+        },
+        {
+          id: 3,
+          product: "Macbook Pro M1 Pro 256Gb",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed purus risus, finibus in elementum quis, euismod at lacus. Vivamus nec accumsan est. Donec magna eros, volutpat id dui vitae, sagittis tempus ex. Vestibulum volutpat commodo sollicitudin. Morbi vitae nibh ut dui molestie volutpat vitae eu ante. Nulla eget dictum dolor. Pellentesque consequat velit tellus, sit amet fringilla augue accumsan eu. Suspendisse potenti. Integer laoreet quam ac nisl eleifend rhoncus. Maecenas in interdum eros. Cras iaculis consequat laoreet. In odio ligula, ultrices eget euismod nec, aliquet at sapien. Ut molestie mauris vulputate, dignissim lacus non, tincidunt neque. Phasellus porttitor accumsan lectus a venenatis.",
+          quantity: 1,
+          unit: "Unit",
+        },
+        {
+          id: 4,
+          product: "Macbook Pro M1 Pro 256Gb",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed purus risus, finibus in elementum quis, euismod at lacus. Vivamus nec accumsan est. Donec magna eros, volutpat id dui vitae, sagittis tempus ex. Vestibulum volutpat commodo sollicitudin. Morbi vitae nibh ut dui molestie volutpat vitae eu ante. Nulla eget dictum dolor. Pellentesque consequat velit tellus, sit amet fringilla augue accumsan eu. Suspendisse potenti. Integer laoreet quam ac nisl eleifend rhoncus. Maecenas in interdum eros. Cras iaculis consequat laoreet. In odio ligula, ultrices eget euismod nec, aliquet at sapien. Ut molestie mauris vulputate, dignissim lacus non, tincidunt neque. Phasellus porttitor accumsan lectus a venenatis.",
+          quantity: 1,
+          unit: "Unit",
+        },
+        {
+          id: 1,
+          product: "Macbook Pro M1",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed purus risus, finibus in elementum quis, euismod at lacus. Vivamus nec accumsan est. Donec magna eros, volutpat id dui vitae, sagittis tempus ex. Vestibulum volutpat commodo sollicitudin. Morbi vitae nibh ut dui molestie volutpat vitae eu ante. Nulla eget dictum dolor. Pellentesque consequat velit tellus, sit amet fringilla augue accumsan eu. Suspendisse potenti. Integer laoreet quam ac nisl eleifend rhoncus. Maecenas in interdum eros. Cras iaculis consequat laoreet. In odio ligula, ultrices eget euismod nec, aliquet at sapien. Ut molestie mauris vulputate, dignissim lacus non, tincidunt neque. Phasellus porttitor accumsan lectus a venenatis.",
+          quantity: 1,
+          unit: "Unit",
+        },
+        {
+          id: 2,
+          product: "Macbook Pro M1 Pro 256Gb",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed purus risus, finibus in elementum quis, euismod at lacus. Vivamus nec accumsan est. Donec magna eros, volutpat id dui vitae, sagittis tempus ex. Vestibulum volutpat commodo sollicitudin. Morbi vitae nibh ut dui molestie volutpat vitae eu ante. Nulla eget dictum dolor. Pellentesque consequat velit tellus, sit amet fringilla augue accumsan eu. Suspendisse potenti. Integer laoreet quam ac nisl eleifend rhoncus. Maecenas in interdum eros. Cras iaculis consequat laoreet. In odio ligula, ultrices eget euismod nec, aliquet at sapien. Ut molestie mauris vulputate, dignissim lacus non, tincidunt neque. Phasellus porttitor accumsan lectus a venenatis.",
+          quantity: 1,
+          unit: "Unit",
+        },
+        {
+          id: 3,
+          product: "Macbook Pro M1 Pro 256Gb",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed purus risus, finibus in elementum quis, euismod at lacus. Vivamus nec accumsan est. Donec magna eros, volutpat id dui vitae, sagittis tempus ex. Vestibulum volutpat commodo sollicitudin. Morbi vitae nibh ut dui molestie volutpat vitae eu ante. Nulla eget dictum dolor. Pellentesque consequat velit tellus, sit amet fringilla augue accumsan eu. Suspendisse potenti. Integer laoreet quam ac nisl eleifend rhoncus. Maecenas in interdum eros. Cras iaculis consequat laoreet. In odio ligula, ultrices eget euismod nec, aliquet at sapien. Ut molestie mauris vulputate, dignissim lacus non, tincidunt neque. Phasellus porttitor accumsan lectus a venenatis.",
+          quantity: 1,
+          unit: "Unit",
+        },
+        {
+          id: 4,
+          product: "Macbook Pro M1 Pro 256Gb",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed purus risus, finibus in elementum quis, euismod at lacus. Vivamus nec accumsan est. Donec magna eros, volutpat id dui vitae, sagittis tempus ex. Vestibulum volutpat commodo sollicitudin. Morbi vitae nibh ut dui molestie volutpat vitae eu ante. Nulla eget dictum dolor. Pellentesque consequat velit tellus, sit amet fringilla augue accumsan eu. Suspendisse potenti. Integer laoreet quam ac nisl eleifend rhoncus. Maecenas in interdum eros. Cras iaculis consequat laoreet. In odio ligula, ultrices eget euismod nec, aliquet at sapien. Ut molestie mauris vulputate, dignissim lacus non, tincidunt neque. Phasellus porttitor accumsan lectus a venenatis.",
+          quantity: 1,
+          unit: "Unit",
+        },
+      ],
+    };
+  },
+  methods: {
+    handleEditPurchaseRequest() {
+      this.$router.push("/edit");
+    },
   },
 };
 </script>
+
 <style scoped>
+table {
+  table-layout: fixed;
+}
+
+tbody > tr {
+  white-space: normal;
+}
+
 td {
+  word-wrap: break-word;
   height: auto;
   padding-top: 0.875rem;
   padding-bottom: 0.875rem;

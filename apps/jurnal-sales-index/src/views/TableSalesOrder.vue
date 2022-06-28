@@ -2,8 +2,22 @@
   <mp-box>
     <mp-flex width="full" justify-content="space-between" mb="6">
       <mp-flex gap="4">
-        <mp-autocomplete value="Pemesanan" width="172px" id="pemesanan" :data="['Pemesanan', 'Proforma pemesanan']" />
-        <mp-autocomplete value="Semua status" width="172px" id="pemesanan" :data="['Semua status', 'Open', 'Partially sent', 'Closed']" />
+        <mp-autocomplete
+          style="width: 172px; min-width: 172px"
+          :content-style="{ zIndex: 'popover', width: '172px' }"
+          value="Pemesanan"
+          width="172px"
+          id="sales-order-pemesanan"
+          :data="['Pemesanan', 'Proforma pemesanan']"
+        />
+        <mp-autocomplete
+          style="width: 172px; min-width: 172px"
+          :content-style="{ zIndex: 'popover', width: '172px' }"
+          value="Semua status"
+          width="172px"
+          id="sales-order-status"
+          :data="['Semua status', 'Open', 'Partially sent', 'Closed']"
+        />
       </mp-flex>
 
       <mp-flex>

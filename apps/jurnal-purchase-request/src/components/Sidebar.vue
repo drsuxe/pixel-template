@@ -166,8 +166,8 @@ export default {
           name: "transactions",
           menus: [
             { name: "Cash & Bank", icon: "bank" },
-            { name: "Sales", icon: "sales", isActive: true },
-            { name: "Purchases", icon: "cart" },
+            { name: "Sales", icon: "sales" },
+            { name: "Purchases", icon: "cart", isActive: true },
             { name: "Expenses", icon: "expenses" },
           ],
         },

@@ -10,10 +10,12 @@
           <mp-popover-trigger>
             <mp-button variant="outline" marginRight="2" right-icon="caret-down"> Request </mp-button>
           </mp-popover-trigger>
-          <mp-popover-content max-width="48" bg="white" rounded="md" shadow="lg" border-width="1px" border-color="gray.400">
+          <mp-popover-content max-width="48" bg="white" rounded="md" shadow="lg" border-width="1px" border-color="gray.400" z-index="popover">
             <mp-popover-list>
-              <mp-popover-list-item>Template dari Jurnal</mp-popover-list-item>
-              <mp-popover-list-item> Template dari aplikasi lain </mp-popover-list-item>
+              <mp-popover-list-item>Purchase Invoice</mp-popover-list-item>
+              <mp-popover-list-item>Purchase Order</mp-popover-list-item>
+              <mp-popover-list-item>Purchase Quote</mp-popover-list-item>
+              <mp-popover-list-item is-active>Purchase Request</mp-popover-list-item>
             </mp-popover-list>
           </mp-popover-content>
         </mp-popover>

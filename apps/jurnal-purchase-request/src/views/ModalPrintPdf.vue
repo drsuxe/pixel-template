@@ -2,7 +2,7 @@
   <mp-box>
     <mp-modal size="2xl" :isOpen="isOpen" scrollBehavior="inside">
       <mp-modal-content>
-        <mp-modal-header>Templates</mp-modal-header>
+        <mp-modal-header>Preview permintaan pembelian</mp-modal-header>
         <mp-modal-close-button @click="$emit('handleClose')" />
         <mp-modal-body>
           <mp-form-control margin-bottom="5" max-w="314px">

@@ -15,6 +15,7 @@
                   :content-style="{ zIndex: 'popover', width: 'full' }"
                   id="approving-staff"
                   placeholder="Pilih staff"
+                  value="Bregga Teddy"
                   :data="['Anton Tamimi', 'Bregga Teddy', 'Beny Berry', 'Cristine Panjaitan', 'Dani Damara', 'Faniki']"
                 />
                 <mp-text font-size="sm" color="gray.600" mt="1"
@@ -30,6 +31,7 @@
                   :content-style="{ zIndex: 'popover', width: 'full' }"
                   id="approver-email"
                   placeholder="Example: name@email.com"
+                  value="bregga.teddy@mekari.com"
                   :data="['dimas.raka@mekari.com', 'bregga.teddy@mekari.com', 'jaka.permadi@mekari.com']"
                 />
               </mp-form-control>
@@ -45,6 +47,7 @@
                   :content-style="{ zIndex: 'popover', width: 'full' }"
                   id="vendor-name"
                   placeholder="Select vendor"
+                  value="PT Angkasa Pura"
                   :data="['PT Angkasa Pura', 'Alnect Computer', 'Dazzle Indonesia']"
                 />
               </mp-form-control>
@@ -57,6 +60,7 @@
                   :content-style="{ zIndex: 'popover' }"
                   id="vendor-email"
                   placeholder="Example: name@email.com"
+                  value="dimasrakas@gmail.com"
                   :data="['dimasrakas@gmail.com', 'bregga.teddy@gmail.com']"
                 />
               </mp-form-control>
@@ -65,7 +69,10 @@
             <mp-flex flex-direction="column">
               <mp-form-control margin-bottom="5">
                 <mp-text font-weight="semibold" display="inline" margin-bottom="1"> Vendor address </mp-text>
-                <mp-textarea id="vendor-address" />
+                <mp-textarea
+                  id="vendor-address"
+                  value="Jalan Laksda Adisucipto No.204-205, Ngentak, Caturtunggal, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281"
+                />
               </mp-form-control>
             </mp-flex>
           </mp-grid>
@@ -73,14 +80,14 @@
             <mp-flex flex-direction="column">
               <mp-form-control margin-bottom="5">
                 <mp-text font-weight="semibold" display="inline" margin-bottom="1"> Transaction date<mp-text as="span" color="red.500">*</mp-text> </mp-text>
-                <mp-date-picker id="transaction-date" format="DD/MM/YYYY" type="date" placeholder="Select date" />
+                <mp-date-picker id="transaction-date" v-model="form.transactionDate" format="DD/MM/YYYY" type="date" placeholder="Select date" />
               </mp-form-control>
             </mp-flex>
 
             <mp-flex flex-direction="column">
               <mp-form-control margin-bottom="5">
                 <mp-text font-weight="semibold" display="inline" margin-bottom="1"> Due date<mp-text as="span" color="red.500">*</mp-text> </mp-text>
-                <mp-date-picker id="due-date" format="DD/MM/YYYY" type="date" placeholder="Select date" />
+                <mp-date-picker id="due-date" v-model="form.dueDate" format="DD/MM/YYYY" type="date" placeholder="Select date" />
               </mp-form-control>
             </mp-flex>
 
@@ -91,6 +98,7 @@
                   :content-style="{ zIndex: 'popover', width: 'full' }"
                   id="urgency"
                   placeholder="Pilih staff"
+                  value="Rendah"
                   :data="[
                     { value: 'Rendah', icon: 'priority-low' },
                     { value: 'Sedang', icon: 'priority-medium' },
@@ -155,14 +163,8 @@
                           :content-style="{ zIndex: 'popover', width: 'full' }"
                           id="pilih-product"
                           placeholder="Pilih produk"
-                          :data="[
-                            'Anton Tamimi',
-                            'Bregga Teddy',
-                            'Beny Berry',
-                            'Cristine Panjaitan',
-                            'Dani Damara',
-                            'Faniki ad ad adad a ada ad ad ada ad ad ',
-                          ]"
+                          value="Macbook Pro M1"
+                          :data="['Macbook Pro M1', 'Macbook Air M1', 'iPhone 13 Pro Max 256GB', 'iPhone 13 Pro 256GB', 'iPhone 13 256GB', 'iPad Pro Max 1TB']"
                         />
                       </mp-form-control>
                     </mp-flex>
@@ -170,21 +172,79 @@
                   <mp-table-cell as="td" scope="row">
                     <mp-flex flex-direction="column">
                       <mp-form-control>
-                        <mp-textarea rows="1" height="36px" min-height="36px" resize="vertical" />
+                        <mp-textarea
+                          rows="1"
+                          height="36px"
+                          min-height="36px"
+                          resize="vertical"
+                          value="Cariin yang terbaru ya pak buat edit video soalnya laptop yang sekarang beraaaaat euy"
+                        />
                       </mp-form-control>
                     </mp-flex>
                   </mp-table-cell>
                   <mp-table-cell as="td" scope="row">
                     <mp-flex flex-direction="column">
                       <mp-form-control>
-                        <mp-input type="number" />
+                        <mp-input type="number" :value="1" />
                       </mp-form-control>
                     </mp-flex>
                   </mp-table-cell>
                   <mp-table-cell as="td" scope="row">
                     <mp-flex flex-direction="column">
                       <mp-form-control>
-                        <mp-autocomplete :style="{ minWidth: '109px', width: '100%' }" id="tRWBF" :data="['Unit', 'Pcs']" :contentStyle="{ width: '100%' }" />
+                        <mp-autocomplete
+                          :style="{ minWidth: '109px', width: '100%' }"
+                          id="tRWBF"
+                          value="Unit"
+                          :data="['Unit', 'Pcs']"
+                          :contentStyle="{ width: '100%' }"
+                        />
+                      </mp-form-control>
+                    </mp-flex>
+                  </mp-table-cell>
+                  <mp-table-cell as="td" scope="row">
+                    <mp-button-icon name="minus-circular" />
+                  </mp-table-cell>
+                </mp-table-row>
+                <mp-table-row>
+                  <mp-table-cell as="td" scope="row" vertical-align="center">
+                    <mp-flex flex-direction="column">
+                      <mp-form-control>
+                        <mp-autocomplete
+                          isClearable
+                          :content-style="{ zIndex: 'popover', width: 'full' }"
+                          id="pilih-product"
+                          placeholder="Pilih produk"
+                          value="iPhone 13 Pro Max 256GB"
+                          :data="['Macbook Pro M1', 'Macbook Air M1', 'iPhone 13 Pro Max 256GB', 'iPhone 13 Pro 256GB', 'iPhone 13 256GB', 'iPad Pro Max 1TB']"
+                        />
+                      </mp-form-control>
+                    </mp-flex>
+                  </mp-table-cell>
+                  <mp-table-cell as="td" scope="row">
+                    <mp-flex flex-direction="column">
+                      <mp-form-control>
+                        <mp-textarea rows="1" height="36px" min-height="36px" resize="vertical" value="Cariin HP Canggih" />
+                      </mp-form-control>
+                    </mp-flex>
+                  </mp-table-cell>
+                  <mp-table-cell as="td" scope="row">
+                    <mp-flex flex-direction="column">
+                      <mp-form-control>
+                        <mp-input type="number" :value="1" />
+                      </mp-form-control>
+                    </mp-flex>
+                  </mp-table-cell>
+                  <mp-table-cell as="td" scope="row">
+                    <mp-flex flex-direction="column">
+                      <mp-form-control>
+                        <mp-autocomplete
+                          :style="{ minWidth: '109px', width: '100%' }"
+                          id="tRWBF"
+                          value="Unit"
+                          :data="['Unit', 'Pcs']"
+                          :contentStyle="{ width: '100%' }"
+                        />
                       </mp-form-control>
                     </mp-flex>
                   </mp-table-cell>
@@ -250,6 +310,7 @@
                         <mp-text color="gray.400" line-height="md"> 1.3 MB </mp-text>
                       </mp-box>
                       <mp-box flex="none">
+                        <mp-button-icon name="download" />
                         <mp-button-icon name="minus-circular" />
                       </mp-box>
                     </mp-flex>
@@ -262,6 +323,7 @@
                         <mp-text color="gray.400" line-height="md"> 1.3 MB </mp-text>
                       </mp-box>
                       <mp-box flex="none">
+                        <mp-button-icon name="download" />
                         <mp-button-icon name="minus-circular" />
                       </mp-box>
                     </mp-flex>
@@ -284,8 +346,8 @@
 
           <mp-flex justify="flex-end">
             <mp-button-group spacing="2">
-              <mp-button variant="outline" @click="isModalDeleteThisRequestOpen = true"> Cancel </mp-button>
-              <mp-button variant="solid" @click="handleCreateRequest"> Create request </mp-button>
+              <mp-button variant="outline" @click="handleCancel"> Cancel </mp-button>
+              <mp-button variant="solid" @click="handleSave"> Simpan perubahan </mp-button>
             </mp-button-group>
           </mp-flex>
 
@@ -328,7 +390,7 @@ import SubHeader from "./SubHeader.vue";
 import ModalDeleteThisRequest from "./ModalDeleteThisRequest.vue";
 
 export default {
-  name: "SalesIndex",
+  name: "EditPurchaseRequestView",
   components: {
     MpBox,
     MpFlex,
@@ -362,16 +424,23 @@ export default {
   data() {
     return {
       isModalDeleteThisRequestOpen: false,
+      form: {
+        transactionDate: "2022-05-31T17:00:00.000Z",
+        dueDate: "2022-05-31T17:00:00.000Z",
+      },
     };
   },
   methods: {
-    handleCreateRequest() {
+    handleSave() {
       this.$toast({
         variant: "success",
-        title: "Purchase request is created ",
+        title: "Purchase request is changed",
         position: "top",
       });
 
+      this.$router.push("/detail");
+    },
+    handleCancel() {
       this.$router.push("/detail");
     },
   },

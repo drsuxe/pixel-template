@@ -309,7 +309,12 @@
                     </mp-tooltip>
                   </mp-flex>
 
-                  <mp-flex v-if="open === 'pengaturanFiturTambahan'" flex-direction="column" id="edit-pengaturan-fitur-tambahan">
+                  <mp-flex
+                    v-if="open === 'pengaturanFiturTambahan'"
+                    key="edit-pengaturan-fitur-tambahan"
+                    flex-direction="column"
+                    id="edit-pengaturan-fitur-tambahan"
+                  >
                     <mp-flex py="1.5">
                       <mp-tooltip
                         :visibility="alreadyHaveTranscaction === 'yes' ? 'visible' : 'hidden'"
@@ -471,6 +476,7 @@
                           :value="tempPengaturanFiturTambahan.mataUang"
                           :data="['IDR - Indonesia', 'AUD - Australia', 'USD - United States', 'CAD - Canada', 'MYR - Malaysia']"
                           @change="(value) => (tempPengaturanFiturTambahan.mataUang = value)"
+                          :content-style="{ width: 64, zIndex: 'popover' }"
                         />
                         <mp-text color="gray.600">Pemilihan mata uang hanya dapat dilakukan 1 kali.</mp-text>
                       </mp-box>
@@ -481,6 +487,7 @@
                           :value="tempPengaturanFiturTambahan.formatMataUang"
                           :data="['Tanpa desimal', 'Dengan desimal', 'Dalam ribuan', 'Dalam jutaan']"
                           @change="(value) => (tempPengaturanFiturTambahan.formatMataUang = value)"
+                          :content-style="{ width: 64, zIndex: 'popover' }"
                         />
                       </mp-box>
                     </mp-flex>
@@ -492,8 +499,8 @@
                       </mp-button-group>
                     </mp-flex>
                   </mp-flex>
-                  <mp-flex v-else flex-direction="column">
-                    <mp-flex py="1.5">
+                  <mp-flex v-else flex-direction="column" key="view-pengaturan-fitur-tambahan">
+                    <mp-flex py="1.5" key="view-pengaturan-fitur-tambahan">
                       <mp-checkbox isDisabled align-self="center" id="approval" v-model="storedPengaturanFiturTambahan.approval">Approval</mp-checkbox>
                       <mp-tooltip id="approval" label="Hanya pemilik akun perusahaan yang dapat mengaktifkan fitur ini." position="top" width="241px">
                         <mp-icon ml="1" name="info" align-self="center" color="gray.600" size="sm" cursor="pointer" />

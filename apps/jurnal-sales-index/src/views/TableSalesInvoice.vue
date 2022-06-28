@@ -7,7 +7,7 @@
             style="width: 172px; min-width: 172px"
             :content-style="{ zIndex: 'popover', width: '172px' }"
             value="Penagihan"
-            id="penagihan"
+            id="sales-invoice-penagihan"
             :data="['Penagihan', 'Faktur proforma', 'Tukar faktur']"
           />
         </mp-box>
@@ -15,7 +15,7 @@
           style="width: 172px; min-width: 172px"
           :content-style="{ zIndex: 'popover', width: '172px' }"
           value="Semua status"
-          id="semua-status"
+          id="sales-invoice-semua-status"
           :data="['Semua status', 'Open', 'Overdue', 'Paid', 'Partial', 'Unpaid']"
         />
       </mp-flex>
