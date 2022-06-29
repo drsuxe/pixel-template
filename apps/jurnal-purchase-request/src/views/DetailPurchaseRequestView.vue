@@ -9,7 +9,7 @@
             <mp-text is-link font-size="sm" color="blue.400" text-decoration="underline">Transaksi pembelian</mp-text>
             <mp-flex align="center">
               <mp-heading as="h1" font-size="2xl" font-weight="bold"> Buat permintaan pembelian </mp-heading>
-              <mp-badge ml="2" variant="subtle" variant-color="orange"> Belum dibayar </mp-badge>
+              <mp-badge ml="2" variant-color="orange"> Belum dibayar </mp-badge>
             </mp-flex>
           </mp-box>
           <mp-flex align-items="center">
@@ -267,7 +267,7 @@
           </mp-box>
         </mp-box>
 
-        <mp-flex as="bottom-action" justify="space-between" py="5" px="6" background-color="white" border-top="1px" border-top-color="gray.100">
+        <mp-flex as="bottom-action" justify="space-between" py="5" px="6" background-color="white" border-top="1px" border-top-color="gray.100" pb="56px">
           <mp-box>
             <mp-button variant="ghost" @click="isModalDeleteThisRequestOpen = true"> Delete </mp-button>
           </mp-box>
@@ -278,7 +278,7 @@
                 <mp-popover-trigger>
                   <mp-button variant="outline" right-icon="caret-down"> Print & preview </mp-button>
                 </mp-popover-trigger>
-                <mp-popover-content max-width="164px" bg="white" rounded="md" shadow="lg" border-width="1px" border-color="gray.400">
+                <mp-popover-content max-width="168px" bg="white" rounded="md" shadow="lg" border-width="1px" border-color="gray.400">
                   <mp-popover-list>
                     <mp-popover-list-item @click="isModalPrintPdfOpen = true"> Lihat template </mp-popover-list-item>
                   </mp-popover-list>
@@ -418,7 +418,7 @@ export default {
           unit: "Unit",
         },
         {
-          id: 1,
+          id: 5,
           product: "Macbook Pro M1",
           description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed purus risus, finibus in elementum quis, euismod at lacus. Vivamus nec accumsan est. Donec magna eros, volutpat id dui vitae, sagittis tempus ex. Vestibulum volutpat commodo sollicitudin. Morbi vitae nibh ut dui molestie volutpat vitae eu ante. Nulla eget dictum dolor. Pellentesque consequat velit tellus, sit amet fringilla augue accumsan eu. Suspendisse potenti. Integer laoreet quam ac nisl eleifend rhoncus. Maecenas in interdum eros. Cras iaculis consequat laoreet. In odio ligula, ultrices eget euismod nec, aliquet at sapien. Ut molestie mauris vulputate, dignissim lacus non, tincidunt neque. Phasellus porttitor accumsan lectus a venenatis.",
@@ -426,7 +426,7 @@ export default {
           unit: "Unit",
         },
         {
-          id: 2,
+          id: 6,
           product: "Macbook Pro M1 Pro 256Gb",
           description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed purus risus, finibus in elementum quis, euismod at lacus. Vivamus nec accumsan est. Donec magna eros, volutpat id dui vitae, sagittis tempus ex. Vestibulum volutpat commodo sollicitudin. Morbi vitae nibh ut dui molestie volutpat vitae eu ante. Nulla eget dictum dolor. Pellentesque consequat velit tellus, sit amet fringilla augue accumsan eu. Suspendisse potenti. Integer laoreet quam ac nisl eleifend rhoncus. Maecenas in interdum eros. Cras iaculis consequat laoreet. In odio ligula, ultrices eget euismod nec, aliquet at sapien. Ut molestie mauris vulputate, dignissim lacus non, tincidunt neque. Phasellus porttitor accumsan lectus a venenatis.",
@@ -434,7 +434,7 @@ export default {
           unit: "Unit",
         },
         {
-          id: 3,
+          id: 7,
           product: "Macbook Pro M1 Pro 256Gb",
           description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed purus risus, finibus in elementum quis, euismod at lacus. Vivamus nec accumsan est. Donec magna eros, volutpat id dui vitae, sagittis tempus ex. Vestibulum volutpat commodo sollicitudin. Morbi vitae nibh ut dui molestie volutpat vitae eu ante. Nulla eget dictum dolor. Pellentesque consequat velit tellus, sit amet fringilla augue accumsan eu. Suspendisse potenti. Integer laoreet quam ac nisl eleifend rhoncus. Maecenas in interdum eros. Cras iaculis consequat laoreet. In odio ligula, ultrices eget euismod nec, aliquet at sapien. Ut molestie mauris vulputate, dignissim lacus non, tincidunt neque. Phasellus porttitor accumsan lectus a venenatis.",
@@ -442,7 +442,7 @@ export default {
           unit: "Unit",
         },
         {
-          id: 4,
+          id: 8,
           product: "Macbook Pro M1 Pro 256Gb",
           description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed purus risus, finibus in elementum quis, euismod at lacus. Vivamus nec accumsan est. Donec magna eros, volutpat id dui vitae, sagittis tempus ex. Vestibulum volutpat commodo sollicitudin. Morbi vitae nibh ut dui molestie volutpat vitae eu ante. Nulla eget dictum dolor. Pellentesque consequat velit tellus, sit amet fringilla augue accumsan eu. Suspendisse potenti. Integer laoreet quam ac nisl eleifend rhoncus. Maecenas in interdum eros. Cras iaculis consequat laoreet. In odio ligula, ultrices eget euismod nec, aliquet at sapien. Ut molestie mauris vulputate, dignissim lacus non, tincidunt neque. Phasellus porttitor accumsan lectus a venenatis.",
@@ -450,7 +450,7 @@ export default {
           unit: "Unit",
         },
         {
-          id: 1,
+          id: 9,
           product: "Macbook Pro M1",
           description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed purus risus, finibus in elementum quis, euismod at lacus. Vivamus nec accumsan est. Donec magna eros, volutpat id dui vitae, sagittis tempus ex. Vestibulum volutpat commodo sollicitudin. Morbi vitae nibh ut dui molestie volutpat vitae eu ante. Nulla eget dictum dolor. Pellentesque consequat velit tellus, sit amet fringilla augue accumsan eu. Suspendisse potenti. Integer laoreet quam ac nisl eleifend rhoncus. Maecenas in interdum eros. Cras iaculis consequat laoreet. In odio ligula, ultrices eget euismod nec, aliquet at sapien. Ut molestie mauris vulputate, dignissim lacus non, tincidunt neque. Phasellus porttitor accumsan lectus a venenatis.",
@@ -458,7 +458,7 @@ export default {
           unit: "Unit",
         },
         {
-          id: 2,
+          id: 10,
           product: "Macbook Pro M1 Pro 256Gb",
           description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed purus risus, finibus in elementum quis, euismod at lacus. Vivamus nec accumsan est. Donec magna eros, volutpat id dui vitae, sagittis tempus ex. Vestibulum volutpat commodo sollicitudin. Morbi vitae nibh ut dui molestie volutpat vitae eu ante. Nulla eget dictum dolor. Pellentesque consequat velit tellus, sit amet fringilla augue accumsan eu. Suspendisse potenti. Integer laoreet quam ac nisl eleifend rhoncus. Maecenas in interdum eros. Cras iaculis consequat laoreet. In odio ligula, ultrices eget euismod nec, aliquet at sapien. Ut molestie mauris vulputate, dignissim lacus non, tincidunt neque. Phasellus porttitor accumsan lectus a venenatis.",
@@ -466,7 +466,7 @@ export default {
           unit: "Unit",
         },
         {
-          id: 3,
+          id: 11,
           product: "Macbook Pro M1 Pro 256Gb",
           description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed purus risus, finibus in elementum quis, euismod at lacus. Vivamus nec accumsan est. Donec magna eros, volutpat id dui vitae, sagittis tempus ex. Vestibulum volutpat commodo sollicitudin. Morbi vitae nibh ut dui molestie volutpat vitae eu ante. Nulla eget dictum dolor. Pellentesque consequat velit tellus, sit amet fringilla augue accumsan eu. Suspendisse potenti. Integer laoreet quam ac nisl eleifend rhoncus. Maecenas in interdum eros. Cras iaculis consequat laoreet. In odio ligula, ultrices eget euismod nec, aliquet at sapien. Ut molestie mauris vulputate, dignissim lacus non, tincidunt neque. Phasellus porttitor accumsan lectus a venenatis.",
@@ -474,7 +474,7 @@ export default {
           unit: "Unit",
         },
         {
-          id: 4,
+          id: 12,
           product: "Macbook Pro M1 Pro 256Gb",
           description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed purus risus, finibus in elementum quis, euismod at lacus. Vivamus nec accumsan est. Donec magna eros, volutpat id dui vitae, sagittis tempus ex. Vestibulum volutpat commodo sollicitudin. Morbi vitae nibh ut dui molestie volutpat vitae eu ante. Nulla eget dictum dolor. Pellentesque consequat velit tellus, sit amet fringilla augue accumsan eu. Suspendisse potenti. Integer laoreet quam ac nisl eleifend rhoncus. Maecenas in interdum eros. Cras iaculis consequat laoreet. In odio ligula, ultrices eget euismod nec, aliquet at sapien. Ut molestie mauris vulputate, dignissim lacus non, tincidunt neque. Phasellus porttitor accumsan lectus a venenatis.",

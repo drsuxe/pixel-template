@@ -9,7 +9,7 @@
         </mp-modal-body>
         <mp-modal-footer>
           <mp-button variant="ghost" mr="3" @click="$emit('handleClose')">Cancel</mp-button>
-          <mp-button @click="$emit('handleClose')">Reject</mp-button>
+          <mp-button @click="$emit('handleClose')" variant-color="red">Reject</mp-button>
         </mp-modal-footer>
       </mp-modal-content>
       <mp-modal-overlay />

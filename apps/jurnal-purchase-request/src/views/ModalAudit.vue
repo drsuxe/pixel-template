@@ -1,6 +1,6 @@
 <template>
   <mp-box>
-    <mp-modal size="2xl" :isOpen="isOpen" is-centered>
+    <mp-modal size="5xl" :isOpen="isOpen" is-centered>
       <mp-modal-content>
         <mp-modal-header>Preview permintaan pembelian</mp-modal-header>
         <mp-modal-close-button @click="$emit('handleClose')" />
@@ -8,24 +8,26 @@
           <mp-table>
             <mp-table-head>
               <mp-table-row>
-                <mp-table-cell as="th" scope="col">Tanggal</mp-table-cell>
-                <mp-table-cell as="th" scope="col">Tindakan</mp-table-cell>
-                <mp-table-cell as="th" scope="col">Pengguna</mp-table-cell>
-                <mp-table-cell as="th" scope="col">Detail</mp-table-cell>
+                <mp-table-cell as="th" scope="col" width="35px">Tanggal</mp-table-cell>
+                <mp-table-cell as="th" scope="col" width="25px">Tindakan</mp-table-cell>
+                <mp-table-cell as="th" scope="col" width="25px">Pengguna</mp-table-cell>
+                <mp-table-cell as="th" scope="col" width="100px">Detail</mp-table-cell>
               </mp-table-row>
             </mp-table-head>
             <mp-table-body>
               <mp-table-row>
-                <mp-table-cell as="td" scope="row">15/02/2022, 12:44 PM</mp-table-cell>
-                <mp-table-cell as="td" scope="row">Update</mp-table-cell>
-                <mp-table-cell as="td" scope="row">Jaka Permadi</mp-table-cell>
-                <mp-table-cell as="td" scope="row">Transaksi tidak seusai dengan aturan persetujuan manapun, status transaksi sekarangdisetujui</mp-table-cell>
+                <mp-table-cell as="td" scope="row" vertical-align="top">15/02/2022, 12:44 PM</mp-table-cell>
+                <mp-table-cell as="td" scope="row" vertical-align="top">Update</mp-table-cell>
+                <mp-table-cell as="td" scope="row" vertical-align="top">Jaka Permadi</mp-table-cell>
+                <mp-table-cell as="td" scope="row" vertical-align="top"
+                  >Transaksi tidak seusai dengan aturan persetujuan manapun, status transaksi sekarangdisetujui</mp-table-cell
+                >
               </mp-table-row>
               <mp-table-row>
-                <mp-table-cell as="td" scope="row">14/02/2022, 12:44 PM</mp-table-cell>
-                <mp-table-cell as="td" scope="row">Create</mp-table-cell>
-                <mp-table-cell as="td" scope="row">Bregga Tedy</mp-table-cell>
-                <mp-table-cell as="td" scope="row">-</mp-table-cell>
+                <mp-table-cell as="td" scope="row" vertical-align="top">14/02/2022, 12:44 PM</mp-table-cell>
+                <mp-table-cell as="td" scope="row" vertical-align="top">Create</mp-table-cell>
+                <mp-table-cell as="td" scope="row" vertical-align="top">Bregga Tedy</mp-table-cell>
+                <mp-table-cell as="td" scope="row" vertical-align="top">-</mp-table-cell>
               </mp-table-row>
             </mp-table-body>
           </mp-table>

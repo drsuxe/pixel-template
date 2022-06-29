@@ -7,12 +7,18 @@
         <mp-modal-body>
           <mp-form-control margin-bottom="5" max-w="314px">
             <mp-flex justify="space-between">
-              <mp-text font-weight="semibold" margin-bottom="1"> Pilih template </mp-text>
-              <mp-text font-weight="semibold" is-link margin-bottom="1"> Atur PDF </mp-text>
+              <mp-text font-weight="semibold" margin-bottom="1"> Template </mp-text>
             </mp-flex>
-            <mp-autocomplete value="1" id="select-template" :data="['1', '2', '3']" />
+            <mp-autocomplete value="1" id="select-template" :data="['1', '2', '3']" :content-style="{ width: 64, zIndex: 'popover' }" />
           </mp-form-control>
-          <img src="../assets/sales_invoice_37750_template-1_preview 3.png" alt="" />
+
+          <mp-form-control margin-bottom="5" max-w="314px">
+            <mp-checkbox> Jadikan template bawaan </mp-checkbox>
+          </mp-form-control>
+
+          <mp-box border="1px" border-color="gray.100" rounded="sm">
+            <img src="../assets/sales_invoice_37750_template-1_preview 3.png" alt="" />
+          </mp-box>
         </mp-modal-body>
         <mp-modal-footer>
           <mp-button variant="ghost" mr="3" @click="$emit('handleClose')">Batalkan</mp-button>
@@ -43,6 +49,7 @@ import {
   MpAutocomplete,
   MpFormControl,
   MpFlex,
+  MpCheckbox,
 } from "@mekari/pixel";
 export default {
   name: "ModalPrintPdf",
@@ -60,6 +67,7 @@ export default {
     MpAutocomplete,
     MpFormControl,
     MpFlex,
+    MpCheckbox,
   },
   props: {
     isOpen: { type: [Boolean] },

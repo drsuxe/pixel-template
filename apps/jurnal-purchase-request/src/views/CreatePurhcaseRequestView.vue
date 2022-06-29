@@ -112,8 +112,12 @@
           <mp-grid grid-template-columns="repeat(3, 1fr)" gap="6">
             <mp-flex flex-direction="column">
               <mp-form-control margin-bottom="5">
-                <mp-text font-weight="semibold" display="inline" margin-bottom="1"> Transaction no.<mp-text as="span" color="red.500">*</mp-text> </mp-text>
-                <mp-icon name="settings" size="sm" margin-left="1" margin-bottom="1" />
+                <mp-flex>
+                  <mp-text font-weight="semibold" display="inline" margin-bottom="1"> Transaction no.<mp-text as="span" color="red.500">*</mp-text> </mp-text>
+                  <mp-box @click="isModalTransactionNumberSettingOpen = true" cursor="pointer">
+                    <mp-icon name="settings" size="sm" margin-left="1" margin-bottom="1" />
+                  </mp-box>
+                </mp-flex>
                 <mp-input placeholder="[Auto]" id="transaction-date" />
               </mp-form-control>
             </mp-flex>
@@ -134,93 +138,7 @@
           </mp-grid>
           <mp-divider border-style="dashed" />
 
-          <mp-box>
-            <mp-table :isHoverable="false">
-              <mp-table-head>
-                <mp-table-row>
-                  <mp-table-cell as="th" scope="col" width="25%">Product</mp-table-cell>
-                  <mp-table-cell as="th" scope="col" width="45%">Description</mp-table-cell>
-                  <mp-table-cell as="th" scope="col" width="5%">Quantity</mp-table-cell>
-                  <mp-table-cell as="th" scope="col" width="15%">Unit</mp-table-cell>
-                  <mp-table-cell as="th" scope="col"></mp-table-cell>
-                </mp-table-row>
-              </mp-table-head>
-              <mp-table-body>
-                <mp-table-row>
-                  <mp-table-cell as="td" scope="row" vertical-align="center">
-                    <mp-flex flex-direction="column">
-                      <mp-form-control>
-                        <mp-autocomplete
-                          isClearable
-                          :content-style="{ zIndex: 'popover', width: 'full' }"
-                          id="pilih-product"
-                          placeholder="Pilih produk"
-                          :data="[
-                            'Anton Tamimi',
-                            'Bregga Teddy',
-                            'Beny Berry',
-                            'Cristine Panjaitan',
-                            'Dani Damara',
-                            'Faniki ad ad adad a ada ad ad ada ad ad ',
-                          ]"
-                        />
-                      </mp-form-control>
-                    </mp-flex>
-                  </mp-table-cell>
-                  <mp-table-cell as="td" scope="row">
-                    <mp-flex flex-direction="column">
-                      <mp-form-control>
-                        <mp-textarea rows="1" height="36px" min-height="36px" resize="vertical" />
-                      </mp-form-control>
-                    </mp-flex>
-                  </mp-table-cell>
-                  <mp-table-cell as="td" scope="row">
-                    <mp-flex flex-direction="column">
-                      <mp-form-control>
-                        <mp-input type="number" />
-                      </mp-form-control>
-                    </mp-flex>
-                  </mp-table-cell>
-                  <mp-table-cell as="td" scope="row">
-                    <mp-flex flex-direction="column">
-                      <mp-form-control>
-                        <mp-autocomplete :style="{ minWidth: '109px', width: '100%' }" id="tRWBF" :data="['Unit', 'Pcs']" :contentStyle="{ width: '100%' }" />
-                      </mp-form-control>
-                    </mp-flex>
-                  </mp-table-cell>
-                  <mp-table-cell as="td" scope="row">
-                    <mp-button-icon name="minus-circular" />
-                  </mp-table-cell>
-                </mp-table-row>
-                <mp-table-row>
-                  <mp-table-cell as="td" scope="row" vertical-align="center" border-bottom-color="white">
-                    <mp-flex flex-direction="column">
-                      <mp-form-control>
-                        <mp-autocomplete
-                          isClearable
-                          :content-style="{ zIndex: 'popover', width: 'full' }"
-                          id="pilih-product-2"
-                          placeholder="Pilih produk"
-                          :data="[
-                            'Anton Tamimi',
-                            'Bregga Teddy',
-                            'Beny Berry',
-                            'Cristine Panjaitan',
-                            'Dani Damara',
-                            'Faniki ad ad adad a ada ad ad ada ad ad ',
-                          ]"
-                        />
-                      </mp-form-control>
-                    </mp-flex>
-                  </mp-table-cell>
-                  <mp-table-cell as="td" scope="row" border-bottom-color="white"> </mp-table-cell>
-                  <mp-table-cell as="td" scope="row" border-bottom-color="white"> </mp-table-cell>
-                  <mp-table-cell as="td" scope="row" border-bottom-color="white"> </mp-table-cell>
-                  <mp-table-cell as="td" scope="row" border-bottom-color="white"> </mp-table-cell>
-                </mp-table-row>
-              </mp-table-body>
-            </mp-table>
-          </mp-box>
+          <TableCreateProduct />
           <mp-divider border-style="dashed" mb="10" />
 
           <mp-grid grid-template-columns="repeat(3, 1fr)" gap="6">
@@ -266,7 +184,7 @@
                       </mp-box>
                     </mp-flex>
                   </mp-stack>
-                  <mp-upload max-width="full" />
+                  <mp-upload multiple accept=".jpg, .jpeg, .png" max-width="full" :change="handleUploadFile" />
                   <mp-text display="inline" font-size="sm" color="gray.600"> File can be document, image, or ZIP </mp-text>
                 </mp-form-control>
               </mp-flex>
@@ -289,6 +207,7 @@
             </mp-button-group>
           </mp-flex>
 
+          <ModalTransactionNumberSetting :is-open="isModalTransactionNumberSettingOpen" @handleClose="isModalTransactionNumberSettingOpen = false" />
           <ModalDeleteThisRequest :is-open="isModalDeleteThisRequestOpen" @handleClose="isModalDeleteThisRequestOpen = false" />
         </mp-box>
       </mp-box>
@@ -308,11 +227,6 @@ import {
   MpTextarea,
   MpInput,
   MpDivider,
-  MpTable,
-  MpTableHead,
-  MpTableBody,
-  MpTableRow,
-  MpTableCell,
   MpButtonIcon,
   MpButton,
   MpButtonGroup,
@@ -325,7 +239,9 @@ import {
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import SubHeader from "./SubHeader.vue";
+import TableCreateProduct from "./TableCreateProduct.vue";
 import ModalDeleteThisRequest from "./ModalDeleteThisRequest.vue";
+import ModalTransactionNumberSetting from "./ModalTransactionNumberSetting.vue";
 
 export default {
   name: "SalesIndex",
@@ -340,11 +256,6 @@ export default {
     MpTextarea,
     MpInput,
     MpDivider,
-    MpTable,
-    MpTableHead,
-    MpTableBody,
-    MpTableRow,
-    MpTableCell,
     MpButtonIcon,
     MpButton,
     MpButtonGroup,
@@ -353,15 +264,19 @@ export default {
     MpDatePicker,
     MpInputTag,
     MpStack,
-    ModalDeleteThisRequest,
     //
     Header,
     Sidebar,
     SubHeader,
+    TableCreateProduct,
+    ModalTransactionNumberSetting,
+    ModalDeleteThisRequest,
   },
   data() {
     return {
       isModalDeleteThisRequestOpen: false,
+      isModalTransactionNumberSettingOpen: false,
+      attachments: [],
     };
   },
   methods: {
@@ -373,6 +288,14 @@ export default {
       });
 
       this.$router.push("/detail");
+    },
+    handleUploadFile(e) {
+      console.log(e.target.files);
+      const files = e.target.files;
+
+      files.forEach((element) => console.log(element));
+
+      this.attachments = e.target.files;
     },
   },
 };

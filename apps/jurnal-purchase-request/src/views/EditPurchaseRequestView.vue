@@ -142,145 +142,8 @@
           </mp-grid>
           <mp-divider border-style="dashed" />
 
-          <mp-box>
-            <mp-table :isHoverable="false">
-              <mp-table-head>
-                <mp-table-row>
-                  <mp-table-cell as="th" scope="col" width="25%">Product</mp-table-cell>
-                  <mp-table-cell as="th" scope="col" width="45%">Description</mp-table-cell>
-                  <mp-table-cell as="th" scope="col" width="5%">Quantity</mp-table-cell>
-                  <mp-table-cell as="th" scope="col" width="15%">Unit</mp-table-cell>
-                  <mp-table-cell as="th" scope="col"></mp-table-cell>
-                </mp-table-row>
-              </mp-table-head>
-              <mp-table-body>
-                <mp-table-row>
-                  <mp-table-cell as="td" scope="row" vertical-align="center">
-                    <mp-flex flex-direction="column">
-                      <mp-form-control>
-                        <mp-autocomplete
-                          isClearable
-                          :content-style="{ zIndex: 'popover', width: 'full' }"
-                          id="pilih-product"
-                          placeholder="Pilih produk"
-                          value="Macbook Pro M1"
-                          :data="['Macbook Pro M1', 'Macbook Air M1', 'iPhone 13 Pro Max 256GB', 'iPhone 13 Pro 256GB', 'iPhone 13 256GB', 'iPad Pro Max 1TB']"
-                        />
-                      </mp-form-control>
-                    </mp-flex>
-                  </mp-table-cell>
-                  <mp-table-cell as="td" scope="row">
-                    <mp-flex flex-direction="column">
-                      <mp-form-control>
-                        <mp-textarea
-                          rows="1"
-                          height="36px"
-                          min-height="36px"
-                          resize="vertical"
-                          value="Cariin yang terbaru ya pak buat edit video soalnya laptop yang sekarang beraaaaat euy"
-                        />
-                      </mp-form-control>
-                    </mp-flex>
-                  </mp-table-cell>
-                  <mp-table-cell as="td" scope="row">
-                    <mp-flex flex-direction="column">
-                      <mp-form-control>
-                        <mp-input type="number" :value="1" />
-                      </mp-form-control>
-                    </mp-flex>
-                  </mp-table-cell>
-                  <mp-table-cell as="td" scope="row">
-                    <mp-flex flex-direction="column">
-                      <mp-form-control>
-                        <mp-autocomplete
-                          :style="{ minWidth: '109px', width: '100%' }"
-                          id="tRWBF"
-                          value="Unit"
-                          :data="['Unit', 'Pcs']"
-                          :contentStyle="{ width: '100%' }"
-                        />
-                      </mp-form-control>
-                    </mp-flex>
-                  </mp-table-cell>
-                  <mp-table-cell as="td" scope="row">
-                    <mp-button-icon name="minus-circular" />
-                  </mp-table-cell>
-                </mp-table-row>
-                <mp-table-row>
-                  <mp-table-cell as="td" scope="row" vertical-align="center">
-                    <mp-flex flex-direction="column">
-                      <mp-form-control>
-                        <mp-autocomplete
-                          isClearable
-                          :content-style="{ zIndex: 'popover', width: 'full' }"
-                          id="pilih-product"
-                          placeholder="Pilih produk"
-                          value="iPhone 13 Pro Max 256GB"
-                          :data="['Macbook Pro M1', 'Macbook Air M1', 'iPhone 13 Pro Max 256GB', 'iPhone 13 Pro 256GB', 'iPhone 13 256GB', 'iPad Pro Max 1TB']"
-                        />
-                      </mp-form-control>
-                    </mp-flex>
-                  </mp-table-cell>
-                  <mp-table-cell as="td" scope="row">
-                    <mp-flex flex-direction="column">
-                      <mp-form-control>
-                        <mp-textarea rows="1" height="36px" min-height="36px" resize="vertical" value="Cariin HP Canggih" />
-                      </mp-form-control>
-                    </mp-flex>
-                  </mp-table-cell>
-                  <mp-table-cell as="td" scope="row">
-                    <mp-flex flex-direction="column">
-                      <mp-form-control>
-                        <mp-input type="number" :value="1" />
-                      </mp-form-control>
-                    </mp-flex>
-                  </mp-table-cell>
-                  <mp-table-cell as="td" scope="row">
-                    <mp-flex flex-direction="column">
-                      <mp-form-control>
-                        <mp-autocomplete
-                          :style="{ minWidth: '109px', width: '100%' }"
-                          id="tRWBF"
-                          value="Unit"
-                          :data="['Unit', 'Pcs']"
-                          :contentStyle="{ width: '100%' }"
-                        />
-                      </mp-form-control>
-                    </mp-flex>
-                  </mp-table-cell>
-                  <mp-table-cell as="td" scope="row">
-                    <mp-button-icon name="minus-circular" />
-                  </mp-table-cell>
-                </mp-table-row>
-                <mp-table-row>
-                  <mp-table-cell as="td" scope="row" vertical-align="center" border-bottom-color="white">
-                    <mp-flex flex-direction="column">
-                      <mp-form-control>
-                        <mp-autocomplete
-                          isClearable
-                          :content-style="{ zIndex: 'popover', width: 'full' }"
-                          id="pilih-product-2"
-                          placeholder="Pilih produk"
-                          :data="[
-                            'Anton Tamimi',
-                            'Bregga Teddy',
-                            'Beny Berry',
-                            'Cristine Panjaitan',
-                            'Dani Damara',
-                            'Faniki ad ad adad a ada ad ad ada ad ad ',
-                          ]"
-                        />
-                      </mp-form-control>
-                    </mp-flex>
-                  </mp-table-cell>
-                  <mp-table-cell as="td" scope="row" border-bottom-color="white"> </mp-table-cell>
-                  <mp-table-cell as="td" scope="row" border-bottom-color="white"> </mp-table-cell>
-                  <mp-table-cell as="td" scope="row" border-bottom-color="white"> </mp-table-cell>
-                  <mp-table-cell as="td" scope="row" border-bottom-color="white"> </mp-table-cell>
-                </mp-table-row>
-              </mp-table-body>
-            </mp-table>
-          </mp-box>
+          <TableEditProduct />
+
           <mp-divider border-style="dashed" mb="10" />
 
           <mp-grid grid-template-columns="repeat(3, 1fr)" gap="6">
@@ -370,11 +233,6 @@ import {
   MpTextarea,
   MpInput,
   MpDivider,
-  MpTable,
-  MpTableHead,
-  MpTableBody,
-  MpTableRow,
-  MpTableCell,
   MpButtonIcon,
   MpButton,
   MpButtonGroup,
@@ -388,6 +246,7 @@ import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import SubHeader from "./SubHeader.vue";
 import ModalDeleteThisRequest from "./ModalDeleteThisRequest.vue";
+import TableEditProduct from "./TableEditProduct.vue";
 
 export default {
   name: "EditPurchaseRequestView",
@@ -402,11 +261,6 @@ export default {
     MpTextarea,
     MpInput,
     MpDivider,
-    MpTable,
-    MpTableHead,
-    MpTableBody,
-    MpTableRow,
-    MpTableCell,
     MpButtonIcon,
     MpButton,
     MpButtonGroup,
@@ -415,11 +269,12 @@ export default {
     MpDatePicker,
     MpInputTag,
     MpStack,
-    ModalDeleteThisRequest,
     //
     Header,
     Sidebar,
     SubHeader,
+    TableEditProduct,
+    ModalDeleteThisRequest,
   },
   data() {
     return {
