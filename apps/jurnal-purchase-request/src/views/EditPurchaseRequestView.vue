@@ -1,5 +1,5 @@
 <template>
-  <mp-box>
+  <mp-box @dragover="handleDragover" @dragleave="handleDragleave" @drop="handleDrop" position="relative">
     <Header />
     <mp-flex as="main" max-height="calc(100vh - 60px)">
       <Sidebar />
@@ -143,7 +143,6 @@
           <mp-divider border-style="dashed" />
 
           <TableEditProduct />
-
           <mp-divider border-style="dashed" mb="10" />
 
           <mp-grid grid-template-columns="repeat(3, 1fr)" gap="6">
@@ -160,9 +159,15 @@
                   <mp-textarea placeholder="Memo" resize="vertical" />
                 </mp-form-control>
               </mp-flex>
+
               <mp-flex flex-direction="column">
                 <mp-form-control margin-bottom="5">
-                  <mp-text font-weight="semibold" display="inline" margin-bottom="1"> Attachment </mp-text>
+                  <mp-flex align="center" gap="1" mb="1">
+                    <mp-text font-weight="semibold" display="inline"> Attachment </mp-text>
+                    <mp-tooltip label="File can be excel, Word, PDF, JPG, PNG, or ZIP (10 MB in total)." id="attachment-info" width="209px">
+                      <mp-icon name="info" size="sm" />
+                    </mp-tooltip>
+                  </mp-flex>
                   <mp-stack spacing="2" mb="2">
                     <mp-flex border="1px" border-color="gray.100" p="4" rounded="sm">
                       <mp-box flex="none">
@@ -190,8 +195,28 @@
                         <mp-button-icon name="minus-circular" />
                       </mp-box>
                     </mp-flex>
+                    <mp-flex v-for="(attachment, index) in attachments" :key="index" border="1px" border-color="gray.100" p="4" rounded="sm">
+                      <mp-box flex="none">
+                        <mp-icon :name="attachment.icon" />
+                      </mp-box>
+                      <mp-box flex-grow="1" pl="3">
+                        <mp-text is-truncated is-link line-height="md"> {{ attachment.name }} </mp-text>
+                        <mp-text color="gray.400" line-height="md"> {{ formatFileSize(attachment.size) }} </mp-text>
+                      </mp-box>
+                      <mp-box flex="none">
+                        <mp-tooltip label="Hapus" :id="`delete-product-${index}`">
+                          <mp-button-icon @click="attachments.splice(index, 1)" name="minus-circular" />
+                        </mp-tooltip>
+                      </mp-box>
+                    </mp-flex>
                   </mp-stack>
-                  <mp-upload max-width="full" />
+                  <mp-upload
+                    ref="uploadAttachment"
+                    multiple
+                    accept=".jpg, .jpeg, .png, .gif, .pdf, .xls, .xlsx, .doc, .docx, .zip"
+                    max-width="full"
+                    :change="handleChange"
+                  />
                   <mp-text display="inline" font-size="sm" color="gray.600"> File can be document, image, or ZIP </mp-text>
                 </mp-form-control>
               </mp-flex>
@@ -218,6 +243,18 @@
         </mp-box>
       </mp-box>
     </mp-flex>
+
+    <mp-box v-if="showOverlay" position="absolute" top="0px" bottom="0px" right="0px" left="0px" bg="overlay" z-index="999">
+      <mp-flex align="center" justify="center" height="100vh">
+        <mp-flex direction="column" justify="center" bg="overlay" width="448px" p="6">
+          <mp-box>
+            <img src="../assets/Drag & drop img.svg" alt="" />
+          </mp-box>
+          <mp-text color="white">Drag & drop file here</mp-text>
+          <mp-text color="white">File can be excel, Word, PDF, JPG, PNG, or ZIP (10 MB in total).</mp-text>
+        </mp-flex>
+      </mp-flex>
+    </mp-box>
   </mp-box>
 </template>
 
@@ -241,6 +278,7 @@ import {
   MpDatePicker,
   MpInputTag,
   MpStack,
+  MpTooltip,
 } from "@mekari/pixel";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
@@ -269,6 +307,7 @@ export default {
     MpDatePicker,
     MpInputTag,
     MpStack,
+    MpTooltip,
     //
     Header,
     Sidebar,
@@ -283,6 +322,8 @@ export default {
         transactionDate: "2022-05-31T17:00:00.000Z",
         dueDate: "2022-05-31T17:00:00.000Z",
       },
+      showOverlay: false,
+      attachments: [],
     };
   },
   methods: {
@@ -297,6 +338,64 @@ export default {
     },
     handleCancel() {
       this.$router.push("/detail");
+    },
+    handleChange(e) {
+      this.handleUploadFile(e.target.files);
+    },
+    formatFileSize(bytes, decimalPoint) {
+      if (bytes == 0) return "0 Bytes";
+      var k = 1000,
+        dm = decimalPoint || 2,
+        sizes = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"],
+        i = Math.floor(Math.log(bytes) / Math.log(k));
+      return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i];
+    },
+    handleDragover(event) {
+      console.log("dragover");
+      event.preventDefault();
+
+      this.showOverlay = true;
+    },
+    handleDragleave(event) {
+      console.log("dragleave", event);
+      // this.showOverlay = false;
+    },
+    handleDrop(event) {
+      event.preventDefault();
+      console.log("drop", event.dataTransfer.files);
+      this.handleUploadFile(event.dataTransfer.files);
+      this.showOverlay = false;
+    },
+    handleUploadFile(files) {
+      console.log(files);
+      const _files = [];
+      const getIcon = ({ type, extension }) => {
+        if (extension === "pdf") return "pdf-document";
+        if (type === "image") return "image-document";
+        if (["doc", "docx"].includes(extension)) return "word-document";
+        if (["xls", "xlsx"].includes(extension)) return "excel-document";
+        if (extension === "zip") return "zip";
+        return "blank";
+      };
+      const getKebabCase = (string) =>
+        string
+          .replace(/([a-z])([A-Z])/g, "$1-$2")
+          .replace(/[\s_]+/g, "-")
+          .toLowerCase();
+
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const extension = file.type.split("/");
+        _files.push({
+          name: getKebabCase(file.name),
+          size: file.size,
+          type: extension[1],
+          icon: getIcon({ type: extension[0], extension: extension[1] }),
+        });
+      }
+
+      this.attachments = [...this.attachments, ..._files];
+      this.$refs.uploadAttachment.handleClear();
     },
   },
 };

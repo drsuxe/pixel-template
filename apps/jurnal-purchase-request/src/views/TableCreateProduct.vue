@@ -53,11 +53,13 @@
             </mp-flex>
           </mp-table-cell>
           <mp-table-cell as="td" scope="row">
-            <mp-button-icon @click="products.splice(index, 1)" name="minus-circular" />
+            <mp-tooltip label="Hapus" :id="`delete-product-${index}`">
+              <mp-button-icon @click="products.splice(index, 1)" name="minus-circular" />
+            </mp-tooltip>
           </mp-table-cell>
         </mp-table-row>
         <mp-table-row>
-          <mp-table-cell as="td" scope="row" vertical-align="center" border-bottom-color="white">
+          <mp-table-cell as="td" scope="row" vertical-align="center" :style="{ borderBottomColor: 'white' }">
             <mp-flex flex-direction="column">
               <mp-form-control>
                 <mp-autocomplete
@@ -72,10 +74,10 @@
               </mp-form-control>
             </mp-flex>
           </mp-table-cell>
-          <mp-table-cell as="td" scope="row" border-bottom-color="transparent"> </mp-table-cell>
-          <mp-table-cell as="td" scope="row" border-bottom-color="transparent"> </mp-table-cell>
-          <mp-table-cell as="td" scope="row" border-bottom-color="transparent"> </mp-table-cell>
-          <mp-table-cell as="td" scope="row" border-bottom-color="transparent"> </mp-table-cell>
+          <mp-table-cell as="td" scope="row" :style="{ borderBottomColor: 'white' }"> </mp-table-cell>
+          <mp-table-cell as="td" scope="row" :style="{ borderBottomColor: 'white' }"> </mp-table-cell>
+          <mp-table-cell as="td" scope="row" :style="{ borderBottomColor: 'white' }"> </mp-table-cell>
+          <mp-table-cell as="td" scope="row" :style="{ borderBottomColor: 'white' }"> </mp-table-cell>
         </mp-table-row>
       </mp-table-body>
     </mp-table>
@@ -96,6 +98,7 @@ import {
   MpTextarea,
   MpFlex,
   MpButtonIcon,
+  MpTooltip,
 } from "@mekari/pixel";
 export default {
   components: {
@@ -111,6 +114,7 @@ export default {
     MpTextarea,
     MpFlex,
     MpButtonIcon,
+    MpTooltip,
   },
   data() {
     return {

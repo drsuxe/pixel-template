@@ -14,8 +14,12 @@
           </mp-box>
           <mp-flex align-items="center">
             <mp-button-group>
-              <mp-button variant="outline" left-icon="chevrons-left"></mp-button>
-              <mp-button variant="outline" right-icon="chevrons-right"></mp-button>
+              <mp-tooltip id="sebelumnya" label="Sebelumnya">
+                <mp-button variant="outline" left-icon="chevrons-left" mr="2"></mp-button>
+              </mp-tooltip>
+              <mp-tooltip id="selanjutnya" label="Selanjutnya">
+                <mp-button variant="outline" right-icon="chevrons-right"></mp-button>
+              </mp-tooltip>
             </mp-button-group>
           </mp-flex>
         </mp-flex>
@@ -151,17 +155,14 @@
                   </mp-table-row>
                 </mp-table-head>
                 <mp-table-body>
-                  <mp-table-row v-for="product in products" :key="product.id">
+                  <mp-table-row v-for="(product, index) in products" :key="product.id">
                     <mp-table-cell as="td" scope="row" vertical-align="top">
                       <mp-text is-link> {{ product.product }} </mp-text>
                     </mp-table-cell>
                     <mp-table-cell as="td" scope="row" vertical-align="top">
-                      <mp-flex>
-                        <mp-text isTruncated>
-                          {{ product.description }}
-                        </mp-text>
-                        <mp-text isLink> Lihat</mp-text>
-                      </mp-flex>
+                      <AwesomeTextTruncate :id="`detail-${index}`">
+                        {{ product.description }}
+                      </AwesomeTextTruncate>
                     </mp-table-cell>
                     <mp-table-cell as="td" scope="row" vertical-align="top">
                       <mp-text> {{ product.quantity }} </mp-text>
@@ -208,7 +209,9 @@
                         <mp-text color="gray.400" line-height="md"> 1.3 MB </mp-text>
                       </mp-box>
                       <mp-box flex="none">
-                        <mp-button-icon name="download" />
+                        <mp-tooltip label="Download" id="download-01">
+                          <mp-button-icon name="download" />
+                        </mp-tooltip>
                       </mp-box>
                     </mp-flex>
                     <mp-flex>
@@ -220,7 +223,9 @@
                         <mp-text color="gray.400" line-height="md"> 1.3 MB </mp-text>
                       </mp-box>
                       <mp-box flex="none">
-                        <mp-button-icon name="download" />
+                        <mp-tooltip label="Download" id="download-02">
+                          <mp-button-icon name="download" />
+                        </mp-tooltip>
                       </mp-box>
                     </mp-flex>
                   </mp-stack>
@@ -267,7 +272,7 @@
           </mp-box>
         </mp-box>
 
-        <mp-flex as="bottom-action" justify="space-between" py="5" px="6" background-color="white" border-top="1px" border-top-color="gray.100" pb="56px">
+        <mp-flex id="bottom-action" justify="space-between" py="5" px="6" background-color="white" border-top="1px" border-top-color="gray.100" pb="56px">
           <mp-box>
             <mp-button variant="ghost" @click="isModalDeleteThisRequestOpen = true"> Delete </mp-button>
           </mp-box>
@@ -335,6 +340,7 @@ import {
   MpPopoverContent,
   MpPopoverList,
   MpPopoverListItem,
+  MpTooltip,
 } from "@mekari/pixel";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
@@ -342,6 +348,7 @@ import ModalDeleteThisRequest from "./ModalDeleteThisRequest.vue";
 import ModalRejectThisRequest from "./ModalRejectThisRequest.vue";
 import ModalPrintPdf from "./ModalPrintPdf.vue";
 import ModalAudit from "./ModalAudit.vue";
+import { AwesomeTextTruncate } from "../components/AwesomeTextTruncate";
 
 export default {
   name: "SalesIndex",
@@ -370,6 +377,7 @@ export default {
     MpPopoverContent,
     MpPopoverList,
     MpPopoverListItem,
+    MpTooltip,
     //
     Header,
     Sidebar,
@@ -377,6 +385,7 @@ export default {
     ModalDeleteThisRequest,
     ModalRejectThisRequest,
     ModalPrintPdf,
+    AwesomeTextTruncate,
   },
   data() {
     return {
@@ -404,24 +413,21 @@ export default {
         {
           id: 3,
           product: "Macbook Pro M1 Pro 256Gb",
-          description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed purus risus, finibus in elementum quis, euismod at lacus. Vivamus nec accumsan est. Donec magna eros, volutpat id dui vitae, sagittis tempus ex. Vestibulum volutpat commodo sollicitudin. Morbi vitae nibh ut dui molestie volutpat vitae eu ante. Nulla eget dictum dolor. Pellentesque consequat velit tellus, sit amet fringilla augue accumsan eu. Suspendisse potenti. Integer laoreet quam ac nisl eleifend rhoncus. Maecenas in interdum eros. Cras iaculis consequat laoreet. In odio ligula, ultrices eget euismod nec, aliquet at sapien. Ut molestie mauris vulputate, dignissim lacus non, tincidunt neque. Phasellus porttitor accumsan lectus a venenatis.",
+          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
           quantity: 1,
           unit: "Unit",
         },
         {
           id: 4,
           product: "Macbook Pro M1 Pro 256Gb",
-          description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed purus risus, finibus in elementum quis, euismod at lacus. Vivamus nec accumsan est. Donec magna eros, volutpat id dui vitae, sagittis tempus ex. Vestibulum volutpat commodo sollicitudin. Morbi vitae nibh ut dui molestie volutpat vitae eu ante. Nulla eget dictum dolor. Pellentesque consequat velit tellus, sit amet fringilla augue accumsan eu. Suspendisse potenti. Integer laoreet quam ac nisl eleifend rhoncus. Maecenas in interdum eros. Cras iaculis consequat laoreet. In odio ligula, ultrices eget euismod nec, aliquet at sapien. Ut molestie mauris vulputate, dignissim lacus non, tincidunt neque. Phasellus porttitor accumsan lectus a venenatis.",
+          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
           quantity: 1,
           unit: "Unit",
         },
         {
           id: 5,
           product: "Macbook Pro M1",
-          description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed purus risus, finibus in elementum quis, euismod at lacus. Vivamus nec accumsan est. Donec magna eros, volutpat id dui vitae, sagittis tempus ex. Vestibulum volutpat commodo sollicitudin. Morbi vitae nibh ut dui molestie volutpat vitae eu ante. Nulla eget dictum dolor. Pellentesque consequat velit tellus, sit amet fringilla augue accumsan eu. Suspendisse potenti. Integer laoreet quam ac nisl eleifend rhoncus. Maecenas in interdum eros. Cras iaculis consequat laoreet. In odio ligula, ultrices eget euismod nec, aliquet at sapien. Ut molestie mauris vulputate, dignissim lacus non, tincidunt neque. Phasellus porttitor accumsan lectus a venenatis.",
+          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
           quantity: 1,
           unit: "Unit",
         },

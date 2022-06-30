@@ -12,7 +12,7 @@
       </mp-table-head>
       <mp-table-body>
         <mp-table-row v-for="(value, index) in products" :key="index">
-          <mp-table-cell as="td" scope="row" vertical-align="center">
+          <mp-table-cell as="td" scope="row" vertical-align="top">
             <mp-flex flex-direction="column">
               <mp-form-control>
                 <mp-autocomplete
@@ -26,21 +26,21 @@
               </mp-form-control>
             </mp-flex>
           </mp-table-cell>
-          <mp-table-cell as="td" scope="row">
+          <mp-table-cell as="td" scope="row" vertical-align="top">
             <mp-flex flex-direction="column">
               <mp-form-control>
-                <mp-textarea rows="1" height="36px" min-height="36px" resize="vertical" />
+                <mp-textarea rows="1" height="36px" min-height="36px" max-height="32" resize="vertical" transition-property="box-shadow, border-color" />
               </mp-form-control>
             </mp-flex>
           </mp-table-cell>
-          <mp-table-cell as="td" scope="row">
+          <mp-table-cell as="td" scope="row" vertical-align="top">
             <mp-flex flex-direction="column">
               <mp-form-control>
                 <mp-input type="number" />
               </mp-form-control>
             </mp-flex>
           </mp-table-cell>
-          <mp-table-cell as="td" scope="row">
+          <mp-table-cell as="td" scope="row" vertical-align="top">
             <mp-flex flex-direction="column">
               <mp-form-control>
                 <mp-autocomplete
@@ -52,8 +52,10 @@
               </mp-form-control>
             </mp-flex>
           </mp-table-cell>
-          <mp-table-cell as="td" scope="row">
-            <mp-button-icon @click="products.splice(index, 1)" name="minus-circular" />
+          <mp-table-cell as="td" scope="row" vertical-align="top">
+            <mp-tooltip label="Hapus" :id="`delete-product-${index}`">
+              <mp-button-icon @click="products.splice(index, 1)" name="minus-circular" />
+            </mp-tooltip>
           </mp-table-cell>
         </mp-table-row>
         <mp-table-row>
@@ -96,6 +98,7 @@ import {
   MpTextarea,
   MpFlex,
   MpButtonIcon,
+  MpTooltip,
 } from "@mekari/pixel";
 export default {
   components: {
@@ -111,6 +114,7 @@ export default {
     MpTextarea,
     MpFlex,
     MpButtonIcon,
+    MpTooltip,
   },
   data() {
     return {
