@@ -178,8 +178,10 @@
                         <mp-text color="gray.400" line-height="md"> 1.3 MB </mp-text>
                       </mp-box>
                       <mp-box flex="none">
-                        <mp-button-icon name="download" />
-                        <mp-button-icon name="minus-circular" />
+                        <mp-flex gap="2">
+                          <mp-button-icon name="download" />
+                          <mp-button-icon name="minus-circular" />
+                        </mp-flex>
                       </mp-box>
                     </mp-flex>
                     <mp-flex border="1px" border-color="gray.100" p="4" rounded="sm">
@@ -191,8 +193,10 @@
                         <mp-text color="gray.400" line-height="md"> 1.3 MB </mp-text>
                       </mp-box>
                       <mp-box flex="none">
-                        <mp-button-icon name="download" />
-                        <mp-button-icon name="minus-circular" />
+                        <mp-flex gap="2">
+                          <mp-button-icon name="download" />
+                          <mp-button-icon name="minus-circular" />
+                        </mp-flex>
                       </mp-box>
                     </mp-flex>
                     <mp-flex v-for="(attachment, index) in attachments" :key="index" border="1px" border-color="gray.100" p="4" rounded="sm">
@@ -246,12 +250,12 @@
 
     <mp-box v-if="showOverlay" position="absolute" top="0px" bottom="0px" right="0px" left="0px" bg="overlay" z-index="999">
       <mp-flex align="center" justify="center" height="100vh">
-        <mp-flex direction="column" justify="center" bg="overlay" width="448px" p="6">
-          <mp-box>
-            <img src="../assets/Drag & drop img.svg" alt="" />
-          </mp-box>
-          <mp-text color="white">Drag & drop file here</mp-text>
-          <mp-text color="white">File can be excel, Word, PDF, JPG, PNG, or ZIP (10 MB in total).</mp-text>
+        <mp-flex direction="column" justify="center" bg="overlay" width="448px" py="10" px="11" rounded="md">
+          <mp-flex justify-content="center" align-items="center" mb="8">
+            <img width="165px" height="165px" src="../assets/Drag & drop img.svg" alt="" />
+          </mp-flex>
+          <mp-text text-align="center" color="gray.50">Drag & drop file here</mp-text>
+          <mp-text text-align="center" color="gray.400" font-size="sm">File can be excel, Word, PDF, JPG, PNG, or ZIP (10 MB in total).</mp-text>
         </mp-flex>
       </mp-flex>
     </mp-box>

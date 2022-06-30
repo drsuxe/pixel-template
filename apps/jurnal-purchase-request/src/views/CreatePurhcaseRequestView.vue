@@ -203,7 +203,7 @@
 
           <mp-flex justify="flex-end">
             <mp-button-group spacing="2">
-              <mp-button variant="outline" @click="isModalCancelRequestOpen = true"> Cancel </mp-button>
+              <mp-button variant="ghost" @click="isModalCancelRequestOpen = true"> Cancel </mp-button>
               <mp-button variant="solid" @click="handleCreateRequest"> Create request </mp-button>
             </mp-button-group>
           </mp-flex>
@@ -216,12 +216,12 @@
 
     <mp-box v-if="showOverlay" position="absolute" top="0px" bottom="0px" right="0px" left="0px" bg="overlay" z-index="999">
       <mp-flex align="center" justify="center" height="100vh">
-        <mp-flex direction="column" justify="center" bg="overlay" width="448px" p="6">
-          <mp-box>
-            <img src="../assets/Drag & drop img.svg" alt="" />
-          </mp-box>
-          <mp-text color="white">Drag & drop file here</mp-text>
-          <mp-text color="white">File can be excel, Word, PDF, JPG, PNG, or ZIP (10 MB in total).</mp-text>
+        <mp-flex direction="column" justify="center" bg="overlay" width="448px" py="10" px="11" rounded="md">
+          <mp-flex justify-content="center" align-items="center" mb="8">
+            <img width="165px" height="165px" src="../assets/Drag & drop img.svg" alt="" />
+          </mp-flex>
+          <mp-text text-align="center" color="gray.50">Drag & drop file here</mp-text>
+          <mp-text text-align="center" color="gray.400" font-size="sm">File can be excel, Word, PDF, JPG, PNG, or ZIP (10 MB in total).</mp-text>
         </mp-flex>
       </mp-flex>
     </mp-box>
@@ -352,12 +352,17 @@ export default {
       for (let i = 0; i < files.length; i++) {
         const file = files[i];
         const extension = file.type.split("/");
-        _files.push({
-          name: getKebabCase(file.name),
-          size: file.size,
-          type: extension[1],
-          icon: getIcon({ type: extension[0], extension: extension[1] }),
-        });
+
+        if (["jpg", "jpeg", "png", "gif", "pdf", "xls", "xlsx", "doc", "docx", "zip"].includes(extension[1])) {
+          _files.push({
+            name: getKebabCase(file.name),
+            size: file.size,
+            type: extension[1],
+            icon: getIcon({ type: extension[0], extension: extension[1] }),
+          });
+        } else {
+          console.log(`Ektensi ${extension[1]} gag boleh masuk.`);
+        }
       }
 
       this.attachments = [...this.attachments, ..._files];

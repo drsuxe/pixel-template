@@ -427,7 +427,7 @@ export default {
         {
           id: 5,
           product: "Macbook Pro M1",
-          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
+          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit dad jhihi hih jijijij kokok jhihuu adada  adada",
           quantity: 1,
           unit: "Unit",
         },
