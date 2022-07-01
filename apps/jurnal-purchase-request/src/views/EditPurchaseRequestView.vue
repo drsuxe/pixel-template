@@ -178,7 +178,9 @@
                         <mp-icon name="pdf-document" />
                       </mp-box>
                       <mp-box flex="1 1 0%" pl="3">
-                        <mp-text is-truncated is-link line-height="md"> the_attachment-is-to...ike_this.pdf </mp-text>
+                        <mp-text is-truncated is-link line-height="md" @click.native="handleAttachmentPreview('file-name', 'pdf')">
+                          the_attachment-is-to...ike_this.pdf
+                        </mp-text>
                         <mp-text color="gray.400" line-height="md"> 1.3 MB </mp-text>
                       </mp-box>
                       <mp-box flex="none">
@@ -198,7 +200,9 @@
                         <mp-icon name="word-document" />
                       </mp-box>
                       <mp-box flex="1 1 0%" pl="3">
-                        <mp-text is-truncated is-link line-height="md"> the_attachment-is-to...ike_this.pdf </mp-text>
+                        <mp-text is-truncated is-link line-height="md" @click.native="handleAttachmentPreview('file-name', 'pdf')">
+                          the_attachment-is-to...ike_this.pdf
+                        </mp-text>
                         <mp-text color="gray.400" line-height="md"> 1.3 MB </mp-text>
                       </mp-box>
                       <mp-box flex="none">
@@ -218,7 +222,9 @@
                         <mp-icon :name="attachment.icon" />
                       </mp-box>
                       <mp-box flex-grow="1" pl="3">
-                        <mp-text is-truncated is-link line-height="md"> {{ attachment.name }} </mp-text>
+                        <mp-text is-truncated is-link line-height="md" @click.native="handleAttachmentPreview(attachment.name, attachment.extension)">
+                          {{ attachment.name }}
+                        </mp-text>
                         <mp-text color="gray.400" line-height="md"> {{ formatFileSize(attachment.size) }} </mp-text>
                       </mp-box>
                       <mp-box flex="none">
@@ -259,6 +265,11 @@
 
           <ModalTransactionNumberSetting :is-open="isModalTransactionNumberSettingOpen" @handleClose="isModalTransactionNumberSettingOpen = false" />
           <ModalDeleteThisRequest :is-open="isModalDeleteThisRequestOpen" @handleClose="isModalDeleteThisRequestOpen = false" />
+          <ModalAttachmentPreview
+            :file-name="selectedAttachment.fileName"
+            :is-open="isModalAttachmentPreviewOpen"
+            @handleClose="isModalAttachmentPreviewOpen = false"
+          />
         </mp-box>
       </mp-box>
     </mp-flex>
@@ -316,6 +327,7 @@ import SubHeader from "./SubHeader.vue";
 import ModalDeleteThisRequest from "./ModalDeleteThisRequest.vue";
 import TableEditProduct from "./TableEditProduct.vue";
 import ModalTransactionNumberSetting from "./ModalTransactionNumberSetting.vue";
+import ModalAttachmentPreview from "./ModalAttachmentPreview.vue";
 
 export default {
   name: "EditPurchaseRequestView",
@@ -346,11 +358,17 @@ export default {
     TableEditProduct,
     ModalDeleteThisRequest,
     ModalTransactionNumberSetting,
+    ModalAttachmentPreview,
   },
   data() {
     return {
       isModalDeleteThisRequestOpen: false,
       isModalTransactionNumberSettingOpen: false,
+      isModalAttachmentPreviewOpen: false,
+      selectedAttachment: {
+        fileName: "",
+        extension: "",
+      },
       form: {
         transactionDate: "2022-05-31T17:00:00.000Z",
         dueDate: "2022-05-31T17:00:00.000Z",
@@ -434,6 +452,14 @@ export default {
 
       this.attachments = [...this.attachments, ..._files];
       this.$refs.uploadAttachment.handleClear();
+    },
+    handleAttachmentPreview(fileName, extension) {
+      this.isModalAttachmentPreviewOpen = true;
+
+      this.selectedAttachment = {
+        fileName: fileName,
+        extension: extension,
+      };
     },
   },
 };
