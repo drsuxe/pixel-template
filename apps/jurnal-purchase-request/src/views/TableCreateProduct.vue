@@ -52,10 +52,12 @@
               </mp-form-control>
             </mp-flex>
           </mp-table-cell>
-          <mp-table-cell as="td" scope="row">
-            <mp-tooltip label="Hapus" :id="`delete-product-${index}`">
-              <mp-button-icon @click="products.splice(index, 1)" name="minus-circular" />
-            </mp-tooltip>
+          <mp-table-cell as="td" scope="row" bg="red.50" padding-right="0">
+            <mp-flex justify="end">
+              <mp-tooltip label="Hapus" :id="`delete-product-${index}`">
+                <mp-button-icon @click="products.splice(index, 1)" name="minus-circular" />
+              </mp-tooltip>
+            </mp-flex>
           </mp-table-cell>
         </mp-table-row>
         <mp-table-row>

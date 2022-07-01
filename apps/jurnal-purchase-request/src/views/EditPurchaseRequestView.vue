@@ -1,5 +1,5 @@
 <template>
-  <mp-box @dragover="handleDragover" @dragleave="handleDragleave" @drop="handleDrop" position="relative">
+  <mp-box @dragover="handleDragover" position="relative">
     <Header />
     <mp-flex as="main" max-height="calc(100vh - 60px)">
       <Sidebar />
@@ -120,8 +120,12 @@
           <mp-grid grid-template-columns="repeat(3, 1fr)" gap="6">
             <mp-flex flex-direction="column">
               <mp-form-control margin-bottom="5">
-                <mp-text font-weight="semibold" display="inline" margin-bottom="1"> Transaction no.<mp-text as="span" color="red.500">*</mp-text> </mp-text>
-                <mp-icon name="settings" size="sm" margin-left="1" margin-bottom="1" />
+                <mp-flex>
+                  <mp-text font-weight="semibold" display="inline" margin-bottom="1"> Transaction no.<mp-text as="span" color="red.500">*</mp-text> </mp-text>
+                  <mp-box @click="isModalTransactionNumberSettingOpen = true" cursor="pointer">
+                    <mp-icon name="settings" size="sm" margin-left="1" margin-bottom="1" />
+                  </mp-box>
+                </mp-flex>
                 <mp-input placeholder="[Auto]" id="transaction-date" />
               </mp-form-control>
             </mp-flex>
@@ -179,8 +183,13 @@
                       </mp-box>
                       <mp-box flex="none">
                         <mp-flex gap="2">
-                          <mp-button-icon name="download" />
-                          <mp-button-icon name="minus-circular" />
+                          <mp-tooltip label="Download" id="download-0">
+                            <mp-button-icon name="download" />
+                          </mp-tooltip>
+
+                          <mp-tooltip label="Hapus" id="remove-0">
+                            <mp-button-icon name="minus-circular" />
+                          </mp-tooltip>
                         </mp-flex>
                       </mp-box>
                     </mp-flex>
@@ -194,8 +203,13 @@
                       </mp-box>
                       <mp-box flex="none">
                         <mp-flex gap="2">
-                          <mp-button-icon name="download" />
-                          <mp-button-icon name="minus-circular" />
+                          <mp-tooltip label="Download" id="download-1">
+                            <mp-button-icon name="download" />
+                          </mp-tooltip>
+
+                          <mp-tooltip label="Hapus" id="remove-1">
+                            <mp-button-icon name="minus-circular" />
+                          </mp-tooltip>
                         </mp-flex>
                       </mp-box>
                     </mp-flex>
@@ -243,12 +257,24 @@
             </mp-button-group>
           </mp-flex>
 
+          <ModalTransactionNumberSetting :is-open="isModalTransactionNumberSettingOpen" @handleClose="isModalTransactionNumberSettingOpen = false" />
           <ModalDeleteThisRequest :is-open="isModalDeleteThisRequestOpen" @handleClose="isModalDeleteThisRequestOpen = false" />
         </mp-box>
       </mp-box>
     </mp-flex>
 
-    <mp-box v-if="showOverlay" position="absolute" top="0px" bottom="0px" right="0px" left="0px" bg="overlay" z-index="999">
+    <mp-box
+      v-if="showOverlay"
+      @dragleave="handleDragleave"
+      @drop="handleDrop"
+      position="absolute"
+      top="0px"
+      bottom="0px"
+      right="0px"
+      left="0px"
+      bg="overlay"
+      z-index="999"
+    >
       <mp-flex align="center" justify="center" height="100vh">
         <mp-flex direction="column" justify="center" bg="overlay" width="448px" py="10" px="11" rounded="md">
           <mp-flex justify-content="center" align-items="center" mb="8">
@@ -289,6 +315,7 @@ import Sidebar from "../components/Sidebar";
 import SubHeader from "./SubHeader.vue";
 import ModalDeleteThisRequest from "./ModalDeleteThisRequest.vue";
 import TableEditProduct from "./TableEditProduct.vue";
+import ModalTransactionNumberSetting from "./ModalTransactionNumberSetting.vue";
 
 export default {
   name: "EditPurchaseRequestView",
@@ -318,10 +345,12 @@ export default {
     SubHeader,
     TableEditProduct,
     ModalDeleteThisRequest,
+    ModalTransactionNumberSetting,
   },
   data() {
     return {
       isModalDeleteThisRequestOpen: false,
+      isModalTransactionNumberSettingOpen: false,
       form: {
         transactionDate: "2022-05-31T17:00:00.000Z",
         dueDate: "2022-05-31T17:00:00.000Z",
@@ -358,11 +387,16 @@ export default {
       console.log("dragover");
       event.preventDefault();
 
-      this.showOverlay = true;
+      if (!this.showOverlay) {
+        this.showOverlay = true;
+      }
     },
     handleDragleave(event) {
       console.log("dragleave", event);
-      // this.showOverlay = false;
+
+      if (this.showOverlay) {
+        this.showOverlay = false;
+      }
     },
     handleDrop(event) {
       event.preventDefault();

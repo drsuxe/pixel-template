@@ -1257,6 +1257,15 @@
     "@mekari/pixel-spinner" "^0.0.8"
     "@mekari/pixel-utils" "^0.1.0"
 
+"@mekari/pixel-carousel@0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@mekari/pixel-carousel/-/pixel-carousel-0.1.0.tgz#aade0a99d18eabeb55ac2cc1c2918084959f9465"
+  integrity sha512-xZGZQgcQzl8nstqij4malzEB2c37CBdN7Fad5I85D2LERl3yOP8q3jh1eMi/ka85Va2dhaN463rdjgXBrLIdVw==
+  dependencies:
+    "@mekari/pixel-box" "^0.0.7"
+    "@mekari/pixel-flex" "^0.0.7"
+    "@mekari/pixel-utils" "^0.1.0"
+
 "@mekari/pixel-checkbox@0.1.6":
   version "0.1.6"
   resolved "https://registry.yarnpkg.com/@mekari/pixel-checkbox/-/pixel-checkbox-0.1.6.tgz#a12abaf10977da832654c32048c870a5a4f911d1"
@@ -1333,6 +1342,14 @@
   integrity sha512-UX27bDlcx4L4TUV+zvoWws7lN6OrxF7tdQiqhXvA31MYFJXxG1QxUc1M46sLu7CGgryyTsUso8pBMMG/XSkzIw==
   dependencies:
     "@mekari/pixel-modal" "^0.1.5"
+    "@mekari/pixel-utils" "^0.1.0"
+
+"@mekari/pixel-drawer@0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@mekari/pixel-drawer/-/pixel-drawer-0.1.2.tgz#961b6790554e54d61ba5709ad7a4f95ff2b2f294"
+  integrity sha512-g+uAFkkPgkp4r0zKeJzHgEovBw6ddYWEH1YeJ6yiU58PPrQK665FdQeSkSJrS8IOWNLCiynlvjwuigTpZqPnUw==
+  dependencies:
+    "@mekari/pixel-modal" "^0.1.10"
     "@mekari/pixel-utils" "^0.1.0"
 
 "@mekari/pixel-flex@0.0.7", "@mekari/pixel-flex@^0.0.7":
@@ -1417,6 +1434,22 @@
     "@mekari/pixel-button-icon" "^0.4.3"
     "@mekari/pixel-utils" "^0.1.0"
 
+"@mekari/pixel-modal@0.1.10", "@mekari/pixel-modal@^0.1.10":
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/@mekari/pixel-modal/-/pixel-modal-0.1.10.tgz#5197db805a56948594cf4ade8f1d811ed746245c"
+  integrity sha512-/WuQCP0KmQQsA5u98g7XEwiFo1cL11Zy0aS7NFEAwhovnM8OFqgW4zXdU6ptpQVn6VTcx/jvzsehDX/mpUeT6w==
+  dependencies:
+    "@mekari/pixel-box" "^0.0.7"
+    "@mekari/pixel-button-icon" "^0.5.0"
+    "@mekari/pixel-icon" "^0.6.0"
+    "@mekari/pixel-portal" "^0.0.7"
+    "@mekari/pixel-transition" "^0.0.7"
+    "@mekari/pixel-utils" "^0.1.0"
+    aria-hidden "^1.1.1"
+    focus-trap "^5.1.0"
+    focus-trap-vue "^0.0.4"
+    lodash-es "^4.17.21"
+
 "@mekari/pixel-modal@0.1.9":
   version "0.1.9"
   resolved "https://registry.yarnpkg.com/@mekari/pixel-modal/-/pixel-modal-0.1.9.tgz#71c8893028e0090dfbc5b8efd5104d873ab03ffb"
@@ -1460,6 +1493,22 @@
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/@mekari/pixel-popover/-/pixel-popover-0.2.2.tgz#13ebfec7c9e6113fcb81570a0b33e5a385da9f5d"
   integrity sha512-slQTC32SkPk0/O2Ex18iEpgdZH/gpzv6eqNZ9OmpBEsMOQSeE6YqcgI5Z7tJQAQBGeWaCg3MWJ3zDsSQnB02Wg==
+  dependencies:
+    "@mekari/pixel-button" "^0.1.5"
+    "@mekari/pixel-divider" "^0.0.8"
+    "@mekari/pixel-flex" "^0.0.7"
+    "@mekari/pixel-fragment" "^0.0.4"
+    "@mekari/pixel-icon" "^0.6.0"
+    "@mekari/pixel-popper" "^0.0.8"
+    "@mekari/pixel-pseudo-box" "^0.0.7"
+    "@mekari/pixel-text" "^0.0.9"
+    "@mekari/pixel-utils" "^0.1.0"
+    lodash-es "^4.17.21"
+
+"@mekari/pixel-popover@0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@mekari/pixel-popover/-/pixel-popover-0.2.3.tgz#02bfb95573bd4d7feb1e3c55356b81ddfe993779"
+  integrity sha512-+G6LybfF0qNQM7w4XrnVcK/W2lEda96UYz578odlUEZziwudvCDRRNNm1UDMQ6I4mF17I1mbZvFh4WRBTd2s1Q==
   dependencies:
     "@mekari/pixel-button" "^0.1.5"
     "@mekari/pixel-divider" "^0.0.8"
@@ -1740,6 +1789,63 @@
     "@mekari/pixel-input-tag" "0.2.1"
     "@mekari/pixel-modal" "0.1.9"
     "@mekari/pixel-popover" "0.2.2"
+    "@mekari/pixel-progress" "0.1.1"
+    "@mekari/pixel-provider" "0.0.4"
+    "@mekari/pixel-pseudo-box" "0.0.7"
+    "@mekari/pixel-radio" "0.1.2"
+    "@mekari/pixel-reset" "0.0.4"
+    "@mekari/pixel-segmented-control" "0.3.2"
+    "@mekari/pixel-select" "0.2.4"
+    "@mekari/pixel-simple-grid" "0.0.7"
+    "@mekari/pixel-spinner" "0.0.8"
+    "@mekari/pixel-stack" "0.0.7"
+    "@mekari/pixel-styled-system" "0.0.3"
+    "@mekari/pixel-table" "0.2.0"
+    "@mekari/pixel-tabs" "0.0.5"
+    "@mekari/pixel-tag" "0.2.5"
+    "@mekari/pixel-text" "0.0.9"
+    "@mekari/pixel-textarea" "0.1.3"
+    "@mekari/pixel-theme" "0.2.1"
+    "@mekari/pixel-timeline" "0.1.3"
+    "@mekari/pixel-toast" "0.0.10"
+    "@mekari/pixel-toggle" "0.1.1"
+    "@mekari/pixel-tooltip" "0.0.8"
+    "@mekari/pixel-upload" "0.2.1"
+    "@mekari/pixel-utils" "0.1.0"
+    lodash-es "^4.17.21"
+    v-scroll-lock "^1.1.0"
+
+"@mekari/pixel@^0.7.5":
+  version "0.7.5"
+  resolved "https://registry.yarnpkg.com/@mekari/pixel/-/pixel-0.7.5.tgz#03e1320f927c7e24bf6d59e8623a7611818c0253"
+  integrity sha512-Xm8e0378hetiMm8WBFaJCDqjPhsYXfbNgIMsM74ThQfiJbRiJW7C4sGKxADNuKbvo9HD9T88c9lZ7mAPKULkfQ==
+  dependencies:
+    "@fontsource/inter" "^4.5.0"
+    "@mekari/pixel-accordion" "0.1.6"
+    "@mekari/pixel-autocomplete" "0.3.1"
+    "@mekari/pixel-avatar" "0.4.0"
+    "@mekari/pixel-badge" "0.2.2"
+    "@mekari/pixel-banner" "0.2.2"
+    "@mekari/pixel-box" "0.0.7"
+    "@mekari/pixel-button" "0.1.5"
+    "@mekari/pixel-button-icon" "0.5.0"
+    "@mekari/pixel-carousel" "0.1.0"
+    "@mekari/pixel-checkbox" "0.1.6"
+    "@mekari/pixel-collapse" "^0.2.1"
+    "@mekari/pixel-control-box" "0.0.7"
+    "@mekari/pixel-date-picker" "0.1.2"
+    "@mekari/pixel-directive" "0.0.7"
+    "@mekari/pixel-divider" "0.0.8"
+    "@mekari/pixel-drawer" "0.1.2"
+    "@mekari/pixel-flex" "0.0.7"
+    "@mekari/pixel-form-control" "0.1.0"
+    "@mekari/pixel-grid" "0.0.7"
+    "@mekari/pixel-heading" "0.0.10"
+    "@mekari/pixel-icon" "0.6.0"
+    "@mekari/pixel-input" "0.3.4"
+    "@mekari/pixel-input-tag" "0.2.1"
+    "@mekari/pixel-modal" "0.1.10"
+    "@mekari/pixel-popover" "0.2.3"
     "@mekari/pixel-progress" "0.1.1"
     "@mekari/pixel-provider" "0.0.4"
     "@mekari/pixel-pseudo-box" "0.0.7"

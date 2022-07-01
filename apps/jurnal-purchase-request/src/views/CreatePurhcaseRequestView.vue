@@ -1,5 +1,5 @@
 <template>
-  <mp-box @dragover="handleDragover" @dragleave="handleDragleave" @drop="handleDrop" position="relative">
+  <mp-box @dragover="handleDragover" position="relative">
     <Header />
     <mp-flex as="main" max-height="calc(100vh - 60px)">
       <Sidebar />
@@ -214,7 +214,18 @@
       </mp-box>
     </mp-flex>
 
-    <mp-box v-if="showOverlay" position="absolute" top="0px" bottom="0px" right="0px" left="0px" bg="overlay" z-index="999">
+    <mp-box
+      v-if="showOverlay"
+      @dragleave="handleDragleave"
+      @drop="handleDrop"
+      position="absolute"
+      top="0px"
+      bottom="0px"
+      right="0px"
+      left="0px"
+      bg="overlay"
+      z-index="999"
+    >
       <mp-flex align="center" justify="center" height="100vh">
         <mp-flex direction="column" justify="center" bg="overlay" width="448px" py="10" px="11" rounded="md">
           <mp-flex justify-content="center" align-items="center" mb="8">
@@ -320,11 +331,16 @@ export default {
       console.log("dragover");
       event.preventDefault();
 
-      this.showOverlay = true;
+      if (!this.showOverlay) {
+        this.showOverlay = true;
+      }
     },
     handleDragleave(event) {
       console.log("dragleave", event);
-      // this.showOverlay = false;
+
+      if (this.showOverlay) {
+        this.showOverlay = false;
+      }
     },
     handleDrop(event) {
       event.preventDefault();
