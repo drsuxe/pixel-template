@@ -142,7 +142,7 @@
           <TableCreateProduct />
           <mp-divider border-style="dashed" mb="10" />
 
-          <mp-grid grid-template-columns="repeat(3, 1fr)">
+          <mp-grid grid-template-columns="repeat(3, minmax(0, 1fr))">
             <mp-grid-item col-span="1">
               <mp-flex flex-direction="column">
                 <mp-form-control margin-bottom="5">
@@ -170,7 +170,7 @@
                       <mp-box flex="none">
                         <mp-icon :name="attachment.icon" />
                       </mp-box>
-                      <mp-box flex-grow="1" pl="3">
+                      <mp-box flex-grow="1" pl="3" max-w="calc(100% - 56px)">
                         <mp-text
                           is-truncated
                           is-link
@@ -182,7 +182,7 @@
                         <mp-text color="gray.400" line-height="md"> {{ formatFileSize(attachment.size) }} </mp-text>
                       </mp-box>
                       <mp-box flex="none">
-                        <mp-flex gap="2">
+                        <mp-flex gap="2" justify="end">
                           <mp-tooltip label="Download" :id="`download-attachment-${index}`">
                             <mp-button-icon v-if="attachment.isDownloadable" name="download" />
                           </mp-tooltip>
@@ -193,6 +193,34 @@
                         </mp-flex>
                       </mp-box>
                     </mp-flex>
+                  </mp-stack>
+
+                  <mp-stack v-if="attachments.length" spacing="2" mb="2">
+                    <mp-box>
+                      <mp-banner variant="danger">
+                        <mp-banner-icon />
+                        <mp-banner-description style="margin-right: 3rem">
+                          my_attachment_2022.xls tidak dapat dipilih. Jumlah maksimum file adalah 5.
+                        </mp-banner-description>
+                        <mp-banner-close-button />
+                      </mp-banner>
+                    </mp-box>
+                    <mp-box>
+                      <mp-banner variant="danger">
+                        <mp-banner-icon />
+                        <mp-banner-description style="margin-right: 3rem"> The_most_important.doc melebihi 10 MB. </mp-banner-description>
+                        <mp-banner-close-button />
+                      </mp-banner>
+                    </mp-box>
+                    <mp-box>
+                      <mp-banner variant="danger">
+                        <mp-banner-icon />
+                        <mp-banner-description style="margin-right: 3rem">
+                          the_attachment_will_be_long...ike_this.svg tidak dapat dipilih. Mohon pilih file dengan format yang ditentukan.
+                        </mp-banner-description>
+                        <mp-banner-close-button />
+                      </mp-banner>
+                    </mp-box>
                   </mp-stack>
                   <mp-upload
                     ref="uploadAttachment"
@@ -282,6 +310,10 @@ import {
   MpInputTag,
   MpStack,
   MpTooltip,
+  MpBanner,
+  MpBannerIcon,
+  MpBannerDescription,
+  MpBannerCloseButton,
 } from "@mekari/pixel";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
@@ -313,6 +345,10 @@ export default {
     MpInputTag,
     MpStack,
     MpTooltip,
+    MpBanner,
+    MpBannerIcon,
+    MpBannerDescription,
+    MpBannerCloseButton,
     //
     Header,
     Sidebar,
@@ -406,8 +442,6 @@ export default {
             icon: getIcon({ type: extension[0], extension: extension[1] }),
             url: URL.createObjectURL(file),
           });
-        } else {
-          console.warn(`${file.name} is not allowed.`);
         }
       }
 
