@@ -178,21 +178,24 @@
                         <mp-icon :name="attachment.icon" />
                       </mp-box>
                       <mp-box flex-grow="1" pl="3" max-w="calc(100% - 56px)">
-                        <mp-text
-                          is-truncated
-                          is-link
-                          line-height="md"
-                          @click.native="handleAttachmentPreview({ fileName: attachment.name, extension: attachment.extension, url: attachment.url })"
-                        >
-                          {{ attachment.name }}
-                        </mp-text>
+                        <TextEllipsis :id="`file-name-${index}`">
+                          <mp-text
+                            is-link
+                            line-height="md"
+                            @click.native="handleAttachmentPreview({ fileName: attachment.name, extension: attachment.extension, url: attachment.url })"
+                          >
+                            {{ attachment.name }}
+                          </mp-text>
+                        </TextEllipsis>
                         <mp-text color="gray.400" line-height="md"> {{ formatFileSize(attachment.size) }} </mp-text>
                       </mp-box>
                       <mp-box flex="none">
                         <mp-flex gap="2" justify="end">
-                          <mp-tooltip label="Download" :id="`download-attachment-${index}`">
-                            <mp-button-icon v-if="attachment.isDownloadable" name="download" />
-                          </mp-tooltip>
+                          <template v-if="attachment.isDownloadable">
+                            <mp-tooltip label="Download" :id="`download-attachment-${index}`">
+                              <mp-button-icon name="download" />
+                            </mp-tooltip>
+                          </template>
 
                           <mp-tooltip label="Hapus" :id="`delete-attachment-${index}`">
                             <mp-button-icon @click="attachments.splice(index, 1)" name="minus-circular" />
@@ -329,6 +332,7 @@ import ModalDeleteThisRequest from "./ModalDeleteThisRequest.vue";
 import TableEditProduct from "./TableEditProduct.vue";
 import ModalTransactionNumberSetting from "./ModalTransactionNumberSetting.vue";
 import ModalAttachmentPreview from "./ModalAttachmentPreview.vue";
+import { TextEllipsis } from "../components/TextEllipsis";
 
 export default {
   name: "EditPurchaseRequestView",
@@ -364,6 +368,7 @@ export default {
     ModalDeleteThisRequest,
     ModalTransactionNumberSetting,
     ModalAttachmentPreview,
+    TextEllipsis,
   },
   data() {
     return {

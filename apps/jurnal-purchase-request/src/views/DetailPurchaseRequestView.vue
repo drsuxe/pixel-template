@@ -160,9 +160,9 @@
                       <mp-text is-link> {{ product.product }} </mp-text>
                     </mp-table-cell>
                     <mp-table-cell as="td" scope="row" vertical-align="top">
-                      <AwesomeTextTruncate :id="`detail-${index}`">
+                      <TextElipsisCollapsible :id="`detail-${index}`">
                         {{ product.description }}
-                      </AwesomeTextTruncate>
+                      </TextElipsisCollapsible>
                     </mp-table-cell>
                     <mp-table-cell as="td" scope="row" vertical-align="top">
                       <mp-text> {{ product.quantity }} </mp-text>
@@ -348,7 +348,7 @@ import ModalDeleteThisRequest from "./ModalDeleteThisRequest.vue";
 import ModalRejectThisRequest from "./ModalRejectThisRequest.vue";
 import ModalPrintPdf from "./ModalPrintPdf.vue";
 import ModalAudit from "./ModalAudit.vue";
-import { AwesomeTextTruncate } from "../components/AwesomeTextTruncate";
+import { TextElipsisCollapsible } from "../components/TextElipsisCollapsible";
 
 export default {
   name: "SalesIndex",
@@ -385,7 +385,7 @@ export default {
     ModalDeleteThisRequest,
     ModalRejectThisRequest,
     ModalPrintPdf,
-    AwesomeTextTruncate,
+    TextElipsisCollapsible,
   },
   data() {
     return {

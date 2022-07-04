@@ -4,7 +4,7 @@ const isEllipsisActive = (element) => {
   return element.offsetWidth < element.scrollWidth;
 };
 
-export const AwesomeTextTruncate = {
+export const TextElipsisCollapsible = {
   props: {
     id: { type: String },
     isOpen: { type: Boolean },

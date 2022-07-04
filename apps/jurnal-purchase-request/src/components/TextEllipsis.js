@@ -4,7 +4,7 @@ const isEllipsisActive = (element) => {
   return element.offsetWidth < element.scrollWidth;
 };
 
-export const Ellipsis = {
+export const TextEllipsis = {
   props: {
     id: { type: String },
     tooltipPosition: { type: String, default: "top" },
