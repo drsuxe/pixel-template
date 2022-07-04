@@ -6,8 +6,7 @@
           <mp-table-cell as="th" scope="col" width="25%">Product</mp-table-cell>
           <mp-table-cell as="th" scope="col" width="45%">Description</mp-table-cell>
           <mp-table-cell as="th" scope="col" width="5%">Quantity</mp-table-cell>
-          <mp-table-cell as="th" scope="col" width="15%">Unit</mp-table-cell>
-          <mp-table-cell as="th" scope="col"></mp-table-cell>
+          <mp-table-cell as="th" scope="col">Unit</mp-table-cell>
         </mp-table-row>
       </mp-table-head>
       <mp-table-body>
@@ -40,8 +39,8 @@
               </mp-form-control>
             </mp-flex>
           </mp-table-cell>
-          <mp-table-cell as="td" scope="row" vertical-align="top">
-            <mp-flex flex-direction="column">
+          <mp-table-cell as="td" scope="row">
+            <mp-flex align="center" gap="6">
               <mp-form-control>
                 <mp-autocomplete
                   :style="{ minWidth: '109px', width: '100%' }"
@@ -50,10 +49,7 @@
                   :content-style="{ zIndex: 'popover', width: 'full' }"
                 />
               </mp-form-control>
-            </mp-flex>
-          </mp-table-cell>
-          <mp-table-cell as="td" scope="row" vertical-align="top" padding-right="0">
-            <mp-flex justify="end">
+
               <mp-tooltip label="Hapus" :id="`delete-product-${index}`">
                 <mp-button-icon @click="products.splice(index, 1)" name="minus-circular" />
               </mp-tooltip>

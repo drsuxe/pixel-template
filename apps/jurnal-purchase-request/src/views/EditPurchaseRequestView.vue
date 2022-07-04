@@ -80,14 +80,14 @@
             <mp-flex flex-direction="column">
               <mp-form-control margin-bottom="5">
                 <mp-text font-weight="semibold" display="inline" margin-bottom="1"> Transaction date<mp-text as="span" color="red.500">*</mp-text> </mp-text>
-                <mp-date-picker id="transaction-date" v-model="form.transactionDate" format="DD/MM/YYYY" type="date" placeholder="Select date" />
+                <mp-date-picker id="transaction-date" v-model="form.transactionDate" value-type="date" format="DD/MM/YYYY" placeholder="Select date" />
               </mp-form-control>
             </mp-flex>
 
             <mp-flex flex-direction="column">
               <mp-form-control margin-bottom="5">
                 <mp-text font-weight="semibold" display="inline" margin-bottom="1"> Due date<mp-text as="span" color="red.500">*</mp-text> </mp-text>
-                <mp-date-picker id="due-date" v-model="form.dueDate" format="DD/MM/YYYY" type="date" placeholder="Select date" />
+                <mp-date-picker id="due-date" v-model="form.dueDate" value-type="date" format="DD/MM/YYYY" placeholder="Select date" />
               </mp-form-control>
             </mp-flex>
 
@@ -173,64 +173,31 @@
                     </mp-tooltip>
                   </mp-flex>
                   <mp-stack spacing="2" mb="2">
-                    <mp-flex border="1px" border-color="gray.100" p="4" rounded="sm">
-                      <mp-box flex="none">
-                        <mp-icon name="pdf-document" />
-                      </mp-box>
-                      <mp-box flex="1 1 0%" pl="3">
-                        <mp-text is-truncated is-link line-height="md" @click.native="handleAttachmentPreview('file-name', 'pdf')">
-                          the_attachment-is-to...ike_this.pdf
-                        </mp-text>
-                        <mp-text color="gray.400" line-height="md"> 1.3 MB </mp-text>
-                      </mp-box>
-                      <mp-box flex="none">
-                        <mp-flex gap="2">
-                          <mp-tooltip label="Download" id="download-0">
-                            <mp-button-icon name="download" />
-                          </mp-tooltip>
-
-                          <mp-tooltip label="Hapus" id="remove-0">
-                            <mp-button-icon name="minus-circular" />
-                          </mp-tooltip>
-                        </mp-flex>
-                      </mp-box>
-                    </mp-flex>
-                    <mp-flex border="1px" border-color="gray.100" p="4" rounded="sm">
-                      <mp-box flex="none">
-                        <mp-icon name="word-document" />
-                      </mp-box>
-                      <mp-box flex="1 1 0%" pl="3">
-                        <mp-text is-truncated is-link line-height="md" @click.native="handleAttachmentPreview('file-name', 'pdf')">
-                          the_attachment-is-to...ike_this.pdf
-                        </mp-text>
-                        <mp-text color="gray.400" line-height="md"> 1.3 MB </mp-text>
-                      </mp-box>
-                      <mp-box flex="none">
-                        <mp-flex gap="2">
-                          <mp-tooltip label="Download" id="download-1">
-                            <mp-button-icon name="download" />
-                          </mp-tooltip>
-
-                          <mp-tooltip label="Hapus" id="remove-1">
-                            <mp-button-icon name="minus-circular" />
-                          </mp-tooltip>
-                        </mp-flex>
-                      </mp-box>
-                    </mp-flex>
                     <mp-flex v-for="(attachment, index) in attachments" :key="index" border="1px" border-color="gray.100" p="4" rounded="sm">
                       <mp-box flex="none">
                         <mp-icon :name="attachment.icon" />
                       </mp-box>
                       <mp-box flex-grow="1" pl="3">
-                        <mp-text is-truncated is-link line-height="md" @click.native="handleAttachmentPreview(attachment.name, attachment.extension)">
+                        <mp-text
+                          is-truncated
+                          is-link
+                          line-height="md"
+                          @click.native="handleAttachmentPreview({ fileName: attachment.name, extension: attachment.extension, url: attachment.url })"
+                        >
                           {{ attachment.name }}
                         </mp-text>
                         <mp-text color="gray.400" line-height="md"> {{ formatFileSize(attachment.size) }} </mp-text>
                       </mp-box>
                       <mp-box flex="none">
-                        <mp-tooltip label="Hapus" :id="`delete-product-${index}`">
-                          <mp-button-icon @click="attachments.splice(index, 1)" name="minus-circular" />
-                        </mp-tooltip>
+                        <mp-flex gap="2">
+                          <mp-tooltip label="Download" :id="`download-attachment-${index}`">
+                            <mp-button-icon v-if="attachment.isDownloadable" name="download" />
+                          </mp-tooltip>
+
+                          <mp-tooltip label="Hapus" :id="`delete-attachment-${index}`">
+                            <mp-button-icon @click="attachments.splice(index, 1)" name="minus-circular" />
+                          </mp-tooltip>
+                        </mp-flex>
                       </mp-box>
                     </mp-flex>
                   </mp-stack>
@@ -267,6 +234,8 @@
           <ModalDeleteThisRequest :is-open="isModalDeleteThisRequestOpen" @handleClose="isModalDeleteThisRequestOpen = false" />
           <ModalAttachmentPreview
             :file-name="selectedAttachment.fileName"
+            :extension="selectedAttachment.extension"
+            :url="selectedAttachment.url"
             :is-open="isModalAttachmentPreviewOpen"
             @handleClose="isModalAttachmentPreviewOpen = false"
           />
@@ -365,16 +334,29 @@ export default {
       isModalDeleteThisRequestOpen: false,
       isModalTransactionNumberSettingOpen: false,
       isModalAttachmentPreviewOpen: false,
+      form: {
+        transactionDate: new Date(),
+        dueDate: new Date(),
+      },
+
+      // attachments
+      showOverlay: false,
       selectedAttachment: {
         fileName: "",
         extension: "",
+        url: "",
       },
-      form: {
-        transactionDate: "2022-05-31T17:00:00.000Z",
-        dueDate: "2022-05-31T17:00:00.000Z",
-      },
-      showOverlay: false,
-      attachments: [],
+      attachments: [
+        {
+          name: "Blobby-Chug-Kids-blob-font 1.png",
+          size: 611180,
+          type: "image",
+          extension: "png",
+          icon: "image-document",
+          url: "https://i.imgur.com/AemZaht.png",
+          isDownloadable: true,
+        },
+      ],
     };
   },
   methods: {
@@ -390,6 +372,8 @@ export default {
     handleCancel() {
       this.$router.push("/detail");
     },
+
+    // Attachments
     handleChange(e) {
       this.handleUploadFile(e.target.files);
     },
@@ -433,33 +417,36 @@ export default {
         if (extension === "zip") return "zip";
         return "blank";
       };
-      const getKebabCase = (string) =>
-        string
-          .replace(/([a-z])([A-Z])/g, "$1-$2")
-          .replace(/[\s_]+/g, "-")
-          .toLowerCase();
-
       for (let i = 0; i < files.length; i++) {
         const file = files[i];
         const extension = file.type.split("/");
         _files.push({
-          name: getKebabCase(file.name),
+          name: file.name,
           size: file.size,
-          type: extension[1],
+          type: extension[0],
+          extension: extension[1],
           icon: getIcon({ type: extension[0], extension: extension[1] }),
+          url: URL.createObjectURL(file),
         });
       }
+
+      console.log(_files);
 
       this.attachments = [...this.attachments, ..._files];
       this.$refs.uploadAttachment.handleClear();
     },
-    handleAttachmentPreview(fileName, extension) {
-      this.isModalAttachmentPreviewOpen = true;
-
-      this.selectedAttachment = {
-        fileName: fileName,
-        extension: extension,
-      };
+    handleAttachmentPreview({ fileName, extension, url }) {
+      const downloadable = ["zip", "doc", "docx", "xls", "xlsx"];
+      if (downloadable.includes(extension)) {
+        location.href = url;
+      } else {
+        this.isModalAttachmentPreviewOpen = true;
+        this.selectedAttachment = {
+          fileName: fileName,
+          extension: extension,
+          url: url,
+        };
+      }
     },
   },
 };
