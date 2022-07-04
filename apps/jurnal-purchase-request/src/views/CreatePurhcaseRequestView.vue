@@ -142,7 +142,7 @@
           <TableCreateProduct />
           <mp-divider border-style="dashed" mb="10" />
 
-          <mp-grid grid-template-columns="repeat(3, 1fr)" gap="6">
+          <mp-grid grid-template-columns="repeat(3, 1fr)">
             <mp-grid-item col-span="1">
               <mp-flex flex-direction="column">
                 <mp-form-control margin-bottom="5">
@@ -156,6 +156,7 @@
                   <mp-textarea placeholder="Memo" resize="vertical" />
                 </mp-form-control>
               </mp-flex>
+
               <mp-flex flex-direction="column">
                 <mp-form-control margin-bottom="5">
                   <mp-flex align="center" gap="1" mb="1">
@@ -165,7 +166,7 @@
                     </mp-tooltip>
                   </mp-flex>
                   <mp-stack spacing="2" mb="2">
-                    <mp-flex v-for="(attachment, index) in attachments" :key="index" border="1px" border-color="gray.100" p="4" rounded="sm">
+                    <mp-flex v-for="(attachment, index) in attachments" :key="index" border="1px" border-color="gray.100" p="4" rounded="sm" width="full">
                       <mp-box flex="none">
                         <mp-icon :name="attachment.icon" />
                       </mp-box>
@@ -182,11 +183,9 @@
                       </mp-box>
                       <mp-box flex="none">
                         <mp-flex gap="2">
-                          <template v-if="attachment.isDownloadable">
-                            <mp-tooltip label="Download" :id="`download-attachment-${index}`">
-                              <mp-button-icon name="download" />
-                            </mp-tooltip>
-                          </template>
+                          <mp-tooltip label="Download" :id="`download-attachment-${index}`">
+                            <mp-button-icon v-if="attachment.isDownloadable" name="download" />
+                          </mp-tooltip>
 
                           <mp-tooltip label="Hapus" :id="`delete-attachment-${index}`">
                             <mp-button-icon @click="attachments.splice(index, 1)" name="minus-circular" />
@@ -207,7 +206,7 @@
               </mp-flex>
             </mp-grid-item>
 
-            <mp-grid-item col-start="3" col-span="4">
+            <mp-grid-item col-start="3" col-span="1">
               <mp-box padding="4" border="1px" border-color="gray.100" rounded="md">
                 <mp-flex justify="space-between">
                   <mp-text font-weight="semibold">Total Product</mp-text>

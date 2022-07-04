@@ -149,7 +149,7 @@
           <TableEditProduct />
           <mp-divider border-style="dashed" mb="10" />
 
-          <mp-grid grid-template-columns="repeat(3, 1fr)" gap="6">
+          <mp-grid grid-template-columns="repeat(3, 1fr)">
             <mp-grid-item col-span="1">
               <mp-flex flex-direction="column">
                 <mp-form-control margin-bottom="5">
@@ -173,7 +173,7 @@
                     </mp-tooltip>
                   </mp-flex>
                   <mp-stack spacing="2" mb="2">
-                    <mp-flex v-for="(attachment, index) in attachments" :key="index" border="1px" border-color="gray.100" p="4" rounded="sm">
+                    <mp-flex v-for="(attachment, index) in attachments" :key="index" border="1px" border-color="gray.100" p="4" rounded="sm" width="full">
                       <mp-box flex="none">
                         <mp-icon :name="attachment.icon" />
                       </mp-box>
@@ -213,7 +213,7 @@
               </mp-flex>
             </mp-grid-item>
 
-            <mp-grid-item col-start="3" col-span="4">
+            <mp-grid-item col-start="3" col-span="1">
               <mp-box padding="4" border="1px" border-color="gray.100" rounded="md">
                 <mp-flex justify="space-between">
                   <mp-text font-weight="semibold">Total Product</mp-text>
