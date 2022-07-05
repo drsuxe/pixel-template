@@ -10,7 +10,7 @@
           <mp-popover-trigger>
             <mp-button variant="outline" marginRight="2" right-icon="caret-down"> Impor </mp-button>
           </mp-popover-trigger>
-          <mp-popover-content max-width="48" bg="white" rounded="md" shadow="lg" border-width="1px" border-color="gray.400">
+          <mp-popover-content max-width="64" bg="white" rounded="md" shadow="lg" border-width="1px" border-color="gray.400">
             <mp-popover-list>
               <mp-popover-list-item @click="isModalImportFromJurnal = true">Template dari Jurnal</mp-popover-list-item>
               <mp-popover-list-item @click="isModalImportFromOtherApp = true"> Template dari aplikasi lain </mp-popover-list-item>

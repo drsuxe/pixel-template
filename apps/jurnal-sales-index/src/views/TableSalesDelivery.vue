@@ -3,7 +3,7 @@
     <mp-flex width="full" justify-content="space-between" mb="6">
       <mp-flex gap="4">
         <mp-autocomplete
-          style="width: 172px; min-width: 172px"
+          width="172px"
           :content-style="{ zIndex: 'popover', width: '172px' }"
           value="Semua status"
           id="sales-delivery-semua-status"
@@ -21,136 +21,148 @@
       </mp-flex>
     </mp-flex>
 
-    <mp-table :isHoverable="false">
-      <mp-table-head>
-        <mp-table-row background-color="ice.50" :position="showBulkAction ? 'relative' : ''">
-          <mp-table-cell as="th" scope="col" width="39px">
-            <mp-checkbox :is-checked="isCheckedAll" :is-indeterminate="isIndeterminate" @change="handleCheckAll" id="head" />
-          </mp-table-cell>
-          <mp-table-cell as="th" scope="col" width="100px">
-            <mp-flex v-if="showBulkAction" position="absolute" top="9px" align-items="center" gap="6">
-              <mp-text> {{ this.datas.filter((item) => item.checked === true).length }} transaksi dipilih</mp-text>
-              <mp-flex gap="4">
-                <mp-button size="sm" @click="isModalPrintPdfOpen = true"> Cetak PDF</mp-button>
-                <mp-button size="sm" variant="ghost" @click="isModalDeleteOpen = true"> Hapus</mp-button>
-              </mp-flex>
-            </mp-flex>
-            <mp-box cursor="pointer" v-else>
-              Tanggal
-              <mp-icon name="sort-default" />
-            </mp-box>
-          </mp-table-cell>
-          <mp-table-cell as="th" scope="col" width="243px">
-            <mp-box v-if="!showBulkAction" cursor="pointer"> No Transaksi <mp-icon name="sort-default" /> </mp-box>
-          </mp-table-cell>
-          <mp-table-cell as="th" scope="col" width="155px">
-            <mp-box v-if="!showBulkAction" cursor="pointer"> Pelanggan <mp-icon name="sort-default" /> </mp-box>
-          </mp-table-cell>
-          <mp-table-cell as="th" scope="col">
-            <mp-box v-if="!showBulkAction" cursor="pointer"> Jatuh tempo <mp-icon name="sort-default" /> </mp-box>
-          </mp-table-cell>
-          <mp-table-cell as="th" scope="col" width="79px">
-            <mp-box v-if="!showBulkAction" cursor="pointer"> Status <mp-icon name="sort-default" /> </mp-box>
-          </mp-table-cell>
-          <mp-table-cell as="th" scope="col">
-            <mp-box v-if="!showBulkAction" cursor="pointer" text-align="right"> Sisa tagihan <mp-icon name="sort-default" /> </mp-box>
-          </mp-table-cell>
-          <mp-table-cell as="th" scope="col">
-            <mp-box v-if="!showBulkAction" cursor="pointer" text-align="right"> Total <mp-icon name="sort-default" /> </mp-box>
-          </mp-table-cell>
-          <mp-table-cell as="th" scope="col" width="150px">
-            <mp-box v-if="!showBulkAction" cursor="pointer"> Tag <mp-icon name="sort-default" /> </mp-box>
-          </mp-table-cell>
-        </mp-table-row>
-      </mp-table-head>
-      <mp-table-body>
-        <mp-table-row v-for="(invoice, index) in datas" :key="invoice.id">
-          <mp-table-cell as="td" scope="row" vertical-align="top">
-            <mp-checkbox
-              min-height="5"
-              :isChecked="invoice.checked"
-              @change="(_, $e) => (datas[index].checked = $e.target.checked)"
-              :id="`checkbox-${index}`"
-            />
-          </mp-table-cell>
-          <mp-table-cell as="td" scope="row" vertical-align="top">
-            <mp-text font-size="md" line-height="md">{{ invoice.date }}</mp-text>
-          </mp-table-cell>
-          <mp-table-cell as="td" scope="row" vertical-align="top">
-            <mp-flex gap="1">
-              <mp-box flex-grow="1">
-                <mp-text is-link font-size="md" line-height="md"> {{ invoice.number }} </mp-text>
-              </mp-box>
-              <mp-box flex="none">
-                <mp-flex gap="1">
-                  <mp-box v-if="invoice.attachment" cursor="pointer">
-                    <mp-tooltip label="Attachment" :id="`attachment-${index}`">
-                      <mp-icon size="sm" name="attachment" color="gray.600" />
-                    </mp-tooltip>
-                  </mp-box>
-                  <mp-box v-if="invoice.join" cursor="pointer">
-                    <mp-tooltip label="Join" :id="`join-${index}`">
-                      <mp-icon size="sm" name="join-invoice" color="gray.600" />
-                    </mp-tooltip>
-                  </mp-box>
+    <mp-table-container overflow-x="auto">
+      <mp-table :isHoverable="false">
+        <mp-table-head>
+          <mp-table-row background-color="ice.50" :position="showBulkAction ? 'relative' : ''">
+            <mp-table-cell as="th" scope="col" width="39px">
+              <mp-checkbox :is-checked="isCheckedAll" :is-indeterminate="isIndeterminate" @change="handleCheckAll" id="head" />
+            </mp-table-cell>
+            <mp-table-cell as="th" scope="col">
+              <mp-flex v-if="showBulkAction" position="absolute" top="9px" align-items="center" gap="6">
+                <mp-text> {{ this.datas.filter((item) => item.checked === true).length }} transaksi dipilih</mp-text>
+                <mp-flex gap="4">
+                  <mp-button size="sm" @click="isModalPrintPdfOpen = true"> Cetak PDF</mp-button>
+                  <mp-button size="sm" variant="ghost" @click="isModalDeleteOpen = true"> Hapus</mp-button>
                 </mp-flex>
+              </mp-flex>
+              <mp-box cursor="pointer" v-else>
+                Tanggal
+                <mp-icon name="sort-default" />
               </mp-box>
-            </mp-flex>
-            <Ellipsis :id="`invoice-description-${index}`" v-if="invoice.description">
-              <mp-text text-overflow="ellipsis" white-space="nowrap" font-size="sm" line-height="sm" color="gray.600" overflow="hidden">
-                {{ invoice.description }}
-              </mp-text>
-            </Ellipsis>
-          </mp-table-cell>
-          <mp-table-cell as="td" scope="row" vertical-align="top">
-            <mp-text is-link text-overflow="ellipsis" white-space="nowrap" overflow="hidden" font-size="md" line-height="md"> {{ invoice.customer }} </mp-text>
-          </mp-table-cell>
-          <mp-table-cell as="td" scope="row" vertical-align="top">
-            <mp-text font-size="md" line-height="md">{{ invoice.dueDate }}</mp-text>
-          </mp-table-cell>
-          <mp-table-cell as="td" scope="row" vertical-align="top">
-            <mp-badge variant="subtle" :variant-color="getBadgeVariantColor(invoice.status)">
-              {{ invoice.status }}
-            </mp-badge>
-          </mp-table-cell>
-          <mp-table-cell as="td" scope="row" vertical-align="top">
-            <mp-text text-align="right" font-size="md" line-height="md">{{ invoice.balance }}</mp-text>
-          </mp-table-cell>
-          <mp-table-cell as="td" scope="row" vertical-align="top">
-            <mp-text text-align="right" font-size="md" line-height="md">{{ invoice.total }}</mp-text>
-          </mp-table-cell>
-          <mp-table-cell as="td" scope="row" vertical-align="top">
-            <mp-flex gap="3" align-items="center" flex-wrap="wrap">
-              <mp-tag
-                size="sm"
-                variant="gray"
-                max-width="224px"
-                text-overflow="ellipsis"
-                white-space="nowrap"
-                overflow="hidden"
-                v-for="value in invoice.tag.slice(0, 1)"
-                :key="value"
-              >
-                {{ value }}
-              </mp-tag>
-
-              <mp-popover :id="`popover-${invoice.id}`">
-                <mp-popover-trigger>
-                  <mp-text v-if="invoice.tag.length !== 1" is-link font-size="sm"> {{ `+${invoice.tag.length - 1}` }} more </mp-text>
-                </mp-popover-trigger>
-                <mp-popover-content max-width="48" bg="white" rounded="md" shadow="lg" border-width="1px" p="2" border-color="gray.400" z-index="popover">
-                  <mp-flex gap="1" flex-wrap="wrap">
-                    <mp-tag size="sm" variant="gray" v-for="value in invoice.tag" :key="value">
-                      {{ value }}
-                    </mp-tag>
+            </mp-table-cell>
+            <mp-table-cell as="th" scope="col">
+              <mp-box v-if="!showBulkAction" cursor="pointer"> No Transaksi <mp-icon name="sort-default" /> </mp-box>
+            </mp-table-cell>
+            <mp-table-cell as="th" scope="col">
+              <mp-box v-if="!showBulkAction" cursor="pointer"> Pelanggan <mp-icon name="sort-default" /> </mp-box>
+            </mp-table-cell>
+            <mp-table-cell as="th" scope="col">
+              <mp-box v-if="!showBulkAction" cursor="pointer"> Jatuh tempo <mp-icon name="sort-default" /> </mp-box>
+            </mp-table-cell>
+            <mp-table-cell as="th" scope="col">
+              <mp-box v-if="!showBulkAction" cursor="pointer"> Status <mp-icon name="sort-default" /> </mp-box>
+            </mp-table-cell>
+            <mp-table-cell as="th" scope="col">
+              <mp-box v-if="!showBulkAction" cursor="pointer" text-align="right"> Sisa tagihan <mp-icon name="sort-default" /> </mp-box>
+            </mp-table-cell>
+            <mp-table-cell as="th" scope="col">
+              <mp-box v-if="!showBulkAction" cursor="pointer" text-align="right"> Total <mp-icon name="sort-default" /> </mp-box>
+            </mp-table-cell>
+            <mp-table-cell as="th" scope="col">
+              <mp-box v-if="!showBulkAction" cursor="pointer"> Tag <mp-icon name="sort-default" /> </mp-box>
+            </mp-table-cell>
+          </mp-table-row>
+        </mp-table-head>
+        <mp-table-body>
+          <mp-table-row v-for="(invoice, index) in datas" :key="invoice.id" :style="{ whiteSpace: 'normal' }">
+            <mp-table-cell as="td" scope="row" vertical-align="top" :style="{ height: 'auto', paddingTop: '0.875rem', paddingBottom: '0.875rem' }">
+              <mp-checkbox
+                min-height="5"
+                :isChecked="invoice.checked"
+                @change="(_, $e) => (datas[index].checked = $e.target.checked)"
+                :id="`checkbox-${index}`"
+              />
+            </mp-table-cell>
+            <mp-table-cell as="td" scope="row" vertical-align="top" :style="{ height: 'auto', paddingTop: '0.875rem', paddingBottom: '0.875rem' }">
+              <mp-text font-size="md" line-height="md">{{ invoice.date }}</mp-text>
+            </mp-table-cell>
+            <mp-table-cell
+              as="td"
+              scope="row"
+              vertical-align="top"
+              max-width="300px"
+              :style="{ height: 'auto', paddingTop: '0.875rem', paddingBottom: '0.875rem' }"
+            >
+              <mp-flex gap="1">
+                <mp-box flex-grow="1">
+                  <mp-text is-link font-size="md" line-height="md"> {{ invoice.number }} </mp-text>
+                </mp-box>
+                <mp-box flex="none">
+                  <mp-flex gap="1">
+                    <mp-box v-if="invoice.attachment" cursor="pointer">
+                      <mp-tooltip label="Attachment" :id="`attachment-${index}`">
+                        <mp-icon size="sm" name="attachment" color="gray.600" />
+                      </mp-tooltip>
+                    </mp-box>
+                    <mp-box v-if="invoice.join" cursor="pointer">
+                      <mp-tooltip label="Join" :id="`join-${index}`">
+                        <mp-icon size="sm" name="join-invoice" color="gray.600" />
+                      </mp-tooltip>
+                    </mp-box>
                   </mp-flex>
-                </mp-popover-content>
-              </mp-popover>
-            </mp-flex>
-          </mp-table-cell>
-        </mp-table-row>
-      </mp-table-body>
-    </mp-table>
+                </mp-box>
+              </mp-flex>
+
+              <Ellipsis :id="`invoice-description-${index}`" v-if="invoice.description">
+                <mp-text text-overflow="ellipsis" white-space="nowrap" font-size="sm" line-height="sm" color="gray.600" overflow="hidden">
+                  {{ invoice.description }}
+                </mp-text>
+              </Ellipsis>
+            </mp-table-cell>
+            <mp-table-cell
+              as="td"
+              scope="row"
+              vertical-align="top"
+              max-width="100px"
+              :style="{ height: 'auto', paddingTop: '0.875rem', paddingBottom: '0.875rem' }"
+            >
+              <Ellipsis :id="`invoice-customer-${index}`">
+                <mp-text is-link font-size="md" line-height="md"> {{ invoice.customer }} </mp-text>
+              </Ellipsis>
+            </mp-table-cell>
+            <mp-table-cell as="td" scope="row" vertical-align="top" :style="{ height: 'auto', paddingTop: '0.875rem', paddingBottom: '0.875rem' }">
+              <mp-text font-size="md" line-height="md">{{ invoice.dueDate }}</mp-text>
+            </mp-table-cell>
+            <mp-table-cell as="td" scope="row" vertical-align="top" :style="{ height: 'auto', paddingTop: '0.875rem', paddingBottom: '0.875rem' }">
+              <mp-badge variant="subtle" :variant-color="getBadgeVariantColor(invoice.status)">
+                {{ invoice.status }}
+              </mp-badge>
+            </mp-table-cell>
+            <mp-table-cell as="td" scope="row" vertical-align="top" :style="{ height: 'auto', paddingTop: '0.875rem', paddingBottom: '0.875rem' }">
+              <mp-text text-align="right" font-size="md" line-height="md">{{ invoice.balance }}</mp-text>
+            </mp-table-cell>
+            <mp-table-cell as="td" scope="row" vertical-align="top" :style="{ height: 'auto', paddingTop: '0.875rem', paddingBottom: '0.875rem' }">
+              <mp-text text-align="right" font-size="md" line-height="md">{{ invoice.total }}</mp-text>
+            </mp-table-cell>
+            <mp-table-cell as="td" scope="row" vertical-align="top" :style="{ height: 'auto', paddingTop: '0.875rem', paddingBottom: '0.875rem' }">
+              <mp-flex gap="3" align-items="center" flex-wrap="wrap" max-width="140px">
+                <mp-tag size="sm" variant="gray" max-w="140px" v-for="value in invoice.tag.slice(0, 1)" :key="value">
+                  <Ellipsis :id="`tag-invoice-${index}`" :label="value">
+                    <mp-text line-height="md"> {{ value }} </mp-text>
+                  </Ellipsis>
+                </mp-tag>
+
+                <mp-popover :id="`popover-invoice-${index}`">
+                  <mp-popover-trigger>
+                    <mp-box>
+                      <mp-text v-if="invoice.tag.length !== 1" is-link font-size="sm"> {{ `+${invoice.tag.length - 1}` }} more </mp-text>
+                    </mp-box>
+                  </mp-popover-trigger>
+                  <mp-popover-content max-width="48" bg="white" rounded="md" shadow="lg" border-width="1px" p="2" border-color="gray.400" z-index="popover">
+                    <mp-flex gap="1" flex-wrap="wrap">
+                      <mp-tag size="sm" variant="gray" v-for="value in invoice.tag" :key="value">
+                        {{ value }}
+                      </mp-tag>
+                    </mp-flex>
+                  </mp-popover-content>
+                </mp-popover>
+              </mp-flex>
+            </mp-table-cell>
+          </mp-table-row>
+        </mp-table-body>
+      </mp-table>
+    </mp-table-container>
 
     <TablePagination />
 
@@ -161,6 +173,7 @@
 
 <script>
 import {
+  MpTableContainer,
   MpTable,
   MpTableHead,
   MpTableBody,
@@ -192,6 +205,7 @@ import ModalPrintPdf from "./ModalPrintPdf.vue";
 export default {
   name: "TableSalesInvoice",
   components: {
+    MpTableContainer,
     MpTable,
     MpTableHead,
     MpTableBody,
@@ -315,20 +329,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-table {
-  table-layout: fixed;
-}
-
-tbody > tr {
-  white-space: normal;
-}
-
-td {
-  word-wrap: break-word;
-  height: auto;
-  padding-top: 0.875rem;
-  padding-bottom: 0.875rem;
-}
-</style>

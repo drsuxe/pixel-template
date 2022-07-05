@@ -12,7 +12,7 @@
             </mp-flex>
             <mp-autocomplete value="1" id="select-template" :data="['1', '2', '3']" />
           </mp-form-control>
-          <img src="../assets/sales_invoice_37750_template-1_preview 3.png" alt="" />
+          <img src="../assets/invoice_preview_1.png" alt="" />
         </mp-modal-body>
         <mp-modal-footer>
           <mp-button variant="ghost" mr="3" @click="$emit('handleClose')">Batalkan</mp-button>

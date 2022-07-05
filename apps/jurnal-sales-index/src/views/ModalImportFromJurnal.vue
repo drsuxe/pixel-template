@@ -1,9 +1,9 @@
 <template>
-  <mp-modal size="2xl" :isOpen="isOpen">
+  <mp-modal size="2xl" :isOpen="isOpen" scrollBehavior="inside">
     <mp-modal-content>
       <mp-modal-header>Impor transaksi penjualan</mp-modal-header>
       <mp-modal-close-button @click="$emit('handleClose')" />
-      <mp-modal-body max-height="xl" overflow-y="auto">
+      <mp-modal-body>
         <mp-text>Silakan ikuti ada langkah-langkah dibawah ini untuk melalukan impor data.</mp-text>
         <mp-stack mt="6" spacing="4">
           <mp-flex>

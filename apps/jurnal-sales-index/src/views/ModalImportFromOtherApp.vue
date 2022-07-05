@@ -1,10 +1,10 @@
 <template>
-  <mp-modal size="2xl" :isOpen="isOpen">
+  <mp-modal size="2xl" :isOpen="isOpen" scrollBehavior="inside">
     <mp-modal-content>
       <mp-modal-header>Impor transaksi penjualan</mp-modal-header>
       <mp-modal-close-button @click="$emit('handleClose')" />
-      <mp-modal-body max-height="xl" overflow-y="auto">
-        <mp-box v-if="!showOptions">
+      <mp-modal-body>
+        <template v-if="!showOptions">
           <mp-text>Silakan ikuti ada langkah-langkah dibawah ini untuk melalukan impor data.</mp-text>
           <mp-stack mt="6" spacing="4">
             <mp-flex>
@@ -127,9 +127,9 @@
               </mp-box>
             </mp-flex>
           </mp-stack>
-        </mp-box>
+        </template>
 
-        <mp-box v-else>
+        <template v-else>
           <mp-text>Impor detail data transaksi anda ke jurnal</mp-text>
           <mp-stack spacing="6" mt="6">
             <mp-grid grid-template-columns="repeat(12, 1fr)">
@@ -139,7 +139,7 @@
               <mp-grid-item col-span="7">
                 <mp-autocomplete
                   id="akun-pembayaran"
-                  :content-style="{ zIndex: 'popover' }"
+                  :content-style="{ zIndex: 'popover', width: 'full' }"
                   value="(1-11002) - Bank BCA"
                   :data="['(1-11002) - Bank BCA', 'Option 2', 'Option 3']"
                 />
@@ -152,7 +152,7 @@
               <mp-grid-item col-span="7">
                 <mp-autocomplete
                   id="metode-pembayaran"
-                  :content-style="{ zIndex: 'popover' }"
+                  :content-style="{ zIndex: 'popover', width: 'full' }"
                   placeholder="Metode Pembayaran"
                   value=""
                   :data="['Cash', 'Check', 'Bank Transfer', 'Credit Card']"
@@ -166,9 +166,9 @@
               <mp-grid-item col-span="7">
                 <mp-autocomplete
                   id="pelanggan"
+                  :content-style="{ zIndex: 'popover', width: 'full' }"
                   placeholder="Pilih kontak"
                   value=""
-                  :content-style="{ zIndex: 'popover' }"
                   :data="['Pelanggan 1', 'Pelanggan 2', 'Pelanggan 3']"
                 />
               </mp-grid-item>
@@ -180,7 +180,7 @@
               <mp-grid-item col-span="7">
                 <mp-autocomplete
                   style="width: 100%; min-width: 172px"
-                  :content-style="{ zIndex: 'popover' }"
+                  :content-style="{ zIndex: 'popover', width: 'full' }"
                   id="tampilan-status-transaksi"
                   value="Sama seperti marketplace"
                   :data="['Buat semua status lunas', 'Sama seperti marketplace']"
@@ -200,21 +200,29 @@
                 <mp-text>Gudang</mp-text>
               </mp-grid-item>
               <mp-grid-item col-span="7">
-                <mp-autocomplete id="gudang" placeholder="Pilih gudang" value="Tangerang" :data="['Tangerang', 'Depok', 'Bekasi']" />
+                <mp-autocomplete
+                  id="gudang"
+                  :content-style="{ zIndex: 'popover', width: 'full' }"
+                  placeholder="Pilih gudang"
+                  value="Tangerang"
+                  :data="['Tangerang', 'Depok', 'Bekasi']"
+                />
               </mp-grid-item>
             </mp-grid>
             <mp-grid grid-template-columns="repeat(12, 1fr)">
-              <mp-grid-item col-span="5">
-                <mp-text>Gunakan pajak inklusif (10%)</mp-text>
+              <mp-grid-item col-span="5" display="flex" align-items="center">
+                <mp-text margin-right="2">Gunakan pajak inklusif (10%)</mp-text>
+
+                <mp-tooltip id="gunakan-pajak-inklusif" label="Jika dicentang, semua transaksi akan termasuk pajak.">
+                  <mp-icon name="info" size="sm" />
+                </mp-tooltip>
               </mp-grid-item>
               <mp-grid-item col-span="7">
-                <mp-tooltip id="gunakan-pajak-inklusif" label="Jika dicentang, semua transaksi akan termasuk pajak.">
-                  <mp-checkbox />
-                </mp-tooltip>
+                <mp-checkbox />
               </mp-grid-item>
             </mp-grid>
           </mp-stack>
-        </mp-box>
+        </template>
       </mp-modal-body>
       <mp-modal-footer>
         <mp-button variant="ghost" mr="3" @click="$emit('handleClose')">Batalkan</mp-button>
