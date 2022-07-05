@@ -1,58 +1,23 @@
 <template>
-  <mp-box
-    background="white"
-    padding="6"
-    border-radius="md"
-    border-width="1px"
-    role="group"
-    position="relative"
-  >
+  <mp-box background="white" padding="6" border-radius="md" border-width="1px" role="group" position="relative">
     <mp-grid template-columns="repeat(12, 1fr)">
-      <mp-grid-item
-        col-span="8"
-        pr="8"
-        border-right-width="1px"
-        border-style="dashed"
-        border-color="gray.100"
-      >
+      <mp-grid-item col-span="8" pr="8" border-right-width="1px" border-style="dashed" border-color="gray.100">
         <mp-stack spacing="5">
           <mp-flex mb="4" justifyContent="space-between" alignItems="center">
             <mp-box>
-              <mp-text fontWeight="semibold" lineHeight="1.25rem"
-                >Rekonsiliasi faktur
-              </mp-text>
-              <mp-text fontSize="sm" color="gray.600" lineHeight="1rem"
-                >Masa pajak Januari 2022</mp-text
-              >
+              <mp-text fontWeight="semibold" lineHeight="1.25rem">Rekonsiliasi faktur </mp-text>
+              <mp-text fontSize="sm" color="gray.600" lineHeight="1rem">Masa pajak Januari 2022</mp-text>
             </mp-box>
 
-            <mp-tooltip
-              label="⚠️ Datepicker component is coming soon."
-              id="datepicker-rekosiliasi-faktur"
-            >
-              <mp-pseudo-box
-                border="1px"
-                display="flex"
-                gap="3.2"
-                py="2"
-                px="3"
-                border-color="gray.100"
-                rounded="6px"
-                cursor="pointer"
-                :_hover="{ bg: 'blackAlpha.50' }"
-              >
-                <mp-text>Jan 2022</mp-text>
-                <mp-icon name="calendar" />
-              </mp-pseudo-box>
-            </mp-tooltip>
+            <mp-box>
+              <mp-date-picker id="rekonsiliasi-datepicker" v-model="date" value-type="date" format="MMM YYYY" placeholder="Date" />
+            </mp-box>
           </mp-flex>
 
           <mp-flex flex-direction="column" gap="6">
             <mp-flex flex-direction="column" gap="2">
               <mp-flex justify-content="space-between">
-                <mp-text font-weight="bold" color="gray.600"
-                  >Faktur keluaran terekonsiliasi</mp-text
-                >
+                <mp-text font-weight="bold" color="gray.600">Faktur keluaran terekonsiliasi</mp-text>
                 <mp-text> <strong>800</strong> dari 1.000 </mp-text>
               </mp-flex>
 
@@ -61,9 +26,7 @@
 
             <mp-flex flex-direction="column" gap="2">
               <mp-flex justify-content="space-between">
-                <mp-text font-weight="bold" color="gray.600"
-                  >Faktur masukan terekonsiliasi</mp-text
-                >
+                <mp-text font-weight="bold" color="gray.600">Faktur masukan terekonsiliasi</mp-text>
                 <mp-text> <strong>400</strong> dari 800 </mp-text>
               </mp-flex>
 
@@ -84,14 +47,8 @@
         <mp-stack flex-direction="column" spacing="4">
           <mp-flex flex-direction="column">
             <mp-flex gap="1">
-              <mp-text size="sm" line-height="sm" color="gray.600"
-                >Faktur keluaran</mp-text
-              >
-              <mp-tooltip
-                label="Jumlah faktur keluaran"
-                id="jumlah-faktur-keluaran"
-                position="right"
-              >
+              <mp-text size="sm" line-height="sm" color="gray.600">Faktur keluaran</mp-text>
+              <mp-tooltip label="Jumlah faktur keluaran" id="jumlah-faktur-keluaran" position="right">
                 <mp-badge size="sm">800</mp-badge>
               </mp-tooltip>
             </mp-flex>
@@ -100,14 +57,8 @@
           </mp-flex>
           <mp-flex flex-direction="column">
             <mp-flex gap="1">
-              <mp-text size="sm" line-height="sm" color="gray.600"
-                >Faktur masukan</mp-text
-              >
-              <mp-tooltip
-                label="Jumlah faktur masukan"
-                id="jumlah-faktur-masukan"
-                position="right"
-              >
+              <mp-text size="sm" line-height="sm" color="gray.600">Faktur masukan</mp-text>
+              <mp-tooltip label="Jumlah faktur masukan" id="jumlah-faktur-masukan" position="right">
                 <mp-badge size="sm">800</mp-badge>
               </mp-tooltip>
             </mp-flex>
@@ -117,9 +68,7 @@
           <mp-divider />
           <mp-flex justify-content="space-between">
             <mp-text font-weight="bold"> Rp5.000.000,00 </mp-text>
-            <mp-badge variant="subtle" variantColor="orange" size="md">
-              Kurang bayar
-            </mp-badge>
+            <mp-badge variant="subtle" variantColor="orange" size="md"> Kurang bayar </mp-badge>
           </mp-flex>
         </mp-stack>
       </mp-grid-item>
@@ -138,28 +87,12 @@
       transition="all .2s ease"
       :_groupHover="{ opacity: '1' }"
     >
-      <mp-flex
-        flex-direction="column"
-        justifyContent="center"
-        alignItems="center"
-        h="100%"
-        w="100%"
-        px="56"
-      >
-        <mp-heading
-          mb="6"
-          as="h3"
-          lineHight="md"
-          fontSize="lg"
-          color="white"
-          textAlign="center"
-          >Rekonsiliasikan faktur pajak Anda dengan faktur penjualan & pembelian
-          di Jurnal.</mp-heading
+      <mp-flex flex-direction="column" justifyContent="center" alignItems="center" h="100%" w="100%" px="56">
+        <mp-heading mb="6" as="h3" lineHight="md" fontSize="lg" color="white" textAlign="center"
+          >Rekonsiliasikan faktur pajak Anda dengan faktur penjualan & pembelian di Jurnal.</mp-heading
         >
         <mp-button mb="4" variant="outline">Coba sekarang</mp-button>
-        <mp-text textDecoration="underline" color="white" isLink>
-          Pelajari fitur
-        </mp-text>
+        <mp-text textDecoration="underline" color="white" isLink> Pelajari fitur </mp-text>
       </mp-flex>
     </mp-pseudo-box>
   </mp-box>
@@ -181,6 +114,7 @@ import {
   MpStack,
   MpHeading,
   MpButton,
+  MpDatePicker,
 } from "@mekari/pixel";
 
 export default {
@@ -189,6 +123,11 @@ export default {
       type: [String],
       default: "active", // "active", "blank"
     },
+  },
+  data() {
+    return {
+      date: new Date(),
+    };
   },
   components: {
     MpGrid,
@@ -205,6 +144,14 @@ export default {
     MpStack,
     MpHeading,
     MpButton,
+    MpDatePicker,
   },
 };
 </script>
+
+<style>
+#rekonsiliasi-datepicker-input {
+  width: 120px;
+  min-width: 120px;
+}
+</style>

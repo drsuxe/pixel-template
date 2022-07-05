@@ -28,9 +28,9 @@
         </mp-tooltip>
       </mp-pseudo-box>
     </mp-box>
-    <mp-box as="section" data-id="sidebar" width="full" height="calc(100vh - 60px)" overflow-y="auto" overflow-x="hidden" padding-y="4" padding-x="4">
-      <mp-box v-for="sidebarMenu in sidebarMenus" :key="sidebarMenu.id">
-        <mp-flex v-for="menu in sidebarMenu.menus" :key="menu.id" flex-direction="column">
+    <mp-box as="section" data-id="sidebar" width="full" height="calc(100vh - 60px)" overflow-y="auto" overflow-x="hidden" padding-y="4" padding-x="2">
+      <mp-box v-for="sidebarMenu in sidebarMenus" :key="sidebarMenu.menu">
+        <mp-flex v-for="(menu, index) in sidebarMenu.menus" :key="`${menu.name}-${index}`" flex-direction="column">
           <mp-tooltip position="right" :label="menu.name" :visibility="isToggle ? 'visible' : 'hidden'">
             <mp-pseudo-box
               role="group"
@@ -44,9 +44,16 @@
                 color: 'blue.400',
                 cursor: 'pointer',
               }"
+              v-bind="{
+                ...(menu.isActive && {
+                  backgroundColor: 'ice.50',
+                  color: 'blue.400',
+                  fontWeight: 'semibold',
+                }),
+              }"
             >
               <mp-stack direction="row" align="center">
-                <mp-icon :name="menu.icon" />
+                <mp-icon :name="menu.icon" :variant="menu.isActive ? 'duotone' : 'outline'" />
                 <mp-text white-space="nowrap" transition="all .2s ease" :opacity="isToggle ? '0' : '1'">
                   {{ menu.name }}
                 </mp-text>
@@ -57,8 +64,8 @@
         <mp-divider />
       </mp-box>
 
-      <mp-box v-if="!isToggle" padding-x="2.5" padding-y="2">
-        <mp-text color="gray.600"> Company ID: 2802 </mp-text>
+      <mp-box px="3" v-if="!isToggle">
+        <mp-text font-size="sm" color="gray.600">ID perusahaan: 2802</mp-text>
       </mp-box>
     </mp-box>
   </mp-box>
@@ -87,52 +94,23 @@ export default {
   data: function () {
     return {
       isToggle: this.isCollapsed ? true : false,
-
       sidebarMenus: [
         {
-          id: 1,
+          name: "dashboard",
+          menus: [{ name: "Dasbor", icon: "home", isActive: true }],
+        },
+        {
+          name: "transactions",
           menus: [
-            {
-              id: 1,
-              name: "Dashboard",
-              icon: "home",
-            },
+            { name: "E-Billing", icon: "payslip" },
+            { name: "Lapor Pajak", icon: "document-sent" },
+            { name: "E-Faktur", icon: "doc" },
+            { name: "E-Bupot", icon: "doc" },
           ],
         },
         {
-          id: 2,
-          menus: [
-            {
-              id: 1,
-              name: "Payslip",
-              icon: "payslip",
-            },
-            {
-              id: 2,
-              name: "Lapor Pajak",
-              icon: "document-sent",
-            },
-            {
-              id: 3,
-              name: "E-Faktur",
-              icon: "doc",
-            },
-            {
-              id: 4,
-              name: "E-Bupot",
-              icon: "expenses",
-            },
-          ],
-        },
-        {
-          id: 3,
-          menus: [
-            {
-              id: 1,
-              name: "Pengaturan",
-              icon: "settings",
-            },
-          ],
+          name: "others",
+          menus: [{ name: "Settings", icon: "settings" }],
         },
       ],
     };

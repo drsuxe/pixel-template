@@ -1,39 +1,24 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import HomeView from "../views/HomeView.vue";
-
-function prefixRoutes(prefix, routes) {
-  return routes.map((route) => {
-    route.path = prefix + "" + route.path;
-    return route;
-  });
-}
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
-    name: "home",
-    component: HomeView,
+    name: "Dashboard active",
+    component: () => import("../views/DashboardActiveView.vue"),
   },
-  ...prefixRoutes("/dashboard", [
-    {
-      path: "/",
-      name: "Dashboard active",
-      component: () => import("../views/dashboard/DashboardActiveView.vue"),
-    },
-    {
-      path: "/blank",
-      name: "Dashboard blank",
-      component: () => import("../views/dashboard/DashboardBlankView.vue"),
-    },
-    {
-      path: "/waiting",
-      name: "Dashboard waiting",
-      component: () => import("../views/dashboard/DashboardWaitingView.vue"),
-    },
-  ]),
+  {
+    path: "/blank",
+    name: "Dashboard blank",
+    component: () => import("../views/DashboardBlankView.vue"),
+  },
+  {
+    path: "/waiting",
+    name: "Dashboard waiting",
+    component: () => import("../views/DashboardWaitingView.vue"),
+  },
 ];
 
 const router = new VueRouter({

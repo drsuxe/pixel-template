@@ -6,22 +6,9 @@
         <mp-text fontSize="sm" color="gray.600" lineHeight="1rem">Masa pajak Januari 2022</mp-text>
       </mp-box>
 
-      <mp-tooltip label="⚠️ Datepicker component is coming soon." id="datepicker-comingsoon">
-        <mp-pseudo-box
-          border="1px"
-          display="flex"
-          gap="3.2"
-          py="2"
-          px="3"
-          border-color="gray.100"
-          rounded="6px"
-          cursor="pointer"
-          :_hover="{ bg: 'blackAlpha.50' }"
-        >
-          <mp-text>Jan 2022</mp-text>
-          <mp-icon name="calendar" />
-        </mp-pseudo-box>
-      </mp-tooltip>
+      <mp-box>
+        <mp-date-picker id="task-datepicker" v-model="date" value-type="date" format="MMM YYYY" placeholder="Date" />
+      </mp-box>
     </mp-flex>
 
     <mp-box>
@@ -439,13 +426,13 @@ import {
   MpButton,
   MpButtonIcon,
   MpTooltip,
-  MpPseudoBox,
   MpIcon,
   MpPopover,
   MpPopoverTrigger,
   MpPopoverContent,
   MpPopoverList,
   MpPopoverListItem,
+  MpDatePicker,
 } from "@mekari/pixel";
 import SuccessIllustration from "@/components/SuccessIllustration.vue";
 
@@ -469,7 +456,6 @@ export default {
     MpButton,
     MpButtonIcon,
     MpTooltip,
-    MpPseudoBox,
     MpIcon,
     MpPopover,
     MpPopoverTrigger,
@@ -477,6 +463,7 @@ export default {
     MpPopoverList,
     MpPopoverListItem,
     SuccessIllustration,
+    MpDatePicker,
   },
   props: {
     status: {
@@ -490,6 +477,7 @@ export default {
       currentTab: 0,
       useCheckbox: false,
       source: [],
+      date: new Date(),
 
       eBilling: {
         options: {
@@ -705,3 +693,10 @@ export default {
   },
 };
 </script>
+
+<style>
+#task-datepicker-input {
+  width: 120px;
+  min-width: 120px;
+}
+</style>
