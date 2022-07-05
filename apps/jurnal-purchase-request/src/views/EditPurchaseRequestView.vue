@@ -71,7 +71,10 @@
                 <mp-text font-weight="semibold" display="inline" margin-bottom="1"> Vendor address </mp-text>
                 <mp-textarea
                   id="vendor-address"
-                  value="Jalan Laksda Adisucipto No.204-205, Ngentak, Caturtunggal, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281"
+                  resize="vertical"
+                  height="20"
+                  max-height="140px"
+                  value="Jalan Laksda Adisucipto No.204-205, Ngentak, Caturtunggal, Kecamatan Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281, Indonesia, ID"
                 />
               </mp-form-control>
             </mp-flex>
@@ -140,7 +143,13 @@
             <mp-flex flex-direction="column">
               <mp-form-control margin-bottom="5">
                 <mp-text font-weight="semibold" display="inline" margin-bottom="1"> Tag<mp-text as="span" color="red.500">*</mp-text> </mp-text>
-                <mp-input-tag id="input-tag" placeholder="Example: IT Division " />
+                <mp-input-tag
+                  :content-style="{ zIndex: 'popover', width: 'full' }"
+                  id="approver-email"
+                  placeholder="Example: IT Division"
+                  :suggestions="['IT Division', 'HR Division']"
+                  :is-show-suggestions="true"
+                />
               </mp-form-control>
             </mp-flex>
           </mp-grid>
@@ -178,22 +187,20 @@
                         <mp-icon :name="attachment.icon" />
                       </mp-box>
                       <mp-box flex-grow="1" pl="3" max-w="calc(100% - 56px)">
-                        <TextEllipsis :id="`file-name-${index}`">
-                          <mp-text
-                            is-link
-                            line-height="md"
-                            @click.native="handleAttachmentPreview({ fileName: attachment.name, extension: attachment.extension, url: attachment.url })"
-                          >
-                            {{ attachment.name }}
-                          </mp-text>
-                        </TextEllipsis>
+                        <mp-box @click="handleAttachmentPreview({ fileName: attachment.name, extension: attachment.extension, url: attachment.url })">
+                          <TextEllipsis :id="`file-name-${index}`">
+                            <mp-text is-link line-height="md">
+                              {{ attachment.name }}
+                            </mp-text>
+                          </TextEllipsis>
+                        </mp-box>
                         <mp-text color="gray.400" line-height="md"> {{ formatFileSize(attachment.size) }} </mp-text>
                       </mp-box>
                       <mp-box flex="none">
                         <mp-flex gap="2" justify="end">
                           <template v-if="attachment.isDownloadable">
                             <mp-tooltip label="Download" :id="`download-attachment-${index}`">
-                              <mp-button-icon name="download" />
+                              <mp-button-icon name="download" @click="downloadImage(attachment.url)" />
                             </mp-tooltip>
                           </template>
 
@@ -415,6 +422,18 @@ export default {
     },
 
     // Attachments
+    async downloadImage(imageSrc) {
+      const image = await fetch(imageSrc);
+      const imageBlog = await image.blob();
+      const imageURL = URL.createObjectURL(imageBlog);
+
+      const link = document.createElement("a");
+      link.href = imageURL;
+      link.download = "file";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    },
     handleChange(e) {
       this.handleUploadFile(e.target.files);
     },

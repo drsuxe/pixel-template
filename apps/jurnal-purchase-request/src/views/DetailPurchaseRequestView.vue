@@ -202,29 +202,29 @@
                   <mp-stack spacing="2" mb="2">
                     <mp-flex>
                       <mp-box flex="none">
-                        <mp-icon name="pdf-document" />
+                        <mp-icon name="image-document" />
                       </mp-box>
                       <mp-box flex="1 1 0%" pl="3">
-                        <mp-text is-truncated is-link line-height="md"> the_attachment-is-to...ike_this.pdf </mp-text>
+                        <mp-text is-truncated is-link line-height="md" @click.native="isModalAttachmentPreviewOpen = true"> AemZaht.png </mp-text>
                         <mp-text color="gray.400" line-height="md"> 1.3 MB </mp-text>
                       </mp-box>
                       <mp-box flex="none">
                         <mp-tooltip label="Download" id="download-01">
-                          <mp-button-icon name="download" />
+                          <mp-button-icon name="download" @click="downloadImage('https://i.imgur.com/AemZaht.png')" />
                         </mp-tooltip>
                       </mp-box>
                     </mp-flex>
                     <mp-flex>
                       <mp-box flex="none">
-                        <mp-icon name="word-document" />
+                        <mp-icon name="image-document" />
                       </mp-box>
                       <mp-box flex="1 1 0%" pl="3">
-                        <mp-text is-truncated is-link line-height="md"> the_attachment-is-to...ike_this.pdf </mp-text>
+                        <mp-text is-truncated is-link line-height="md" @click.native="isModalAttachmentPreviewOpen = true"> AemZaht.png </mp-text>
                         <mp-text color="gray.400" line-height="md"> 1.3 MB </mp-text>
                       </mp-box>
                       <mp-box flex="none">
                         <mp-tooltip label="Download" id="download-02">
-                          <mp-button-icon name="download" />
+                          <mp-button-icon name="download" @click="downloadImage('https://i.imgur.com/AemZaht.png')" />
                         </mp-tooltip>
                       </mp-box>
                     </mp-flex>
@@ -309,6 +309,13 @@
         <ModalDeleteThisRequest :is-open="isModalDeleteThisRequestOpen" @handleClose="isModalDeleteThisRequestOpen = false" />
         <ModalRejectThisRequest :is-open="isModalRejectThisRequestOpen" @handleClose="isModalRejectThisRequestOpen = false" />
         <ModalPrintPdf :is-open="isModalPrintPdfOpen" @handleClose="isModalPrintPdfOpen = false" />
+        <ModalAttachmentPreview
+          file-name="AemZaht.png"
+          extension="png"
+          url="https://i.imgur.com/AemZaht.png"
+          :is-open="isModalAttachmentPreviewOpen"
+          @handleClose="isModalAttachmentPreviewOpen = false"
+        />
       </mp-box>
     </mp-flex>
   </mp-box>
@@ -348,6 +355,7 @@ import ModalDeleteThisRequest from "./ModalDeleteThisRequest.vue";
 import ModalRejectThisRequest from "./ModalRejectThisRequest.vue";
 import ModalPrintPdf from "./ModalPrintPdf.vue";
 import ModalAudit from "./ModalAudit.vue";
+import ModalAttachmentPreview from "./ModalAttachmentPreview.vue";
 import { TextElipsisCollapsible } from "../components/TextElipsisCollapsible";
 
 export default {
@@ -385,6 +393,7 @@ export default {
     ModalDeleteThisRequest,
     ModalRejectThisRequest,
     ModalPrintPdf,
+    ModalAttachmentPreview,
     TextElipsisCollapsible,
   },
   data() {
@@ -393,6 +402,7 @@ export default {
       isModalDeleteThisRequestOpen: false,
       isModalRejectThisRequestOpen: false,
       isModalPrintPdfOpen: false,
+      isModalAttachmentPreviewOpen: false,
       products: [
         {
           id: 1,
@@ -493,6 +503,18 @@ export default {
   methods: {
     handleEditPurchaseRequest() {
       this.$router.push("/edit");
+    },
+    async downloadImage(imageSrc) {
+      const image = await fetch(imageSrc);
+      const imageBlog = await image.blob();
+      const imageURL = URL.createObjectURL(imageBlog);
+
+      const link = document.createElement("a");
+      link.href = imageURL;
+      link.download = "file";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     },
   },
 };

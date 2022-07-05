@@ -66,7 +66,7 @@
             <mp-flex flex-direction="column">
               <mp-form-control margin-bottom="5">
                 <mp-text font-weight="semibold" display="inline" margin-bottom="1"> Vendor address </mp-text>
-                <mp-textarea id="vendor-address" />
+                <mp-textarea id="vendor-address" resize="vertical" height="20" max-height="140px" />
               </mp-form-control>
             </mp-flex>
           </mp-grid>
@@ -74,14 +74,21 @@
             <mp-flex flex-direction="column">
               <mp-form-control margin-bottom="5">
                 <mp-text font-weight="semibold" display="inline" margin-bottom="1"> Transaction date<mp-text as="span" color="red.500">*</mp-text> </mp-text>
-                <mp-date-picker id="transaction-date" format="DD/MM/YYYY" type="date" placeholder="Select date" />
+                <mp-date-picker
+                  id="transaction-date"
+                  v-model="form.transactionDate"
+                  value-type="date"
+                  format="DD/MM/YYYY"
+                  type="date"
+                  placeholder="Select date"
+                />
               </mp-form-control>
             </mp-flex>
 
             <mp-flex flex-direction="column">
               <mp-form-control margin-bottom="5">
                 <mp-text font-weight="semibold" display="inline" margin-bottom="1"> Due date<mp-text as="span" color="red.500">*</mp-text> </mp-text>
-                <mp-date-picker id="due-date" format="DD/MM/YYYY" type="date" placeholder="Select date" />
+                <mp-date-picker id="due-date" v-model="form.dueDate" value-type="date" format="DD/MM/YYYY" type="date" placeholder="Select date" />
               </mp-form-control>
             </mp-flex>
 
@@ -119,7 +126,7 @@
                     <mp-icon name="settings" size="sm" margin-left="1" margin-bottom="1" />
                   </mp-box>
                 </mp-flex>
-                <mp-input placeholder="[Auto]" id="transaction-date" />
+                <mp-input placeholder="[Auto]" id="transaction-date" isReadOnly />
               </mp-form-control>
             </mp-flex>
 
@@ -133,7 +140,7 @@
             <mp-flex flex-direction="column">
               <mp-form-control margin-bottom="5">
                 <mp-text font-weight="semibold" display="inline" margin-bottom="1"> Tag<mp-text as="span" color="red.500">*</mp-text> </mp-text>
-                <mp-input-tag id="input-tag" placeholder="Example: IT Division " />
+                <mp-input-tag id="input-tag" :suggestions="['IT Division', 'HR Division']" :is-show-suggestions="true" placeholder="Example: IT Division" />
               </mp-form-control>
             </mp-flex>
           </mp-grid>
@@ -147,13 +154,13 @@
               <mp-flex flex-direction="column">
                 <mp-form-control margin-bottom="5">
                   <mp-text font-weight="semibold" display="inline" margin-bottom="1"> Message </mp-text>
-                  <mp-textarea id="message" placeholder="Message" resize="vertical" />
+                  <mp-textarea id="message" placeholder="Message" resize="vertical" height="20" max-height="140px" />
                 </mp-form-control>
               </mp-flex>
               <mp-flex flex-direction="column">
                 <mp-form-control margin-bottom="5">
                   <mp-text font-weight="semibold" display="inline" margin-bottom="1"> Memo </mp-text>
-                  <mp-textarea placeholder="Memo" resize="vertical" />
+                  <mp-textarea placeholder="Memo" resize="vertical" height="20" max-height="140px" />
                 </mp-form-control>
               </mp-flex>
 
@@ -171,15 +178,13 @@
                         <mp-icon :name="attachment.icon" />
                       </mp-box>
                       <mp-box flex-grow="1" pl="3" max-w="calc(100% - 56px)">
-                        <TextEllipsis :id="`file-name-${index}`">
-                          <mp-text
-                            is-link
-                            line-height="md"
-                            @click.native="handleAttachmentPreview({ fileName: attachment.name, extension: attachment.extension, url: attachment.url })"
-                          >
-                            {{ attachment.name }}
-                          </mp-text>
-                        </TextEllipsis>
+                        <mp-box @click="handleAttachmentPreview({ fileName: attachment.name, extension: attachment.extension, url: attachment.url })">
+                          <TextEllipsis :id="`file-name-${index}`">
+                            <mp-text is-link line-height="md">
+                              {{ attachment.name }}
+                            </mp-text>
+                          </TextEllipsis>
+                        </mp-box>
 
                         <mp-text color="gray.400" line-height="md"> {{ formatFileSize(attachment.size) }} </mp-text>
                       </mp-box>
@@ -364,6 +369,12 @@ export default {
       isModalTransactionNumberSettingOpen: false,
       isModalAttachmentPreviewOpen: false,
       showOverlay: false,
+
+      // Form
+      form: {
+        transactionDate: "",
+        dueDate: "",
+      },
 
       // Attachment
       selectedAttachment: {

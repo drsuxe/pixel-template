@@ -14,9 +14,9 @@
           border-color="gray.100"
         >
           <mp-box w="calc(100% - 32px)">
-            <Ellipsis id="pelunasan-belum-bayar-1">
+            <TextEllipsis id="pelunasan-belum-bayar-1">
               <mp-heading as="h3" font-size="lg"> Penjualan belum dibayar (IDR) </mp-heading>
-            </Ellipsis>
+            </TextEllipsis>
           </mp-box>
           <mp-badge variant-color="orange">6</mp-badge>
         </mp-flex>
@@ -39,9 +39,9 @@
           border-color="gray.100"
         >
           <mp-box w="calc(100% - 32px)">
-            <Ellipsis id="pelunasan-belum-bayar-2">
+            <TextEllipsis id="pelunasan-belum-bayar-2">
               <mp-heading as="h3" font-size="lg"> Penjualan belum dibayar (IDR) </mp-heading>
-            </Ellipsis>
+            </TextEllipsis>
           </mp-box>
           <mp-badge variant-color="red">6</mp-badge>
         </mp-flex>
@@ -64,9 +64,9 @@
           border-color="gray.100"
         >
           <mp-box w="calc(100% - 32px)">
-            <Ellipsis id="pelunasan-30-hari">
+            <TextEllipsis id="pelunasan-30-hari">
               <mp-heading as="h3" font-size="lg"> Pelunasan diterima 30 hari terakhir </mp-heading>
-            </Ellipsis>
+            </TextEllipsis>
           </mp-box>
           <mp-badge variant-color="green">6</mp-badge>
         </mp-flex>
@@ -94,7 +94,7 @@
 
 <script>
 import { MpGrid, MpFlex, MpBox, MpHeading, MpBadge, MpText } from "@mekari/pixel";
-import { Ellipsis } from "../components/Ellipsis";
+import { TextEllipsis } from "../components/TextEllipsis";
 
 export default {
   name: "SectionSummaryBox",
@@ -105,7 +105,7 @@ export default {
     MpHeading,
     MpBadge,
     MpText,
-    Ellipsis,
+    TextEllipsis,
   },
 };
 </script>

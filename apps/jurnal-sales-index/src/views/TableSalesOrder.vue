@@ -111,11 +111,11 @@
                 </mp-box>
               </mp-flex>
 
-              <Ellipsis :id="`invoice-description-${index}`" v-if="invoice.description">
+              <TextEllipsis :id="`invoice-description-${index}`" v-if="invoice.description">
                 <mp-text text-overflow="ellipsis" white-space="nowrap" font-size="sm" line-height="sm" color="gray.600" overflow="hidden">
                   {{ invoice.description }}
                 </mp-text>
-              </Ellipsis>
+              </TextEllipsis>
             </mp-table-cell>
             <mp-table-cell
               as="td"
@@ -124,9 +124,9 @@
               max-width="100px"
               :style="{ height: 'auto', paddingTop: '0.875rem', paddingBottom: '0.875rem' }"
             >
-              <Ellipsis :id="`invoice-customer-${index}`">
+              <TextEllipsis :id="`invoice-customer-${index}`">
                 <mp-text is-link font-size="md" line-height="md"> {{ invoice.customer }} </mp-text>
-              </Ellipsis>
+              </TextEllipsis>
             </mp-table-cell>
             <mp-table-cell as="td" scope="row" vertical-align="top" :style="{ height: 'auto', paddingTop: '0.875rem', paddingBottom: '0.875rem' }">
               <mp-text font-size="md" line-height="md">{{ invoice.dueDate }}</mp-text>
@@ -145,9 +145,9 @@
             <mp-table-cell as="td" scope="row" vertical-align="top" :style="{ height: 'auto', paddingTop: '0.875rem', paddingBottom: '0.875rem' }">
               <mp-flex gap="3" align-items="center" flex-wrap="wrap" max-width="140px">
                 <mp-tag size="sm" variant="gray" max-w="140px" v-for="value in invoice.tag.slice(0, 1)" :key="value">
-                  <Ellipsis :id="`tag-invoice-${index}`" :label="value">
+                  <TextEllipsis :id="`tag-invoice-${index}`" :label="value">
                     <mp-text line-height="md"> {{ value }} </mp-text>
-                  </Ellipsis>
+                  </TextEllipsis>
                 </mp-tag>
 
                 <mp-popover :id="`popover-invoice-${index}`">
@@ -204,7 +204,7 @@ import {
   MpButton,
 } from "@mekari/pixel";
 
-import { Ellipsis } from "../components/Ellipsis";
+import { TextEllipsis } from "../components/TextEllipsis";
 import TablePagination from "./TablePagination.vue";
 import ModalDelete from "./ModalDelete.vue";
 import ModalPrintPdf from "./ModalPrintPdf.vue";
@@ -237,7 +237,7 @@ export default {
     ModalDelete,
     ModalPrintPdf,
     MpButton,
-    Ellipsis,
+    TextEllipsis,
   },
   data() {
     return {

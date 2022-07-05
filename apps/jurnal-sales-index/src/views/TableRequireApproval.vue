@@ -75,11 +75,11 @@
                   </mp-flex>
                 </mp-box>
               </mp-flex>
-              <Ellipsis :id="`invoice-description-${index}`" v-if="invoice.description">
+              <TextEllipsis :id="`invoice-description-${index}`" v-if="invoice.description">
                 <mp-text text-overflow="ellipsis" white-space="nowrap" font-size="sm" line-height="sm" color="gray.600" overflow="hidden">
                   {{ invoice.description }}
                 </mp-text>
-              </Ellipsis>
+              </TextEllipsis>
             </mp-table-cell>
             <mp-table-cell as="td" scope="row" vertical-align="top" :style="{ height: 'auto', paddingTop: '0.875rem', paddingBottom: '0.875rem' }">
               <mp-text is-link text-overflow="ellipsis" white-space="nowrap" overflow="hidden" font-size="md" line-height="md">
@@ -196,7 +196,7 @@ import {
   MpButtonIcon,
 } from "@mekari/pixel";
 
-import { Ellipsis } from "../components/Ellipsis";
+import { TextEllipsis } from "../components/TextEllipsis";
 import PopoverTimelineAccordion from "./PopoverTimelineAccordion.vue";
 import PopoverTimeline from "./PopoverTimeline.vue";
 import TablePagination from "./TablePagination.vue";
@@ -231,7 +231,7 @@ export default {
     PopoverTimeline,
     TablePagination,
     ModalChat,
-    Ellipsis,
+    TextEllipsis,
   },
   data() {
     return {
