@@ -1,10 +1,10 @@
 <template>
-  <mp-modal size="2xl" :isOpen="isOpen" scrollBehavior="inside">
+  <mp-modal size="2xl" :isOpen="isOpen" :key="modalKey" :scroll-behavior="scrollBehavior">
     <mp-modal-content>
       <mp-modal-header>Impor transaksi penjualan</mp-modal-header>
       <mp-modal-close-button @click="$emit('handleClose')" />
       <mp-modal-body>
-        <mp-text>Silakan ikuti ada langkah-langkah dibawah ini untuk melalukan impor data.</mp-text>
+        <mp-text ref="title">Silakan ikuti ada langkah-langkah dibawah ini untuk melalukan impor data.</mp-text>
         <mp-stack mt="6" spacing="4">
           <mp-flex>
             <mp-box flex="none" bg="blue.400" w="34px" h="34px" rounded="full" display="flex" align-items="center" justify-content="center">
@@ -102,7 +102,7 @@
                 </mp-text>
               </mp-box>
 
-              <mp-button mt="3" variant="outline" @click="isShowImportantData = !isShowImportantData">
+              <mp-button mt="3" variant="outline" @click="handleShowData">
                 {{ isShowImportantData ? "Sembunyikan" : "Lihat info penting" }}
               </mp-button>
             </mp-box>
@@ -186,6 +186,8 @@ export default {
   },
   data() {
     return {
+      scrollBehavior: "outside",
+      modalKey: 0,
       isShowImportantData: false,
       uploadKey: 0,
       files: "",
@@ -201,8 +203,11 @@ export default {
       this.uploadKey += 1;
       this.files = "";
     },
+    handleShowData() {
+      this.isShowImportantData = !this.isShowImportantData;
+      this.scrollBehavior = this.isShowImportantData ? "inside" : "outside";
+      this.modalKey += 1;
+    },
   },
 };
 </script>
-
-<style lang="scss" scoped></style>

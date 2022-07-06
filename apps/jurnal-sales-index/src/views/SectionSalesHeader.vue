@@ -6,14 +6,14 @@
     <mp-flex align-items="center">
       <mp-button-group>
         <mp-button @click="isModalSwitchToOldView = true" variant="ghost" default="Default">Kembali ke tampilan lama</mp-button>
-        <mp-popover id="impor">
+        <mp-popover id="impor" ref="impor">
           <mp-popover-trigger>
             <mp-button variant="outline" marginRight="2" right-icon="caret-down"> Impor </mp-button>
           </mp-popover-trigger>
           <mp-popover-content max-width="64" bg="white" rounded="md" shadow="lg" border-width="1px" border-color="gray.400">
             <mp-popover-list>
-              <mp-popover-list-item @click="isModalImportFromJurnal = true">Template dari Jurnal</mp-popover-list-item>
-              <mp-popover-list-item @click="isModalImportFromOtherApp = true"> Template dari aplikasi lain </mp-popover-list-item>
+              <mp-popover-list-item @click="openModal('importFromJurnal')">Template dari Jurnal</mp-popover-list-item>
+              <mp-popover-list-item @click="openModal('importFromOtherApp')"> Template dari aplikasi lain </mp-popover-list-item>
             </mp-popover-list>
           </mp-popover-content>
         </mp-popover>
@@ -87,7 +87,16 @@ export default {
       isModalImportFromJurnal: false,
       isModalImportFromOtherApp: false,
       isModalImportProcessing: false,
+      isImportPopoverOpen: false,
     };
+  },
+  methods: {
+    openModal(modal) {
+      if (modal === "importFromJurnal") this.isModalImportFromJurnal = true;
+      if (modal === "importFromOtherApp") this.isModalImportFromOtherApp = true;
+
+      this.$refs.impor.closePopover();
+    },
   },
 };
 </script>
