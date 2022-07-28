@@ -73,8 +73,34 @@
                   </mp-flex>
 
                   <mp-flex v-if="open === 'infoTambahan'" flex-direction="column" id="edit-info-tambahan">
+                    <mp-flex flex-direction="column" gap="2" py="2">
+                      <mp-text font-weight="semibold">Logo perusahaan</mp-text>
+                      <mp-flex v-if="tempInfoTambahan.imageUrl">
+                        <mp-box border="1px" border-color="gray.100" p="4" rounded="md" position="relative">
+                          <mp-box as="img" h="8" w="auto" :src="tempInfoTambahan.imageUrl" alt="" />
+
+                          <mp-box position="absolute" top="-12px" right="-12px" as="button" bg="white" rounded="full" p="1px" @click="handleClear">
+                            <mp-icon name="minus-circular" variant="fill" color="blue.400" />
+                          </mp-box>
+                        </mp-box>
+                      </mp-flex>
+                      <mp-flex h="16" w="16" bg="background" alignItems="center" justify-content="center" borderRadius="6" v-else>
+                        <mp-icon name="company" size="lg" />
+                      </mp-flex>
+
+                      <mp-text color="gray.600" font-size="sm" v-if="tempInfoTambahan.imageUrl">Logo ini akan muncul di detail dan preview transaksi</mp-text>
+                      <mp-text color="gray.600" font-size="sm" v-else>Format file JPG atau PNG (maks. 2 MB)</mp-text>
+
+                      <mp-upload id="upload-logo" :change="handleUpload" @clear="handleClear" />
+                    </mp-flex>
                     <mp-flex py="2">
-                      <mp-checkbox v-model="tempInfoTambahan.tampilkanLogoDiLaporan" align-self="center" id="reportLogo">Tampilkan logo di laporan</mp-checkbox>
+                      <mp-checkbox
+                        v-model="tempInfoTambahan.tampilkanLogoDiLaporan"
+                        :is-disabled="!tempInfoTambahan.imageUrl"
+                        align-self="center"
+                        id="reportLogo"
+                        >Tampilkan logo di laporan</mp-checkbox
+                      >
                     </mp-flex>
                     <mp-flex pb="5">
                       <mp-checkbox v-model="tempInfoTambahan.invoiceAddress" align-self="center" id="companyInvoiceAddress"
@@ -90,6 +116,10 @@
                     <mp-flex flex-direction="column" gap="1" pb="5">
                       <mp-text font-weight="semibold" display="inline"> Alamat Pengiriman </mp-text>
                       <mp-textarea v-model="tempInfoTambahan.alamatPengiriman" isFullWidth />
+                    </mp-flex>
+                    <mp-flex flex-direction="column" gap="1" pb="5">
+                      <mp-text font-weight="semibold" display="inline"> NPWP </mp-text>
+                      <mp-input type="text" v-model="tempInfoTambahan.npwp" isFullWidth />
                     </mp-flex>
                     <mp-flex flex-direction="column" gap="1" pb="5">
                       <mp-text font-weight="semibold" display="inline"> Fax </mp-text>
@@ -115,6 +145,17 @@
                     </mp-flex>
                   </mp-flex>
                   <mp-flex v-else flex-direction="column">
+                    <mp-flex flex-direction="column" gap="2" py="2">
+                      <mp-text font-weight="semibold">Logo perusahaan</mp-text>
+                      <mp-flex v-if="storedInfoTambahan.imageUrl">
+                        <mp-box border="1px" border-color="gray.100" p="4" rounded="md">
+                          <mp-box as="img" h="8" w="auto" src="https://pngimg.com/uploads/google/small/google_PNG19644.png" alt="" />
+                        </mp-box>
+                      </mp-flex>
+                      <mp-flex h="16" w="16" bg="background" alignItems="center" justify-content="center" borderRadius="6" v-else>
+                        <mp-icon name="company" size="lg" />
+                      </mp-flex>
+                    </mp-flex>
                     <mp-flex py="2">
                       <mp-checkbox isDisabled align-self="center" id="reportLogo" v-model="storedInfoTambahan.tampilkanLogoDiLaporan"
                         >Tampilkan logo di laporan</mp-checkbox
@@ -143,6 +184,16 @@
                       <mp-flex flex="60%" py="1.5">
                         <mp-text font-size="md" line-height="md">
                           {{ storedInfoTambahan.alamatPengiriman }}
+                        </mp-text>
+                      </mp-flex>
+                    </mp-flex>
+                    <mp-flex>
+                      <mp-flex flex="40%" py="1.5">
+                        <mp-text color="gray.600" font-size="md" line-height="md"> NPWP </mp-text>
+                      </mp-flex>
+                      <mp-flex flex="60%" py="1.5">
+                        <mp-text font-size="md" line-height="md">
+                          {{ storedInfoTambahan.npwp || "-" }}
                         </mp-text>
                       </mp-flex>
                     </mp-flex>
@@ -672,6 +723,7 @@ import {
   MpModalBody,
   MpModalCloseButton,
   MpAutocomplete,
+  MpUpload,
 } from "@mekari/pixel";
 import Header from "@/components/Header";
 import SubHeaderChild from "@/components/SubHeaderChild";
@@ -710,6 +762,7 @@ export default {
     MpModalCloseButton,
     MpAutocomplete,
     ActivateApprovalModal,
+    MpUpload,
   },
   data() {
     return {
@@ -725,10 +778,12 @@ export default {
 
       // Info Tambahan
       storedInfoTambahan: {
+        imageUrl: "",
         tampilkanLogoDiLaporan: false,
         invoiceAddress: false,
         alamatInvoice: "",
         alamatPengiriman: "Jalan ring road no 9",
+        npwp: "",
         fax: "",
         website: "",
         email: "admin@cp-indonesia.com",
@@ -848,6 +903,15 @@ export default {
       });
 
       this.handleResetInfoTambahan();
+    },
+    handleUpload(e) {
+      console.log(e.target.files);
+      this.tempInfoTambahan.imageUrl = URL.createObjectURL(e.target.files[0]);
+    },
+    handleClear(e, files, clear) {
+      console.log(e, files, clear);
+      this.tempInfoTambahan.imageUrl = "";
+      clear();
     },
 
     // Info Akun Bank
