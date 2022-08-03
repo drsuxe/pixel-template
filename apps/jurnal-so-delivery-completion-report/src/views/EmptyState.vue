@@ -5,7 +5,7 @@
     <img v-if="type === 'no-email'" src="../assets/no-email.svg" alt="" />
     <img v-if="type === 'failed'" src="../assets/failed.svg" alt="" />
 
-    <mp-text font-weight="semibold"> {{ title }} </mp-text>
+    <mp-text font-weight="semibold" mt="4"> {{ title }} </mp-text>
     <mp-text font-size="sm" color="gray.600" text-align="center">{{ description }} </mp-text>
   </mp-flex>
 </template>

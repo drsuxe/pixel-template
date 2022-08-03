@@ -17,13 +17,13 @@
 
           <mp-flex justify="space-between" align-items="flex-end">
             <mp-flex gap="4" align-items="flex-end">
-              <mp-form-control control-id="tanggal-mulai">
-                <mp-form-label>Tanggal Mulai</mp-form-label>
+              <mp-form-control control-id="start-date">
+                <mp-form-label>Start date</mp-form-label>
                 <mp-date-picker v-model="filter.startDate" format="DD/MM/YYYY" />
               </mp-form-control>
 
-              <mp-form-control control-id="tanggal-selesai">
-                <mp-form-label>Tanggal Selesai</mp-form-label>
+              <mp-form-control control-id="end-date">
+                <mp-form-label>End date</mp-form-label>
                 <mp-date-picker v-model="filter.endDate" format="DD/MM/YYYY" />
               </mp-form-control>
 
@@ -42,7 +42,7 @@
 
               <mp-button-group>
                 <mp-button @click="handleSubmit"> Filter </mp-button>
-                <mp-button variant="outline" @click="isOpenDrawerMoreFilter = true"> Filter lainnya </mp-button>
+                <mp-button variant="outline" @click="isOpenDrawerMoreFilter = true"> More filter </mp-button>
               </mp-button-group>
             </mp-flex>
 
@@ -65,7 +65,7 @@
 
           <mp-flex v-if="isLoading" direction="column" align-items="center" justify-content="center" pt="12">
             <mp-spinner />
-            <mp-text font-weight="semibold" mt="3">Memuat transaksi...</mp-text>
+            <mp-text font-weight="semibold" mt="3">Loading transactions...</mp-text>
           </mp-flex>
 
           <mp-box mt="8" v-if="showTable && !isLoading">
@@ -73,31 +73,27 @@
           </mp-box>
 
           <mp-box v-if="!showTable && !isLoading && !isDataNotFound" pt="12">
-            <EmptyState type="no-data" title="Laporan belum ditampilkan" description="Laporan yang Anda filter akan ditampilkan di sini." />
+            <EmptyState type="no-data" title="No report shown yet" description="The report that you filter will show here." />
           </mp-box>
 
           <mp-box pt="12" v-if="!showTable && !isLoading && isDataNotFound">
-            <EmptyState
-              type="data-not-found"
-              title="Laporan tidak ditemukan "
-              description="Silakan atur ulang filter periode atau filter lainnya untuk menampilkan laporan."
-            />
+            <EmptyState type="data-not-found" title="No report found" description="Please reset the period filter or other filters to show the report." />
           </mp-box>
 
-          <mp-drawer :is-open="isOpenDrawerMoreFilter">
+          <mp-drawer :is-open="isOpenDrawerMoreFilter" :on-close="() => (isOpenDrawerMoreFilter = false)">
             <mp-drawer-overlay />
             <mp-drawer-content>
               <mp-drawer-header>More filter</mp-drawer-header>
               <mp-drawer-close-button @click="isOpenDrawerMoreFilter = false" />
               <mp-drawer-body>
                 <mp-stack spacing="5">
-                  <mp-form-control control-id="drawer-tanggal-mulai">
-                    <mp-form-label>Tanggal Mulai</mp-form-label>
+                  <mp-form-control control-id="drawer-start-date">
+                    <mp-form-label>Start date</mp-form-label>
                     <mp-date-picker v-model="filter.startDate" format="DD/MM/YYYY" />
                   </mp-form-control>
 
-                  <mp-form-control control-id="tanggal-selesai">
-                    <mp-form-label>Tanggal Selesai</mp-form-label>
+                  <mp-form-control control-id="end-date">
+                    <mp-form-label>End date</mp-form-label>
                     <mp-date-picker v-model="filter.endDate" format="DD/MM/YYYY" />
                   </mp-form-control>
 
@@ -126,6 +122,7 @@
                       :trigger-style="{ maxHeight: '24', overflowY: 'auto' }"
                       :data="filter.customer"
                       @change="(value) => (filter.customer = value)"
+                      :contentStyle="{ maxWidth: 'full' }"
                     />
                   </mp-form-control>
 
@@ -135,7 +132,9 @@
                         >Tags
 
                         <mp-tooltip
+                          position="right"
                           label="Filter all tags: showing transactions from all tags you selected. Filter partial tags: showing transactions from one tag and/or other tags you selected."
+                          width="280px"
                         >
                           <mp-icon name="info" size="sm" ml="1" />
                         </mp-tooltip>
@@ -151,6 +150,7 @@
                         :trigger-style="{ maxHeight: '24', overflowY: 'auto' }"
                         :data="filter.tag"
                         @change="(value) => (filter.tag = value)"
+                        :contentStyle="{ maxWidth: 'full' }"
                       />
                     </mp-form-control>
 
@@ -169,7 +169,6 @@
               </mp-drawer-footer>
             </mp-drawer-content>
           </mp-drawer>
-
           <ModalGagalMemuatLaporan :is-open="isShowModalGagalMemuatLaporan" @handleClose="isShowModalGagalMemuatLaporan = false" />
           <ModalExportFailed :is-open="isShowModalFailedExport" @handleClose="isShowModalFailedExport = false" />
         </mp-box>
@@ -283,6 +282,15 @@ export default {
       isShowModalFailedExport: false,
     };
   },
+  watch: {
+    "filter.period": function (newValue) {
+      if (newValue === "") {
+        setTimeout(() => {
+          this.filter.period = "Hari ini";
+        }, 300);
+      }
+    },
+  },
   methods: {
     handleApplyFilter() {
       this.isOpenDrawerMoreFilter = false;
@@ -292,11 +300,13 @@ export default {
       this.isLoading = true;
 
       setTimeout(() => {
-        this.showTable = true;
-        // this.isDataNotFound = true;
-        // this.isShowModalGagalMemuatLaporan = true
+        console.log(this.period);
+        if (this.filter.period === "Hari ini") this.showTable = true;
+        if (this.filter.period === "Minggu ini") this.isDataNotFound = true;
+        if (this.filter.period === "Custom") this.isShowModalGagalMemuatLaporan = true;
+
         this.isLoading = false;
-      }, 1000);
+      }, 500);
     },
     handleExportReport(type) {
       this.exportComponentKey += 1;
@@ -310,7 +320,7 @@ export default {
         }
 
         this.isExportLoading = false;
-      }, 1000);
+      }, 500);
     },
   },
 };

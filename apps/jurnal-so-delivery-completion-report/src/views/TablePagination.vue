@@ -26,6 +26,8 @@
           </mp-popover-trigger>
           <mp-popover-content width="55px" bg="white" rounded="md" shadow="lg" border-width="1px" border-color="gray.400">
             <mp-popover-list>
+              <mp-popover-list-item>5</mp-popover-list-item>
+              <mp-popover-list-item>10</mp-popover-list-item>
               <mp-popover-list-item is-active>25</mp-popover-list-item>
               <mp-popover-list-item> 50 </mp-popover-list-item>
               <mp-popover-list-item> 100 </mp-popover-list-item>

@@ -5,14 +5,10 @@
         <mp-modal-header>Filter transaksi</mp-modal-header>
         <mp-modal-close-button @click="$emit('handleClose')" />
         <mp-modal-body>
-          <EmptyState
-            type="no-email"
-            title="Laporan tidak ditemukan "
-            description="Silakan atur ulang filter periode atau filter lainnya untuk menampilkan laporan."
-          />
+          <EmptyState type="no-email" title="Failed to load this report" description="Please contact our support team to show the list of transaction." />
         </mp-modal-body>
         <mp-modal-footer>
-          <mp-button @click="$emit('handleClose')">Oke, mengerti</mp-button>
+          <mp-button @click="$emit('handleClose')">Ok, got it</mp-button>
         </mp-modal-footer>
       </mp-modal-content>
       <mp-modal-overlay />

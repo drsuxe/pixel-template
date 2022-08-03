@@ -12,7 +12,7 @@
           />
         </mp-modal-body>
         <mp-modal-footer>
-          <mp-button @click="$emit('handleClose')">Oke, mengerti</mp-button>
+          <mp-button @click="$emit('handleClose')">Ok, got it</mp-button>
         </mp-modal-footer>
       </mp-modal-content>
       <mp-modal-overlay />
