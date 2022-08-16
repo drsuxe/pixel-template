@@ -3,18 +3,23 @@
     <JTable
       id="table-1"
       :loading="loading"
-      :heads="JSON.parse(JSON.stringify(heads))"
-      :items="JSON.parse(JSON.stringify(this.datas))"
+      :heads="heads"
+      :items="datas"
       :checkbox="true"
       :is-sortable="true"
       :use-pagination="true"
       :page="1"
       :per-page="10"
-      :total-data="118"
+      :total-data="1001"
       @changePage="onChangePage"
       @check="onCheck"
       @checkAll="onCheckAll"
       @sorting="onSorting"
+      :blankSlate="{
+        state: 'no-data',
+        title: 'Lorem Ipsum',
+        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
+      }"
     >
       <template #bulkAction>
         <mp-text> transaksi dipilih</mp-text>
@@ -107,7 +112,6 @@
 import { MpTableCell, MpBox, MpFlex, MpText, MpBadge, MpTag, MpPopover, MpPopoverTrigger, MpPopoverContent, MpTooltip, MpIcon, MpButton } from "@mekari/pixel";
 import JTable from "../components/JTable.vue";
 import { TextEllipsis } from "../components/TextEllipsis";
-import { items } from "../assets/datasets";
 
 export default {
   components: {
@@ -134,12 +138,13 @@ export default {
           title: "Date",
           key: "transaction_date",
           sort: "",
+          width: "100px",
         },
         {
           title: "Number",
           key: "transaction_no",
           sort: "",
-          width: "150px",
+          width: "300px",
         },
         {
           title: "Customer",
@@ -339,9 +344,6 @@ export default {
           tagExpanded: false,
         },
       ],
-
-      // Dataset from valhalla
-      items: items,
     };
   },
   methods: {
@@ -360,7 +362,11 @@ export default {
       console.group("onSorting");
       console.log(head);
       console.log(heads);
+
+      this.heads = heads;
       console.groupEnd();
+
+      this.fetchData();
     },
     onChangePage(data) {
       console.group("onSorting");
@@ -375,7 +381,6 @@ export default {
       this.loading = true;
 
       setTimeout(() => {
-        this.heads = JSON.parse(JSON.stringify(this.heads));
         this.datas = JSON.parse(JSON.stringify(this.datas));
         this.loading = false;
       }, 500);
@@ -385,7 +390,6 @@ export default {
       this.loading = true;
 
       setTimeout(() => {
-        this.heads = JSON.parse(JSON.stringify(this.heads));
         this.datas = JSON.parse(JSON.stringify(this.datas));
         this.loading = false;
       }, 500);

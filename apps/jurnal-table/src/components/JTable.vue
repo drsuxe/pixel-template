@@ -1,9 +1,9 @@
 <template>
   <mp-box v-bind="$attrs">
-    <mp-table-container overflow="auto">
+    <mp-table-container overflow="auto" v-bind="{ ...tableStyle }">
       <mp-table :isHoverable="isHoverable">
-        <mp-table-head>
-          <mp-table-row background-color="ice.50" :position="showBulkAction ? 'relative' : ''">
+        <mp-table-head :is-fixed="isFixed">
+          <mp-table-row :background-color="headBgColor" :position="showBulkAction ? 'relative' : ''">
             <mp-table-cell as="th" scope="col" width="39px" v-if="checkbox">
               <mp-checkbox :is-checked="isCheckedAll" :is-indeterminate="isIndeterminate" @change="handleCheckAll" :id="`${id}-head-checkbox`" />
               <template v-if="hasBulkActionSlot">
@@ -43,18 +43,15 @@
           </mp-table-row>
 
           <!-- Blank state -->
-          <mp-table-row v-else-if="items.length === 0">
-            <mp-table-cell as="td" align="center" :colspan="heads.length + 1">
-              <mp-flex justify-content="center" align-items="center">
-                <img src="../assets/no-data.svg" alt="no data image" height="180" />
-                <mp-flex flex-direction="column">
-                  <mp-heading as="h4" font-size="md"> Empty Text </mp-heading>
-                  <mp-text mt="1" color="blackAlpha.700"> Empty Text Secondary </mp-text>
-                  <mp-text mt="1" color="blackAlpha.700"> Empty Text Secondary </mp-text>
-                  <a>
-                    <mp-button left-icon="add" my="5" bg="blue.500"> Button </mp-button>
-                  </a>
-                </mp-flex>
+          <mp-table-row v-else-if="hasNoItems">
+            <mp-table-cell as="td" align="center" :colspan="heads.length + 1" :style="{ borderBottomColor: 'white' }">
+              <mp-flex direction="column" justify-content="center" align-items="center">
+                <img src="../assets/no-data.svg" alt="no data image" />
+                <mp-text font-weight="semibold" mt="4"> {{ blankSlate.title }} </mp-text>
+                <mp-text font-size="sm" color="gray.600" text-align="center"> {{ blankSlate.description }} </mp-text>
+                <a :href="blankSlate.href" v-if="blankSlate.buttonLabel">
+                  <mp-button left-icon="add" my="5" bg="blue.500"> {{ blankSlate.buttonLabel }} </mp-button>
+                </a>
               </mp-flex>
             </mp-table-cell>
           </mp-table-row>
@@ -87,7 +84,7 @@
     </mp-table-container>
 
     <!-- Pagination -->
-    <mp-box v-if="usePagination && !loading" padding-x="2" padding-y="4">
+    <mp-box v-if="usePagination && !loading && !hasNoItems" padding-x="2" padding-y="4">
       <mp-flex justify-content="space-between">
         <mp-flex align-items="center">
           <mp-text color="gray.600" line-height="md" padding-right="1" padding-y="1"> Rows per page </mp-text>
@@ -226,6 +223,18 @@ export default {
     page: Number, // currentPage
     perPage: Number,
     totalData: Number, // Total data
+    headBgColor: { type: String, default: "ice.50" },
+    isFixed: Boolean,
+    tableStyle: Object,
+    blankSlate: {
+      type: Object,
+      default() {
+        return {
+          title: "Title",
+          description: "Description",
+        };
+      },
+    },
   },
   data() {
     return {
@@ -240,6 +249,7 @@ export default {
     };
   },
   mounted() {
+    console.log("Render");
     this.datas = this.items;
     this.tableHeads = this.heads;
 
@@ -247,23 +257,30 @@ export default {
   },
   watch: {
     items: function (newValue, oldValue) {
-      console.log(oldValue);
-      this.datas = newValue;
+      if (newValue !== oldValue) {
+        this.datas = newValue;
+      }
     },
     heads: function (newValue, oldValue) {
-      console.log(oldValue);
-      this.tableHeads = newValue;
+      if (newValue !== oldValue) {
+        this.tableHeads = newValue;
+      }
     },
     perPage: function (newValue, oldValue) {
-      console.log(oldValue);
-      this.calculatePagination({ currentPerPage: newValue, totalData: this.totalData });
+      if (newValue !== oldValue) {
+        this.calculatePagination({ currentPerPage: newValue, totalData: this.totalData });
+      }
     },
     totalData: function (newValue, oldValue) {
-      console.log(oldValue);
-      this.calculatePagination({ currentPerPage: this.perPage, totalData: newValue });
+      if (newValue !== oldValue) {
+        this.calculatePagination({ currentPerPage: this.perPage, totalData: newValue });
+      }
     },
   },
   computed: {
+    hasNoItems() {
+      return this.items.length === 0;
+    },
     hasBulkActionSlot() {
       return !!this.$slots.bulkAction;
     },
@@ -321,9 +338,8 @@ export default {
       this.$emit("checkAll", this.selectedItems);
     },
     handleSorting(index, head) {
-      const tableHead = this.tableHeads[index];
-      console.log(index);
-      console.log(head);
+      const headIndex = index;
+      const tableHead = this.tableHeads[headIndex];
 
       if (tableHead.sort === "") {
         tableHead.sort = "ascending";
@@ -333,7 +349,12 @@ export default {
         tableHead.sort = "";
       }
 
-      this.$emit("sorting", this.tableHeads[index], this.tableHeads);
+      this.tableHeads = this.tableHeads.map((obj, index) => {
+        const sort = headIndex === index ? tableHead.sort : "";
+        return { ...obj, sort: sort };
+      });
+
+      this.$emit("sorting", head, this.tableHeads);
     },
 
     // Pagination

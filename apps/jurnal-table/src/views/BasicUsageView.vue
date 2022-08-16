@@ -4,7 +4,7 @@
       id="table-1"
       :heads="heads"
       :items="employees"
-      :checkbox="true"
+      :checkbox="false"
       :is-sortable="false"
       :use-pagination="false"
       :page="1"
