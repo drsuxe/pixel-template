@@ -20,13 +20,6 @@
                     </mp-tooltip>
                   </mp-flex>
 
-                  <mp-box v-if="companyLogo === 'filled'" py="2" as="img" h="12" src="https://mekari.com/wp-content/uploads/2022/04/logo-mekari.svg" alt="" />
-                  <mp-box py="2" v-else>
-                    <mp-flex h="16" w="16" bg="background" alignItems="center" justify-content="center" borderRadius="6">
-                      <mp-icon name="company" size="lg" />
-                    </mp-flex>
-                  </mp-box>
-
                   <mp-flex flex-direction="column">
                     <mp-flex>
                       <mp-flex flex="40%" py="1.5">
@@ -91,7 +84,7 @@
                       <mp-text color="gray.600" font-size="sm" v-if="tempInfoTambahan.imageUrl">Logo ini akan muncul di detail dan preview transaksi</mp-text>
                       <mp-text color="gray.600" font-size="sm" v-else>Format file JPG atau PNG (maks. 2 MB)</mp-text>
 
-                      <mp-upload id="upload-logo" :change="handleUpload" @clear="handleClear" />
+                      <mp-upload id="upload-logo" :key="uploadKey" :change="handleUpload" @clear="handleClear" accept=".jpg, .jpeg, .png" />
                     </mp-flex>
                     <mp-flex py="2">
                       <mp-checkbox
@@ -149,7 +142,7 @@
                       <mp-text font-weight="semibold">Logo perusahaan</mp-text>
                       <mp-flex v-if="storedInfoTambahan.imageUrl">
                         <mp-box border="1px" border-color="gray.100" p="4" rounded="md">
-                          <mp-box as="img" h="8" w="auto" src="https://pngimg.com/uploads/google/small/google_PNG19644.png" alt="" />
+                          <mp-box as="img" h="8" w="auto" :src="storedInfoTambahan.imageUrl" alt="" />
                         </mp-box>
                       </mp-flex>
                       <mp-flex h="16" w="16" bg="background" alignItems="center" justify-content="center" borderRadius="6" v-else>
@@ -789,6 +782,7 @@ export default {
         email: "admin@cp-indonesia.com",
       },
       tempInfoTambahan: {},
+      uploadKey: 0,
 
       // Info Akun Bank
       storedInfoAkunBank: {
@@ -911,6 +905,7 @@ export default {
     handleClear(e, files, clear) {
       console.log(e, files, clear);
       this.tempInfoTambahan.imageUrl = "";
+      this.uploadKey += 1;
       clear();
     },
 
