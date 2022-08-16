@@ -23,7 +23,7 @@
 
         <mp-flex bg="white" cursor="pointer" px="3" py="2" flex-direction="column" rounded-bottom="sm">
           <mp-text color="gray.600" font-size="sm" line-height="sm">Total</mp-text>
-          <mp-heading as="h2" font-size="xl" font-weight="semibold"> Rp 500.000.000 </mp-heading>
+          <mp-heading as="h2" font-size="xl" font-weight="semibold"> Rp500.000.000,00 </mp-heading>
         </mp-flex>
       </mp-flex>
       <mp-flex flex-direction="column" rounded="sm" border="1px" border-color="gray.100">
@@ -48,7 +48,7 @@
 
         <mp-flex bg="white" cursor="pointer" px="3" py="2" flex-direction="column" rounded-bottom="sm">
           <mp-text color="gray.600" font-size="sm" line-height="sm">Total</mp-text>
-          <mp-heading as="h2" font-size="xl" font-weight="semibold"> Rp 13.000.000 </mp-heading>
+          <mp-heading as="h2" font-size="xl" font-weight="semibold"> Rp13.000.000,00 </mp-heading>
         </mp-flex>
       </mp-flex>
       <mp-flex flex-direction="column" rounded="sm" border="1px" border-color="gray.100">
@@ -73,7 +73,7 @@
 
         <mp-flex bg="white" cursor="pointer" px="3" py="2" flex-direction="column" rounded-bottom="sm">
           <mp-text color="gray.600" font-size="sm" line-height="sm">Total</mp-text>
-          <mp-heading as="h2" font-size="xl" font-weight="semibold"> Rp 100.000.000 </mp-heading>
+          <mp-heading as="h2" font-size="xl" font-weight="semibold"> Rp100.000.000,00 </mp-heading>
         </mp-flex>
       </mp-flex>
       <mp-flex flex-direction="column" rounded="sm" border="1px" border-color="gray.100">

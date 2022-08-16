@@ -86,7 +86,7 @@
               </mp-text>
 
               <mp-box v-if="isShowImportantData">
-                <mp-heading font-weight="semibold" as="h2" mt="3">Penting!</mp-heading>
+                <mp-heading font-weight="semibold" as="h2" font-size="lg" mt="3">Penting!</mp-heading>
                 <mp-box as="ul" list-style-position="inside" pl="2">
                   <mp-text as="li"> Format Tanggal : dd/mm/yyyy (English - Canada) </mp-text>
                   <mp-text as="li"> Maksimum baris transaksi adalah 1000 entry (optimal) </mp-text>
@@ -96,7 +96,7 @@
                   <mp-text as="li"> JANGAN ubah format kolom yang disediakan </mp-text>
                 </mp-box>
 
-                <mp-heading font-weight="semibold" as="h2" mt="3">Tips</mp-heading>
+                <mp-heading font-weight="semibold" as="h2" font-size="lg" mt="3">Tips</mp-heading>
                 <mp-text>
                   Jika menggunakan Microsoft Excel, gunakan tanda (') didepan pada setiap pengisian data yang menggunakan angka. Contoh : `6-6003, `11-02-2016
                 </mp-text>
