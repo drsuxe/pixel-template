@@ -1,5 +1,5 @@
 <template>
-  <mp-table-container mt="1">
+  <mp-table-container>
     <mp-table :is-hoverable="false">
       <mp-table-head bg="gray.50">
         <mp-table-row>
@@ -41,7 +41,7 @@
                 <mp-input />
               </mp-input-group>
 
-              <mp-tooltip label="Hapus" :id="`delete-product-${index}`">
+              <mp-tooltip label="Hapus" :id="`delete-account-${index}`">
                 <mp-button-icon ml="2" @click="products.splice(index, 1)" name="minus-circular" />
               </mp-tooltip>
             </mp-flex>
@@ -133,3 +133,22 @@ export default {
   },
 };
 </script>
+
+<style>
+tbody > tr {
+  white-space: normal !important;
+}
+
+tbody > tr > td {
+  height: auto !important;
+  padding-top: 0.875rem !important;
+  padding-bottom: 0.875rem !important;
+  vertical-align: top !important;
+}
+
+input {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+</style>

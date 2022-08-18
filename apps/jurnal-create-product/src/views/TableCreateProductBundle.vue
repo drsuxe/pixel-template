@@ -1,5 +1,5 @@
 <template>
-  <mp-table-container mt="1">
+  <mp-table-container>
     <mp-table :is-hoverable="false">
       <mp-table-head bg="gray.50">
         <mp-table-row>
@@ -114,3 +114,22 @@ export default {
   },
 };
 </script>
+
+<style>
+tbody > tr {
+  white-space: normal !important;
+}
+
+tbody > tr > td {
+  height: auto !important;
+  padding-top: 0.875rem !important;
+  padding-bottom: 0.875rem !important;
+  vertical-align: center !important;
+}
+
+input {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+</style>
