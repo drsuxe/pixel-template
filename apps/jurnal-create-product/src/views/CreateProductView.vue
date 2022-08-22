@@ -184,6 +184,7 @@
                                           '(5-50003) - Beban',
                                         ]"
                                         :content-style="{ width: 'full' }"
+                                        isSearchable
                                         v-model="single.jual.akun.value"
                                         @change="(value) => handleChangeAutocomplete(value, { elementId: 'akun-penjualan', target: 'jual', column: 'akun' })"
                                       />

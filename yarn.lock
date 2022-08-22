@@ -1168,13 +1168,13 @@
     "@mekari/pixel-pseudo-box" "^0.0.8"
     "@mekari/pixel-utils" "^0.2.0"
 
-"@mekari/pixel-autocomplete@0.5.0":
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/@mekari/pixel-autocomplete/-/pixel-autocomplete-0.5.0.tgz#bfb794c6373dca090699df550aec51f8dbac7306"
-  integrity sha512-rK5upC85XpH7hEetDMg0ou18R3w/k5apAeglwrCik/1h5PbMUKnpJRKmkiJBjQK0nMNGmjm+vqEPts99NxqbiA==
+"@mekari/pixel-autocomplete@0.5.1":
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/@mekari/pixel-autocomplete/-/pixel-autocomplete-0.5.1.tgz#7760fa07b1874d9c33ff9acc380b9ede860cc31c"
+  integrity sha512-FvtWYHSjDGgWFPb1nfped1waiTO4DGlmafjhXa/WEbnhyu+rPeJn/vmDbmLyCPa8UAY8Mjb46rxjlF9ODwcciw==
   dependencies:
     "@mekari/pixel-box" "^0.0.9"
-    "@mekari/pixel-icon" "^0.8.2"
+    "@mekari/pixel-icon" "^0.8.3"
     "@mekari/pixel-input" "^0.3.7"
     "@mekari/pixel-popover" "^0.2.8"
     "@mekari/pixel-pseudo-box" "0.0.8"
@@ -1252,13 +1252,14 @@
     "@mekari/pixel-spinner" "^0.0.9"
     "@mekari/pixel-utils" "^0.2.0"
 
-"@mekari/pixel-carousel@0.1.4":
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/@mekari/pixel-carousel/-/pixel-carousel-0.1.4.tgz#013ff668f73d4198bcadfc8b1307bcf1821432e0"
-  integrity sha512-m6dEejm19DnNr1eOjMW3Clmr8tC26ytFM0qL2VZnVg3ttJdwpFv04a9zYyZLbMrJ42TxmzCqJ07YC1pwc1hGaA==
+"@mekari/pixel-carousel@0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@mekari/pixel-carousel/-/pixel-carousel-0.2.0.tgz#1c9be0af9f5a378766e28b692b4800aaf17e6d0a"
+  integrity sha512-2p76M5ZYYZU4SyrMdBk8DwpyIuMSW0f4+a3FfPDkm2XTp2naTAgAYnwtMxevlagiVjzmo6lIzKYdd1FIW5Fr0Q==
   dependencies:
     "@mekari/pixel-box" "^0.0.9"
     "@mekari/pixel-flex" "^0.0.8"
+    "@mekari/pixel-icon" "^0.8.3"
     "@mekari/pixel-utils" "^0.2.0"
 
 "@mekari/pixel-checkbox@0.1.10", "@mekari/pixel-checkbox@^0.1.10":
@@ -1362,7 +1363,14 @@
     "@mekari/pixel-text" "^0.0.11"
     "@mekari/pixel-utils" "^0.2.0"
 
-"@mekari/pixel-icon@0.8.2", "@mekari/pixel-icon@^0.8.2":
+"@mekari/pixel-icon@0.8.3", "@mekari/pixel-icon@^0.8.3":
+  version "0.8.3"
+  resolved "https://registry.yarnpkg.com/@mekari/pixel-icon/-/pixel-icon-0.8.3.tgz#d9e05504c5c511194fc3ebc3de18d3f3ed3abd5b"
+  integrity sha512-FtuQkLc4Nla7kcBAha9sWUQfxut8sEIgEU/uHyog3bay9DX1htWpr2rqV25Z2TkOW8NkaNx8HXgE66+1LGJi3A==
+  dependencies:
+    "@mekari/pixel-utils" "^0.2.0"
+
+"@mekari/pixel-icon@^0.8.2":
   version "0.8.2"
   resolved "https://registry.yarnpkg.com/@mekari/pixel-icon/-/pixel-icon-0.8.2.tgz#75a45474bf584efc59786fbc0650d9ae57b9929b"
   integrity sha512-yIBvbqpqbvoGHOgKreXnwS0CteEPHUvgvO4PXzbw7b4gMaBzhR8Fm/QWzNIcNcZPslUS4Hd9Zhg359RKISEbZg==
@@ -1672,14 +1680,14 @@
   dependencies:
     "@mekari/pixel-utils" "^0.2.0"
 
-"@mekari/pixel@^0.7.17":
-  version "0.7.18"
-  resolved "https://registry.yarnpkg.com/@mekari/pixel/-/pixel-0.7.18.tgz#ca6c6ece50b1e3f7cb4310026f050c4ad34db8d3"
-  integrity sha512-WjrsLSJ5xaeMbag5hAd10Dx5uS8LfeOPxe2L2GTqpOjPolkKTTFP21RhPAYlYXflL7X+6qi87h2Xonf3z81jnQ==
+"@mekari/pixel@^0.7.19":
+  version "0.7.19"
+  resolved "https://registry.yarnpkg.com/@mekari/pixel/-/pixel-0.7.19.tgz#6414a7ef7cc1fb981f28fa849979f4253ee1d5c2"
+  integrity sha512-0t7OAMBzQzEPxfziDkUzmEjsFdDuoIzcHcJcMviwXzSMd4tFhStxbuQbTt+2LBQazJIm5jM2KExVgWppe1GTrg==
   dependencies:
     "@fontsource/inter" "^4.5.0"
     "@mekari/pixel-accordion" "0.1.9"
-    "@mekari/pixel-autocomplete" "0.5.0"
+    "@mekari/pixel-autocomplete" "0.5.1"
     "@mekari/pixel-avatar" "0.4.5"
     "@mekari/pixel-badge" "0.2.5"
     "@mekari/pixel-banner" "0.2.6"
@@ -1687,7 +1695,7 @@
     "@mekari/pixel-broadcast" "0.1.1"
     "@mekari/pixel-button" "0.1.9"
     "@mekari/pixel-button-icon" "0.5.3"
-    "@mekari/pixel-carousel" "0.1.4"
+    "@mekari/pixel-carousel" "0.2.0"
     "@mekari/pixel-checkbox" "0.1.10"
     "@mekari/pixel-collapse" "^0.2.3"
     "@mekari/pixel-control-box" "0.0.9"
@@ -1699,7 +1707,7 @@
     "@mekari/pixel-form-control" "0.1.1"
     "@mekari/pixel-grid" "0.0.8"
     "@mekari/pixel-heading" "0.0.12"
-    "@mekari/pixel-icon" "0.8.2"
+    "@mekari/pixel-icon" "0.8.3"
     "@mekari/pixel-input" "0.3.7"
     "@mekari/pixel-input-tag" "0.2.10"
     "@mekari/pixel-modal" "0.1.15"
