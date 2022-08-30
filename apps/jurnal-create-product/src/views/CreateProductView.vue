@@ -7,37 +7,40 @@
         <SubHeader />
 
         <mp-box min-height="calc(100vh - 132px)" border-top-width="1px" background-color="white" padding="6">
-          <mp-grid template-columns="repeat(12, 1fr)" gap="6">
+          <mp-grid template-columns="repeat(12, 1fr)" gap="6" position="relative">
             <mp-grid-item col-span="6">
               <mp-flex direction="column" gap="3">
                 <mp-form-control control-id="nama">
                   <mp-form-label>Nama <mp-text ml="1" color="red.500">*</mp-text> </mp-form-label>
-                  <mp-input />
+                  <mp-input @focus="handleShowHints('nama-produk')" />
                 </mp-form-control>
 
-                <mp-box>
-                  <mp-form-control control-id="Kode/SKU">
+                <mp-grid template-columns="repeat(2, 1fr)" gap="6" align-content="center">
+                  <mp-form-control control-id="kode-sku">
                     <mp-form-label>Kode/SKU</mp-form-label>
-                    <mp-grid template-columns="repeat(2, 1fr)" gap="6" align-content="center">
-                      <mp-input />
-                      <mp-checkbox> Barcode </mp-checkbox>
-                    </mp-grid>
+                    <mp-input @focus="handleShowHints('kode-produk')" />
                   </mp-form-control>
-                </mp-box>
+                  <mp-form-control control-id="barcode">
+                    <mp-form-label>Barcode</mp-form-label>
+                    <mp-input @focus="handleShowHints('barcode')" />
+                  </mp-form-control>
+                </mp-grid>
 
-                <mp-form-control control-id="unit">
-                  <mp-form-label>Unit</mp-form-label>
-                  <mp-autocomplete id="pilih-unit" placeholder="Pilih unit" :data="['Pcs', 'Box', 'Unit']" :content-style="{ width: '64' }" />
-                </mp-form-control>
+                <mp-grid template-columns="repeat(2, 1fr)" gap="6" align-content="center">
+                  <mp-form-control control-id="unit" @click="handleShowHints('unit-produk')">
+                    <mp-form-label>Unit</mp-form-label>
+                    <mp-autocomplete id="pilih-unit" placeholder="Pilih unit" :data="['Pcs', 'Box', 'Unit']" :content-style="{ width: '64' }" />
+                  </mp-form-control>
+                </mp-grid>
 
-                <mp-form-control control-id="kategori">
+                <mp-form-control control-id="kategori" @click="handleShowHints('kategori-produk')">
                   <mp-form-label>Kategori (10)</mp-form-label>
                   <mp-input-tag is-show-suggestions :suggestions="['Asus', 'Samsung', 'LG', 'Apple']" :content-style="{ width: '64' }" />
                 </mp-form-control>
 
                 <mp-form-control control-id="deskripsi">
                   <mp-form-label>Deskripsi</mp-form-label>
-                  <mp-textarea resize="vertical" />
+                  <mp-textarea @focus="handleShowHints('deskripsi-produk')" resize="vertical" />
                 </mp-form-control>
 
                 <mp-form-control control-id="jenis-barang">
@@ -71,6 +74,9 @@
                 <mp-text font-size="sm" color="gray.400" text-align="center"> Gunakan format harus JPG atau PNG & ukuran tidak lebih dari 2 MB </mp-text>
               </mp-flex>
             </mp-grid-item>
+            <mp-box position="absolute" top="0" right="0">
+              <ProductHints v-if="hintsType" :type="hintsType" />
+            </mp-box>
           </mp-grid>
 
           <mp-grid template-columns="repeat(12, 1fr)">
@@ -79,14 +85,24 @@
                 <mp-tabs id="create-product-tab" :index="selectedTab" is-manual @change.self="handleChangeTab">
                   <mp-tab-list>
                     <mp-tab>Harga & pengaturan</mp-tab>
-                    <mp-tab :disabled="jenisBarang === 'single'">Produk bundle</mp-tab>
+                    <mp-tab v-bind="{ ...(jenisBarang === 'single' && { cursor: 'not-allowed', color: 'gray.400' }) }">
+                      <mp-tooltip
+                        id="product-bundle"
+                        :visibility="jenisBarang === 'single' ? 'visible' : 'hidden'"
+                        label="Tandai jenis barang sebagai bundle untuk mulai mengatur Produk bundle"
+                        width="412px"
+                        max-width="412px"
+                      >
+                        <mp-text>Produk bundle</mp-text>
+                      </mp-tooltip>
+                    </mp-tab>
                   </mp-tab-list>
                   <mp-tab-panels>
                     <mp-tab-panel>
                       <mp-stack spacing="6">
                         <!-- Saya beli barang/jasa ini -->
                         <mp-box>
-                          <mp-checkbox v-model="hargaDanPengaturan.buy"> Saya beli barang/jasa ini </mp-checkbox>
+                          <mp-checkbox v-model="hargaDanPengaturan.buy" @change="handleShowHints('jual')"> Saya beli barang/jasa ini </mp-checkbox>
                           <mp-table-container v-if="hargaDanPengaturan.buy" mt="1">
                             <mp-table :is-hoverable="false">
                               <mp-table-head bg="gray.50">
@@ -149,7 +165,7 @@
 
                         <!-- Saya jual barang/jasa ini -->
                         <mp-box>
-                          <mp-checkbox v-model="hargaDanPengaturan.sell"> Saya jual barang/jasa ini </mp-checkbox>
+                          <mp-checkbox v-model="hargaDanPengaturan.sell" @change="handleShowHints('beli')"> Saya jual barang/jasa ini </mp-checkbox>
                           <mp-table-container v-if="hargaDanPengaturan.sell" mt="1">
                             <mp-table :is-hoverable="false">
                               <mp-table-head bg="gray.50">
@@ -213,8 +229,9 @@
 
                         <!-- Monitor persediaan barang -->
                         <mp-box>
-                          <mp-checkbox v-model="hargaDanPengaturan.monitorPersediaan"> Monitor persediaan barang </mp-checkbox>
-
+                          <mp-checkbox v-model="hargaDanPengaturan.monitorPersediaan" @change="handleShowHints('monitor-persediaan')">
+                            Monitor persediaan barang
+                          </mp-checkbox>
                           <mp-table-container v-if="hargaDanPengaturan.monitorPersediaan">
                             <mp-table :is-hoverable="false">
                               <mp-table-head bg="gray.50">
@@ -262,15 +279,12 @@
                       </mp-stack>
                     </mp-tab-panel>
                     <mp-tab-panel>
-                      <mp-grid gap="6">
-                        <TableCreateProductBundle />
-                        <TableCreateAccount />
-                      </mp-grid>
+                      <TableBundle />
                     </mp-tab-panel>
                   </mp-tab-panels>
                 </mp-tabs>
 
-                <mp-flex justify="end">
+                <mp-flex justify="end" mt="4">
                   <mp-button-group spacing="2">
                     <mp-button variant="ghost"> Batalkan </mp-button>
                     <mp-button variant="solid"> Simpan </mp-button>
@@ -323,8 +337,8 @@ import {
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import SubHeader from "./SubHeader.vue";
-import TableCreateProductBundle from "./TableCreateProductBundle.vue";
-import TableCreateAccount from "./TableCreateAccount.vue";
+import TableBundle from "./TableBundle.vue";
+import ProductHints from "../components/ProductHints.vue";
 
 export default {
   name: "SalesIndex",
@@ -365,8 +379,8 @@ export default {
     Header,
     Sidebar,
     SubHeader,
-    TableCreateProductBundle,
-    TableCreateAccount,
+    TableBundle,
+    ProductHints,
   },
   data() {
     return {
@@ -394,11 +408,17 @@ export default {
           akun: { value: "", isTruncated: "" },
         },
       },
+      hintsType: "",
     };
   },
   methods: {
     handleChangeTab(e) {
-      this.selectedTab = e;
+      if (this.jenisBarang === "bundle") {
+        this.selectedTab = e;
+        if (e === 1) this.handleShowHints("product-bundle");
+      }
+
+      if (e === 0) this.handleShowHints("jenis-barang");
     },
     handleChangeAutocomplete(value, { elementId, target, column }) {
       const isTruncated = this.isAutocompleteTruncated({ text: value, elementId: elementId });
@@ -418,6 +438,9 @@ export default {
         title: "Gambar produk berhasil di upload",
         position: "top",
       });
+    },
+    handleShowHints(type) {
+      this.hintsType = type;
     },
 
     // Utils

@@ -60,6 +60,9 @@
                   cursor: 'pointer',
                 }"
               >
+                <!-- 
+          // TODO : Ask designer : Icon size gag sama.
+          -->
                 <mp-icon v-if="isToggle" size="sm" name="add" color="blue.400" />
 
                 <mp-text v-else font-weight="semibold" color="blue.400" line-height="md">

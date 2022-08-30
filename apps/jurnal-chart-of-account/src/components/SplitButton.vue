@@ -3,7 +3,15 @@
     <mp-button variant="solid" border-right-radius="0"> {{ label }} </mp-button>
     <mp-popover id="popover-01">
       <mp-popover-trigger>
-        <mp-button border="0px" border-left="1px" border-left-color="ice.50" border-left-radius="0" variant="solid" right-icon="caret-down"> </mp-button>
+        <mp-button
+          border="0px"
+          box-shadow="inset 1px 0px 0px #7686E5"
+          border-left-color="#7686E5"
+          border-left-radius="0"
+          variant="solid"
+          right-icon="caret-down"
+        >
+        </mp-button>
       </mp-popover-trigger>
       <mp-popover-content max-width="64" bg="white" rounded="md" shadow="lg" border-width="1px" border-color="gray.400">
         <slot name="popoverContent" />

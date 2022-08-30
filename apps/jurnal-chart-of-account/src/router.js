@@ -9,6 +9,11 @@ const routes = [
     name: "Jurnal - Create Chart of account",
     component: () => import("./views/CreateCoaView.vue"),
   },
+  {
+    path: "/example",
+    name: "Jurnal - Create Chart of account",
+    component: () => import("./views/ExampleView.vue"),
+  },
 ];
 
 const router = new VueRouter({

@@ -40,11 +40,7 @@
 
                 <mp-form-control>
                   <mp-checkbox id="VipQj" :check="showAkun" @change="handleChangeShowAkun"> Jadikan akun ini bagian dari akun lain </mp-checkbox>
-                  <mp-tooltip
-                    id="VipQj"
-                    label="Centang kotak jika Anda ingin menjadikan akun ini sebagai sub-akun atau akun header dari akun lainnya."
-                    position="right"
-                  >
+                  <mp-tooltip id="VipQj" label="Centang kotak jika Anda ingin menjadikan akun ini sebagai sub-akun atau akun header dari akun lainnya.">
                     <mp-icon name="info" size="sm" margin-left="2" />
                   </mp-tooltip>
                 </mp-form-control>
@@ -105,9 +101,9 @@
                   <mp-form-label>Saldo awal</mp-form-label>
                   <mp-input-group>
                     <mp-input-left-addon>
-                      <mp-text font-weight="bold" padding-x="3">Rp</mp-text>
+                      <mp-text font-weight="bold" padding-x="3" color="gray.400">Rp</mp-text>
                     </mp-input-left-addon>
-                    <mp-input placeholder="0,00" />
+                    <mp-input value="0,00" text-align="right" />
                   </mp-input-group>
                   <mp-form-help-text>Nilai dapat diubah di menu Saldo Awal</mp-form-help-text>
                 </mp-form-control>
