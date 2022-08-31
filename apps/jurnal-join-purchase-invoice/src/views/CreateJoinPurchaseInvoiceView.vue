@@ -329,7 +329,7 @@ export default {
     handleCreateRequest() {
       this.$toast({
         variant: "success",
-        title: "Purchase request is created ",
+        title: "Join Purchase Invoice is created ",
         position: "top",
       });
 

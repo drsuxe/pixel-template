@@ -2,7 +2,7 @@
   <mp-box>
     <mp-modal :isOpen="isOpen" size="sm" isCentered>
       <mp-modal-content>
-        <mp-modal-header>Delete purchase request?</mp-modal-header>
+        <mp-modal-header>Delete join purchase invoice?</mp-modal-header>
         <mp-modal-close-button @click="$emit('handleClose')" />
         <mp-modal-body max-height="xl" overflow-y="auto">
           <mp-text> The deleted request will be unable to be restored. </mp-text>
