@@ -29,7 +29,7 @@
     <template v-if="!isLoading && !isEmpty">
       <mp-table-container width="full" max-width="full" overflow="scroll" mt="4">
         <mp-table>
-          <mp-table-head is-fixed>
+          <mp-table-head>
             <mp-table-row position="relative">
               <mp-table-cell as="th" scope="col">
                 <mp-checkbox :is-checked="isCheckedAll" :is-indeterminate="isIndeterminate" @change="handleCheckAll" />
@@ -37,19 +37,16 @@
                 <mp-flex v-if="showBulkAction" position="absolute" top="0" left="0" align-items="center" gap="6" ml="10" h="full" w="full">
                   <mp-flex align="center" gap="2" bg="white" h="full" w="full">
                     {{ totalChecked }} datas selected
-                    <mp-button size="sm"> Bulk action </mp-button>
+                    <mp-button size="sm" @click="handleOpenModal"> Bulk action </mp-button>
                   </mp-flex>
                 </mp-flex>
               </mp-table-cell>
-              <mp-table-cell as="th" scope="col"> <mp-box>Kode seri</mp-box> </mp-table-cell>
-              <mp-table-cell as="th" scope="col"> <mp-box>Nomor faktur pajak </mp-box> </mp-table-cell>
-              <mp-table-cell as="th" scope="col"> <mp-box>Pelanggan </mp-box> </mp-table-cell>
-              <mp-table-cell as="th" scope="col"> <mp-box>BNPWP </mp-box> </mp-table-cell>
-              <mp-table-cell as="th" scope="col"> <mp-box>Tanggal faktur </mp-box> </mp-table-cell>
-              <mp-table-cell as="th" scope="col"> <mp-box>Status faktur </mp-box> </mp-table-cell>
-              <mp-table-cell as="th" scope="col"> <mp-box>Status approval </mp-box> </mp-table-cell>
-              <mp-table-cell as="th" scope="col"> <mp-box>Masa/tahun pajak </mp-box> </mp-table-cell>
-              <mp-table-cell as="th" width="auto" min-width="auto" z-index="base" top="0" right="0" box-shadow="inset 2px 0px #D0D6DD" is-fixed />
+              <mp-table-cell as="th" scope="col"> <mp-box>ID Billing</mp-box> </mp-table-cell>
+              <mp-table-cell as="th" scope="col"> <mp-box>Jenis Pajak </mp-box> </mp-table-cell>
+              <mp-table-cell as="th" scope="col"> <mp-box>Masa Pajak </mp-box> </mp-table-cell>
+              <mp-table-cell as="th" scope="col"> <mp-box>Jumlah Pajak </mp-box> </mp-table-cell>
+              <mp-table-cell as="th" scope="col"> <mp-box> Status ID Billing </mp-box> </mp-table-cell>
+              <mp-table-cell as="th" scope="col" />
             </mp-table-row>
           </mp-table-head>
           <mp-table-body>
@@ -70,13 +67,10 @@
               </mp-table-cell>
               <mp-table-cell as="td" scope="row"> {{ data.pelanggan }} </mp-table-cell>
               <mp-table-cell as="td" scope="row"> {{ data.npwp }} </mp-table-cell>
-              <mp-table-cell as="td" scope="row"> {{ data.tanggalFaktur }} </mp-table-cell>
-              <mp-table-cell as="td" scope="row"> {{ data.nomorPengganti }} </mp-table-cell>
               <mp-table-cell as="td" scope="row">
                 <mp-badge variant="subtle" variant-color="gray">{{ data.statusApproval }}</mp-badge>
               </mp-table-cell>
-              <mp-table-cell as="td" scope="row"> {{ data.masukTahunPajak }} </mp-table-cell>
-              <mp-table-cell as="td" scope="row" right="0" box-shadow="inset 2px 0px #D0D6DD" z-index="5" is-fixed>
+              <mp-table-cell as="td" scope="row">
                 <mp-flex align="center" justify="end" gap="2">
                   <mp-button variant="outline">Approve</mp-button>
 
@@ -99,6 +93,59 @@
     </mp-box>
 
     <ModalChat :type="modalChatType" :isApproved="modalChatApproved" :is-open="isModalChatOpen" @handleClose="isModalChatOpen = false" />
+
+    <mp-modal :is-open="isModalOpen" :on-close="handleCloseModal" size="2xl">
+      <mp-modal-content>
+        <mp-modal-header> Bulk ID Billing </mp-modal-header>
+        <mp-modal-close-button />
+        <mp-modal-body>
+          <mp-flex align="center" gap="2">
+            <mp-text font-weight="semibold">Lakukan pembayaran sebelum :</mp-text>
+            <mp-badge variant="subtle" variant-color="orange">25 Juli 2022</mp-badge>
+          </mp-flex>
+
+          <mp-table-container>
+            <mp-table>
+              <mp-table-head>
+                <mp-table-row>
+                  <mp-table-cell as="th" scope="col"> ID Billing </mp-table-cell>
+                  <mp-table-cell as="th" scope="col"> Jenis pajak </mp-table-cell>
+                  <mp-table-cell as="th" scope="col"> Masa pajak </mp-table-cell>
+                  <mp-table-cell as="th" scope="col" text-align="right"> Jumlah pajak </mp-table-cell>
+                </mp-table-row>
+              </mp-table-head>
+              <mp-table-body>
+                <mp-table-row>
+                  <mp-table-cell as="td" scope="row"> 381783749958172 </mp-table-cell>
+                  <mp-table-cell as="td" scope="row"> PPN dalam Negeri </mp-table-cell>
+                  <mp-table-cell as="td" scope="row"> 05/2022 </mp-table-cell>
+                  <mp-table-cell as="td" scope="row" text-align="right"> Rp100.000,00 </mp-table-cell>
+                </mp-table-row>
+                <mp-table-row>
+                  <mp-table-cell as="td" scope="row"> 381783749958172 </mp-table-cell>
+                  <mp-table-cell as="td" scope="row"> PPN dalam Negeri </mp-table-cell>
+                  <mp-table-cell as="td" scope="row"> 05/2022 </mp-table-cell>
+                  <mp-table-cell as="td" scope="row" text-align="right"> Rp100.000,00 </mp-table-cell>
+                </mp-table-row>
+                <mp-table-row>
+                  <mp-table-cell as="td" scope="row" colspan="3" text-align="right">
+                    <mp-text font-weight="semibold">Jumlah yang harus di bayar</mp-text>
+                  </mp-table-cell>
+                  <mp-table-cell as="td" scope="row" colspan="1" text-align="right">
+                    <mp-text font-weight="semibold">Rp200.000,00</mp-text>
+                  </mp-table-cell>
+                </mp-table-row>
+              </mp-table-body>
+            </mp-table>
+          </mp-table-container>
+        </mp-modal-body>
+        <mp-modal-footer>
+          <mp-button mr="3" variant="ghost" @click="handleCloseModal"> Cancel </mp-button>
+          <mp-button> Approve </mp-button>
+        </mp-modal-footer>
+      </mp-modal-content>
+      <mp-modal-overlay />
+    </mp-modal>
   </mp-box>
 </template>
 
@@ -126,13 +173,20 @@ import {
   MpCheckbox,
   MpTooltip,
   MpSpinner,
+  MpModal,
+  MpModalOverlay,
+  MpModalContent,
+  MpModalHeader,
+  MpModalFooter,
+  MpModalBody,
+  MpModalCloseButton,
 } from "@mekari/pixel";
 import ModalChat from "./slices/ModalChat.vue";
 import TablePagination from "./slices/TablePagination.vue";
 import EmptyState from "./slices/EmptyState.vue";
 
 export default {
-  name: "TableWithData",
+  name: "ContentIdBilling",
   components: {
     MpFlex,
     MpTableContainer,
@@ -158,6 +212,13 @@ export default {
     MpCheckbox,
     MpTooltip,
     MpSpinner,
+    MpModal,
+    MpModalOverlay,
+    MpModalContent,
+    MpModalHeader,
+    MpModalFooter,
+    MpModalBody,
+    MpModalCloseButton,
     EmptyState,
   },
   data: function () {
@@ -230,6 +291,7 @@ export default {
       modalChatApproved: false,
       modalChatType: "blank", // blank & comments
       isModalChatOpen: false,
+      isModalOpen: true,
     };
   },
   computed: {
@@ -315,6 +377,12 @@ export default {
           },
         };
       });
+    },
+    handleOpenModal() {
+      this.isModalOpen = true;
+    },
+    handleCloseModal() {
+      this.isModalOpen = false;
     },
   },
 };

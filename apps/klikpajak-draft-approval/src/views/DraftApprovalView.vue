@@ -10,28 +10,11 @@
           <mp-tabs id="tabs-faktur" :index="currentTab" @change.self="handleChangeTab" is-manual>
             <mp-tab-list>
               <mp-tab>
-                <mp-popover id="popover-e-faktur" initial-focus-ref="#popover-manual" is-manual :is-open="isPopoverOpen">
-                  <mp-popover-trigger>
-                    <mp-box>
-                      E-Faktur
-                      <mp-badge ml="1" :variant-color="currentTab === 0 ? 'blue' : 'gray'"> 5 </mp-badge>
-                      <mp-icon name="caret-down" ml="1" :color="currentTab === 0 ? 'blue' : 'gray'" />
-                    </mp-box>
-                  </mp-popover-trigger>
-                  <mp-popover-content max-width="200px" width="200px" bg="white" rounded="md" shadow="lg" border-width="1px" border-color="gray.400">
-                    <mp-popover-list>
-                      <mp-popover-list-item :is-active="content === 'upload-faktur'" @click="handleRenderContent('upload-faktur')">
-                        <mp-text>
-                          Upload faktur
-                          <mp-badge variant-color="blue"> 5 </mp-badge>
-                        </mp-text>
-                      </mp-popover-list-item>
-                      <mp-popover-list-item :is-active="content === 'pembatalan-faktur'" @click="handleRenderContent('pembatalan-faktur')"
-                        >Pembatalan faktur</mp-popover-list-item
-                      >
-                    </mp-popover-list>
-                  </mp-popover-content>
-                </mp-popover>
+                <mp-box>
+                  E-Faktur
+                  <mp-badge ml="1" :variant-color="currentTab === 0 ? 'blue' : 'gray'"> 5 </mp-badge>
+                  <mp-icon name="caret-down" ml="1" :color="currentTab === 0 ? 'blue' : 'gray'" />
+                </mp-box>
               </mp-tab>
               <mp-tab>
                 E-Bupot
@@ -44,6 +27,25 @@
         </mp-box>
 
         <mp-box min-height="calc(100vh)" border-top-width="1px" background-color="white" padding="6">
+          <mp-popover id="popover-e-faktur" initial-focus-ref="#popover-manual" is-manual :is-open="isPopoverOpen">
+            <mp-popover-trigger>
+              <mp-box mt="-6" mb="6"></mp-box>
+            </mp-popover-trigger>
+            <mp-popover-content max-width="200px" width="200px" bg="white" rounded="md" shadow="lg" border-width="1px" border-color="gray.400">
+              <mp-popover-list>
+                <mp-popover-list-item :is-active="content === 'upload-faktur'" @click="handleRenderContent('upload-faktur')">
+                  <mp-text>
+                    Upload faktur
+                    <mp-badge variant-color="blue"> 5 </mp-badge>
+                  </mp-text>
+                </mp-popover-list-item>
+                <mp-popover-list-item :is-active="content === 'pembatalan-faktur'" @click="handleRenderContent('pembatalan-faktur')"
+                  >Pembatalan faktur</mp-popover-list-item
+                >
+              </mp-popover-list>
+            </mp-popover-content>
+          </mp-popover>
+
           <ContentUploadFaktur v-if="content === 'upload-faktur'" />
           <ContentPembatalanFaktur v-if="content === 'pembatalan-faktur'" />
           <ContentEBupot v-if="content === 'e-bupot'" />
@@ -69,6 +71,7 @@ import {
   MpPopoverList,
   MpPopoverListItem,
   MpIcon,
+  MpText,
 } from "@mekari/pixel";
 import Header from "@/components/Header";
 import SubHeader from "@/components/SubHeader";
@@ -80,7 +83,6 @@ import ContentIdBilling from "./ContentIdBilling.vue";
 import ContentRiwayatApproval from "./ContentRiwayatApproval.vue";
 
 export default {
-  name: "DashboardActiveView",
   components: {
     MpBox,
     MpFlex,
@@ -97,6 +99,7 @@ export default {
     MpPopoverList,
     MpPopoverListItem,
     MpIcon,
+    MpText,
     ContentUploadFaktur,
     ContentPembatalanFaktur,
     ContentEBupot,
@@ -106,8 +109,8 @@ export default {
   data() {
     return {
       isPopoverOpen: false,
-      currentTab: 0,
-      content: "upload-faktur",
+      currentTab: 2,
+      content: "id-billing",
     };
   },
   mounted() {

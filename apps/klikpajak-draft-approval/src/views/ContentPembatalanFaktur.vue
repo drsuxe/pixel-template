@@ -132,7 +132,7 @@ import TablePagination from "./slices/TablePagination.vue";
 import EmptyState from "./slices/EmptyState.vue";
 
 export default {
-  name: "TableWithData",
+  name: "ContentPembatalanFaktur",
   components: {
     MpFlex,
     MpTableContainer,

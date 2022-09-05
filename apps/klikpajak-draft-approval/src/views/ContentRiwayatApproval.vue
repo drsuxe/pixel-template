@@ -80,7 +80,6 @@ import ModalChat from "./slices/ModalChat.vue";
 import TablePagination from "./slices/TablePagination.vue";
 
 export default {
-  name: "TableWithData",
   components: {
     MpFlex,
     MpTableContainer,
