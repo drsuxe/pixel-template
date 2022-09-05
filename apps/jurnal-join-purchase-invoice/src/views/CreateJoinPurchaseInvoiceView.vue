@@ -176,8 +176,8 @@
             <mp-grid-item col-start="3" col-span="1">
               <mp-box padding="4" border="1px" border-color="gray.100" rounded="md">
                 <mp-flex justify="space-between">
-                  <mp-text font-weight="semibold">Total remaining billed</mp-text>
-                  <mp-text font-weight="semibold">Rp17.000.000</mp-text>
+                  <mp-heading as="h3" font-size="lg">Total remaining billed</mp-heading>
+                  <mp-heading as="h3" font-size="lg">Rp17.000.000</mp-heading>
                 </mp-flex>
               </mp-box>
             </mp-grid-item>
@@ -391,6 +391,8 @@ export default {
             icon: getIcon({ type: extension[0], extension: extension[1] }),
             url: URL.createObjectURL(file),
           });
+        } else {
+          console.log("Gag bisa upload");
         }
       }
 

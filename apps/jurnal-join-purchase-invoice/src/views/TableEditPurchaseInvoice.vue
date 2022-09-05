@@ -98,31 +98,30 @@
                     {
                       value: 'Purchase Invoice #0003',
                       dueDate: '20/04/2022',
-                      src: 'Overdue',
+                      status: 'Overdue',
                     },
                     {
                       value: 'Purchase Invoice #0004',
                       dueDate: '20/04/2022',
-                      src: 'Partial',
+                      status: 'Partial',
                     },
                   ]"
                   :value="select"
                   @change="handleSelect"
                 >
-                  <template slot-scope="props">
-                    <mp-flex align-items="center" justify="space-betweeen" w="xs">
-                      <mp-flex direction="column">
+                  <template slot-scope="{ item }">
+                    <mp-flex align-items="center" justify="space-between" width="full">
+                      <mp-box>
                         <mp-text>
-                          {{ props.item.value }}
+                          {{ item.value }}
                         </mp-text>
                         <mp-text font-size="sm" color="gray.600">
-                          {{ props.item.dueDate }}
+                          {{ item.dueDate }}
                         </mp-text>
-                      </mp-flex>
-
-                      <mp-flex align="center" justify="end">
-                        <mp-badge variant="subtle" variant-color="orange">Open</mp-badge>
-                      </mp-flex>
+                      </mp-box>
+                      <mp-box>
+                        <mp-badge variant="subtle" :variant-color="getBadgeVariantColor(item.status)">{{ item.status }}</mp-badge>
+                      </mp-box>
                     </mp-flex>
                   </template>
                 </mp-autocomplete>
@@ -184,6 +183,16 @@ export default {
       setTimeout(() => {
         this.select = "";
       }, 0);
+    },
+
+    // Utils
+    getBadgeVariantColor(status) {
+      if (status === "Open") return "orange";
+      if (status === "Overdue") return "red";
+      if (status === "Partial") return "blue";
+      if (status === "Paid") return "green";
+
+      return "gray";
     },
   },
 };

@@ -208,8 +208,8 @@
             <mp-grid-item col-start="3" col-span="4">
               <mp-box padding="4" border="1px" border-color="gray.100" rounded="md">
                 <mp-flex justify="space-between">
-                  <mp-text font-weight="semibold">Total sisa tagihan</mp-text>
-                  <mp-text font-weight="semibold">Rp17.000.000</mp-text>
+                  <mp-heading as="h3" font-size="lg">Total remaining billed</mp-heading>
+                  <mp-heading as="h3" font-size="lg">Rp17.000.000</mp-heading>
                 </mp-flex>
               </mp-box>
             </mp-grid-item>

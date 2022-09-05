@@ -3,14 +3,7 @@
     <Header />
     <mp-flex as="main" max-height="calc(100vh - 60px)">
       <Sidebar />
-      <mp-box
-        as="section"
-        data-id="content"
-        width="100%"
-        height="calc(100vh - 60px)"
-        overflow-y="auto"
-        background-color="background"
-      >
+      <mp-box as="section" data-id="content" width="100%" height="calc(100vh - 60px)" overflow-y="auto" background-color="background">
         <SubHeader title="Dasbor" />
         <mp-box padding-y="3" padding-x="6">
           <QuickAccess />
