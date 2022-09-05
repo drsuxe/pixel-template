@@ -109,8 +109,8 @@ export default {
   data() {
     return {
       isPopoverOpen: false,
-      currentTab: 2,
-      content: "id-billing",
+      currentTab: 0,
+      content: "upload-faktur",
     };
   },
   mounted() {

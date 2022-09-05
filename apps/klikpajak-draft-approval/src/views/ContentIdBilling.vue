@@ -61,14 +61,14 @@
                   "
                 />
               </mp-table-cell>
-              <mp-table-cell as="td" scope="row"> {{ data.kodeSeri }} </mp-table-cell>
+              <mp-table-cell as="td" scope="row"> {{ data.idBilling }} </mp-table-cell>
               <mp-table-cell as="td" scope="row">
-                <mp-text is-link>{{ data.nomorFakturPajak }}</mp-text>
+                <mp-text is-link>{{ data.jenisPajak }}</mp-text>
               </mp-table-cell>
-              <mp-table-cell as="td" scope="row"> {{ data.pelanggan }} </mp-table-cell>
-              <mp-table-cell as="td" scope="row"> {{ data.npwp }} </mp-table-cell>
+              <mp-table-cell as="td" scope="row"> {{ data.masaPajak }} </mp-table-cell>
+              <mp-table-cell as="td" scope="row"> {{ data.jumlahPajak }} </mp-table-cell>
               <mp-table-cell as="td" scope="row">
-                <mp-badge variant="subtle" variant-color="gray">{{ data.statusApproval }}</mp-badge>
+                <mp-badge variant="subtle" variant-color="gray">{{ data.statusIdBilling }}</mp-badge>
               </mp-table-cell>
               <mp-table-cell as="td" scope="row">
                 <mp-flex align="center" justify="end" gap="2">
@@ -230,68 +230,53 @@ export default {
         {
           id: 1,
           isChecked: false,
-          kodeSeri: "080",
-          nomorFakturPajak: "900.22.14708506",
-          pelanggan: "PT Asia Teknologi",
-          npwp: "71.103.328.2-416.001",
-          tanggalFaktur: "01/05/2022",
-          nomorPengganti: "Normal-Pengganti",
-          statusApproval: "Menunggu disetujui",
-          masukTahunPajak: "05/2022",
+          idBilling: "381783749958172",
+          jenisPajak: "PPN dalam Negeri",
+          masaPajak: "05/2022",
+          jumlahPajak: "Rp100.000,00",
+          statusIdBilling: "Menunggu disetujui",
         },
         {
           id: 2,
           isChecked: false,
-          kodeSeri: "080",
-          nomorFakturPajak: "900.22.14708506",
-          pelanggan: "PT Asia Teknologi",
-          npwp: "71.103.328.2-416.001",
-          tanggalFaktur: "01/05/2022",
-          nomorPengganti: "Normal-Pengganti",
-          statusApproval: "Menunggu disetujui",
-          masukTahunPajak: "05/2022",
+          idBilling: "381783749958172",
+          jenisPajak: "PPN dalam Negeri",
+          masaPajak: "05/2022",
+          jumlahPajak: "Rp100.000,00",
+          statusIdBilling: "Menunggu disetujui",
         },
         {
           id: 3,
           isChecked: false,
-          kodeSeri: "080",
-          nomorFakturPajak: "900.22.14708506",
-          pelanggan: "PT Asia Teknologi",
-          npwp: "71.103.328.2-416.001",
-          tanggalFaktur: "01/05/2022",
-          nomorPengganti: "Normal-Pengganti",
-          statusApproval: "Menunggu disetujui",
-          masukTahunPajak: "05/2022",
+          idBilling: "381783749958172",
+          jenisPajak: "PPN dalam Negeri",
+          masaPajak: "05/2022",
+          jumlahPajak: "Rp100.000,00",
+          statusIdBilling: "Menunggu disetujui",
         },
         {
           id: 4,
           isChecked: false,
-          kodeSeri: "080",
-          nomorFakturPajak: "900.22.14708506",
-          pelanggan: "PT Asia Teknologi",
-          npwp: "71.103.328.2-416.001",
-          tanggalFaktur: "01/05/2022",
-          nomorPengganti: "Normal-Pengganti",
-          statusApproval: "Menunggu disetujui",
-          masukTahunPajak: "05/2022",
+          idBilling: "381783749958172",
+          jenisPajak: "PPN dalam Negeri",
+          masaPajak: "05/2022",
+          jumlahPajak: "Rp100.000,00",
+          statusIdBilling: "Menunggu disetujui",
         },
         {
           id: 5,
           isChecked: false,
-          kodeSeri: "080",
-          nomorFakturPajak: "900.22.14708506",
-          pelanggan: "PT Asia Teknologi",
-          npwp: "71.103.328.2-416.001",
-          tanggalFaktur: "01/05/2022",
-          nomorPengganti: "Normal-Pengganti",
-          statusApproval: "Menunggu disetujui",
-          masukTahunPajak: "05/2022",
+          idBilling: "381783749958172",
+          jenisPajak: "PPN dalam Negeri",
+          masaPajak: "05/2022",
+          jumlahPajak: "Rp100.000,00",
+          statusIdBilling: "Menunggu disetujui",
         },
       ],
       modalChatApproved: false,
       modalChatType: "blank", // blank & comments
       isModalChatOpen: false,
-      isModalOpen: true,
+      isModalOpen: false,
     };
   },
   computed: {
