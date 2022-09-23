@@ -21,11 +21,21 @@
             <mp-form-control margin-bottom="5" is-required>
               <mp-form-label> Email</mp-form-label>
               <mp-input-tag
-                :content-style="{ zIndex: 'popover', width: 'full' }"
                 id="approver-email"
                 placeholder="Example: name@email.com"
-                :suggestions="['dimas.raka@mekari.com', 'bregga.teddy@mekari.com', 'jaka.permadi@mekari.com']"
+                :suggestions="[
+                  'dimas.raka@mekari.com',
+                  'bregga.teddy@mekari.com',
+                  'jaka.permadi@mekari.com',
+                  'steve.rodger@mekari.com',
+                  'tony.stark@mekari.com',
+                  'natasha.rumanof@mekari.com',
+                  'thor.odinson@mekari.com',
+                  'stephen.strange@mekari.com',
+                ]"
                 :is-show-suggestions="true"
+                :trigger-style="{ maxHeight: '24', overflowY: 'auto' }"
+                :content-style="{ zIndex: 'popover', width: 'full' }"
               />
             </mp-form-control>
 
@@ -186,7 +196,7 @@
           <mp-flex justify="flex-end">
             <mp-button-group spacing="2">
               <mp-button variant="ghost" @click="isModalCancelOpen = true"> Cancel </mp-button>
-              <mp-button variant="solid" @click="handleCreateRequest"> Save </mp-button>
+              <mp-button variant="solid" @click="isModalSaveConfirmationOpen = true"> Save </mp-button>
             </mp-button-group>
           </mp-flex>
 
@@ -198,6 +208,11 @@
             :url="selectedAttachment.url"
             :is-open="isModalAttachmentPreviewOpen"
             @handleClose="isModalAttachmentPreviewOpen = false"
+          />
+          <ModalSaveConfirmation
+            :is-open="isModalSaveConfirmationOpen"
+            @handleClose="isModalSaveConfirmationOpen = false"
+            @handleConfirmation="handleCreateRequest"
           />
         </mp-box>
       </mp-box>
@@ -263,6 +278,7 @@ import TableCreatePurchaseInvoice from "./TableCreatePurchaseInvoice.vue";
 import ModalCancel from "./ModalCancel.vue";
 import ModalTransactionNumberSetting from "./ModalTransactionNumberSetting.vue";
 import ModalAttachmentPreview from "./ModalAttachmentPreview.vue";
+import ModalSaveConfirmation from "./ModalSaveConfirmation.vue";
 import { TextEllipsis } from "../components/TextEllipsis";
 
 export default {
@@ -301,6 +317,7 @@ export default {
     ModalTransactionNumberSetting,
     ModalCancel,
     ModalAttachmentPreview,
+    ModalSaveConfirmation,
     TextEllipsis,
   },
   data() {
@@ -308,6 +325,7 @@ export default {
       isModalCancelOpen: false,
       isModalTransactionNumberSettingOpen: false,
       isModalAttachmentPreviewOpen: false,
+      isModalSaveConfirmationOpen: false,
       showOverlay: false,
 
       // Form

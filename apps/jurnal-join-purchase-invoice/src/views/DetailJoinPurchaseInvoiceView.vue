@@ -20,7 +20,7 @@
             <mp-grid-item col-span="4">
               <mp-grid template-columns="repeat(12, 1fr)">
                 <mp-grid-item col-span="5">
-                  <mp-text color="gray.600">Requestor</mp-text>
+                  <mp-text color="gray.600">Supplier</mp-text>
                 </mp-grid-item>
                 <mp-grid-item col-span="7">
                   <mp-text is-link>PT Stable guys</mp-text>
@@ -30,7 +30,7 @@
             <mp-grid-item col-span="4">
               <mp-grid template-columns="repeat(12, 1fr)">
                 <mp-grid-item col-span="5">
-                  <mp-text color="gray.600">Urgency</mp-text>
+                  <mp-text color="gray.600">Email</mp-text>
                 </mp-grid-item>
                 <mp-grid-item col-span="7">
                   <mp-text>stambleguys@mekari.com</mp-text>

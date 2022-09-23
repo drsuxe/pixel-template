@@ -6,11 +6,12 @@
         <mp-modal-close-button @click="$emit('handleClose')" />
         <mp-modal-body>
           <mp-flex direction="column" gap="1">
-            <mp-text font-weight="semibold">Number transaction format</mp-text>
+            <mp-text font-weight="semibold">Pengaturan format nomor transaksi</mp-text>
 
             <mp-radio-group name="transaction-format" :value="check" @change="handleChange">
-              <mp-radio id="automatic" value="automatic">Automatic</mp-radio>
-              <mp-radio id="custom-format" value="custom-format">Custom format</mp-radio>
+              <mp-radio id="automatic" value="automatic">Otomatis</mp-radio>
+              <mp-radio id="custom-format" value="custom-format">Format custom</mp-radio>
+              <mp-radio id="tambah-baru" value="tambah-baru">Tambah baru</mp-radio>
             </mp-radio-group>
 
             <mp-grid v-if="check == 'custom-format'" template-columns="repeat(3, 1fr)" gap="3">
@@ -31,6 +32,9 @@
                   </template>
                 </mp-autocomplete>
               </mp-grid-item>
+            </mp-grid>
+
+            <mp-grid v-if="check == 'tambah-baru'" template-columns="repeat(3, 1fr)" gap="3">
               <mp-form-control>
                 <mp-input placeholder="Example: INV/" />
               </mp-form-control>
@@ -51,8 +55,13 @@
           </mp-flex>
         </mp-modal-body>
         <mp-modal-footer>
-          <mp-button variant="ghost" mr="3" @click="$emit('handleClose')">Cancel</mp-button>
-          <mp-button @click="$emit('handleClose')">Save</mp-button>
+          <mp-flex justify="space-between" width="full" align="center">
+            <mp-text color="gray.600"> Pelajari lebih lanjut </mp-text>
+            <mp-button-group>
+              <mp-button variant="ghost" mr="3" @click="$emit('handleClose')">Tutup</mp-button>
+              <mp-button @click="$emit('handleClose')">Simpan</mp-button>
+            </mp-button-group>
+          </mp-flex>
         </mp-modal-footer>
       </mp-modal-content>
       <mp-modal-overlay />
@@ -70,6 +79,7 @@ import {
   MpModalBody,
   MpModalCloseButton,
   MpButton,
+  MpButtonGroup,
   MpBox,
   MpText,
   MpFlex,
@@ -93,6 +103,7 @@ export default {
     MpModalBody,
     MpModalCloseButton,
     MpButton,
+    MpButtonGroup,
     MpBox,
     MpText,
     MpFlex,

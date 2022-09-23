@@ -71,7 +71,7 @@
           <mp-table-cell as="td" scope="row" vertical-align="top"> <mp-badge variant="subtle" variant-color="orange">Open</mp-badge> </mp-table-cell>
           <mp-table-cell as="td" scope="row" vertical-align="top"> Rp10.000.000 </mp-table-cell>
           <mp-table-cell as="td" scope="row" vertical-align="top">
-            <mp-flex align="center" gap="6">
+            <mp-flex align="center" justify="space-between">
               <mp-text>Rp10.000.000</mp-text>
 
               <mp-tooltip label="Hapus" :id="`delete-product-${index}`">
