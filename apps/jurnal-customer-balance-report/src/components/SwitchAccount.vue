@@ -10,7 +10,7 @@
           padding-y="1"
           :_hover="{ bg: 'background', cursor: 'pointer' }"
         >
-          <mp-avatar name="Rizal Chandra" size="md" margin-right="2" />
+          <mp-avatar name="Rizal Chandra" size="md" margin-right="2" src="https://randomuser.me/api/portraits/women/11.jpg" />
           <mp-flex flex-direction="column">
             <mp-text font-weight="semibold" line-height="md"> Rizal Chandra </mp-text>
             <mp-text font-size="sm" color="gray.600"> PT Central Perk Indonesia </mp-text>
@@ -21,7 +21,7 @@
     <mp-popover-content z-index="4" max-width="65" border-radius="md" box-shadow="lg" border="1px solid" border-color="gray.400" background-color="white">
       <mp-box background-color="background" border-bottom="1px" border-color="gray.100" padding-y="4">
         <mp-flex justify-content="center" align-items="center" flex-direction="column">
-          <mp-avatar name="Rizal Chandra" size="lg" margin-bottom="2" />
+          <mp-avatar name="Rizal Chandra" size="lg" margin-bottom="2" src="https://randomuser.me/api/portraits/women/11.jpg" />
           <mp-text font-weight="semibold">Rizal Chandra</mp-text>
           <mp-text color="gray.600">PT Central Perk Indonesia</mp-text>
         </mp-flex>

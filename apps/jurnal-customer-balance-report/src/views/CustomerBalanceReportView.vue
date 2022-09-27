@@ -17,19 +17,18 @@
 
           <mp-flex justify="space-between" align-items="flex-end">
             <mp-flex gap="4" align-items="flex-end">
-              <mp-form-control control-id="start-date">
+              <mp-form-control control-id="start-date" width="172px">
                 <mp-form-label>Pilih tanggal</mp-form-label>
                 <mp-date-picker v-model="filter.startDate" format="DD/MM/YYYY" />
               </mp-form-control>
 
-              <mp-form-control control-id="filter-sesuai-periode">
+              <mp-form-control control-id="filter-sesuai-periode" width="164px">
                 <mp-form-label>Filter sesuai periode</mp-form-label>
                 <mp-autocomplete
                   is-clearable
                   is-searchable
                   :data="['Custom', 'Hari ini', 'Minggu ini', 'Bulan ini']"
-                  max-width="40"
-                  :content-style="{ width: '40' }"
+                  :content-style="{ width: 'full' }"
                   :value="filter.period"
                   @change="(value) => (filter.period = value)"
                 />
@@ -106,7 +105,7 @@
 
                   <mp-form-control control-id="drawer-tanggal-jatuh-tempo">
                     <mp-form-label>Tanggal jatuh tempo</mp-form-label>
-                    <mp-date-picker v-model="filter.startDate" format="DD/MM/YYYY" />
+                    <mp-date-picker format="DD/MM/YYYY" />
                   </mp-form-control>
 
                   <mp-box>
@@ -149,7 +148,7 @@
                     <mp-input-tag
                       placeholder="Select tag"
                       :enable-create-new-tag="false"
-                      :suggestions="['Jaka Permadi', 'Arga Kusuma', 'Barry Allen', 'Christine Hartono', 'Edward Wongko', 'Fitzgerald']"
+                      :suggestions="['Semua', 'Jaka Permadi', 'Arga Kusuma', 'Barry Allen', 'Christine Hartono', 'Edward Wongko', 'Fitzgerald']"
                       :is-show-suggestions="true"
                       :is-show-icon-chevron-down="true"
                       :trigger-style="{ maxHeight: '24', overflowY: 'auto' }"
@@ -161,17 +160,10 @@
 
                   <mp-form-control control-id="drawer-urutkan-sesuai-kolom">
                     <mp-form-label>Urutkan sesuai kolom</mp-form-label>
-                    <mp-autocomplete
-                      is-clearable
-                      is-searchable
-                      :data="['Pelanggan', 'Total sisa piutang']"
-                      :content-style="{ width: 'full' }"
-                      :value="filter.period"
-                      @change="(value) => (filter.period = value)"
-                    />
+                    <mp-autocomplete is-clearable is-searchable :data="['Pelanggan', 'Total sisa piutang']" :content-style="{ width: 'full' }" />
                   </mp-form-control>
 
-                  <mp-form-control control-id="drawer-urutkan-sesuai-kolom">
+                  <mp-form-control control-id="drawer-tampilkan-lebih-detail">
                     <mp-checkbox> Tampilkan lebih detail </mp-checkbox>
                   </mp-form-control>
                 </mp-stack>
@@ -324,7 +316,7 @@ export default {
         if (this.filter.period === "Custom") this.isShowModalGagalMemuatLaporan = true;
 
         this.isLoading = false;
-      }, 50);
+      }, 500);
     },
     handleExportReport(type) {
       this.exportComponentKey += 1;
