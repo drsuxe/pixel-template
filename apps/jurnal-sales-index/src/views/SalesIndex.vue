@@ -142,11 +142,9 @@
                     </mp-box>
                   </mp-flex>
 
-                  <TextEllipsis :id="`invoice-description-${index}`" v-if="item.description">
-                    <mp-text text-overflow="ellipsis" white-space="nowrap" font-size="sm" line-height="sm" color="gray.600" overflow="hidden">
-                      {{ item.description }}
-                    </mp-text>
-                  </TextEllipsis>
+                  <TextEllipsisCollapsible :id="`invoice-description-${index}`" v-if="item.description">
+                    {{ item.description }}
+                  </TextEllipsisCollapsible>
                 </mp-table-cell>
                 <mp-table-cell as="td" scope="row" max-width="100px">
                   <TextEllipsis :id="`invoice-customer-${index}`">
@@ -168,28 +166,7 @@
                   <mp-text text-align="right" font-size="md" line-height="md">{{ item.total }}</mp-text>
                 </mp-table-cell>
                 <mp-table-cell as="td" scope="row">
-                  <mp-flex gap="3" align-items="center" flex-wrap="wrap" max-width="140px">
-                    <mp-tag size="sm" variant="gray" max-w="140px" v-for="value in item.tag.slice(0, 1)" :key="value">
-                      <TextEllipsis :id="`tag-invoice-${index}`" :label="value">
-                        <mp-text line-height="md"> {{ value }} </mp-text>
-                      </TextEllipsis>
-                    </mp-tag>
-
-                    <mp-popover :id="`popover-invoice-${index}`">
-                      <mp-popover-trigger>
-                        <mp-box>
-                          <mp-text v-if="item.tag.length !== 1" is-link font-size="sm"> {{ `+${item.tag.length - 1}` }} more </mp-text>
-                        </mp-box>
-                      </mp-popover-trigger>
-                      <mp-popover-content max-width="48" bg="white" rounded="md" shadow="lg" border-width="1px" p="2" border-color="gray.400" z-index="popover">
-                        <mp-flex gap="1" flex-wrap="wrap">
-                          <mp-tag size="sm" variant="gray" v-for="value in item.tag" :key="value">
-                            {{ value }}
-                          </mp-tag>
-                        </mp-flex>
-                      </mp-popover-content>
-                    </mp-popover>
-                  </mp-flex>
+                  <AwesomeTag :tags="item.tag" :id="`tag-item-${index}`" />
                 </mp-table-cell>
                 <mp-table-cell
                   v-if="currentTab === 'require-approval'"
@@ -258,7 +235,6 @@ import {
   MpIcon,
   MpTableCell,
   MpText,
-  MpTag,
   MpTooltip,
   MpPopover,
   MpPopoverTrigger,
@@ -271,7 +247,8 @@ import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import SectionSalesHeader from "../views/SectionSalesHeader.vue";
 import SectionSummaryBox from "./SectionSummaryBox.vue";
-import { TextEllipsis } from "../components/TextEllipsis";
+import { TextEllipsisCollapsible, TextEllipsis } from "../components/TextEllipsis";
+import AwesomeTag from "../components/AwesomeTag";
 import JTable from "../components/JTable.vue";
 import PopoverTimelineAccordion from "./PopoverTimelineAccordion.vue";
 import PopoverTimeline from "./PopoverTimeline.vue";
@@ -295,7 +272,6 @@ export default {
     MpIcon,
     MpTableCell,
     MpText,
-    MpTag,
     MpTooltip,
     MpPopover,
     MpPopoverTrigger,
@@ -305,7 +281,9 @@ export default {
     MpButtonIcon,
     Header,
     Sidebar,
+    TextEllipsisCollapsible,
     TextEllipsis,
+    AwesomeTag,
     JTable,
     SectionSalesHeader,
     SectionSummaryBox,
@@ -385,9 +363,9 @@ export default {
           customer: "PT Mandala",
           dueDate: "20/04/2022",
           status: "Open",
-          balance: "Rp 10.000.000",
-          total: "Rp 10.000.000",
-          tag: ["DKI Jakarta Raya Pusat"],
+          balance: "Rp10.000.000,00",
+          total: "Rp10.000.000,00",
+          tag: ["DKI Jakarta Raya Pusat With Long"],
           tagExpanded: false,
         },
         {
@@ -401,9 +379,9 @@ export default {
           customer: "Rommy Agency",
           dueDate: "20/04/2022",
           status: "Overdue",
-          balance: "Rp 5.000.000",
-          total: "Rp 5.000.000",
-          tag: ["Merak", "Surabaya", "Yogyakarta"],
+          balance: "Rp5.000.000,00",
+          total: "Rp5.000.000,00",
+          tag: ["Merak", "Surabaya", "Yogyakarta Dengan Text yang panjang"],
           tagExpanded: false,
         },
         {
@@ -417,8 +395,8 @@ export default {
           customer: "Tommy Soeharto",
           dueDate: "19/04/2022",
           status: "Partial",
-          balance: "Rp 2.000.000",
-          total: "Rp 3.000.000",
+          balance: "Rp2.000.000,00",
+          total: "Rp3.000.000,00",
           tag: ["Gresik", "Mojokerto", "Sidoarjo"],
           tagExpanded: false,
         },
@@ -433,8 +411,8 @@ export default {
           customer: "CV Panjang Abadijaya Indonesia Merdeka",
           dueDate: "20/04/2022",
           status: "Open",
-          balance: "Rp 500.000",
-          total: "Rp 500.000",
+          balance: "Rp500.000,00",
+          total: "Rp500.000,00",
           tag: ["Joglo", "Surabaya", "Yogyakarta", "Medan", "Batam"],
           tagExpanded: false,
         },
@@ -449,8 +427,8 @@ export default {
           customer: "CV Jangka Nusantara",
           dueDate: "20/04/2022",
           status: "Paid",
-          balance: "Rp 0",
-          total: "Rp 500.000",
+          balance: "Rp0",
+          total: "Rp500.000,00",
           tag: ["Solo", "Yogyakarta", "Semarang", "Klaten", "Ngawi"],
           tagExpanded: false,
         },
@@ -466,8 +444,8 @@ export default {
           customer: "PT Mandala",
           dueDate: "20/04/2022",
           status: "Open",
-          balance: "Rp 10.000.000",
-          total: "Rp 10.000.000",
+          balance: "Rp10.000.000,00",
+          total: "Rp10.000.000,00",
           tag: ["DKI Jakarta Raya Pusat"],
           tagExpanded: false,
         },
@@ -482,8 +460,8 @@ export default {
           customer: "Rommy Agency",
           dueDate: "20/04/2022",
           status: "Overdue",
-          balance: "Rp 5.000.000",
-          total: "Rp 5.000.000",
+          balance: "Rp5.000.000,00",
+          total: "Rp5.000.000,00",
           tag: ["Merak", "Surabaya", "Yogyakarta"],
           tagExpanded: false,
         },
@@ -498,8 +476,8 @@ export default {
           customer: "Tommy Soeharto",
           dueDate: "19/04/2022",
           status: "Partial",
-          balance: "Rp 2.000.000",
-          total: "Rp 3.000.000",
+          balance: "Rp2.000.000,00",
+          total: "Rp3.000.000,00",
           tag: ["Gresik", "Mojokerto", "Sidoarjo"],
           tagExpanded: false,
         },
@@ -514,8 +492,8 @@ export default {
           customer: "CV Panjang Abadijaya Indonesia Merdeka",
           dueDate: "20/04/2022",
           status: "Open",
-          balance: "Rp 500.000",
-          total: "Rp 500.000",
+          balance: "Rp500.000,00",
+          total: "Rp500.000,00",
           tag: ["Joglo", "Surabaya", "Yogyakarta", "Medan", "Batam"],
           tagExpanded: false,
         },
@@ -530,8 +508,8 @@ export default {
           customer: "CV Jangka Nusantara",
           dueDate: "20/04/2022",
           status: "Paid",
-          balance: "Rp 0",
-          total: "Rp 500.000",
+          balance: "Rp0",
+          total: "Rp500.000,00",
           tag: ["Solo", "Yogyakarta", "Semarang", "Klaten", "Ngawi"],
           tagExpanded: false,
         },
@@ -714,8 +692,8 @@ export default {
               customer: "PT Mandala",
               dueDate: "20/04/2022",
               status: "Open",
-              balance: "Rp 10.000.000",
-              total: "Rp 10.000.000",
+              balance: "Rp10.000.000,00",
+              total: "Rp10.000.000,00",
               tag: ["Jakarta"],
               tagExpanded: false,
             },
@@ -730,8 +708,8 @@ export default {
               customer: "Rommy Agency",
               dueDate: "20/04/2022",
               status: "Overdue",
-              balance: "Rp 5.000.000",
-              total: "Rp 5.000.000",
+              balance: "Rp5.000.000,00",
+              total: "Rp5.000.000,00",
               tag: ["Merak", "Surabaya", "Yogyakarta"],
               tagExpanded: false,
             },
@@ -746,8 +724,8 @@ export default {
               customer: "Rommy Agency",
               dueDate: "20/04/2022",
               status: "Overdue",
-              balance: "Rp 5.000.000",
-              total: "Rp 5.000.000",
+              balance: "Rp5.000.000,00",
+              total: "Rp5.000.000,00",
               tag: ["Merak", "Surabaya", "Yogyakarta"],
               tagExpanded: false,
             },

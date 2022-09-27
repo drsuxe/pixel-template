@@ -223,7 +223,7 @@ export default {
     page: Number, // currentPage
     perPage: Number,
     totalData: Number, // Total data
-    headBgColor: { type: String, default: "ice.50" },
+    headBgColor: { type: String, default: "gray.50" },
     isFixed: Boolean,
     tableStyle: Object,
     blankSlate: {
