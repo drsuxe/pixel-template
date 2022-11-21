@@ -7,7 +7,7 @@
       <mp-modal-body>
         <mp-stack>
           <mp-flex align-items="start" position="relative">
-            <img src="@/assets/icon.svg" alt="" />
+            <img src="../../assets/icon.svg" alt="" />
 
             <mp-box ml="3">
               <mp-text font-size="lg" font-weight="semibold">Bulanan</mp-text>
@@ -22,7 +22,7 @@
           <mp-divider />
 
           <mp-flex align-items="start" position="relative">
-            <img src="@/assets/icon.svg" alt="" />
+            <img src="../../assets/icon.svg" alt="" />
 
             <mp-box ml="3">
               <mp-text font-size="lg" font-weight="semibold">Sekali bayar</mp-text>
@@ -109,7 +109,7 @@ export default {
   data() {
     return {
       selected: "",
-      date: null,
+      date: new Date(),
     };
   },
   methods: {

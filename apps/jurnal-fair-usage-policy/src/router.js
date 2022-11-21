@@ -7,17 +7,17 @@ const routes = [
   {
     path: "/",
     name: "FUPIndex",
-    component: () => import("./views/FUPIndex.vue"),
+    component: () => import("@/views/FUPIndex.vue"),
   },
   {
     path: "/checkout/subscription",
     name: "CheckoutSubscriptionView",
-    component: () => import("./views/checkout/CheckoutSubscriptionView.vue"),
+    component: () => import("@/views/checkout/CheckoutSubscriptionView.vue"),
   },
   {
     path: "/checkout/add-quota",
     name: "CheckoutModalAddQuota",
-    component: () => import("./views/checkout/CheckoutAddQuotaView.vue"),
+    component: () => import("@/views/checkout/CheckoutAddQuotaView.vue"),
   },
 ];
 

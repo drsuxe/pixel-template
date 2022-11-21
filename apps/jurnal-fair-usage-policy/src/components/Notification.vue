@@ -1,217 +1,197 @@
 <template>
-  <mp-popover id="unified-notifications-popover" placement="bottom">
-    <mp-popover-trigger>
-      <mp-box position="relative">
-        <mp-button-icon name="notification" size="md" />
-        <mp-badge variant-color="red" size="sm" position="absolute" top="0" right="0" border-width="2px" border-color="white"> 3 </mp-badge>
-      </mp-box>
-    </mp-popover-trigger>
-    <mp-popover-content
-      class="popover-content"
-      width="lg"
-      max-height="calc(100% - 96px)"
-      overflow="hidden auto"
-      bg="white"
-      rounded="md"
-      shadow="lg"
-      border-width="1px"
-      border-color="gray.400"
-      mr="6 !important"
-      z-index="popover"
-    >
-      <mp-flex ref="notificationTitle" px="4" py="3">
-        <mp-text font-size="lg" font-weight="semibold">Notifications</mp-text>
-      </mp-flex>
+  <mp-box>
+    <mp-flex ref="notificationTitle" px="4" py="3">
+      <mp-text font-size="lg" font-weight="semibold">Notifications</mp-text>
+    </mp-flex>
 
-      <mp-flex>
-        <mp-tabs id="unified-notifications-tabs" :index="tabIndex" width="full" is-manual @change.self="handleChangTab">
-          <mp-tab-list position="sticky" mb="0" top="0" bg="white" z-index="1">
-            <mp-tab>
-              General
-              <mp-badge size="md" ml="2" line-height="normal" :variant-color="tabIndex === 0 ? 'blue' : 'gray'"> 2 </mp-badge>
-            </mp-tab>
-            <mp-tab>
-              Need Approval
-              <mp-badge size="md" ml="2" line-height="normal" :variant-color="tabIndex === 1 ? 'blue' : 'gray'"> 1 </mp-badge>
-            </mp-tab>
-          </mp-tab-list>
-          <mp-tab-panels pb="4">
-            <!-- General Tabs Content -->
-            <mp-tab-panel>
-              <!-- Filter Area -->
-              <mp-flex position="sticky" justify-content="space-between" px="4" py="3" top="51px" bg="white" :shadow="isHeaderSticky ? 'md' : ''" z-index="1">
-                <mp-box width="240px">
-                  <mp-select size="sm" v-model="generalFilter">
-                    <option v-for="(item, index) in generalFilterData" :key="index" :value="item">
-                      {{ item }}
-                    </option>
-                  </mp-select>
-                </mp-box>
-                <mp-button v-if="generalFilter !== 'Complete' && generalFilter !== 'Assignment'" variant="link" @click="showAlert('Mark all as read clicked')">
-                  Mark all as read
-                </mp-button>
-              </mp-flex>
-              <!-- End of Filter Area -->
+    <mp-flex>
+      <mp-tabs id="unified-notifications-tabs" :index="tabIndex" width="full" is-manual @change.self="handleChangTab">
+        <mp-tab-list position="sticky" mb="0" px="4" top="0" bg="white" z-index="1">
+          <mp-tab>
+            General
+            <mp-badge size="md" ml="2" line-height="normal" :variant-color="tabIndex === 0 ? 'red' : 'gray'"> 2 </mp-badge>
+          </mp-tab>
+          <mp-tab>
+            Need Approval
+            <mp-badge size="md" ml="2" line-height="normal" :variant-color="tabIndex === 1 ? 'red' : 'gray'"> 1 </mp-badge>
+          </mp-tab>
+        </mp-tab-list>
+        <mp-tab-panels pb="4">
+          <!-- General Tabs Content -->
+          <mp-tab-panel>
+            <!-- Filter Area -->
+            <mp-flex position="sticky" justify-content="space-between" px="4" py="3" top="51px" bg="white" :shadow="isHeaderSticky ? 'md' : ''" z-index="1">
+              <mp-box width="240px">
+                <mp-select size="sm" v-model="generalFilter">
+                  <option v-for="(item, index) in generalFilterData" :key="index" :value="item">
+                    {{ item }}
+                  </option>
+                </mp-select>
+              </mp-box>
+              <mp-button v-if="generalFilter !== 'Complete' && generalFilter !== 'Assignment'" variant="link" @click="showAlert('Mark all as read clicked')">
+                Mark all as read
+              </mp-button>
+            </mp-flex>
+            <!-- End of Filter Area -->
 
-              <!-- List of Notifications -->
-              <template v-for="(item, index) in generalData">
-                <mp-flex
-                  v-if="item.data.find((item) => generalFilter === item.type || generalFilter === 'All notifications')"
-                  :key="`general-${index}`"
-                  pt="4"
-                  direction="column"
-                >
-                  <mp-text mb="2" px="4" font-size="sm" color="gray.600">
-                    {{ item.date }}
-                  </mp-text>
-                  <template v-for="(item, idx) in item.data">
-                    <mp-flex
-                      v-if="generalFilter === item.type || generalFilter === 'All notifications'"
-                      :key="`general-data-${idx}`"
-                      px="4"
-                      py="3"
-                      gap="16px"
-                      :_hover="{
-                        backgroundColor: 'ice.50',
-                        cursor: 'pointer',
-                      }"
-                    >
-                      <mp-icon mt="1" :name="item.icon" />
-                      <mp-flex direction="column" width="390px">
-                        <mp-text mb="1" v-html="item.title" />
-                        <mp-text font-size="sm" color="gray.600">
-                          {{ item.date }}
-                        </mp-text>
-                      </mp-flex>
-                      <mp-flex>
-                        <mp-tooltip v-if="item.isNew" :id="`unified-notifications-general-tooltip-${idx}`" label="Mark as read" position="left">
-                          <mp-icon name="indicator-circle" color="red.400" />
-                        </mp-tooltip>
-                        <mp-popover v-if="item.hasMenu" :id="`unified-notifications-general-popover-child-${idx}`" placement="bottom-end">
-                          <mp-popover-trigger>
-                            <mp-button-icon name="menu-kebab" size="md" />
-                          </mp-popover-trigger>
-                          <mp-popover-content max-width="64" bg="white" rounded="md" shadow="lg" border-width="1px" border-color="gray.400">
-                            <mp-popover-list>
-                              <mp-popover-list-item> All Request </mp-popover-list-item>
-                              <mp-popover-list-item>Deals</mp-popover-list-item>
-                              <mp-popover-list-item>Expense</mp-popover-list-item>
-                            </mp-popover-list>
-                          </mp-popover-content>
-                        </mp-popover>
-                      </mp-flex>
-                    </mp-flex>
-                  </template>
-                </mp-flex>
-              </template>
-              <!-- End of List of Notifications -->
-
+            <!-- List of Notifications -->
+            <template v-for="(item, index) in generalData">
               <mp-flex
-                v-if="generalFilter === 'Complete' || generalFilter === 'Assignment'"
+                v-if="item.data.find((item) => generalFilter === item.type || generalFilter === 'All notifications')"
+                :key="`general-${index}`"
+                pt="4"
                 direction="column"
-                justify-content="center"
-                align-items="center"
-                mb="9"
               >
-                <img src="../assets/inbox.png" alt="empty" style="width: 216px" />
-                <mp-text font-size="xl" font-weight="semibold" mb="1"> No notification </mp-text>
-                <mp-text color="gray.600"> The notification list will show here. </mp-text>
-              </mp-flex>
-
-              <mp-flex v-else direction="column" justify-content="center" align-items="center" py="5">
-                <img src="../assets/thank-you.png" alt="thank you" style="width: 48px" />
-                <mp-text mt="2">That's all your notifications from the last 90 days.</mp-text>
-              </mp-flex>
-            </mp-tab-panel>
-            <!-- End of General Tabs Content -->
-
-            <!-- Need Approval Tabs Content -->
-            <mp-tab-panel>
-              <!-- Filter Area -->
-              <mp-flex position="sticky" justify-content="space-between" px="4" py="3" top="51px" bg="white" :shadow="isHeaderSticky ? 'md' : ''">
-                <mp-box width="240px">
-                  <mp-select size="sm" v-model="needApprovalFilter">
-                    <option v-for="(item, index) in needApprovalFilterData" :key="index" :value="item">
-                      {{ item }}
-                    </option>
-                  </mp-select>
-                </mp-box>
-                <mp-button v-if="needApprovalFilter !== 'Deals'" variant="link" @click="showAlert('Mark all as read clicked')"> Mark all as read </mp-button>
-              </mp-flex>
-              <!-- End of Filter Area -->
-
-              <!-- List of Notifications -->
-              <template v-for="(item, index) in needApprovalData">
-                <mp-flex
-                  v-if="item.data.find((item) => needApprovalFilter === item.type || needApprovalFilter === 'All approval')"
-                  :key="`need-approval-${index}`"
-                  pt="4"
-                  direction="column"
-                >
-                  <mp-text mb="2" px="4" font-size="sm" color="gray.600">
-                    {{ item.date }}
-                  </mp-text>
-                  <template v-for="(item, idx) in item.data">
-                    <mp-flex
-                      v-if="needApprovalFilter === item.type || needApprovalFilter === 'All approval'"
-                      :key="`need-approval-item-${idx}`"
-                      px="4"
-                      py="3"
-                      gap="16px"
-                      :_hover="{
-                        backgroundColor: 'ice.50',
-                        cursor: 'pointer',
-                      }"
-                    >
-                      <mp-avatar :src="item.avatar" mt="1" />
-                      <mp-flex direction="column" width="390px">
-                        <mp-text mb="1" v-html="item.title" />
-                        <mp-flex mb="1">
-                          <mp-icon mr="2" name="doc" size="sm" color="blue.700" variant="duotone" />
-                          <mp-text as="a" :href="item.link" target="_blank" rel="noopener noreferrer" is-link> View details </mp-text>
-                        </mp-flex>
-                        <mp-text font-size="sm" color="gray.600">
-                          {{ item.date }}
-                        </mp-text>
-                      </mp-flex>
-                      <mp-flex>
-                        <mp-tooltip v-if="item.isNew" :id="`unified-notifications-need-approval-tooltip-${idx}`" label="Mark as read" position="left">
-                          <mp-icon name="indicator-circle" color="red.400" />
-                        </mp-tooltip>
-                        <mp-popover v-if="item.hasMenu" :id="`unified-notifications-need-approval-popover-child-${idx}`" placement="bottom-end">
-                          <mp-popover-trigger>
-                            <mp-button-icon name="menu-kebab" size="md" />
-                          </mp-popover-trigger>
-                          <mp-popover-content max-width="64" bg="white" rounded="md" shadow="lg" border-width="1px" border-color="gray.400">
-                            <mp-popover-list>
-                              <mp-popover-list-item>Approve</mp-popover-list-item>
-                              <mp-popover-list-item>Reject</mp-popover-list-item>
-                            </mp-popover-list>
-                          </mp-popover-content>
-                        </mp-popover>
-                      </mp-flex>
+                <mp-text mb="2" px="4" font-size="sm" color="gray.600">
+                  {{ item.date }}
+                </mp-text>
+                <template v-for="(item, idx) in item.data">
+                  <mp-flex
+                    v-if="generalFilter === item.type || generalFilter === 'All notifications'"
+                    :key="`general-data-${idx}`"
+                    px="4"
+                    py="3"
+                    gap="16px"
+                    :_hover="{
+                      backgroundColor: 'gray.50',
+                      cursor: 'pointer',
+                    }"
+                  >
+                    <mp-icon mt="1" :name="item.icon" />
+                    <mp-flex direction="column" width="390px">
+                      <mp-text mb="1" v-html="item.title" />
+                      <mp-text font-size="sm" color="gray.600">
+                        {{ item.date }}
+                      </mp-text>
                     </mp-flex>
-                  </template>
-                </mp-flex>
-              </template>
-              <!-- End of List of Notifications -->
+                    <mp-flex>
+                      <mp-tooltip v-if="item.isNew" :id="`unified-notifications-general-tooltip-${idx}`" label="Mark as read" position="left">
+                        <mp-icon name="indicator-circle" color="red.400" />
+                      </mp-tooltip>
+                      <mp-popover v-if="item.hasMenu" :id="`unified-notifications-general-popover-child-${idx}`" placement="bottom-end">
+                        <mp-popover-trigger>
+                          <mp-button-icon name="menu-kebab" size="md" />
+                        </mp-popover-trigger>
+                        <mp-popover-content max-width="64" bg="white" rounded="md" shadow="lg" border-width="1px" border-color="gray.400">
+                          <mp-popover-list>
+                            <mp-popover-list-item> All Request </mp-popover-list-item>
+                            <mp-popover-list-item>Deals</mp-popover-list-item>
+                            <mp-popover-list-item>Expense</mp-popover-list-item>
+                          </mp-popover-list>
+                        </mp-popover-content>
+                      </mp-popover>
+                    </mp-flex>
+                  </mp-flex>
+                </template>
+              </mp-flex>
+            </template>
+            <!-- End of List of Notifications -->
 
-              <mp-flex v-if="needApprovalFilter === 'Deals'" direction="column" justify-content="center" align-items="center" mb="9">
-                <img src="../assets/inbox.png" alt="empty" style="width: 216px" />
-                <mp-text font-size="xl" font-weight="semibold" mb="1"> No notification </mp-text>
-                <mp-text color="gray.600"> The notification list will show here. </mp-text>
+            <mp-flex
+              v-if="generalFilter === 'Complete' || generalFilter === 'Assignment'"
+              direction="column"
+              justify-content="center"
+              align-items="center"
+              mb="9"
+            >
+              <img src="../assets/inbox.png" alt="empty" style="width: 216px" />
+              <mp-text font-size="xl" font-weight="semibold" mb="1"> No notification </mp-text>
+              <mp-text color="gray.600"> The notification list will show here. </mp-text>
+            </mp-flex>
+
+            <mp-flex v-else direction="column" justify-content="center" align-items="center" py="5">
+              <img src="../assets/thank-you.png" alt="thank you" style="width: 48px" />
+              <mp-text mt="2">That's all your notifications from the last 90 days.</mp-text>
+            </mp-flex>
+          </mp-tab-panel>
+          <!-- End of General Tabs Content -->
+
+          <!-- Need Approval Tabs Content -->
+          <mp-tab-panel>
+            <!-- Filter Area -->
+            <mp-flex position="sticky" justify-content="space-between" px="4" py="3" top="51px" bg="white" :shadow="isHeaderSticky ? 'md' : ''" z-index="1">
+              <mp-box width="240px">
+                <mp-select size="sm" v-model="needApprovalFilter">
+                  <option v-for="(item, index) in needApprovalFilterData" :key="index" :value="item">
+                    {{ item }}
+                  </option>
+                </mp-select>
+              </mp-box>
+              <mp-button v-if="needApprovalFilter !== 'Deals'" variant="link" @click="showAlert('Mark all as read clicked')"> Mark all as read </mp-button>
+            </mp-flex>
+            <!-- End of Filter Area -->
+
+            <!-- List of Notifications -->
+            <template v-for="(item, index) in needApprovalData">
+              <mp-flex
+                v-if="item.data.find((item) => needApprovalFilter === item.type || needApprovalFilter === 'All approval')"
+                :key="`need-approval-${index}`"
+                pt="4"
+                direction="column"
+              >
+                <mp-text mb="2" px="4" font-size="sm" color="gray.600">
+                  {{ item.date }}
+                </mp-text>
+                <template v-for="(item, idx) in item.data">
+                  <mp-flex
+                    v-if="needApprovalFilter === item.type || needApprovalFilter === 'All approval'"
+                    :key="`need-approval-item-${idx}`"
+                    px="4"
+                    py="3"
+                    gap="16px"
+                    :_hover="{
+                      backgroundColor: 'gray.50',
+                      cursor: 'pointer',
+                    }"
+                  >
+                    <mp-avatar :src="item.avatar" mt="1" />
+                    <mp-flex direction="column" width="390px">
+                      <mp-text mb="1" v-html="item.title" />
+                      <mp-flex mb="1">
+                        <mp-icon mr="2" name="doc" size="sm" color="blue.700" variant="duotone" />
+                        <mp-text as="a" :href="item.link" target="_blank" rel="noopener noreferrer" is-link> View details </mp-text>
+                      </mp-flex>
+                      <mp-text font-size="sm" color="gray.600">
+                        {{ item.date }}
+                      </mp-text>
+                    </mp-flex>
+                    <mp-flex>
+                      <mp-tooltip v-if="item.isNew" :id="`unified-notifications-need-approval-tooltip-${idx}`" label="Mark as read" position="left">
+                        <mp-icon name="indicator-circle" color="red.400" />
+                      </mp-tooltip>
+                      <mp-popover v-if="item.hasMenu" :id="`unified-notifications-need-approval-popover-child-${idx}`" placement="bottom-end">
+                        <mp-popover-trigger>
+                          <mp-button-icon name="menu-kebab" size="md" />
+                        </mp-popover-trigger>
+                        <mp-popover-content max-width="64" bg="white" rounded="md" shadow="lg" border-width="1px" border-color="gray.400">
+                          <mp-popover-list>
+                            <mp-popover-list-item>Approve</mp-popover-list-item>
+                            <mp-popover-list-item>Reject</mp-popover-list-item>
+                          </mp-popover-list>
+                        </mp-popover-content>
+                      </mp-popover>
+                    </mp-flex>
+                  </mp-flex>
+                </template>
               </mp-flex>
-              <mp-flex v-else direction="column" justify-content="center" align-items="center" py="5">
-                <img src="../assets/thank-you.png" alt="thank you" style="width: 48px" />
-                <mp-text mt="2">That's all your notifications from the last 90 days.</mp-text>
-              </mp-flex>
-            </mp-tab-panel>
-            <!-- End of Need Approval Tabs Content -->
-          </mp-tab-panels>
-        </mp-tabs>
-      </mp-flex>
-    </mp-popover-content>
-  </mp-popover>
+            </template>
+            <!-- End of List of Notifications -->
+
+            <mp-flex v-if="needApprovalFilter === 'Deals'" direction="column" justify-content="center" align-items="center" mb="9">
+              <img src="../assets/inbox.png" alt="empty" style="width: 216px" />
+              <mp-text font-size="xl" font-weight="semibold" mb="1"> No notification </mp-text>
+              <mp-text color="gray.600"> The notification list will show here. </mp-text>
+            </mp-flex>
+            <mp-flex v-else direction="column" justify-content="center" align-items="center" py="5">
+              <img src="../assets/thank-you.png" alt="thank you" style="width: 48px" />
+              <mp-text mt="2">That's all your notifications from the last 90 days.</mp-text>
+            </mp-flex>
+          </mp-tab-panel>
+          <!-- End of Need Approval Tabs Content -->
+        </mp-tab-panels>
+      </mp-tabs>
+    </mp-flex>
+  </mp-box>
 </template>
 
 <script>
@@ -239,7 +219,6 @@ import {
 } from "@mekari/pixel";
 
 export default {
-  // eslint-disable-next-line vue/multi-word-component-names
   name: "Notification",
   components: {
     MpAvatar,

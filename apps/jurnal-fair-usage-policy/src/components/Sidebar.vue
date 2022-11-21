@@ -2,32 +2,25 @@
   <mp-box
     role="group"
     width="full"
+    z-index="1"
     max-height="calc(100vh - 60px)"
     border-right="1px"
     border-color="gray.100"
     transition="all .2s ease"
+    background-color="white"
+    :position="isStacked ? 'relative' : 'absolute'"
     :max-width="isToggle ? '3.75rem' : '13.5rem'"
+    :display="['none', 'block']"
+    :box-shadow="
+      isToggle
+        ? '0 0 0 0 rgba(0, 0, 0, 0), 0 0 0 0 rgba(0, 0, 0, 0.0)'
+        : isStacked
+        ? '0 0 0 0 rgba(0, 0, 0, 0), 0 0 0 0 rgba(0, 0, 0, 0.0)'
+        : '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)'
+    "
+    @mouseenter="!isStacked ? handleMouseEnter() : {}"
+    @mouseleave="!isStacked ? handleMouseLeave() : {}"
   >
-    <mp-box position="relative">
-      <mp-pseudo-box
-        v-if="!isCollapsed"
-        opacity="0"
-        position="absolute"
-        top="1.375rem"
-        right="-0.938rem"
-        background-color="white"
-        border="1px solid"
-        border-color="gray.400"
-        border-radius="full"
-        box-shadow="md"
-        transition="all .2s ease"
-        :_groupHover="{ opacity: '1' }"
-      >
-        <mp-tooltip position="right" :label="isToggle ? 'Expand' : 'Collapsed'">
-          <mp-button-icon size="sm" :name="isToggle ? 'chevrons-right' : 'chevrons-left'" @click="isToggle = !isToggle" />
-        </mp-tooltip>
-      </mp-pseudo-box>
-    </mp-box>
     <mp-box
       as="section"
       class="sidebar-content"
@@ -41,7 +34,7 @@
     >
       <mp-flex align="center" justify="center" padding-bottom="2" padding-x="1">
         <mp-tooltip position="right" label="Add" :visibility="isToggle ? 'visible' : 'hidden'">
-          <mp-popover id="add-transaction">
+          <mp-popover id="add-transaction" use-portal>
             <mp-popover-trigger>
               <mp-pseudo-box
                 :width="isToggle ? '' : 'full'"
@@ -60,9 +53,6 @@
                   cursor: 'pointer',
                 }"
               >
-                <!-- 
-          // TODO : Ask designer : Icon size gag sama.
-          -->
                 <mp-icon v-if="isToggle" size="sm" name="add" color="blue.400" />
 
                 <mp-text v-else font-weight="semibold" color="blue.400" line-height="md">
@@ -85,38 +75,58 @@
       <mp-divider />
       <mp-box v-for="sidebarMenu in sidebarMenus" :key="sidebarMenu.menu">
         <mp-flex v-for="(menu, index) in sidebarMenu.menus" :key="`${menu.name}-${index}`" flex-direction="column">
-          <mp-tooltip position="right" :label="menu.name" :visibility="isToggle ? 'visible' : 'hidden'">
-            <mp-pseudo-box
-              role="group"
-              flex="1"
-              border-radius="sm"
-              transition="all .2s ease"
-              padding-x="2.5"
-              padding-y="2"
-              :_hover="{
+          <mp-pseudo-box
+            role="group"
+            flex="1"
+            border-radius="sm"
+            transition="all .2s ease"
+            padding-x="2.5"
+            padding-y="2"
+            :_hover="{
+              backgroundColor: 'ice.50',
+              color: 'blue.400',
+              cursor: 'pointer',
+            }"
+            v-bind="{
+              ...(menu.isActive && {
                 backgroundColor: 'ice.50',
                 color: 'blue.400',
-                cursor: 'pointer',
-              }"
-              v-bind="{
-                ...(menu.isActive && {
-                  backgroundColor: 'ice.50',
-                  color: 'blue.400',
-                  fontWeight: 'semibold',
-                }),
-              }"
-            >
-              <mp-stack direction="row" align="center">
-                <mp-icon :name="menu.icon" :variant="menu.isActive ? 'duotone' : 'outline'" />
-                <mp-text white-space="nowrap" transition="all .2s ease" :opacity="isToggle ? '0' : '1'">
-                  {{ menu.name }}
-                </mp-text>
-              </mp-stack>
-            </mp-pseudo-box>
-          </mp-tooltip>
+                fontWeight: 'semibold',
+              }),
+            }"
+          >
+            <mp-stack direction="row" align="center">
+              <mp-icon :name="menu.icon" :variant="menu.isActive ? 'duotone' : 'outline'" />
+              <mp-text white-space="nowrap" transition="all .2s ease" :opacity="isToggle ? '0' : '1'">
+                {{ menu.name }}
+              </mp-text>
+            </mp-stack>
+          </mp-pseudo-box>
         </mp-flex>
         <mp-divider />
       </mp-box>
+
+      <mp-flex flex-direction="column" position="absolute" bottom="2" left="0" right="0" padding-x="2" width="100%" bg="white">
+        <mp-pseudo-box
+          role="group"
+          flex="1"
+          border-radius="sm"
+          transition="all .2s ease"
+          padding-x="2.5"
+          padding-y="2"
+          :_hover="{
+            backgroundColor: 'ice.50',
+            color: 'blue.400',
+            cursor: 'pointer',
+          }"
+          @click="isToggle = !isToggle"
+        >
+          <mp-stack direction="row" align="center">
+            <mp-icon :name="isToggle ? 'arrow-collapse' : 'arrow-expand'" />
+            <mp-text white-space="nowrap" :opacity="isToggle ? '0' : '1'"> Collapse </mp-text>
+          </mp-stack>
+        </mp-pseudo-box>
+      </mp-flex>
     </mp-box>
   </mp-box>
 </template>
@@ -130,7 +140,6 @@ import {
   MpStack,
   MpPseudoBox,
   MpDivider,
-  MpButtonIcon,
   MpTooltip,
   MpPopover,
   MpPopoverTrigger,
@@ -140,10 +149,11 @@ import {
 } from "@mekari/pixel";
 
 export default {
-  // eslint-disable-next-line vue/multi-word-component-names
-  name: "Header",
+  name: "Sidebar",
   props: {
     isCollapsed: [Boolean],
+    defaultIsToggle: [Boolean],
+    isStacked: [Boolean],
   },
   components: {
     MpBox,
@@ -153,7 +163,6 @@ export default {
     MpStack,
     MpPseudoBox,
     MpDivider,
-    MpButtonIcon,
     MpTooltip,
     MpPopover,
     MpPopoverTrigger,
@@ -163,7 +172,7 @@ export default {
   },
   data: function () {
     return {
-      isToggle: this.isCollapsed ? true : false,
+      isToggle: this.isCollapsed ? this.defaultIsToggle || true : this.defaultIsToggle || false,
       sidebarMenus: [
         {
           name: "outputs",
@@ -187,7 +196,7 @@ export default {
             { name: "Contact", icon: "contact" },
             { name: "Products", icon: "products" },
             { name: "Assets", icon: "assets" },
-            { name: "Chart of account", icon: "chart-of-account", isActive: true },
+            { name: "Chart of account", icon: "chart-of-account" },
           ],
         },
         {
@@ -198,11 +207,19 @@ export default {
             { name: "Calculator", icon: "calculator" },
             { name: "Other Lists", icon: "doc" },
             { name: "Integrations", icon: "add-ons" },
-            { name: "Settings", icon: "settings" },
+            { name: "Settings", icon: "settings", isActive: true },
           ],
         },
       ],
     };
+  },
+  methods: {
+    handleMouseEnter: function () {
+      !this.isToggle && this.isCollapsed ? (this.isToggle = true) : (this.isToggle = false);
+    },
+    handleMouseLeave: function () {
+      !this.isToggle && this.isCollapsed ? (this.isToggle = false) : (this.isToggle = true);
+    },
   },
 };
 </script>

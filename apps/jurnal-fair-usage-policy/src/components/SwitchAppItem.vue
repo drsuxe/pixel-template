@@ -1,6 +1,6 @@
 <template>
   <mp-pseudo-box
-    as="router-link"
+    as="a"
     to="#"
     role="group"
     display="flex"
