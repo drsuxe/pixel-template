@@ -7,6 +7,8 @@
         <SubHeader title="Layout default" />
         <mp-box min-height="calc(100vh - 132px)" border-top-width="1px" background-color="white" padding="6">
           <mp-text>Place content here...</mp-text>
+
+          <TableLayout v-for="data in datasets" :key="data.id" :data="data" :tabIndex="0" />
         </mp-box>
       </mp-box>
     </mp-flex>
@@ -19,6 +21,9 @@ import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import SubHeader from "../components/SubHeader";
 
+import TableLayout from "../components/TableLayout.vue";
+import { datasets } from "../api";
+
 export default {
   name: "LayoutDefault",
   components: {
@@ -28,6 +33,12 @@ export default {
     Header,
     Sidebar,
     SubHeader,
+    TableLayout,
+  },
+  data() {
+    return {
+      datasets: datasets,
+    };
   },
 };
 </script>
