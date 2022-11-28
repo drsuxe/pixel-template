@@ -32,7 +32,7 @@
                   <mp-box v-if="isOpen" position="absolute" top="-24px" left="0px" bg="ice.100" :width="tableCellWidth + 2" rounded-top="lg" px="4" ml="-1px">
                     <mp-text font-size="sm" font-weight="semibold" py="1">Paket anda saat ini</mp-text>
                   </mp-box>
-                  <mp-box p="2">
+                  <mp-box p="2" height="340px" position="relative">
                     <mp-heading>Pro</mp-heading>
                     <mp-text color="gray.600" line-height="md">Cocok untuk bisnis apa? Gak mesti dari company size, lebih ke industri</mp-text>
 
@@ -42,12 +42,10 @@
                         <mp-text color="gray.600" ml="2">per bulan</mp-text>
                       </mp-flex>
                     </mp-flex>
-
-                    <!-- <mp-button width="full" mt="132px" is-disabled>Paket anda saat ini</mp-button> -->
                   </mp-box>
                 </mp-table-cell>
                 <mp-table-cell as="th" scope="col" widht="25%" :style="{ borderBottom: '0px', borderRightWidth: '1px', borderColor: 'var(--colors-gray-50)' }">
-                  <mp-box p="2">
+                  <mp-box p="2" height="340px" position="relative">
                     <mp-heading>Enterprise</mp-heading>
                     <mp-text color="gray.600" line-height="md">Mendukung transaksi multinasional dan integrasi antar-aplikasi.</mp-text>
 
@@ -58,11 +56,13 @@
                       </mp-flex>
                     </mp-flex>
 
-                    <mp-button width="full" mt="132px" variant="outline" @click="handleChange('Enterprise')">Coba Enterprise</mp-button>
+                    <mp-box position="absolute" width="full" bottom="0" left="0" p="2">
+                      <mp-button width="full" variant="outline" @click="handleChange('Enterprise')">Coba Enterprise</mp-button>
+                    </mp-box>
                   </mp-box>
                 </mp-table-cell>
                 <mp-table-cell as="th" scope="col" widht="25%" :style="{ borderBottom: '0px' }">
-                  <mp-box p="2">
+                  <mp-box p="2" height="340px" position="relative">
                     <mp-flex align-items="center">
                       <mp-heading>Enterprise+ </mp-heading>
                       <mp-badge variant="blue" ml="2">Terpopuler</mp-badge>
@@ -76,7 +76,9 @@
                       </mp-flex>
                     </mp-flex>
 
-                    <mp-button width="full" mt="132px" variant="outline" @click="handleChange('Enterprise+')">Coba Enterprise+</mp-button>
+                    <mp-box position="absolute" width="full" bottom="0" left="0" p="2">
+                      <mp-button width="full" variant="outline" @click="handleChange('Enterprise+')">Coba Enterprise+</mp-button>
+                    </mp-box>
                   </mp-box>
                 </mp-table-cell>
               </mp-table-row>
@@ -134,6 +136,7 @@
 </template>
 
 <script>
+import { nextTick } from "vue";
 import {
   MpFlex,
   MpIcon,
@@ -370,16 +373,17 @@ export default {
       tableCellWidth: 0,
     };
   },
+  watch: {
+    isOpen(newValue) {
+      if (newValue) {
+        this.getClientWidth("table-cell-pro");
+      }
+    },
+  },
   computed: {
     isShowFooter() {
       return this.stage === 2 || this.stage === 3;
     },
-  },
-  mounted() {
-    this.$nextTick(() => {
-      this.tableCellWidth = 366;
-      // this.getClientWidth("table-cell-pro");
-    });
   },
   methods: {
     isBoolean(val) {
@@ -394,11 +398,14 @@ export default {
     },
 
     // Utils
-    getClientWidth(id) {
-      const element = document.getElementById(id);
-      const clientWidth = element.clientWidth;
+    async getClientWidth(id) {
+      const self = this;
+      nextTick().then(function () {
+        const element = document.getElementById(id);
+        const clientWidth = element.clientWidth;
 
-      return clientWidth;
+        self.tableCellWidth = clientWidth;
+      });
     },
   },
 };

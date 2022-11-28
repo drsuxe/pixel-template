@@ -8,18 +8,20 @@
           </mp-flex>
           <mp-flex gap="3" align-items="center">
             <mp-flex>
-              <mp-icon name="table-view-column" margin-right="2" :variant="stage === 1 ? 'duotone' : 'outline'" />
-              <mp-text :color="stage !== 1 && 'gray.600'" :font-weight="stage === 1 ? 'semibold' : ''"> Paket langganan </mp-text>
+              <mp-icon name="table-view-column" margin-right="2" :variant="isPaketLanggananActive ? 'duotone' : 'outline'" />
+              <mp-text :color="isPaketLanggananActive ? '' : 'gray.600'" :font-weight="isPaketLanggananActive ? 'semibold' : ''"> Paket langganan </mp-text>
             </mp-flex>
             <mp-icon name="arrows-right" variant="duotone" />
             <mp-flex>
-              <mp-icon name="add-ons" margin-right="2" :variant="stage === 2 ? 'duotone' : 'outline'" />
-              <mp-text :color="stage !== 2 && 'gray.600'" :font-weight="stage === 2 ? 'semibold' : ''"> Kebutuhan tambahan </mp-text>
+              <mp-icon name="add-ons" margin-right="2" :variant="isKebutuhanTambahanActive ? 'duotone' : 'outline'" />
+              <mp-text :color="isKebutuhanTambahanActive ? '' : 'gray.600'" :font-weight="isKebutuhanTambahanActive ? 'semibold' : ''">
+                Kebutuhan tambahan
+              </mp-text>
             </mp-flex>
             <mp-icon name="arrows-right" variant="duotone" />
             <mp-flex>
-              <mp-icon name="cart" margin-right="2" :variant="stage === 3 ? 'duotone' : 'outline'" />
-              <mp-text :color="stage !== 3 && 'gray.600'" :font-weight="stage === 3 ? 'semibold' : ''"> Konfirmasi </mp-text>
+              <mp-icon name="cart" margin-right="2" :variant="isKonfirmasiActive ? 'duotone' : 'outline'" />
+              <mp-text :color="isKonfirmasiActive ? '' : 'gray.600'" :font-weight="isKonfirmasiActive ? 'semibold' : ''"> Konfirmasi </mp-text>
             </mp-flex>
           </mp-flex>
           <mp-flex width="237px" />
@@ -30,7 +32,7 @@
       <mp-modal-body>
         <!-- Paket langganan -->
         <mp-box max-width="90%" mx="auto" v-if="stage === 1">
-          <mp-flex align-items="center" justify="center" my="8">
+          <mp-flex align-items="center" justify="center" mt="8" mb="13">
             <mp-segmented-control
               :default-value="selectedMonth"
               :value="selectedMonth"
@@ -39,6 +41,7 @@
               :data="[
                 { id: '3', label: '3 Bulan', value: 3 },
                 { id: '6', label: '6 Bulan', value: 6 },
+                { id: '9', label: '9 Bulan', value: 9 },
                 { id: '12', label: '12 Bulan', value: 12 },
               ]"
               defaultValue="12"
@@ -62,7 +65,22 @@
                   widht="25%"
                   :style="{ borderBottom: '0px', borderRightWidth: '1px', borderColor: 'var(--colors-gray-50)' }"
                 />
-                <mp-table-cell as="th" scope="col" width="25%" :style="{ borderBottom: '0px', borderRightWidth: '1px', borderColor: 'var(--colors-gray-50)' }">
+                <mp-table-cell
+                  as="th"
+                  scope="col"
+                  width="25%"
+                  :style="{
+                    borderBottom: '0px',
+                    borderRightWidth: '1px',
+                    borderColor: 'var(--colors-gray-50)',
+                    position: 'relative',
+                  }"
+                  id="table-cell-pro"
+                >
+                  <mp-box v-if="isOpen" position="absolute" top="-24px" left="0px" bg="ice.100" rounded-top="lg" px="4" ml="-1px" :width="tableCellWidth + 2">
+                    <mp-text font-size="sm" font-weight="semibold" py="1">Paket anda saat ini </mp-text>
+                  </mp-box>
+
                   <mp-box p="2">
                     <mp-heading>Pro</mp-heading>
                     <mp-text color="gray.600" line-height="md">Cocok untuk bisnis apa? Gak mesti dari company size, lebih ke industri</mp-text>
@@ -178,6 +196,7 @@
                     :data="[
                       { id: '3', label: '3 Bulan', value: 3 },
                       { id: '6', label: '6 Bulan', value: 6 },
+                      { id: '9', label: '9 Bulan', value: 9 },
                       { id: '12', label: '12 Bulan', value: 12 },
                     ]"
                     label-prop="label"
@@ -262,6 +281,8 @@
 </template>
 
 <script>
+import { nextTick } from "vue";
+
 import {
   MpFlex,
   MpIcon,
@@ -371,63 +392,63 @@ export default {
             },
             {
               name: "Monitor saldo kas & bank",
-              tooltip: "Pantau pengeluaran dalam 30 hari terakhir termasuk yang belum dibayar di satu laporan real-time.",
+              tooltip: "Integrasikan data mutasi bank yang dilengkapi dengan rekonsiliasi otomatis untuk kesesuaian data kas.",
               pro: true,
               enterprise: true,
               enterprisePlus: true,
             },
             {
               name: "Template & reminder invoice",
-              tooltip: "Pantau pengeluaran dalam 30 hari terakhir termasuk yang belum dibayar di satu laporan real-time.",
+              tooltip: "Buat invoice hingga atur waktu penagihan secara otomatis dari satu dasbor.",
               pro: true,
               enterprise: true,
               enterprisePlus: true,
             },
             {
               name: "Approval & otorisasi",
-              tooltip: "Pantau pengeluaran dalam 30 hari terakhir termasuk yang belum dibayar di satu laporan real-time.",
+              tooltip: "Pastikan transaksi dan aktivitas gudang melalui persetujuan manajer untuk hindari kesalahan.",
               pro: false,
               enterprise: true,
               enterprisePlus: true,
             },
             {
               name: "Budgeting",
-              tooltip: "Pantau pengeluaran dalam 30 hari terakhir termasuk yang belum dibayar di satu laporan real-time.",
+              tooltip: "Buat rencana anggaran lebih baik dengan pantau pemasukan & pengeluaran dari satu dasbor.",
               pro: false,
               enterprise: true,
               enterprisePlus: true,
             },
             {
               name: "Multi-currency",
-              tooltip: "Pantau pengeluaran dalam 30 hari terakhir termasuk yang belum dibayar di satu laporan real-time.",
+              tooltip: "Lakukan transaksi dengan beragam mata uang asing.",
               pro: false,
               enterprise: true,
               enterprisePlus: true,
             },
             {
               name: "Join invoice",
-              tooltip: "Pantau pengeluaran dalam 30 hari terakhir termasuk yang belum dibayar di satu laporan real-time.",
+              tooltip: "Gabungkan semua invoice yang belum dibayar untuk memudahkan penagihan ke pelanggan Anda.",
               pro: false,
               enterprise: false,
               enterprisePlus: true,
             },
             {
               name: "Pro forma invoice",
-              tooltip: "Pantau pengeluaran dalam 30 hari terakhir termasuk yang belum dibayar di satu laporan real-time.",
+              tooltip: "Buat faktur sementara untuk mempermudah proses transaksi dengan pelanggan Anda.",
               pro: false,
               enterprise: false,
               enterprisePlus: true,
             },
             {
               name: "Profitability report",
-              tooltip: "Pantau pengeluaran dalam 30 hari terakhir termasuk yang belum dibayar di satu laporan real-time.",
+              tooltip: "Ketahui peforma penjualan setiap produk untuk pengambilan keputusan bisnis tepat.",
               pro: false,
               enterprise: false,
               enterprisePlus: true,
             },
             {
               name: "Multi-product pricing",
-              tooltip: "Pantau pengeluaran dalam 30 hari terakhir termasuk yang belum dibayar di satu laporan real-time.",
+              tooltip: "Buat harga khusus sesuai kebutuhan yang otomatis diterapkan ketika terjadi transaksi.",
               pro: false,
               enterprise: false,
               enterprisePlus: true,
@@ -440,28 +461,28 @@ export default {
           datas: [
             {
               name: "Mekari Pay",
-              tooltip: "Lorem ipsum dolor sir amet.",
+              tooltip: "Terima dan kirim pembayaran transaksi bisnis dari berbagai platform.",
               pro: true,
               enterprise: true,
               enterprisePlus: true,
             },
             {
               name: "Mekari Klikpajak",
-              tooltip: "Lorem ipsum dolor sir amet.",
+              tooltip: "Lapor dan bayar pajak secara online dengan aplikasi mitra resmi DJP.",
               pro: true,
               enterprise: true,
               enterprisePlus: true,
             },
             {
               name: "Mekari Capital",
-              tooltip: "Lorem ipsum dolor sir amet.",
+              tooltip: "Ajukan pembiayaan instan untuk kebutuhan bisnis.",
               pro: true,
               enterprise: true,
               enterprisePlus: true,
             },
             {
               name: "Aplikasi POS & e-Commerce",
-              tooltip: "Lorem ipsum dolor sir amet.",
+              tooltip: "Hubungkan ke Moka POS, Oktopus POS, iSeller, Pawoon, Dealpos, Olsera, Hellobill, dll., serta mengimpor transaksi dari web e-Commerce.",
               pro: true,
               enterprise: true,
               enterprisePlus: true,
@@ -475,14 +496,14 @@ export default {
           datas: [
             {
               name: "Kuota pengguna",
-              tooltip: "Lorem ipsum dolor sir amet.",
+              tooltip: "Tingkatkan produktivitas tim dengan memberikan akses ke masing-masing karyawan Anda.",
               pro: 3,
               enterprise: 5,
               enterprisePlus: 7,
             },
             {
               name: "Multi-gudang & lokasi produk",
-              tooltip: "Lorem ipsum dolor sir amet.",
+              tooltip: "Kelola jumlah produk dan transfer dari berbagai gudang langsung dari satu dasbor online.",
               pro: 2,
               enterprise: 5,
               enterprisePlus: 10,
@@ -502,14 +523,14 @@ export default {
           datas: [
             {
               name: "Gratis training & implementasi",
-              tooltip: "Lorem ipsum dolor sir amet.",
+              tooltip: "Ikuti sesi persiapan dan pengenalan untuk mengoperasikan Jurnal.",
               pro: true,
               enterprise: true,
               enterprisePlus: true,
             },
             {
               name: "Layanan pelanggan via chat",
-              tooltip: "Lorem ipsum dolor sir amet.",
+              tooltip: "Konsultasikan kendala atau kebutuhan Anda seputar Jurnal.",
               pro: true,
               enterprise: true,
               enterprisePlus: true,
@@ -517,9 +538,26 @@ export default {
           ],
         },
       ],
+      tableCellWidth: 0,
     };
   },
+  watch: {
+    isOpen(newValue) {
+      if (newValue) {
+        this.getClientWidth("table-cell-pro");
+      }
+    },
+  },
   computed: {
+    isPaketLanggananActive() {
+      return this.stage <= 3;
+    },
+    isKebutuhanTambahanActive() {
+      return this.stage > 1 && this.stage <= 3;
+    },
+    isKonfirmasiActive() {
+      return this.stage === 3;
+    },
     isShowFooter() {
       return this.stage === 2 || this.stage === 3;
     },
@@ -540,6 +578,17 @@ export default {
     },
     handlePayment() {
       alert("Bayar Langganan clicked");
+    },
+
+    // Utils
+    async getClientWidth(id) {
+      const self = this;
+      nextTick().then(function () {
+        const element = document.getElementById(id);
+        const clientWidth = element.clientWidth;
+
+        self.tableCellWidth = clientWidth;
+      });
     },
   },
 };

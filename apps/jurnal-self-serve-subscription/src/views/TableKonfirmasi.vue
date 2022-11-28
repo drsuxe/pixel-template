@@ -67,6 +67,15 @@
     </mp-grid>
 
     <mp-grid templateColumns="repeat(12,1fr)">
+      <mp-grid-item border-bottom-width="2px" py="2" col-start="8" col-end="10">
+        <mp-text text-align="right">Diskon</mp-text>
+      </mp-grid-item>
+      <mp-grid-item border-bottom-width="2px" py="2" pr="4" col-span="3">
+        <mp-text text-align="right">-Rp1.824.678 </mp-text>
+      </mp-grid-item>
+    </mp-grid>
+
+    <mp-grid templateColumns="repeat(12,1fr)">
       <mp-grid-item py="2" col-span="2" col-start="8" col-end="10">
         <mp-flex align-items="start" h="full">
           <mp-text line-height="md" text-align="right" font-weight="semibold" font-size="lg"> Total pembayaran </mp-text>

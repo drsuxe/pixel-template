@@ -51,7 +51,7 @@
     </mp-table-container>
 
     <mp-box mt="3" v-if="quotas.length < 3">
-      <mp-popover id="tambah-lainnya" ref="tambah-lainnya">
+      <mp-popover id="tambah-kuota" ref="tambah-kuota">
         <mp-popover-trigger>
           <mp-button variant="outline">
             <mp-icon name="add-circular" variant="duotone" size="sm" mr="2" />
@@ -140,9 +140,15 @@ export default {
   },
   methods: {
     handleAdd(name) {
-      this.quotas.push(name);
+      if (name == "Faktur penjualan") {
+        this.isModalPaketPenjualanOpen = true;
+      } else {
+        this.quotas.push(name);
+      }
 
-      if (this.$refs["tambah-lainnya"]?._isOpen) this.$refs["tambah-lainnya"]?.closePopover();
+      if (this.$refs["tambah-kuota"]?._isOpen) {
+        this.$refs["tambah-kuota"]?.closePopover();
+      }
     },
     handleDelete(name) {
       this.quotas.splice(name, 1);
@@ -160,6 +166,10 @@ export default {
     },
     handleAddModalFakturPenjualan() {
       this.handleCloseModalFakturPenjualan();
+
+      if (!this.quotas.includes("Faktur penjualan")) {
+        this.quotas.push("Faktur penjualan");
+      }
     },
   },
 };
