@@ -17,7 +17,7 @@
       <mp-box :flex-basis="tampilkanRingkasan ? '65%' : '100%'">
         <mp-flex direction="column" gap="6" v-if="tampilkanRingkasan">
           <mp-flex>
-            <Stats label="Hutang belum dibayar" value="Rp2.574.617.613,07" variant-color="orange" />
+            <Stats label="Hutang belum dibayar" value="Rp2.574.617.613.000,07" variant-color="orange" />
             <mp-divider orientation="vertical" margin-x="4" />
 
             <Stats label="Hutang jatuh tempo" value="Rp2.574.617.613,07" variant-color="red" />
@@ -46,42 +46,6 @@
       </mp-box>
 
       <mp-box v-if="tampilkanRingkasan" flex-basis="35%" rounded="md" bg="blue.400" ml="6" position="relative">
-        <!-- Star -->
-        <mp-box position="absolute" top="23px" right="29px">
-          <svg width="27" height="34" viewBox="0 0 27 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              opacity="0.9"
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-              d="M18.2379 0L21.4138 5.72064L27 8.72321L21.5992 12.084L18.7621 18L15.5886 12.2804L10 9.27828L15.4031 5.91695L18.2379 0Z"
-              fill="url(#paint0_linear_1_56)"
-            />
-            <g filter="url(#filter0_f_1_56)">
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M6 23L7.41482 25.9093L10 27.5005L7.41482 29.0913L6 32L4.58626 29.0913L2 27.5005L4.58626 25.9093L6 23Z"
-                fill="url(#paint1_linear_1_56)"
-              />
-            </g>
-            <defs>
-              <filter id="filter0_f_1_56" x="0" y="21" width="12" height="13" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-                <feGaussianBlur stdDeviation="1" result="effect1_foregroundBlur_1_56" />
-              </filter>
-              <linearGradient id="paint0_linear_1_56" x1="25.092" y1="-1.25399" x2="17.7515" y2="17.7103" gradientUnits="userSpaceOnUse">
-                <stop offset="0.211715" stop-color="#F6E3B3" />
-                <stop offset="1" stop-color="#FEC009" />
-              </linearGradient>
-              <linearGradient id="paint1_linear_1_56" x1="9.10213" y1="22.373" x2="5.26692" y2="31.6985" gradientUnits="userSpaceOnUse">
-                <stop offset="0.211715" stop-color="#F6E3B3" />
-                <stop offset="1" stop-color="#FEC009" />
-              </linearGradient>
-            </defs>
-          </svg>
-        </mp-box>
-
         <!-- Bg Overlay -->
         <mp-box position="absolute" top="0" left="0" height="full" z-index="0">
           <svg width="auto" height="full" viewBox="0 0 361 224" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -114,24 +78,22 @@
         </mp-box>
 
         <!-- Content -->
-        <mp-box p="4" z-index="9999">
-          <mp-heading color="white">Perhitungan bersih</mp-heading>
-
-          <mp-box mt="4">
-            <mp-text color="white" line-height="1sm">Harus Anda bayar</mp-text>
+        <mp-flex direction="column" p="6" z-index="9999">
+          <mp-box>
+            <mp-text color="white" line-height="1sm">Jumlah hutang</mp-text>
             <mp-text color="white" font-weight="semibold">Rp2.190.617.691.613,07</mp-text>
           </mp-box>
 
-          <mp-box mt="4">
-            <mp-text color="white" line-height="1sm">Harus Anda bayar</mp-text>
+          <mp-box mt="6">
+            <mp-text color="white" line-height="1sm">Jumlah piutang</mp-text>
             <mp-text color="white" font-weight="semibold">Rp2.190.617.691.613,07</mp-text>
           </mp-box>
 
-          <mp-box mt="4">
-            <mp-text color="white" line-height="1sm">Harus Anda bayar</mp-text>
-            <mp-text color="white" font-weight="semibold">Rp2.190.617.691.613,07</mp-text>
+          <mp-box mt="6">
+            <mp-text color="white" line-height="1sm">Total </mp-text>
+            <mp-text color="white" font-weight="semibold">Rp4.423.377.183,89</mp-text>
           </mp-box>
-        </mp-box>
+        </mp-flex>
       </mp-box>
     </mp-flex>
 
@@ -230,7 +192,6 @@ import {
   MpTableCell,
   MpText,
   MpBadge,
-  MpHeading,
   MpPopoverList,
   MpPopoverListItem,
   MpIcon,
@@ -257,7 +218,6 @@ export default {
     MpTableCell,
     MpText,
     MpBadge,
-    MpHeading,
     MpPopoverList,
     MpPopoverListItem,
     MpIcon,

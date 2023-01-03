@@ -2,7 +2,7 @@
   <mp-box>
     <Header />
     <mp-flex as="main" max-height="calc(100vh - 60px)">
-      <Sidebar is-stacked :default-is-toggle="true" />
+      <Sidebar is-stacked :default-is-toggle="false" />
       <mp-box as="section" data-id="content" width="100%" height="calc(100vh - 60px)" overflow-y="auto" background-color="background">
         <SubHeader>
           <mp-flex justify="space-between" align-items="center" padding-x="6" padding-y="1.063rem">
@@ -38,9 +38,9 @@
                   <mp-text mr="5">Tipe :</mp-text>
                   <mp-flex gap="2">
                     <mp-badge variant-color="orange"> Pelanggan </mp-badge>
-                    <mp-badge variant-color="gray"> Suplier </mp-badge>
+                    <mp-badge variant-color="blue"> Suplier </mp-badge>
                     <mp-badge variant-color="green"> Karyawan </mp-badge>
-                    <mp-badge variant-color="gray"> Lainnya </mp-badge>
+                    <mp-badge variant-color="green"> Lainnya </mp-badge>
                   </mp-flex>
                 </mp-flex>
                 <mp-divider orientation="vertical" border-left-color="dark" />

@@ -199,7 +199,7 @@
                     <mp-grid template-columns="repeat(2, 1fr)" gap="5">
                       <mp-form-control>
                         <mp-form-label>Nama bank</mp-form-label>
-                        <mp-autocomplete :data="['BCA', 'BNI', 'BRI', 'Mandiri']" :content-style="{ width: 'full' }" />
+                        <mp-autocomplete :data="['BCA', 'BNI', 'BRI', 'Mandiri']" :content-style="{ width: 'full' }" placeholder="Pilih bank" />
                       </mp-form-control>
 
                       <mp-form-control>
@@ -251,9 +251,9 @@
                   </mp-form-control>
 
                   <mp-box>
-                    <mp-form-control>
+                    <mp-form-control :is-disabled="true">
                       <mp-form-label>Piutang maksimal</mp-form-label>
-                      <mp-input is-disabled />
+                      <mp-input  />
                     </mp-form-control>
 
                     <mp-box position="relative" mt="1">
@@ -262,9 +262,9 @@
                   </mp-box>
 
                   <mp-box>
-                    <mp-form-control>
+                    <mp-form-control :is-disabled="true">
                       <mp-form-label>Hutang maksimal</mp-form-label>
-                      <mp-input is-disabled />
+                      <mp-input />
                     </mp-form-control>
 
                     <mp-box position="relative" mt="1">
@@ -277,7 +277,7 @@
                   <mp-form-label>Syarat pembayaran utama</mp-form-label>
                   <mp-autocomplete
                     placeholder="Pilih pembayaran"
-                    :data="['Option 1', 'Option 2', 'Option 3']"
+                    :data="['Cash on Delivery', 'Net 15', 'Net 30', 'Net 45', 'Net 60', 'Custom']"
                     :content-style="{ width: 'max-context', minWidth: '64', maxContent: '90vw' }"
                   />
                 </mp-form-control>
@@ -374,3 +374,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+[data-pixel-component="MpCollapse"] {
+ overflow: visible !important;
+}
+</style>

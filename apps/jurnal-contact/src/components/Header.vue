@@ -2,7 +2,7 @@
   <mp-box as="nav" border-bottom-color="gray.100" border-bottom-width="1px" border-style="solid" background-color="white" padding-x="6" padding-y="1.5">
     <mp-flex flex-direction="row" justify-content="space-between" align-items="center">
       <mp-box as="a" href="/">
-        <img src="@/assets/logo-jurnal-default.svg" style="height: 2.5rem" alt="" />
+        <img src="../assets/logo-jurnal-default.svg" style="height: 2.5rem" alt="" />
       </mp-box>
       <mp-box>
         <mp-flex justify-content="space-between" align-items="center">
