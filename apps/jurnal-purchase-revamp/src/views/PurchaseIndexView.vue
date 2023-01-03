@@ -66,8 +66,8 @@
             <mp-flex gap="4" align-items="flex-end">
               <mp-form-control control-id="filter-sesuai-periode">
                 <mp-form-label>Semua status</mp-form-label>
-                <mp-autocomplete v-model="activeFilter.status" is-clearable is-searchable
-                  :data="['Semua status', 'Status 1', 'Status 2', 'Status 3', 'Status 4']"
+                <mp-autocomplete v-model="activeFilter.status" @change="handleApplyFilter(activeFilter)" is-clearable
+                  is-searchable :data="['Semua status', 'Status 1', 'Status 2', 'Status 3', 'Status 4']"
                   :content-style="{ width: 'full' }" />
               </mp-form-control>
             </mp-flex>
@@ -78,11 +78,17 @@
                 <mp-input-left-addon :with-background="false">
                   <mp-icon name="search" size="sm" />
                 </mp-input-left-addon>
-                <mp-input v-model="activeFilter.keyword" placeholder="Pencarian" is-clearable />
+                <mp-input v-model="activeFilter.keyword" @keyup.enter="handleApplyFilter(activeFilter)"
+                  @clear="handleApplyFilter(activeFilter)" placeholder="Pencarian" is-clearable />
               </mp-input-group>
               <mp-button variant="outline" @click="isOpen = true">
-                <mp-icon name="filter" variant="duotone" size="sm" mr="2" />
-                Filter</mp-button>
+                <mp-box position="relative" mr="3">
+                  <mp-icon name="filter" variant="duotone" size="sm" />
+                  <mp-box v-if="isActiveFilter" position="absolute" top="-1" right="-1" w="3" h="3" rounded="full"
+                    bg="red.400" border-color="white" border-width="2px" />
+                </mp-box>
+                Filter
+              </mp-button>
             </mp-flex>
           </mp-flex>
 
@@ -94,7 +100,7 @@
 
           <!-- Table -->
           <mp-box v-else mt="8">
-            <ReportTable />
+            <PurchaseTable />
           </mp-box>
 
           <!-- Drawer -->
@@ -128,7 +134,7 @@ import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import SubHeader from "./SubHeader.vue";
 import Tabs from './Tabs.vue'
-import ReportTable from "./ReportTable.vue";
+import PurchaseTable from "./PurchaseTable.vue";
 import PurchaseFilterDrawer from "./PurchaseFilterDrawer.vue";
 
 export default {
@@ -138,7 +144,7 @@ export default {
     Sidebar,
     SubHeader,
     Tabs,
-    ReportTable,
+    PurchaseTable,
     PurchaseFilterDrawer,
     MpBox,
     MpFlex,
@@ -170,29 +176,42 @@ export default {
         bill: {
           formula: "lebih-dari",
           value: "",
+          value2: ''
         },
         total: {
           formula: "lebih-dari",
           value: "",
+          value2: ""
         },
-      }
+      },
+      isActiveFilter: false
     };
   },
   methods: {
-    handleApplyFilter(e) {
-      console.log(e)
+    handleApplyFilter(data) {
+      console.log(data)
       this.isLoading = true
-      this.activeFilter = e
-
+      this.activeFilter = data
       this.handleClose()
 
+
       setTimeout(() => {
+        this.handleSimulateFetchData()
         this.isLoading = false
       }, 800);
     },
     handleClose() {
       this.isOpen = false
     },
+    handleSimulateFetchData() {
+      console.log('Fetching data...')
+      const _ = this.activeFilter
+      if (_.keyword || _.column || _.transactionDate.length || _.dueDate.length || _.bill.value || _.total.value) {
+        this.isActiveFilter = true
+      } else {
+        this.isActiveFilter = false
+      }
+    }
   },
 };
 </script>

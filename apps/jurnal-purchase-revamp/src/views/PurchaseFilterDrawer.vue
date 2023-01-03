@@ -43,7 +43,8 @@
 
           <mp-form-control>
             <mp-form-label>Sisa tagihan</mp-form-label>
-            <mp-radio-group name="sisa-tagihan" spacing="6" mb="1" is-inline v-model="currentFilter.bill.formula">
+            <mp-radio-group name="sisa-tagihan" spacing="6" mb="1" is-inline v-model="currentFilter.bill.formula"
+              @change="[currentFilter.bill.value = '', currentFilter.bill.value2 = '']">
               <mp-radio id="sisa-tagihan-lebih-dari" value="lebih-dari">
                 Lebih dari
               </mp-radio>
@@ -54,13 +55,28 @@
                 Kurang dari
               </mp-radio>
             </mp-radio-group>
-            <mp-input v-model="currentFilter.bill.value" placeholder="0,00" text-align="right" v-mask="numericalMask"
-              type="text" inputmode="number" />
+
+            <mp-flex gap="2" v-if="currentFilter.bill.formula === 'di-antara'">
+              <mp-box width="45%">
+                <mp-input v-model="currentFilter.bill.value" placeholder="0,00" text-align="right"
+                  v-mask="numericalMask" type="text" inputmode="number" is-full-width />
+              </mp-box>
+              <mp-flex align="center" justify="center" width="5%">
+                <mp-text text-align="center">-</mp-text>
+              </mp-flex>
+              <mp-box width="45%">
+                <mp-input v-model="currentFilter.bill.value2" placeholder="0,00" text-align="right"
+                  v-mask="numericalMask" type="text" inputmode="number" is-full-width />
+              </mp-box>
+            </mp-flex>
+            <mp-input v-else v-model="currentFilter.bill.value" placeholder="0,00" text-align="right"
+              v-mask="numericalMask" type="text" inputmode="number" />
           </mp-form-control>
 
           <mp-form-control>
             <mp-form-label>Total</mp-form-label>
-            <mp-radio-group name="total" spacing="6" mb="1" is-inline v-model="currentFilter.total.formula">
+            <mp-radio-group name="total" spacing="6" mb="1" is-inline v-model="currentFilter.total.formula"
+              @change="[currentFilter.total.value = '', currentFilter.total.value2 = '']">
               <mp-radio id="total-lebih-dari" value="lebih-dari">
                 Lebih dari
               </mp-radio>
@@ -71,8 +87,22 @@
                 Kurang dari
               </mp-radio>
             </mp-radio-group>
-            <mp-input v-model="currentFilter.total.value" placeholder="0,00" text-align="right" v-mask="numericalMask"
-              type="text" inputmode="number" />
+
+            <mp-flex gap="2" v-if="currentFilter.total.formula === 'di-antara'">
+              <mp-box width="45%">
+                <mp-input v-model="currentFilter.total.value" placeholder="0,00" text-align="right"
+                  v-mask="numericalMask" type="text" inputmode="number" is-full-width />
+              </mp-box>
+              <mp-flex align="center" justify="center" width="5%">
+                <mp-text text-align="center">-</mp-text>
+              </mp-flex>
+              <mp-box width="45%">
+                <mp-input v-model="currentFilter.total.value2" placeholder="0,00" text-align="right"
+                  v-mask="numericalMask" type="text" inputmode="number" is-full-width />
+              </mp-box>
+            </mp-flex>
+            <mp-input v-else v-model="currentFilter.total.value" placeholder="0,00" text-align="right"
+              v-mask="numericalMask" type="text" inputmode="number" />
           </mp-form-control>
         </mp-stack>
       </mp-drawer-body>
@@ -111,6 +141,7 @@ import {
   MpFlex,
   MpText,
   MpDatePicker,
+  MpBox
 } from "@mekari/pixel";
 
 const defaultFilter = {
@@ -122,10 +153,12 @@ const defaultFilter = {
   bill: {
     formula: "lebih-dari",
     value: "",
+    value2: ""
   },
   total: {
     formula: "lebih-dari",
     value: "",
+    value2: ""
   },
 }
 
@@ -152,6 +185,7 @@ export default {
     MpFlex,
     MpText,
     MpDatePicker,
+    MpBox
   },
   props: {
     isOpen: {
@@ -209,8 +243,9 @@ export default {
 };
 </script>
 
-<style>
-#pixel-popper_transaction-date-content, #pixel-popper_due-date-content {
+<style >
+#pixel-popper_transaction-date-content,
+#pixel-popper_due-date-content {
   width: 592px;
   border-radius: var(--radii-md);
 }
