@@ -67,7 +67,7 @@
               <mp-form-control control-id="filter-sesuai-periode">
                 <mp-form-label>Semua status</mp-form-label>
                 <mp-autocomplete v-model="activeFilter.status" @change="handleApplyFilter(activeFilter)" is-clearable
-                  is-searchable :data="['Semua status', 'Status 1', 'Status 2', 'Status 3', 'Status 4']"
+                  is-searchable :data="['Semua status', 'Open', 'Overdue', 'Partial', 'Paid', 'Status 4']"
                   :content-style="{ width: 'full' }" />
               </mp-form-control>
             </mp-flex>

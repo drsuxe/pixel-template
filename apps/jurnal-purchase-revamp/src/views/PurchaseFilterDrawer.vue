@@ -38,7 +38,7 @@
           <mp-form-control>
             <mp-form-label>Status</mp-form-label>
             <mp-autocomplete v-model="currentFilter.status" placeholder="Pilih status"
-              :data="['Semua status', 'Status 1', 'Status 2', 'Status 3']" :contentStyle="{ width: 'full' }" />
+              :data="['Semua status', 'Open', 'Overdue', 'Partial', 'Paid']" :contentStyle="{ width: 'full' }" />
           </mp-form-control>
 
           <mp-form-control>
