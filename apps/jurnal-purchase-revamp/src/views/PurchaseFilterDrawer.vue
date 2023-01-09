@@ -19,90 +19,147 @@
 
           <mp-form-control>
             <mp-form-label>Cari pada kolom</mp-form-label>
-            <mp-autocomplete v-model="currentFilter.column" placeholder="Cari transaksi" :data="options"
-              :content-style="{ width: 'full' }" />
+            <mp-autocomplete v-model="currentFilter.column" placeholder="Cari transaksi" :data="options" :content-style="{ width: 'full' }" />
           </mp-form-control>
 
-          <mp-form-control control-id="transaction-date">
-            <mp-form-label>Tanggal transaksi</mp-form-label>
-            <mp-date-picker v-model="currentFilter.transactionDate" format="DD/MM/YYYY" type="date" range
-              range-separator=" - " placeholder="Tanggal mulai - tanggal selesai" />
-          </mp-form-control>
+          <mp-box>
+            <mp-text font-weight="semibold" mb="1">Tanggal transaksi</mp-text>
+
+            <mp-flex gap="2">
+              <mp-box width="45%">
+                <mp-date-picker
+                  id="tanggal-transaksi-from"
+                  v-model="currentFilter.transactionDate.from"
+                  value-type="date"
+                  format="DD/MM/YYYY"
+                  placeholder="Tanggal mulai"
+                />
+              </mp-box>
+              <mp-flex align="center" justify="center" width="5%">
+                <mp-text text-align="center">-</mp-text>
+              </mp-flex>
+              <mp-box width="45%">
+                <mp-date-picker
+                  id="tanggal-transaksi-to"
+                  v-model="currentFilter.transactionDate.to"
+                  value-type="date"
+                  format="DD/MM/YYYY"
+                  placeholder="Tanggal selesai"
+                />
+              </mp-box>
+            </mp-flex>
+          </mp-box>
 
           <mp-form-control control-id="due-date">
             <mp-form-label>Tanggal jatuh tempo</mp-form-label>
-            <mp-date-picker v-model="currentFilter.dueDate" format="DD/MM/YYYY" type="date" range range-separator=" - "
-              placeholder="Tanggal mulai - tanggal selesai" />
+            <mp-date-picker
+              v-model="currentFilter.dueDate"
+              format="DD/MM/YYYY"
+              type="date"
+              range
+              range-separator=" - "
+              placeholder="Tanggal mulai - tanggal selesai"
+            />
           </mp-form-control>
 
           <mp-form-control>
             <mp-form-label>Status</mp-form-label>
-            <mp-autocomplete v-model="currentFilter.status" placeholder="Pilih status"
-              :data="['Semua status', 'Open', 'Overdue', 'Partial', 'Paid']" :contentStyle="{ width: 'full' }" />
+            <mp-autocomplete
+              v-model="currentFilter.status"
+              placeholder="Pilih status"
+              :data="['Semua status', 'Open', 'Overdue', 'Partial', 'Paid']"
+              :contentStyle="{ width: 'full' }"
+            />
           </mp-form-control>
 
           <mp-form-control>
             <mp-form-label>Sisa tagihan</mp-form-label>
-            <mp-radio-group name="sisa-tagihan" spacing="6" mb="1" is-inline v-model="currentFilter.bill.formula"
-              @change="[currentFilter.bill.value = '', currentFilter.bill.value2 = '']">
-              <mp-radio id="sisa-tagihan-lebih-dari" value="lebih-dari">
-                Lebih dari
-              </mp-radio>
-              <mp-radio id="sisa-tagihan-di-antara" value="di-antara">
-                Di antara
-              </mp-radio>
-              <mp-radio id="sisa-tagihan-kurang-dari" value="kurang-dari">
-                Kurang dari
-              </mp-radio>
+            <mp-radio-group
+              name="sisa-tagihan"
+              spacing="6"
+              mb="1"
+              is-inline
+              v-model="currentFilter.bill.formula"
+              @change="[(currentFilter.bill.value = ''), (currentFilter.bill.value2 = '')]"
+            >
+              <mp-radio id="sisa-tagihan-lebih-dari" value="lebih-dari"> Lebih dari </mp-radio>
+              <mp-radio id="sisa-tagihan-di-antara" value="di-antara"> Di antara </mp-radio>
+              <mp-radio id="sisa-tagihan-kurang-dari" value="kurang-dari"> Kurang dari </mp-radio>
             </mp-radio-group>
 
             <mp-flex gap="2" v-if="currentFilter.bill.formula === 'di-antara'">
               <mp-box width="45%">
-                <mp-input v-model="currentFilter.bill.value" placeholder="0,00" text-align="right"
-                  v-mask="numericalMask" type="text" inputmode="number" is-full-width />
+                <mp-input
+                  v-model="currentFilter.bill.value"
+                  placeholder="0,00"
+                  text-align="right"
+                  v-mask="numericalMask"
+                  type="text"
+                  inputmode="number"
+                  is-full-width
+                />
               </mp-box>
               <mp-flex align="center" justify="center" width="5%">
                 <mp-text text-align="center">-</mp-text>
               </mp-flex>
               <mp-box width="45%">
-                <mp-input v-model="currentFilter.bill.value2" placeholder="0,00" text-align="right"
-                  v-mask="numericalMask" type="text" inputmode="number" is-full-width />
+                <mp-input
+                  v-model="currentFilter.bill.value2"
+                  placeholder="0,00"
+                  text-align="right"
+                  v-mask="numericalMask"
+                  type="text"
+                  inputmode="number"
+                  is-full-width
+                />
               </mp-box>
             </mp-flex>
-            <mp-input v-else v-model="currentFilter.bill.value" placeholder="0,00" text-align="right"
-              v-mask="numericalMask" type="text" inputmode="number" />
+            <mp-input v-else v-model="currentFilter.bill.value" placeholder="0,00" text-align="right" v-mask="numericalMask" type="text" inputmode="number" />
           </mp-form-control>
 
           <mp-form-control>
             <mp-form-label>Total</mp-form-label>
-            <mp-radio-group name="total" spacing="6" mb="1" is-inline v-model="currentFilter.total.formula"
-              @change="[currentFilter.total.value = '', currentFilter.total.value2 = '']">
-              <mp-radio id="total-lebih-dari" value="lebih-dari">
-                Lebih dari
-              </mp-radio>
-              <mp-radio id="total-di-antara" value="di-antara">
-                Di antara
-              </mp-radio>
-              <mp-radio id="total-kurang-dari" value="kurang-dari">
-                Kurang dari
-              </mp-radio>
+            <mp-radio-group
+              name="total"
+              spacing="6"
+              mb="1"
+              is-inline
+              v-model="currentFilter.total.formula"
+              @change="[(currentFilter.total.value = ''), (currentFilter.total.value2 = '')]"
+            >
+              <mp-radio id="total-lebih-dari" value="lebih-dari"> Lebih dari </mp-radio>
+              <mp-radio id="total-di-antara" value="di-antara"> Di antara </mp-radio>
+              <mp-radio id="total-kurang-dari" value="kurang-dari"> Kurang dari </mp-radio>
             </mp-radio-group>
 
             <mp-flex gap="2" v-if="currentFilter.total.formula === 'di-antara'">
               <mp-box width="45%">
-                <mp-input v-model="currentFilter.total.value" placeholder="0,00" text-align="right"
-                  v-mask="numericalMask" type="text" inputmode="number" is-full-width />
+                <mp-input
+                  v-model="currentFilter.total.value"
+                  placeholder="0,00"
+                  text-align="right"
+                  v-mask="numericalMask"
+                  type="text"
+                  inputmode="number"
+                  is-full-width
+                />
               </mp-box>
               <mp-flex align="center" justify="center" width="5%">
                 <mp-text text-align="center">-</mp-text>
               </mp-flex>
               <mp-box width="45%">
-                <mp-input v-model="currentFilter.total.value2" placeholder="0,00" text-align="right"
-                  v-mask="numericalMask" type="text" inputmode="number" is-full-width />
+                <mp-input
+                  v-model="currentFilter.total.value2"
+                  placeholder="0,00"
+                  text-align="right"
+                  v-mask="numericalMask"
+                  type="text"
+                  inputmode="number"
+                  is-full-width
+                />
               </mp-box>
             </mp-flex>
-            <mp-input v-else v-model="currentFilter.total.value" placeholder="0,00" text-align="right"
-              v-mask="numericalMask" type="text" inputmode="number" />
+            <mp-input v-else v-model="currentFilter.total.value" placeholder="0,00" text-align="right" v-mask="numericalMask" type="text" inputmode="number" />
           </mp-form-control>
         </mp-stack>
       </mp-drawer-body>
@@ -141,28 +198,32 @@ import {
   MpFlex,
   MpText,
   MpDatePicker,
-  MpBox
+  MpBox,
 } from "@mekari/pixel";
 
 const defaultFilter = {
   keyword: "",
   column: "",
-  transactionDate: [],
+  transactionDate: {
+    from: "",
+    to: "",
+  },
   dueDate: [],
   status: "Semua status",
   bill: {
     formula: "lebih-dari",
     value: "",
-    value2: ""
+    value2: "",
   },
   total: {
     formula: "lebih-dari",
     value: "",
-    value2: ""
+    value2: "",
   },
-}
+};
 
 export default {
+  name: "PurchaseFilterDrawer",
   components: {
     MpFormControl,
     MpFormLabel,
@@ -185,7 +246,7 @@ export default {
     MpFlex,
     MpText,
     MpDatePicker,
-    MpBox
+    MpBox,
   },
   props: {
     isOpen: {
@@ -203,7 +264,10 @@ export default {
       currentFilter: {
         keyword: "",
         column: "",
-        transactionDate: [],
+        transactionDate: {
+          from: "",
+          to: "",
+        },
         dueDate: [],
         status: "",
         bill: {
@@ -219,15 +283,15 @@ export default {
   },
   computed: {
     numericalMask: function () {
-      return '["Rp ###", "Rp #.###", "Rp ##.###", "Rp ###.###","Rp #.###.###","Rp ##.###.###","Rp ###.###.###","Rp #.###.###.###"]'
-    }
+      return '["Rp ###", "Rp #.###", "Rp ##.###", "Rp ###.###","Rp #.###.###","Rp ##.###.###","Rp ###.###.###","Rp #.###.###.###"]';
+    },
   },
   watch: {
     isOpen(newValue) {
       if (newValue) {
-        this.currentFilter = JSON.parse(JSON.stringify(this.filter))
+        Object.assign(this.currentFilter, this.filter);
       }
-    }
+    },
   },
   methods: {
     handleClose() {
@@ -237,14 +301,13 @@ export default {
       this.$emit("apply", this.currentFilter);
     },
     handleReset() {
-      this.currentFilter = defaultFilter
+      this.currentFilter = defaultFilter;
     },
   },
 };
 </script>
 
 <style >
-#pixel-popper_transaction-date-content,
 #pixel-popper_due-date-content {
   width: 592px;
   border-radius: var(--radii-md);

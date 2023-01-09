@@ -1,31 +1,45 @@
 <template>
-  <JTable id="table-1" :loading="loading" :heads="heads" :items="items" :checkbox="useCheckbox" :is-sortable="true"
-    :use-pagination="true" :page="1" :per-page="10" :total-data="1001" @changePage="onChangePage" @check="onCheck"
-    @checkAll="onCheckAll" @sorting="onSorting" :blankSlate="{
-  state: 'no-data',
-  title: 'Lorem Ipsum',
-  description:
-    'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
-}">
+  <JTable
+    id="table-1"
+    :loading="loading"
+    :heads="heads"
+    :items="items"
+    :checkbox="useCheckbox"
+    :is-sortable="true"
+    :use-pagination="true"
+    :page="1"
+    :per-page="10"
+    :total-data="1001"
+    @changePage="onChangePage"
+    @check="onCheck"
+    @checkAll="onCheckAll"
+    @sorting="onSorting"
+    :blankSlate="{
+      state: 'no-data',
+      title: 'Lorem Ipsum',
+      description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
+    }"
+  >
     <template #bulkAction>
       <mp-text> transaksi dipilih</mp-text>
       <mp-flex gap="4">
-        <mp-button size="sm" @click="isModalPrintPdfOpen = true">
-          Cetak PDF</mp-button>
-        <mp-button size="sm" variant="ghost" @click="isModalDeleteOpen = true">
-          Hapus</mp-button>
+        <mp-button size="sm" @click="isModalPrintPdfOpen = true"> Cetak PDF</mp-button>
+        <mp-button size="sm" variant="ghost" @click="isModalDeleteOpen = true"> Hapus</mp-button>
       </mp-flex>
     </template>
 
     <template #default="{ item, index }">
-      <mp-table-cell as="td" scope="row" vertical-align="top" :style="{
-  height: 'auto',
-  paddingTop: '0.875rem',
-  paddingBottom: '0.875rem',
-}">
-        <mp-text font-size="md" line-height="md">{{
-    item.date
-}}</mp-text>
+      <mp-table-cell
+        as="td"
+        scope="row"
+        vertical-align="top"
+        :style="{
+          height: 'auto',
+          paddingTop: '0.875rem',
+          paddingBottom: '0.875rem',
+        }"
+      >
+        <mp-text font-size="md" line-height="md">{{ item.date }}</mp-text>
       </mp-table-cell>
       <mp-table-cell as="td" scope="row" max-width="300px">
         <mp-flex gap="1">
@@ -62,9 +76,7 @@
         </TextEllipsis>
       </mp-table-cell>
       <mp-table-cell as="td" scope="row">
-        <mp-text font-size="md" line-height="md">{{
-    item.dueDate
-}}</mp-text>
+        <mp-text font-size="md" line-height="md">{{ item.dueDate }}</mp-text>
       </mp-table-cell>
       <mp-table-cell as="td" scope="row">
         <mp-badge variant="subtle" :variant-color="getBadgeVariantColor(item.status)">
@@ -85,22 +97,13 @@
 </template>
 
 <script>
-import {
-  MpTableCell,
-  MpBox,
-  MpText,
-  MpFlex,
-  MpBadge,
-  MpButton,
-  MpTooltip,
-  MpIcon
-} from '@mekari/pixel'
-import JTable from '../components/JTable.vue'
-import { TextEllipsisCollapsible, TextEllipsis } from '../components/TextEllipsis'
-import AwesomeTag from '../components/AwesomeTag'
+import { MpTableCell, MpBox, MpText, MpFlex, MpBadge, MpButton, MpTooltip, MpIcon } from "@mekari/pixel";
+import JTable from "../components/JTable.vue";
+import { TextEllipsisCollapsible, TextEllipsis } from "../components/TextEllipsis";
+import AwesomeTag from "../components/AwesomeTag";
 
 export default {
-  name: 'Table',
+  name: "Table",
   components: {
     JTable,
     TextEllipsisCollapsible,
@@ -114,7 +117,7 @@ export default {
     MpBadge,
     MpButton,
     MpTooltip,
-    MpIcon
+    MpIcon,
   },
   data: function () {
     return {
@@ -338,7 +341,7 @@ export default {
       isModalChatOpen: false,
       isModalDeleteOpen: false,
       isModalPrintPdfOpen: false,
-    }
+    };
   },
   methods: {
     // Table
@@ -361,8 +364,7 @@ export default {
       this.heads = heads;
       console.groupEnd();
 
-      if (this.currentTab === "require-approval")
-        this.fetchData("require-approval");
+      if (this.currentTab === "require-approval") this.fetchData("require-approval");
       else this.fetchData();
     },
     onChangePage(data) {
@@ -370,8 +372,7 @@ export default {
       console.log(data);
       console.groupEnd();
 
-      if (this.currentTab === "require-approval")
-        this.fetchData("require-approval");
+      if (this.currentTab === "require-approval") this.fetchData("require-approval");
       else this.fetchData();
     },
 
@@ -483,5 +484,5 @@ export default {
       return "gray";
     },
   },
-}
+};
 </script>

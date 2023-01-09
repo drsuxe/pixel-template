@@ -39,7 +39,7 @@
             </mp-box>
 
             <!-- Info umum -->
-            <mp-box>
+            <mp-box :class="collapse.infoUmum && '--collapse'">
               <mp-flex mb="5" justify="space-between" align="center">
                 <mp-flex>
                   <mp-icon name="contact" variant="duotone" mr="3" />
@@ -49,7 +49,7 @@
                 <mp-button-icon name="caret-down" @click="collapse.infoUmum = !collapse.infoUmum" />
               </mp-flex>
 
-              <mp-collapse :is-open="collapse.infoUmum">
+              <mp-collapse id="collapse-info-umum" :is-open="collapse.infoUmum">
                 <mp-stack spacing="5">
                   <mp-box>
                     <mp-flex gap="5">
@@ -173,7 +173,7 @@
             </mp-box>
 
             <!-- Info bank -->
-            <mp-box>
+            <mp-box :class="collapse.infoBank && '--collapse'">
               <mp-flex mb="5" justify="space-between" align="center">
                 <mp-flex>
                   <mp-icon name="bank" variant="duotone" mr="3" />
@@ -228,7 +228,7 @@
             </mp-box>
 
             <!-- Pemetaan akun-->
-            <mp-stack spacing="5">
+            <mp-stack :class="collapse.pemetaanAkun && '--collapse'" spacing="5">
               <mp-flex justify="space-between" align="center">
                 <mp-flex>
                   <mp-icon name="account-mapping" variant="duotone" mr="3" />
@@ -253,7 +253,7 @@
                   <mp-box>
                     <mp-form-control :is-disabled="true">
                       <mp-form-label>Piutang maksimal</mp-form-label>
-                      <mp-input  />
+                      <mp-input />
                     </mp-form-control>
 
                     <mp-box position="relative" mt="1">
@@ -376,7 +376,11 @@ export default {
 </script>
 
 <style scoped>
-[data-pixel-component="MpCollapse"] {
- overflow: visible !important;
-}
+/* .--collapse > [data-pixel-component="MpCollapse"] {
+  overflow: visible !important;
+} */
+
+/* [data-pixel-component="MpCollapse"] {
+  overflow: visible !important;
+} */
 </style>
