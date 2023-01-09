@@ -400,8 +400,10 @@ export default {
       }
     },
     handleValidateFilter() {
+      const currentFilter = this.activeFilter
+      console.log(currentFilter)
       const validate = {
-        keyword: "Bandung",
+        keyword: "bandung",
         column: "Tag",
         transactionDate: {
           from: "2022-12-18T17:00:00.000Z",
@@ -421,7 +423,12 @@ export default {
         },
       };
 
-      return JSON.stringify(this.activeFilter) === JSON.stringify(validate);
+      const toLowerCase = {
+        ...currentFilter,
+        keyword: currentFilter.keyword.toLowerCase()
+      }
+
+      return JSON.stringify(toLowerCase) === JSON.stringify(validate);
     },
   },
 };
