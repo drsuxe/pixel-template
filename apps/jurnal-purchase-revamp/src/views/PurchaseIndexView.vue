@@ -400,8 +400,8 @@ export default {
       }
     },
     handleValidateFilter() {
-      const currentFilter = this.activeFilter
-      console.log(currentFilter)
+      const currentFilter = this.activeFilter;
+      console.log(currentFilter);
       const validate = {
         keyword: "bandung",
         column: "Tag",
@@ -425,8 +425,8 @@ export default {
 
       const toLowerCase = {
         ...currentFilter,
-        keyword: currentFilter.keyword.toLowerCase()
-      }
+        keyword: currentFilter.keyword.toLowerCase(),
+      };
 
       return JSON.stringify(toLowerCase) === JSON.stringify(validate);
     },
