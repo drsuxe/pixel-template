@@ -63,10 +63,6 @@
             </mp-flex>
           </mp-box>
         </mp-flex>
-
-        <TextEllipsisCollapsible :id="`invoice-description-${index}`" v-if="item.description">
-          {{ item.description }}
-        </TextEllipsisCollapsible>
       </mp-table-cell>
       <mp-table-cell as="td" scope="row" max-width="100px">
         <TextEllipsis :id="`invoice-customer-${index}`">
@@ -99,14 +95,13 @@
 <script>
 import { MpTableCell, MpBox, MpText, MpFlex, MpBadge, MpButton, MpTooltip, MpIcon } from "@mekari/pixel";
 import JTable from "../components/JTable.vue";
-import { TextEllipsisCollapsible, TextEllipsis } from "../components/TextEllipsis";
+import { TextEllipsis } from "../components/TextEllipsis";
 import AwesomeTag from "../components/AwesomeTag";
 
 export default {
   name: "Table",
   components: {
     JTable,
-    TextEllipsisCollapsible,
     TextEllipsis,
     AwesomeTag,
 
@@ -176,7 +171,7 @@ export default {
           id: 1,
           checked: false,
           date: "19/12/2022",
-          number: "Purchase Invoice with very long title #0005",
+          number: "Purchase Invoice #0001",
           attachment: true,
           join: false,
           description:
@@ -193,7 +188,7 @@ export default {
           id: 2,
           checked: false,
           date: "20/12/2022",
-          number: "Purchase Invoice #0004",
+          number: "Purchase Invoice #0002",
           attachment: true,
           join: true,
           description: "Short description.",
@@ -225,7 +220,7 @@ export default {
           id: 4,
           checked: false,
           date: "22/12/2022",
-          number: "Purchase Invoice #0002",
+          number: "Purchase Invoice #0004",
           attachment: false,
           join: false,
           description: "",
@@ -241,7 +236,7 @@ export default {
           id: 5,
           checked: false,
           date: "23/12/2022",
-          number: "Purchase Invoice #0001",
+          number: "Purchase Invoice #0005",
           attachment: false,
           join: true,
           description: "",
@@ -257,7 +252,7 @@ export default {
           id: 6,
           checked: false,
           date: "24/12/2022",
-          number: "Purchase Invoice with very long title #0005",
+          number: "Purchase Invoice #0006",
           attachment: true,
           join: false,
           description:
@@ -274,7 +269,7 @@ export default {
           id: 7,
           checked: false,
           date: "25/12/2022",
-          number: "Purchase Invoice #0004",
+          number: "Purchase Invoice #0007",
           attachment: true,
           join: true,
           description: "Short description.",
@@ -290,7 +285,7 @@ export default {
           id: 8,
           checked: false,
           date: "26/12/2022",
-          number: "Purchase Invoice #0003",
+          number: "Purchase Invoice #0008",
           attachment: false,
           join: false,
           description: "Very long description will auto show tooltip.",
@@ -306,7 +301,7 @@ export default {
           id: 9,
           checked: false,
           date: "27/12/2022",
-          number: "Purchase Invoice #0002",
+          number: "Purchase Invoice #0009",
           attachment: false,
           join: false,
           description: "",
@@ -322,7 +317,7 @@ export default {
           id: 10,
           checked: false,
           date: "28/12/2022",
-          number: "Purchase Invoice #0001",
+          number: "Purchase Invoice #0010",
           attachment: false,
           join: true,
           description: "",

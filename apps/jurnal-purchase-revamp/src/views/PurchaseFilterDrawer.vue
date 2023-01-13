@@ -4,7 +4,7 @@
     <mp-drawer-content>
       <mp-drawer-header>Filter transaksi pembelian</mp-drawer-header>
       <mp-drawer-close-button @click="handleClose" />
-      <mp-drawer-body>
+      <mp-drawer-body max-height="calc(100vh - 108px)" overflow="hidden auto">
         <mp-stack spacing="5">
           <mp-form-control>
             <mp-form-label>Kata kunci</mp-form-label>
@@ -289,7 +289,9 @@ export default {
   watch: {
     isOpen(newValue) {
       if (newValue) {
-        Object.assign(this.currentFilter, this.filter);
+        let newData = {}
+        Object.assign(newData, this.filter);
+        this.currentFilter = newData
       }
     },
   },

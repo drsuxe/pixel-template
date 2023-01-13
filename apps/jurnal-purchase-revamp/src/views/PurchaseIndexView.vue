@@ -107,7 +107,7 @@
                 </mp-input-left-addon>
                 <mp-input
                   v-model="activeFilter.keyword"
-                  @keyup.enter="handleApplyFilter(activeFilter)"
+                  @keyup.enter="handleApplyFilter(activeFilter, true)"
                   @clear="handleApplyFilter(activeFilter)"
                   placeholder="Pencarian"
                   is-clearable
@@ -373,35 +373,40 @@ export default {
     };
   },
   methods: {
-    handleApplyFilter(data) {
+    handleApplyFilter(data, ignore = false) {
       console.log(data);
       this.isLoading = true;
       this.activeFilter = data;
       this.handleClose();
 
       setTimeout(() => {
-        this.handleSimulateFetchData();
+        this.handleSimulateFetchData(ignore);
         this.isLoading = false;
       }, 800);
     },
     handleClose() {
       this.isOpen = false;
     },
-    handleSimulateFetchData() {
+    handleSimulateFetchData(ignore = false) {
       console.log("Fetching data...");
       const _ = this.activeFilter;
 
       if (_.keyword || _.column || _.transactionDate.length || _.dueDate.length || _.bill.value || _.total.value) {
         this.isActiveFilter = true;
-        this.isNoData = !this.handleValidateFilter();
+        this.isNoData = !this.handleValidateFilter(ignore);
       } else {
         this.isActiveFilter = false;
         this.isNoData = false;
       }
     },
-    handleValidateFilter() {
+    handleValidateFilter(ignore = false) {
       const currentFilter = this.activeFilter;
       console.log(currentFilter);
+
+      if (ignore) {
+        return this.safeToLowerCase(currentFilter.keyword) === 'bandung'
+      }
+
       const validate = {
         keyword: "bandung",
         column: "Tag",
@@ -410,7 +415,6 @@ export default {
           to: "2022-12-29T17:00:00.000Z",
         },
         dueDate: ["2023-01-08T17:00:00.000Z", "2023-01-12T17:00:00.000Z"],
-        status: "Open",
         bill: {
           formula: "di-antara",
           value: "Rp 5.000.000",
@@ -425,11 +429,22 @@ export default {
 
       const toLowerCase = {
         ...currentFilter,
-        keyword: currentFilter.keyword.toLowerCase(),
+        keyword: this.safeToLowerCase(currentFilter.keyword),
       };
+
+      delete validate.status
 
       return JSON.stringify(toLowerCase) === JSON.stringify(validate);
     },
+
+    // Utils
+    safeToLowerCase(val) {
+      if (val) {
+        return val.toLowerCase()
+      }
+
+      return val
+    }
   },
 };
 </script>
