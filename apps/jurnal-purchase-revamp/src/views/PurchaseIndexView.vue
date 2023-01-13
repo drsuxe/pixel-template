@@ -404,17 +404,18 @@ export default {
       console.log(currentFilter);
 
       if (ignore) {
-        return this.safeToLowerCase(currentFilter.keyword) === 'bandung'
+        this.isActiveFilter = false;
+        return this.safeToLowerCase(currentFilter.keyword) === "bandung";
       }
 
       const validate = {
         keyword: "bandung",
         column: "Tag",
         transactionDate: {
-          from: "2022-12-18T17:00:00.000Z",
-          to: "2022-12-29T17:00:00.000Z",
+          from: new Date("2022-12-18T17:00:00.000Z"),
+          to: new Date("2022-12-29T17:00:00.000Z"),
         },
-        dueDate: ["2023-01-08T17:00:00.000Z", "2023-01-12T17:00:00.000Z"],
+        dueDate: [new Date("2023-01-08T17:00:00.000Z"), new Date("2023-01-12T17:00:00.000Z")],
         bill: {
           formula: "di-antara",
           value: "Rp 5.000.000",
@@ -432,7 +433,9 @@ export default {
         keyword: this.safeToLowerCase(currentFilter.keyword),
       };
 
-      delete validate.status
+      delete toLowerCase.status;
+
+      console.log({validate, toLowerCase})
 
       return JSON.stringify(toLowerCase) === JSON.stringify(validate);
     },
@@ -440,11 +443,11 @@ export default {
     // Utils
     safeToLowerCase(val) {
       if (val) {
-        return val.toLowerCase()
+        return val.toLowerCase();
       }
 
-      return val
-    }
+      return val;
+    },
   },
 };
 </script>
