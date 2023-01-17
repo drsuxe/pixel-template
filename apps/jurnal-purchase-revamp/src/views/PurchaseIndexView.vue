@@ -142,7 +142,7 @@
 
           <!-- Table -->
           <mp-box v-if="!isNoData && !isLoading" mt="8">
-            <PurchaseTable />
+            <PurchaseTable :dataType="dataType" />
           </mp-box>
 
           <!-- Empty State -->
@@ -345,8 +345,9 @@ export default {
   },
   data() {
     return {
+      currentTab: '',
+      dataType: 'beforeFilter',
       isLoading: false,
-      currentTab: "1321",
       isOpen: false,
       activeFilter: {
         keyword: "",
@@ -394,7 +395,9 @@ export default {
       if (_.keyword || _.column || _.transactionDate.length || _.dueDate.length || _.bill.value || _.total.value) {
         this.isActiveFilter = true;
         this.isNoData = !this.handleValidateFilter(ignore);
+        this.dataType = 'afterFilter'
       } else {
+        this.dataType = 'beforeFilter'
         this.isActiveFilter = false;
         this.isNoData = false;
       }

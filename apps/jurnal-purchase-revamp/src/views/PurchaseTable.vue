@@ -1,25 +1,12 @@
 <template>
-  <JTable
-    id="table-1"
-    :loading="loading"
-    :heads="heads"
-    :items="items"
-    :checkbox="useCheckbox"
-    :is-sortable="true"
-    :use-pagination="true"
-    :page="1"
-    :per-page="10"
-    :total-data="1001"
-    @changePage="onChangePage"
-    @check="onCheck"
-    @checkAll="onCheckAll"
-    @sorting="onSorting"
-    :blankSlate="{
+<div>
+  <JTable id="table-1" :loading="loading" :heads="heads" :items="getItems" :checkbox="useCheckbox" :is-sortable="true"
+    :use-pagination="true" :page="1" :per-page="10" :total-data="1001" @changePage="onChangePage" @check="onCheck"
+    @checkAll="onCheckAll" @sorting="onSorting" :blankSlate="{
       state: 'no-data',
       title: 'Lorem Ipsum',
       description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
-    }"
-  >
+    }">
     <template #bulkAction>
       <mp-text> transaksi dipilih</mp-text>
       <mp-flex gap="4">
@@ -29,16 +16,11 @@
     </template>
 
     <template #default="{ item, index }">
-      <mp-table-cell
-        as="td"
-        scope="row"
-        vertical-align="top"
-        :style="{
-          height: 'auto',
-          paddingTop: '0.875rem',
-          paddingBottom: '0.875rem',
-        }"
-      >
+      <mp-table-cell as="td" scope="row" vertical-align="top" :style="{
+        height: 'auto',
+        paddingTop: '0.875rem',
+        paddingBottom: '0.875rem',
+      }">
         <mp-text font-size="md" line-height="md">{{ item.date }}</mp-text>
       </mp-table-cell>
       <mp-table-cell as="td" scope="row" max-width="300px">
@@ -90,6 +72,7 @@
       </mp-table-cell>
     </template>
   </JTable>
+</div>
 </template>
 
 <script>
@@ -97,6 +80,7 @@ import { MpTableCell, MpBox, MpText, MpFlex, MpBadge, MpButton, MpTooltip, MpIco
 import JTable from "../components/JTable.vue";
 import { TextEllipsis } from "../components/TextEllipsis";
 import AwesomeTag from "../components/AwesomeTag";
+import { beforeFilter, afterFilter } from "./datasets";
 
 export default {
   name: "Table",
@@ -113,6 +97,12 @@ export default {
     MpButton,
     MpTooltip,
     MpIcon,
+  },
+  props: {
+    dataType: {
+      type: String,
+      default: 'beforeFilter'
+    },
   },
   data: function () {
     return {
@@ -166,170 +156,7 @@ export default {
           width: "185px",
         },
       ],
-      items: [
-        {
-          id: 1,
-          checked: false,
-          date: "19/12/2022",
-          number: "Purchase Invoice #0001",
-          attachment: true,
-          join: false,
-          description:
-            "A sale is a transaction between two or more parties, typically a buyer and a seller, in which goods or services are exchanged for money or other assets. In the financial markets, a sale is an agreement between a buyer and seller regarding the price of a security, and delivery of the security to the buyer in exchange for the agreed-upon compensation.",
-          customer: "PT Mandala",
-          dueDate: "09/01/2023",
-          status: "Open",
-          balance: "Rp10.000.000,00",
-          total: "Rp30.000.000,00",
-          tag: ["Bandung Bandung Raya Pusat With Long"],
-          tagExpanded: false,
-        },
-        {
-          id: 2,
-          checked: false,
-          date: "20/12/2022",
-          number: "Purchase Invoice #0002",
-          attachment: true,
-          join: true,
-          description: "Short description.",
-          customer: "Rommy Agency",
-          dueDate: "10/01/2023",
-          status: "Open",
-          balance: "Rp9.000.000,00",
-          total: "Rp25.000.000,00",
-          tag: ["Merak", "Bandung", "Yogyakarta Dengan Text yang panjang"],
-          tagExpanded: false,
-        },
-        {
-          id: 3,
-          checked: false,
-          date: "21/12/2022",
-          number: "Purchase Invoice #0003",
-          attachment: false,
-          join: false,
-          description: "Very long description will auto show tooltip.",
-          customer: "Tommy Soeharto",
-          dueDate: "11/01/2023",
-          status: "Open",
-          balance: "Rp8.000.000,00",
-          total: "Rp30.000.000,00",
-          tag: ["Bandung", "Mojokerto", "Sidoarjo"],
-          tagExpanded: false,
-        },
-        {
-          id: 4,
-          checked: false,
-          date: "22/12/2022",
-          number: "Purchase Invoice #0004",
-          attachment: false,
-          join: false,
-          description: "",
-          customer: "CV Panjang Abadijaya Indonesia Merdeka",
-          dueDate: "12/01/2023",
-          status: "Open",
-          balance: "Rp5.000.000,00",
-          total: "Rp35.500.000,00",
-          tag: ["Joglo", "Bandung", "Yogyakarta", "Medan", "Batam"],
-          tagExpanded: false,
-        },
-        {
-          id: 5,
-          checked: false,
-          date: "23/12/2022",
-          number: "Purchase Invoice #0005",
-          attachment: false,
-          join: true,
-          description: "",
-          customer: "CV Jangka Nusantara",
-          dueDate: "13/01/2023",
-          status: "Open",
-          balance: "Rp7.000.000,00",
-          total: "Rp35.500.000,00",
-          tag: ["Solo", "Yogyakarta", "Bandung", "Klaten", "Ngawi"],
-          tagExpanded: false,
-        },
-        {
-          id: 6,
-          checked: false,
-          date: "24/12/2022",
-          number: "Purchase Invoice #0006",
-          attachment: true,
-          join: false,
-          description:
-            "A sale is a transaction between two or more parties, typically a buyer and a seller, in which goods or services are exchanged for money or other assets. In the financial markets, a sale is an agreement between a buyer and seller regarding the price of a security, and delivery of the security to the buyer in exchange for the agreed-upon compensation.",
-          customer: "PT Mandala",
-          dueDate: "13/01/2023",
-          status: "Open",
-          balance: "Rp10.000.000,00",
-          total: "Rp80.000.000,00",
-          tag: ["Bandung Pusat"],
-          tagExpanded: false,
-        },
-        {
-          id: 7,
-          checked: false,
-          date: "25/12/2022",
-          number: "Purchase Invoice #0007",
-          attachment: true,
-          join: true,
-          description: "Short description.",
-          customer: "Rommy Agency",
-          dueDate: "13/01/2023",
-          status: "Open",
-          balance: "Rp5.000.000,00",
-          total: "Rp25.000.000,00",
-          tag: ["Bandung", "Surabaya", "Yogyakarta"],
-          tagExpanded: false,
-        },
-        {
-          id: 8,
-          checked: false,
-          date: "26/12/2022",
-          number: "Purchase Invoice #0008",
-          attachment: false,
-          join: false,
-          description: "Very long description will auto show tooltip.",
-          customer: "Tommy Soeharto",
-          dueDate: "13/01/2023",
-          status: "Open",
-          balance: "Rp6.000.000,00",
-          total: "Rp33.000.000,00",
-          tag: ["Bandung", "Mojokerto", "Sidoarjo"],
-          tagExpanded: false,
-        },
-        {
-          id: 9,
-          checked: false,
-          date: "27/12/2022",
-          number: "Purchase Invoice #0009",
-          attachment: false,
-          join: false,
-          description: "",
-          customer: "CV Panjang Abadijaya Indonesia Merdeka",
-          dueDate: "13/01/2023",
-          status: "Open",
-          balance: "Rp5.500.000,00",
-          total: "Rp55.500.000,00",
-          tag: ["Bandung", "Surabaya", "Yogyakarta", "Medan", "Batam"],
-          tagExpanded: false,
-        },
-        {
-          id: 10,
-          checked: false,
-          date: "28/12/2022",
-          number: "Purchase Invoice #0010",
-          attachment: false,
-          join: true,
-          description: "",
-          customer: "CV Jangka Nusantara",
-          dueDate: "13/01/2023",
-          status: "Open",
-          balance: "Rp6.000.000,00",
-          total: "Rp50.000.000,00",
-          tag: ["Bandung", "Yogyakarta", "Semarang", "Klaten", "Ngawi"],
-          tagExpanded: false,
-        },
-      ],
+      items: beforeFilter,
       modalChatType: "blank", // blank & comments
       modalChatApproved: false,
       isApproveLoading: false,
@@ -337,6 +164,15 @@ export default {
       isModalDeleteOpen: false,
       isModalPrintPdfOpen: false,
     };
+  },
+  computed: {
+    getItems() {
+      if (this.dataType === 'beforeFilter' ) {
+        return beforeFilter
+      }
+
+      return afterFilter
+    }
   },
   methods: {
     // Table
@@ -372,66 +208,12 @@ export default {
     },
 
     // Simulate
-    fetchData(e) {
+    fetchData() {
       console.log("Fetching data from api...");
       this.loading = true;
 
       setTimeout(() => {
-        if (e === "require-approval") {
-          this.items = [
-            {
-              id: 1,
-              approved: false,
-              date: "19/04/2022",
-              number: "Purchase Invoice with long title #0005",
-              attachment: true,
-              join: false,
-              description:
-                "A sale is a transaction between two or more parties, typically a buyer and a seller, in which goods or services are exchanged for money or other assets. In the financial markets, a sale is an agreement between a buyer and seller regarding the price of a security, and delivery of the security to the buyer in exchange for the agreed-upon compensation.",
-              customer: "PT Mandala",
-              dueDate: "20/04/2022",
-              status: "Open",
-              balance: "Rp10.000.000,00",
-              total: "Rp10.000.000,00",
-              tag: ["Bandung"],
-              tagExpanded: false,
-            },
-            {
-              id: 2,
-              approved: true,
-              date: "18/04/2022",
-              number: "Purchase Invoice long title #0004",
-              attachment: true,
-              join: true,
-              description: "",
-              customer: "Rommy Agency",
-              dueDate: "20/04/2022",
-              status: "Overdue",
-              balance: "Rp5.000.000,00",
-              total: "Rp5.000.000,00",
-              tag: ["Merak", "Bandung", "Yogyakarta"],
-              tagExpanded: false,
-            },
-            {
-              id: 3,
-              approved: true,
-              date: "18/04/2022",
-              number: "Purchase Invoice long title #0004",
-              attachment: true,
-              join: true,
-              description: "",
-              customer: "Rommy Agency",
-              dueDate: "20/04/2022",
-              status: "Overdue",
-              balance: "Rp5.000.000,00",
-              total: "Rp5.000.000,00",
-              tag: ["Merak", "Surabaya", "Bandung"],
-              tagExpanded: false,
-            },
-          ];
-        } else {
-          this.items = JSON.parse(JSON.stringify(this.items));
-        }
+        this.items = afterFilter
 
         this.loading = false;
       }, 300);
