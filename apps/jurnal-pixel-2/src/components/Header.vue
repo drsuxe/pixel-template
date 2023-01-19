@@ -8,7 +8,85 @@
         <mp-flex justify-content="space-between" align-items="center">
           <mp-stack is-inline spacing="2">
             <mp-box>
-              <mp-button-icon name="add" size="md" />
+              <mp-popover use-portal>
+                <mp-popover-trigger>
+                  <mp-box>
+                    <mp-tooltip position="bottom" label="Quick action" use-portal>
+                      <mp-button-icon name="add" size="md" />
+                    </mp-tooltip>
+                  </mp-box>
+                </mp-popover-trigger>
+                <mp-popover-content max-width="56" background-color="#484D55" box-shadow="lg" border-radius="md">
+                  <mp-popover-list>
+                    <mp-box width="full" padding-x="3" padding-y="2">
+                      <mp-text color="gray.100" text-align="left"> CREATE </mp-text>
+                    </mp-box>
+                    <mp-popover-list-item
+                      background-color="transparent"
+                      color="white"
+                      :_hover="{
+                        color: 'white',
+                        backgroundColor: 'blue.400',
+                      }"
+                    >
+                      Sales
+                    </mp-popover-list-item>
+                    <mp-popover-list-item
+                      background-color="transparent"
+                      color="white"
+                      :_hover="{
+                        color: 'white',
+                        backgroundColor: 'blue.400',
+                      }"
+                    >
+                      Purchase
+                    </mp-popover-list-item>
+                    <mp-popover-list-item
+                      background-color="transparent"
+                      color="white"
+                      :_hover="{
+                        color: 'white',
+                        backgroundColor: 'blue.400',
+                      }"
+                    >
+                      Expense
+                    </mp-popover-list-item>
+                    <mp-box width="full" padding-x="3" padding-y="2">
+                      <mp-text color="gray.100" text-align="left"> A D D </mp-text>
+                    </mp-box>
+                    <mp-popover-list-item
+                      background-color="transparent"
+                      color="white"
+                      :_hover="{
+                        color: 'white',
+                        backgroundColor: 'blue.400',
+                      }"
+                    >
+                      Contact
+                    </mp-popover-list-item>
+                    <mp-popover-list-item
+                      background-color="transparent"
+                      color="white"
+                      :_hover="{
+                        color: 'white',
+                        backgroundColor: 'blue.400',
+                      }"
+                    >
+                     Product
+                    </mp-popover-list-item>
+                    <mp-popover-list-item
+                      background-color="transparent"
+                      color="white"
+                      :_hover="{
+                        color: 'white',
+                        backgroundColor: 'blue.400',
+                      }"
+                    >
+                     Warehouse
+                    </mp-popover-list-item>
+                  </mp-popover-list>
+                </mp-popover-content>
+              </mp-popover>
             </mp-box>
             <mp-box>
               <mp-button-icon name="gift" size="md" />
@@ -66,7 +144,20 @@
 </template>
 
 <script>
-import { MpBox, MpFlex, MpStack, MpButtonIcon, MpBadge, MpTooltip, MpPopover, MpPopoverTrigger, MpPopoverContent } from "@mekari/pixel";
+import {
+  MpBox,
+  MpFlex,
+  MpStack,
+  MpButtonIcon,
+  MpBadge,
+  MpTooltip,
+  MpPopover,
+  MpPopoverTrigger,
+  MpPopoverContent,
+  MpPopoverList,
+  MpPopoverListItem,
+  MpText,
+} from "@mekari/pixel";
 import SwitchApp from "../components/SwitchApp";
 import SwitchAccount from "../components/SwitchAccount";
 import SidebarMobile from "../components/SidebarMobile";
@@ -85,6 +176,9 @@ export default {
     MpPopover,
     MpPopoverTrigger,
     MpPopoverContent,
+    MpPopoverList,
+    MpPopoverListItem,
+    MpText,
     SwitchApp,
     SwitchAccount,
     SidebarMobile,

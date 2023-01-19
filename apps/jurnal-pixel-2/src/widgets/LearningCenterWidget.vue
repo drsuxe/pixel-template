@@ -47,31 +47,34 @@
         >
           <mp-flex direction="column">
             <mp-text color="dark">Get Support</mp-text>
-            <mp-text font-size="sm" color="gray.600">Chat with Talenta live support</mp-text>
+            <mp-text font-size="sm" color="gray.600">Chat with Jurnal live support</mp-text>
           </mp-flex>
-          <mp-icon name="chevrons-right" color="gray.600" size="sm" />
+          <mp-badge variant-color="red"> 2 </mp-badge>
+          <!-- <mp-icon name="chevrons-right" color="gray.600" size="sm" /> -->
         </mp-flex>
       </mp-flex>
-      <mp-flex
-        position="absolute"
-        right="2px"
-        bottom="2px"
-        z-index="1250"
-        justify="center"
-        align="center"
-        background="violet.400"
-        width="10"
-        height="10"
-        rounded="full"
-        box-shadow="0px 2px 4px 0px rgba(0, 0, 0, 0.14)"
-        cursor="pointer"
-        @mouseenter="handleHoverHelpCenter"
-        @mouseleave="handleHoverHelpCenter"
-        @click="handleClickHelpCenter"
-      >
-        <img v-if="isHelpCenterOpen" src="../assets/close.svg" alt="close help center" />
-        <img v-else src="../assets/help_center.svg" alt="open help center" />
-      </mp-flex>
+      <mp-box position="absolute" right="2px" bottom="2px" z-index="1250">
+        <mp-flex
+          position="relative"
+          justify="center"
+          align="center"
+          background="violet.400"
+          width="10"
+          height="10"
+          rounded="full"
+          box-shadow="0px 2px 4px 0px rgba(0, 0, 0, 0.14)"
+          cursor="pointer"
+          @mouseenter="handleHoverHelpCenter"
+          @mouseleave="handleHoverHelpCenter"
+          @click="handleClickHelpCenter"
+        >
+          <img v-if="isHelpCenterOpen" src="../assets/close.svg" alt="close help center" />
+          <mp-box v-else>
+            <img src="../assets/help_center.svg" alt="open help center" />
+            <mp-badge variant-color="red" position="absolute" top="-2" right="-2" box-shadow="0 0 0 2px #fff"> 2 </mp-badge>
+          </mp-box>
+        </mp-flex>
+      </mp-box>
       <Transition name="bounce">
         <mp-flex
           v-if="isHelpCenterHovered && !isHelpCenterOpen"
@@ -126,7 +129,7 @@
 </template>
 
 <script>
-import { MpBox, MpFlex, MpText, MpIcon, MpDrawer, MpDrawerOverlay, MpDrawerContent, MpDrawerBody } from "@mekari/pixel";
+import { MpBox, MpFlex, MpText, MpIcon, MpDrawer, MpDrawerOverlay, MpDrawerContent, MpDrawerBody, MpBadge } from "@mekari/pixel";
 
 import LearningCenter from "./LearningCenter.vue";
 import WhatsNew from "./WhatNews.vue";
@@ -144,6 +147,7 @@ export default {
     MpDrawerOverlay,
     MpDrawerContent,
     MpDrawerBody,
+    MpBadge,
     LearningCenter,
     WhatsNew,
     GuideCenter,
@@ -183,7 +187,7 @@ export default {
         window.open("https://mekari.com", "_blank");
       }
       if (id === "learning-videos") {
-        window.open("https://www.youtube.com/c/TalentaOfficial/featured", "_blank");
+        window.open("https://www.youtube.com/c/JurnalOfficial/featured", "_blank");
       }
     },
     handleClickGuideCenter(id) {

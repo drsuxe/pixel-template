@@ -43,7 +43,7 @@ export default {
         {
           id: "general-guide",
           title: "General guide",
-          description: "Learn Talenta main features",
+          description: "Learn Jurnal main features",
           iconName: "profile",
           isOutlink: false,
           isFree: false,

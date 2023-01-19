@@ -19,7 +19,7 @@
             item.title
           }}</mp-text>
           <mp-text as="a" :href="item.href" target="_blank" is-link
-            >Check schedule</mp-text
+            >Check training schedule</mp-text
           >
         </mp-flex>
       </mp-flex>
@@ -44,47 +44,12 @@ export default {
     return {
       videos: [
         {
-          title: "Database Training",
+          title: "Product Training: JURNAL Food and Beverage Industry",
           thumbnail: "https://via.placeholder.com/88x64/D0D6DD/FFFFFF",
           href: "https://mekari.com",
         },
         {
-          title: "Time Management Training",
-          thumbnail: "https://via.placeholder.com/88x64/D0D6DD/FFFFFF",
-          href: "https://mekari.com",
-        },
-        {
-          title: "Finance Training",
-          thumbnail: "https://via.placeholder.com/88x64/D0D6DD/FFFFFF",
-          href: "https://mekari.com",
-        },
-        {
-          title: "Payroll Training",
-          thumbnail: "https://via.placeholder.com/88x64/D0D6DD/FFFFFF",
-          href: "https://mekari.com",
-        },
-        {
-          title: "Company Admin Training",
-          thumbnail: "https://via.placeholder.com/88x64/D0D6DD/FFFFFF",
-          href: "https://mekari.com",
-        },
-        {
-          title: "ESS Training",
-          thumbnail: "https://via.placeholder.com/88x64/D0D6DD/FFFFFF",
-          href: "https://mekari.com",
-        },
-        {
-          title: "Setting Training",
-          thumbnail: "https://via.placeholder.com/88x64/D0D6DD/FFFFFF",
-          href: "https://mekari.com",
-        },
-        {
-          title: "Recruitment Training",
-          thumbnail: "https://via.placeholder.com/88x64/D0D6DD/FFFFFF",
-          href: "https://mekari.com",
-        },
-        {
-          title: "Performance Review Training",
+          title: "Product Training: JURNAL Manufacturing Industry",
           thumbnail: "https://via.placeholder.com/88x64/D0D6DD/FFFFFF",
           href: "https://mekari.com",
         },

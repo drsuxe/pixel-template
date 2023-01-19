@@ -1,11 +1,11 @@
 <template>
-  <mp-flex justify="space-between" align-items="center" padding-x="6" padding-y="1.063rem">
+  <mp-box>
     <slot />
-  </mp-flex>
+  </mp-box>
 </template>
 
 <script>
-import {MpFlex } from "@mekari/pixel";
+import { MpBox } from "@mekari/pixel";
 
 export default {
   name: "SubHeader",
@@ -13,7 +13,7 @@ export default {
     title: [String],
   },
   components: {
-    MpFlex,
+    MpBox,
   },
 };
 </script>

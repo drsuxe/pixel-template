@@ -10,14 +10,7 @@
       </mp-input-left-addon>
       <mp-input v-model="search" :placeholder="placeholder" />
     </mp-input-group>
-    <mp-flex
-      v-if="search"
-      direction="column"
-      mb="4"
-      pb="4"
-      border-bottom="1px solid"
-      border-color="gray.50"
-    >
+    <mp-flex v-if="search" direction="column" mb="4" pb="4" border-bottom="1px solid" border-color="gray.50">
       <mp-flex
         v-for="(item, index) in searchResult"
         :key="index"
@@ -38,18 +31,14 @@
     </mp-flex>
     <mp-flex direction="column" overflow="auto" pb="12">
       <mp-flex v-if="!search" direction="column" mb="4">
-        <mp-text font-weight="semibold" mb="0.5" line-height="20px"
-          >Get started with Talenta</mp-text
-        >
-        <mp-text font-size="sm" color="gray.600" mb="2"
-          >Learn the basic set up your account</mp-text
-        >
-        <img src="../assets/video_thumbnail.png" alt="video thumbnail" />
+        <mp-text font-weight="semibold" mb="0.5" line-height="20px">Get started with Jurnal</mp-text>
+        <mp-text font-size="sm" color="gray.600" mb="2">Learn the basic set up your account</mp-text>
+        <img src="../assets/video_thumbnail.png" alt="video thumbnail" :style="{ borderRadius: '6px' }" />
         <mp-flex py="4" border-bottom="1px solid" border-color="gray.50">
           <MenuItems
             id="learning-videos"
             title="Learning videos"
-            description="Watch tutorials to learn Talenta"
+            description="Watch tutorials to learn Jurnal"
             iconName="play-video"
             :is-outlink="true"
             @click="handleClick"
@@ -72,15 +61,7 @@
 </template>
 
 <script>
-import {
-  MpFlex,
-  MpText,
-  MpButtonIcon,
-  MpInput,
-  MpInputGroup,
-  MpInputLeftAddon,
-  MpIcon,
-} from "@mekari/pixel";
+import { MpFlex, MpText, MpButtonIcon, MpInput, MpInputGroup, MpInputLeftAddon, MpIcon } from "@mekari/pixel";
 
 import MenuItems from "./MenuItems.vue";
 
@@ -132,7 +113,7 @@ export default {
         {
           id: "live-training",
           title: "Live training",
-          description: "Learn Talenta from the experts",
+          description: "Learn Jurnal from the experts",
           iconName: "play-video",
           isOutlink: false,
           isFree: true,
