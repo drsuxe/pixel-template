@@ -54,46 +54,49 @@
         </mp-flex>
       </mp-flex>
       <mp-box position="absolute" right="2px" bottom="2px" z-index="1250">
-        <mp-flex
-          position="relative"
-          justify="center"
-          align="center"
-          background="violet.400"
-          width="10"
-          height="10"
-          rounded="full"
-          box-shadow="0px 2px 4px 0px rgba(0, 0, 0, 0.14)"
-          cursor="pointer"
-          @mouseenter="handleHoverHelpCenter"
-          @mouseleave="handleHoverHelpCenter"
-          @click="handleClickHelpCenter"
-        >
-          <img v-if="isHelpCenterOpen" src="../assets/close.svg" alt="close help center" />
-          <mp-box v-else>
-            <img src="../assets/help_center.svg" alt="open help center" />
-            <mp-badge variant-color="red" position="absolute" top="-2" right="-2" box-shadow="0 0 0 2px #fff"> 2 </mp-badge>
-          </mp-box>
-        </mp-flex>
+        <mp-box @mouseenter="handleHoverHelpCenter" @mouseleave="handleHoverHelpCenter" @click="handleClickHelpCenter">
+          <mp-flex
+            position="relative"
+            justify="center"
+            align="center"
+            background="violet.400"
+            width="10"
+            height="10"
+            rounded="full"
+            box-shadow="0px 2px 4px 0px rgba(0, 0, 0, 0.14)"
+            cursor="pointer"
+            z-index="1250"
+          >
+            <img v-if="isHelpCenterOpen" src="../assets/close.svg" alt="close help center" />
+            <mp-box v-else>
+              <img src="../assets/help_center.svg" alt="open help center" />
+              <mp-badge variant-color="red" position="absolute" top="-2" right="-2" box-shadow="0 0 0 2px #fff"> 2 </mp-badge>
+            </mp-box>
+          </mp-flex>
+
+          <Transition name="bounce">
+            <mp-flex
+              v-show="isHelpCenterHovered && !isHelpCenterOpen"
+              z-index="1249"
+              position="absolute"
+              right="0"
+              bottom="0"
+              cursor="pointer"
+              background="white"
+              width="243px"
+              py="3"
+              px="4"
+              justify="start"
+              align="flex"
+              height="11"
+              rounded="full"
+              box-shadow="0px 2px 4px 0px rgba(0, 0, 0, 0.14)"
+            >
+              <mp-text font-size="md" font-weight="semibold" color="violet.400" line-height="20px"> Live support & resources </mp-text>
+            </mp-flex>
+          </Transition>
+        </mp-box>
       </mp-box>
-      <Transition name="bounce">
-        <mp-flex
-          v-if="isHelpCenterHovered && !isHelpCenterOpen"
-          position="absolute"
-          right="0"
-          bottom="0"
-          background="white"
-          width="243px"
-          py="3"
-          px="4"
-          justify="start"
-          align="flex"
-          height="11"
-          rounded="full"
-          box-shadow="0px 2px 4px 0px rgba(0, 0, 0, 0.14)"
-        >
-          <mp-text font-size="md" font-weight="semibold" color="violet.400" line-height="20px"> Live support & resources </mp-text>
-        </mp-flex>
-      </Transition>
     </mp-box>
 
     <mp-drawer :is-open="isLearningCenterOpen" :on-close="handleCloseLearningCenter">

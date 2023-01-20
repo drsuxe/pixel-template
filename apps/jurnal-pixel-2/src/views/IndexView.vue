@@ -45,7 +45,7 @@
         <mp-box min-height="calc(100vh - 132px)" border-top-width="1px" background-color="white" padding="6">
           <mp-grid template-columns="repeat(2, 1fr)" mt="10" gap="12" pb="16">
             <mp-box v-for="report in reportLists" :key="report.id">
-              <mp-heading as="h3" font-size="lg" color="blue.400"> {{ report.name }} </mp-heading>
+              <mp-heading as="h3" font-size="lg" color="dark"> {{ report.name }} </mp-heading>
               <mp-text color="gray.600">
                 {{ report.description }}
               </mp-text>
