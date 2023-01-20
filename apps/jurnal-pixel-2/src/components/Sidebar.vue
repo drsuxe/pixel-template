@@ -25,7 +25,7 @@
       class="sidebar-content"
       data-id="sidebar"
       width="full"
-      height="calc(100vh - 60px)"
+      height="calc(100vh - 100px)"
       overflow-y="auto"
       overflow-x="hidden"
       padding-top="4"
