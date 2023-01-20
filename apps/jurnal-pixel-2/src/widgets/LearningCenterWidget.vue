@@ -54,7 +54,7 @@
         </mp-flex>
       </mp-flex>
       <mp-box position="absolute" right="2px" bottom="2px" z-index="1250">
-        <mp-box @mouseenter="handleHoverHelpCenter" @mouseleave="handleHoverHelpCenter" @click="handleClickHelpCenter">
+        <mp-box @mouseenter="handleHoverHelpCenter(true)" @mouseleave="handleHoverHelpCenter(false)" @click="handleClickHelpCenter">
           <mp-flex
             position="relative"
             justify="center"
@@ -165,8 +165,8 @@ export default {
     };
   },
   methods: {
-    handleHoverHelpCenter() {
-      this.isHelpCenterHovered = !this.isHelpCenterHovered;
+    handleHoverHelpCenter(state) {
+      this.isHelpCenterHovered = state
     },
     handleClickHelpCenter() {
       this.isHelpCenterOpen = !this.isHelpCenterOpen;
