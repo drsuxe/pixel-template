@@ -3,7 +3,7 @@
     <mp-broadcast
       variant="information"
       icon-name="flag"
-      content="Welcome to new Jurnal Interface, this page is only prototype, not all action worked. If you have any feedbacks/concerns feel free to."
+      content="Welcome to new Jurnal Interface, this page is only prototype, not all action worked. If you have any concerns feel free to drop feedback here."
     />
     <Header />
     <mp-flex as="main" max-height="calc(100vh - 100px)">
