@@ -7,7 +7,7 @@
     border-right="1px"
     border-color="gray.100"
     transition="all .2s ease"
-    background-color="white"
+    background-color="#F8FAFE"
     :position="isStacked ? 'relative' : 'absolute'"
     :max-width="isToggle ? '3.75rem' : '13.5rem'"
     :display="['none', 'block']"
