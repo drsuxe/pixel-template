@@ -62,7 +62,7 @@
               :background-color="items.isActive ? 'ice.50' : 'inherit'"
               :color="items.isActive ? 'blue.400' : 'inherit'"
               :_hover="{
-                backgroundColor: 'blue.50',
+                backgroundColor: 'ice.50',
                 color: 'blue.400',
                 cursor: 'pointer',
               }"
