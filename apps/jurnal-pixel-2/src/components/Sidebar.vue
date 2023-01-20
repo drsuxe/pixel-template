@@ -218,7 +218,7 @@ export default {
             {
               id: 10,
               name: "Products",
-              icon: "product",
+              icon: "products",
               link: "/",
               isActive: false,
             },

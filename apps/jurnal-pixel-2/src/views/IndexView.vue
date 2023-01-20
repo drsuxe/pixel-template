@@ -6,7 +6,7 @@
       content="Welcome to new Jurnal Interface, this page is only prototype, not all action worked. If you have any feedbacks/concerns feel free to."
     />
     <Header />
-    <mp-flex as="main" max-height="calc(100vh - 60px)">
+    <mp-flex as="main" max-height="calc(100vh - 100px)">
       <Sidebar is-alternate is-custom />
       <mp-box
         as="section"
