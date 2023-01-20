@@ -12,9 +12,9 @@
         as="section"
         data-id="content"
         width="100%"
-        height="calc(100vh - 60px)"
+        height="calc(100vh - 100px)"
         overflow-y="auto"
-        background-color="background"
+        background-color="#F3F7FC"
         :margin-left="['0', '60px']"
       >
         <SubHeader>
@@ -43,14 +43,6 @@
         </SubHeader>
 
         <mp-box min-height="calc(100vh - 132px)" border-top-width="1px" background-color="white" padding="6">
-          <mp-banner variant="danger" is-inline>
-            <mp-banner-icon />
-            <mp-banner-description>
-              Anda tidak dapat mengakses laporan versi ini. Untuk mengakses laporan, silakan hubungi tim support kami. Hubungi support
-            </mp-banner-description>
-            <mp-banner-close-button />
-          </mp-banner>
-
           <mp-grid template-columns="repeat(2, 1fr)" mt="10" gap="12" pb="16">
             <mp-box v-for="report in reportLists" :key="report.id">
               <mp-heading as="h3" font-size="lg" color="blue.400"> {{ report.name }} </mp-heading>
@@ -86,10 +78,6 @@ import {
   MpTab,
   MpTabList,
   MpBadge,
-  MpBanner,
-  MpBannerIcon,
-  MpBannerDescription,
-  MpBannerCloseButton,
   MpButton,
 } from "@mekari/pixel";
 import Header from "../components/Header";
@@ -110,10 +98,6 @@ export default {
     MpTab,
     MpTabList,
     MpBadge,
-    MpBanner,
-    MpBannerIcon,
-    MpBannerDescription,
-    MpBannerCloseButton,
     MpButton,
     Header,
     Sidebar,

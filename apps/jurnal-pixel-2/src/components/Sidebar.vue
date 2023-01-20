@@ -3,11 +3,11 @@
     role="group"
     width="full"
     z-index="1"
-    max-height="calc(100vh - 60px)"
+    max-height="calc(100vh - 100px)"
     border-right="1px"
     border-color="gray.100"
     transition="all .2s ease"
-    background-color="#F8FAFE"
+    background-color="#F3F7FC"
     :position="isStacked ? 'relative' : 'absolute'"
     :max-width="isToggle ? '3.75rem' : '13.5rem'"
     :display="['none', 'block']"
@@ -62,7 +62,7 @@
               :background-color="items.isActive ? 'ice.50' : 'inherit'"
               :color="items.isActive ? 'blue.400' : 'inherit'"
               :_hover="{
-                backgroundColor: 'ice.50',
+                backgroundColor: 'blue.50',
                 color: 'blue.400',
                 cursor: 'pointer',
               }"
@@ -85,7 +85,7 @@
       </mp-box>
       <mp-flex
         gap="4"
-        background-color="#F8FAFE"
+        background-color="#F3F7FC"
         flex-direction="row"
         justify-content="space-between"
         align-items="center"
@@ -98,7 +98,7 @@
         padding="2"
         width="100%"
       >
-        <mp-text font-size="sm" color="gray.600" white-space="nowrap" padding-left="2.5" :display="isToggle ? 'none' : 'block'"> Company ID : 999999 </mp-text>
+        <mp-text font-size="sm" color="dark" white-space="nowrap" padding-left="2.5" :display="isToggle ? 'none' : 'block'"> Company ID : 999999 </mp-text>
         <mp-pseudo-box
           role="group"
           border-radius="sm"
