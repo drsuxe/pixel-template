@@ -85,7 +85,7 @@
       </mp-box>
       <mp-flex
         gap="4"
-        background-color="white"
+        background-color="#F8FAFE"
         flex-direction="row"
         justify-content="space-between"
         align-items="center"
