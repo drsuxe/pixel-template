@@ -4,8 +4,6 @@
     width="full"
     z-index="1"
     max-height="calc(100vh - 100px)"
-    border-right="1px"
-    border-color="gray.100"
     transition="all .2s ease"
     background-color="#F3F7FC"
     :position="isStacked ? 'relative' : 'absolute'"
@@ -84,10 +82,9 @@
         <mp-divider v-if="menu.parentId !== 4" />
       </mp-box>
       <mp-flex
-        gap="4"
+        gap="1"
         background-color="#F3F7FC"
         flex-direction="row"
-        justify-content="space-between"
         align-items="center"
         position="absolute"
         border-top="1px solid"
@@ -98,7 +95,6 @@
         padding="2"
         width="100%"
       >
-        <mp-text font-size="sm" color="dark" white-space="nowrap" padding-left="2.5" :display="isToggle ? 'none' : 'block'"> Company ID : 999999 </mp-text>
         <mp-pseudo-box
           role="group"
           border-radius="sm"
@@ -118,6 +114,7 @@
             </mp-tooltip>
           </mp-stack>
         </mp-pseudo-box>
+        <mp-text font-size="sm" color="dark" white-space="nowrap" :display="isToggle ? 'none' : 'block'"> Company ID : 999999 </mp-text>
       </mp-flex>
     </mp-box>
   </mp-box>
