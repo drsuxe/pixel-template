@@ -1170,17 +1170,17 @@
     "@mekari/pixel-pseudo-box" "^0.0.8"
     "@mekari/pixel-utils" "^0.2.0"
 
-"@mekari/pixel-autocomplete@0.10.4":
-  version "0.10.4"
-  resolved "https://registry.yarnpkg.com/@mekari/pixel-autocomplete/-/pixel-autocomplete-0.10.4.tgz#aa2d2f6135483587a00696bcb4bee7b547ac1031"
-  integrity sha512-crHgXLUwNYalmrvhO32RjG4nBLbiTiEN4KXku/aYAcFtYVXB2l8aN+kO31OMrki4SHZk6gUvG2FHrIvzANHt9A==
+"@mekari/pixel-autocomplete@0.11.0":
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/@mekari/pixel-autocomplete/-/pixel-autocomplete-0.11.0.tgz#9866a736fcecdf154d0141f49774754102fab6a7"
+  integrity sha512-vZwg2IzUFOwZHpXnGEXWJWxTiljtPrwMqIklGTXTF9DVW/COMrEmWbVF/YqMwoXEhoP7DEKwP3O4t37bHaZY+g==
   dependencies:
     "@mekari/pixel-box" "^0.0.9"
     "@mekari/pixel-button" "^0.1.9"
     "@mekari/pixel-flex" "^0.0.8"
     "@mekari/pixel-icon" "^0.8.12"
     "@mekari/pixel-input" "^0.3.11"
-    "@mekari/pixel-popover" "^0.4.0"
+    "@mekari/pixel-popover" "^0.5.0"
     "@mekari/pixel-pseudo-box" "0.0.8"
     "@mekari/pixel-spinner" "^0.0.9"
     "@mekari/pixel-text" "^0.1.0"
@@ -1266,10 +1266,10 @@
     "@mekari/pixel-icon" "^0.8.3"
     "@mekari/pixel-utils" "^0.2.0"
 
-"@mekari/pixel-chart@0.4.1":
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/@mekari/pixel-chart/-/pixel-chart-0.4.1.tgz#1f1ffc424d2378d64ee88d13ab80566ad443d2e7"
-  integrity sha512-7JAsgthlZPDYs4nxrlbMYnKYPpcthqokhV7EgLm2yslAerdQ7prjJoli6qwrBffh5VbHC43D/mnsPgmasMDxYQ==
+"@mekari/pixel-chart@0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@mekari/pixel-chart/-/pixel-chart-0.5.0.tgz#24c48e9689ba9fae67a80bd6848a5480972d4dd8"
+  integrity sha512-PDoJ3U/+XyVL1kluGTC8a/soQOPHBQiHjgk0Ib2lbsHZ/aeRNZPN3V35eHOSRu2oHrFTHrNmOUvlSoLh1t7j8Q==
   dependencies:
     "@mekari/pixel-box" "^0.0.9"
     "@mekari/pixel-flex" "^0.0.8"
@@ -1330,10 +1330,10 @@
     "@mekari/pixel-box" "^0.0.9"
     "@mekari/pixel-utils" "^0.2.0"
 
-"@mekari/pixel-date-picker@0.4.5":
-  version "0.4.5"
-  resolved "https://registry.yarnpkg.com/@mekari/pixel-date-picker/-/pixel-date-picker-0.4.5.tgz#c8dd6cf9d4449d5d27e173ffe97501ddac9c9b61"
-  integrity sha512-Sihs+arwzjPUA2vT6q5RVXFpEEA9aS7KqyoOq5scwLZG6yTqPu5RoTvi+lk1zpQdOvftHawbbgPjPmPKyUBKfw==
+"@mekari/pixel-date-picker@0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@mekari/pixel-date-picker/-/pixel-date-picker-0.5.0.tgz#4fde1a8878a0b4a3d99b9ca257b6ad7c5b940738"
+  integrity sha512-6FNxrvJw9HoBHsQwlvibi61IaynhDWA0LWF1PXEsCkEMkWF31JigelCw/meG1jyEZAPcPT1hawxsBBo2HJwyTw==
   dependencies:
     "@mekari/pixel-box" "^0.0.9"
     "@mekari/pixel-button" "^0.1.10"
@@ -1341,7 +1341,7 @@
     "@mekari/pixel-flex" "^0.0.8"
     "@mekari/pixel-icon" "^0.8.12"
     "@mekari/pixel-input" "^0.3.12"
-    "@mekari/pixel-popover" "^0.4.0"
+    "@mekari/pixel-popover" "^0.5.0"
     "@mekari/pixel-simple-grid" "^0.0.8"
     "@mekari/pixel-text" "^0.1.0"
     "@mekari/pixel-utils" "^0.2.0"
@@ -1369,14 +1369,14 @@
     "@mekari/pixel-modal" "^0.3.0"
     "@mekari/pixel-utils" "^0.2.0"
 
-"@mekari/pixel-dropzone@0.3.6":
-  version "0.3.6"
-  resolved "https://registry.yarnpkg.com/@mekari/pixel-dropzone/-/pixel-dropzone-0.3.6.tgz#037af76f78bb95f546b6a2955a40503aaae95221"
-  integrity sha512-HPAvNTWKl1eZq35C1jbX9p51RK/U2BG9rqaaE1bXz4UxTg6oGhOoCNh/2D9d57LnsVuLJ9IVMhytUX1QkITsxw==
+"@mekari/pixel-dropzone@0.3.7":
+  version "0.3.7"
+  resolved "https://registry.yarnpkg.com/@mekari/pixel-dropzone/-/pixel-dropzone-0.3.7.tgz#fcb1f672dd5fbd7bba6288cddee0e99aea9a42f3"
+  integrity sha512-rPlVhNktcLSYawN5MVF+Z38Gl1ZR93XpylfPszyy6+/g7s1OSFNWbYzrT7a5y7ytSCfYd0Gwp/4fMS6ccyVr6w==
   dependencies:
     "@mekari/pixel-box" "^0.0.9"
     "@mekari/pixel-flex" "^0.0.8"
-    "@mekari/pixel-icon" "0.8.12"
+    "@mekari/pixel-icon" "0.8.13"
     "@mekari/pixel-spinner" "^0.0.9"
     "@mekari/pixel-text" "^0.1.0"
     "@mekari/pixel-tooltip" "^0.2.0"
@@ -1416,7 +1416,14 @@
     "@mekari/pixel-text" "^0.1.0"
     "@mekari/pixel-utils" "^0.2.0"
 
-"@mekari/pixel-icon@0.8.12", "@mekari/pixel-icon@^0.8.12":
+"@mekari/pixel-icon@0.8.13":
+  version "0.8.13"
+  resolved "https://registry.yarnpkg.com/@mekari/pixel-icon/-/pixel-icon-0.8.13.tgz#3bfb019955ccf1cc7ef817759a5da22f36e4caae"
+  integrity sha512-Z/xuC0PUBS57x/pEYQ9QmkpKVFx2PofhVX2dOxu03C9w4DlrqfwtDn+yM4D2WAokZNLea8kIUGFUSD+/kbnqfA==
+  dependencies:
+    "@mekari/pixel-utils" "^0.2.0"
+
+"@mekari/pixel-icon@^0.8.12":
   version "0.8.12"
   resolved "https://registry.yarnpkg.com/@mekari/pixel-icon/-/pixel-icon-0.8.12.tgz#d106df30557b8daecb4e67f66edfd93a83b56c9a"
   integrity sha512-2iMzTWZQxmKIpEIrst4Pv6MGow5FG5JQkH/OZ8c8EbuP6kbxzJKie9eXRfU4PSW3drkH0Z43Ubj6dvqR/Zaikg==
@@ -1447,20 +1454,20 @@
     "@mekari/pixel-spinner" "^0.0.9"
     "@mekari/pixel-utils" "^0.2.0"
 
-"@mekari/pixel-input-tag@0.6.1":
-  version "0.6.1"
-  resolved "https://registry.yarnpkg.com/@mekari/pixel-input-tag/-/pixel-input-tag-0.6.1.tgz#c652ed15820386b3ac198df89aaa790c046a2aee"
-  integrity sha512-p+355FDCWoDP0pfw7+p6Kv2FDHk9wHGoEoPn7tZ4lL4Z59SnnptWBl3IUcol2V1DvHRaASri8vkDCci3/Sk/Gg==
+"@mekari/pixel-input-tag@0.6.2":
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/@mekari/pixel-input-tag/-/pixel-input-tag-0.6.2.tgz#3416a3d8fe1d495d6f9805ff0c634db429ca561e"
+  integrity sha512-N6YnFfYpfEgiVy2YdmBU9f9BX7YoKTf7jQFKHwZyp+EAJoUMiTorVeRM2+d4dka9SH1buxyNK+WsRRvrLF/eOw==
   dependencies:
     "@mekari/pixel-box" "^0.0.9"
     "@mekari/pixel-button-icon" "^0.6.0"
     "@mekari/pixel-flex" "^0.0.8"
     "@mekari/pixel-input" "^0.3.11"
-    "@mekari/pixel-popover" "^0.4.0"
+    "@mekari/pixel-popover" "^0.5.0"
     "@mekari/pixel-spinner" "^0.0.9"
-    "@mekari/pixel-tag" "^0.4.0"
+    "@mekari/pixel-tag" "^0.4.1"
     "@mekari/pixel-text" "^0.1.1"
-    "@mekari/pixel-tooltip" "^0.2.0"
+    "@mekari/pixel-tooltip" "^0.2.2"
     "@mekari/pixel-utils" "^0.2.0"
     lodash-es "^4.17.21"
 
@@ -1527,17 +1534,17 @@
   dependencies:
     "@mekari/pixel-utils" "^0.2.0"
 
-"@mekari/pixel-popover@0.4.0", "@mekari/pixel-popover@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@mekari/pixel-popover/-/pixel-popover-0.4.0.tgz#dea0f5f0632edb2ea432246ba2042cf21b4777f1"
-  integrity sha512-NQSYQedz0RnzNxoK3NJ4MCL3B3OuGr5YwBLmTNXBnzWAp5+qdYPhFY7X/8QJ7nN38yEt0dIo8QVZATwXVEtZ3Q==
+"@mekari/pixel-popover@0.5.1", "@mekari/pixel-popover@^0.5.0":
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/@mekari/pixel-popover/-/pixel-popover-0.5.1.tgz#d3a2a2ebd3c748f56016f794e500d27fa31c5097"
+  integrity sha512-X+UdzqPRNemot4dCVPBUqaNJGln7bnc5oCYD7hnopIfFgSEwRLhBXSDyqXxq1Qin6r4Wlb30hJ+OxSGypByMjQ==
   dependencies:
     "@mekari/pixel-button" "^0.1.9"
     "@mekari/pixel-divider" "^0.0.9"
     "@mekari/pixel-flex" "^0.0.8"
     "@mekari/pixel-fragment" "^0.0.4"
     "@mekari/pixel-icon" "^0.8.12"
-    "@mekari/pixel-popper" "^0.0.13"
+    "@mekari/pixel-popper" "^0.1.0"
     "@mekari/pixel-pseudo-box" "^0.0.8"
     "@mekari/pixel-text" "^0.1.0"
     "@mekari/pixel-utils" "^0.2.0"
@@ -1547,6 +1554,18 @@
   version "0.0.13"
   resolved "https://registry.yarnpkg.com/@mekari/pixel-popper/-/pixel-popper-0.0.13.tgz#263087876a057b324852bb8006d97499bd717665"
   integrity sha512-CmZ1UCVFFW0XYJO7G7iH+oeZgTXmoLt/AWbZtZAu1OyCXVL34NlSd8oy9JHhbnOP7n4Kzn6AYIA+Dng9BZ8mQw==
+  dependencies:
+    "@mekari/pixel-box" "^0.0.9"
+    "@mekari/pixel-portal" "^0.0.8"
+    "@mekari/pixel-pseudo-box" "^0.0.8"
+    "@mekari/pixel-utils" "^0.2.0"
+    "@popperjs/core" "^2.11.4"
+    lodash-es "^4.17.21"
+
+"@mekari/pixel-popper@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@mekari/pixel-popper/-/pixel-popper-0.1.0.tgz#488766bdb8c3bd43ef5e3e0193ef47bcaf455633"
+  integrity sha512-f7Uw3BeptTxsVSMpvv0YPtKkQstDfRbd9crhTa3goMhnhLvBFoTufoIn2hlVDif9YEOw8/ZyRXv/FQsbVPKVrQ==
   dependencies:
     "@mekari/pixel-box" "^0.0.9"
     "@mekari/pixel-portal" "^0.0.8"
@@ -1603,6 +1622,15 @@
   resolved "https://registry.yarnpkg.com/@mekari/pixel-reset/-/pixel-reset-0.0.4.tgz#f4feb7f0c1dfe9530ce88ccb8b85828e1677dd45"
   integrity sha512-JTD8y1BdF3yIPyM3VrWgiHzdcM1Cvszad3kWANMr4rfYTRHsmNM+NRNweHlM/oE9ovZJwFGiPsW1fjiO1PywUg==
 
+"@mekari/pixel-rich-text-editor@0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@mekari/pixel-rich-text-editor/-/pixel-rich-text-editor-0.2.0.tgz#a37739ce1638fc93726f6b7f5f5acea7386f8371"
+  integrity sha512-EZ63Rpz5EnpBHyXBNMCEj3XxMan1dZTmZZR3KHhz1QQxh6IwQ+HG0ixymOxc0iq0perk0Kx5la6rmD4LGmHfoQ==
+  dependencies:
+    "@mekari/pixel-box" "^0.0.9"
+    "@mekari/pixel-utils" "^0.2.0"
+    quill "^1.3.7"
+
 "@mekari/pixel-segmented-control@0.3.6":
   version "0.3.6"
   resolved "https://registry.yarnpkg.com/@mekari/pixel-segmented-control/-/pixel-segmented-control-0.3.6.tgz#2dfaf6964ccc1d86336a8234022976e118f7247a"
@@ -1656,10 +1684,10 @@
   dependencies:
     "@chakra-ui/styled-system" "^1.12.2"
 
-"@mekari/pixel-table@0.3.3":
-  version "0.3.3"
-  resolved "https://registry.yarnpkg.com/@mekari/pixel-table/-/pixel-table-0.3.3.tgz#d83238d0db62c2f052dbb5b516dfef64cf496f61"
-  integrity sha512-iwBVTmTE4G5rCHetE7/erl7E5EtkB4fqlcKF9LV9LFGcG7Jh3E9Xo0qJBN9IMqK0SxdvskZL9tFwFJiM2QjBVw==
+"@mekari/pixel-table@0.3.4":
+  version "0.3.4"
+  resolved "https://registry.yarnpkg.com/@mekari/pixel-table/-/pixel-table-0.3.4.tgz#2189c85a23902dde35304debf708148fd1f23634"
+  integrity sha512-fwnZfqL83FRJ9wWapWWeYjE/tT4tgRPXNsFqTjjUVc6PmQSl1BbO+ltbUwyhuqoaYrt2Ikw84Goj9ps7t9vpnA==
   dependencies:
     "@mekari/pixel-box" "^0.0.9"
     "@mekari/pixel-utils" "^0.2.0"
@@ -1671,10 +1699,10 @@
   dependencies:
     "@mekari/pixel-utils" "^0.2.0"
 
-"@mekari/pixel-tag@0.4.0", "@mekari/pixel-tag@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@mekari/pixel-tag/-/pixel-tag-0.4.0.tgz#abc8663692697da40d889803770d74ebbf7ce35e"
-  integrity sha512-MAw9hOxctG2y6jRMtv8BD4/jLMBzXLKS8wbvws7Q/hb3yfG4UQkX3j4vVlywveiU+41i++3h9YhJQ035zfF86g==
+"@mekari/pixel-tag@0.4.2", "@mekari/pixel-tag@^0.4.1":
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/@mekari/pixel-tag/-/pixel-tag-0.4.2.tgz#e66522974be37be46c55a7b4d883d055db86fed8"
+  integrity sha512-n7dUaTx8sj9UfzfP8/fQwYo4eLHZeeQcJK2jUaF9Jn0G1uNyGuJJoNAqiEkN3zbTik9kjcuEFBYwhcFjZGDOHQ==
   dependencies:
     "@mekari/pixel-icon" "^0.8.2"
     "@mekari/pixel-pseudo-box" "^0.0.8"
@@ -1741,14 +1769,14 @@
     "@mekari/pixel-utils" "^0.2.0"
     "@mekari/pixel-visually-hidden" "^0.0.8"
 
-"@mekari/pixel-tooltip@0.2.1":
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@mekari/pixel-tooltip/-/pixel-tooltip-0.2.1.tgz#94efc995d1f5798b5eaec8406546c985d7976c9a"
-  integrity sha512-ZsNc5p1BNa4QIEbAfsppVFeD2VUm78ktipdQ87YZSQiV38UPVAQWaz9IpRb4JU/VznnIjrKPRgmPP0/SZwKPiQ==
+"@mekari/pixel-tooltip@0.2.2", "@mekari/pixel-tooltip@^0.2.2":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@mekari/pixel-tooltip/-/pixel-tooltip-0.2.2.tgz#faccaa06dadbbbf768b3e06bd8505bcac18e3167"
+  integrity sha512-177ftvhkjqTMCylCjBD9/Urn1ZKpCGwaA3jkQghodSogSb+06W9pUb3TVNh9o1F6kc0RVGdpWEy/68kwWJNR0A==
   dependencies:
     "@mekari/pixel-box" "^0.0.9"
     "@mekari/pixel-fragment" "^0.0.4"
-    "@mekari/pixel-popper" "^0.0.13"
+    "@mekari/pixel-popper" "^0.1.0"
     "@mekari/pixel-utils" "^0.2.0"
     "@mekari/pixel-visually-hidden" "^0.0.8"
 
@@ -1823,14 +1851,14 @@
   dependencies:
     "@mekari/pixel-utils" "^0.2.0"
 
-"@mekari/pixel@^0.9.6":
-  version "0.9.6"
-  resolved "https://registry.yarnpkg.com/@mekari/pixel/-/pixel-0.9.6.tgz#511c8f5e334e2ffbd0f16f79be0f42f62cecf0f8"
-  integrity sha512-UZm7yccr5X0/NJ7mwIKsGv+WA+TSmsZTbJ1g7ytH44wRvyyguW+HkQnz6DDMTmRoZkaT2FQxluKe1pGyb1KQxg==
+"@mekari/pixel@^0.10.0":
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/@mekari/pixel/-/pixel-0.10.0.tgz#280d224f7821bbdf1b89dcd3b56f347fdc8e777b"
+  integrity sha512-aYUKwrcAe4UnTpdWUecyDuhdsWy2qQV2InsQCQRrFmNOKnIm3PxPtEcaBSsp57Tgj6prv0SY+S0/3PEsuWSFow==
   dependencies:
     "@fontsource/inter" "^4.5.0"
     "@mekari/pixel-accordion" "0.2.0"
-    "@mekari/pixel-autocomplete" "0.10.4"
+    "@mekari/pixel-autocomplete" "0.11.0"
     "@mekari/pixel-avatar" "0.4.7"
     "@mekari/pixel-badge" "0.2.6"
     "@mekari/pixel-banner" "0.2.8"
@@ -1839,49 +1867,50 @@
     "@mekari/pixel-button" "0.1.10"
     "@mekari/pixel-button-icon" "0.6.0"
     "@mekari/pixel-carousel" "0.2.0"
-    "@mekari/pixel-chart" "0.4.1"
+    "@mekari/pixel-chart" "0.5.0"
     "@mekari/pixel-checkbox" "0.2.0"
     "@mekari/pixel-coachmark" "0.1.0"
     "@mekari/pixel-collapse" "^0.2.4"
     "@mekari/pixel-control-box" "0.0.9"
-    "@mekari/pixel-date-picker" "0.4.5"
+    "@mekari/pixel-date-picker" "0.5.0"
     "@mekari/pixel-directive" "0.0.9"
     "@mekari/pixel-divider" "0.0.9"
     "@mekari/pixel-drawer" "0.1.6"
-    "@mekari/pixel-dropzone" "0.3.6"
+    "@mekari/pixel-dropzone" "0.3.7"
     "@mekari/pixel-flex" "0.0.8"
     "@mekari/pixel-form-control" "0.1.1"
     "@mekari/pixel-grid" "0.0.8"
     "@mekari/pixel-heading" "0.0.13"
-    "@mekari/pixel-icon" "0.8.12"
+    "@mekari/pixel-icon" "0.8.13"
     "@mekari/pixel-image" "0.1.0"
     "@mekari/pixel-input" "0.3.12"
-    "@mekari/pixel-input-tag" "0.6.1"
+    "@mekari/pixel-input-tag" "0.6.2"
     "@mekari/pixel-loader" "0.2.0"
     "@mekari/pixel-mask" "0.1.1"
     "@mekari/pixel-modal" "0.3.1"
-    "@mekari/pixel-popover" "0.4.0"
+    "@mekari/pixel-popover" "0.5.1"
     "@mekari/pixel-progress" "0.2.0"
     "@mekari/pixel-provider" "0.0.5"
     "@mekari/pixel-pseudo-box" "0.0.8"
     "@mekari/pixel-radio" "0.1.5"
     "@mekari/pixel-reset" "0.0.4"
+    "@mekari/pixel-rich-text-editor" "0.2.0"
     "@mekari/pixel-segmented-control" "0.3.6"
     "@mekari/pixel-select" "0.2.9"
     "@mekari/pixel-simple-grid" "0.0.8"
     "@mekari/pixel-spinner" "0.0.9"
     "@mekari/pixel-stack" "0.0.9"
     "@mekari/pixel-styled-system" "0.0.3"
-    "@mekari/pixel-table" "0.3.3"
+    "@mekari/pixel-table" "0.3.4"
     "@mekari/pixel-tabs" "0.0.7"
-    "@mekari/pixel-tag" "0.4.0"
+    "@mekari/pixel-tag" "0.4.2"
     "@mekari/pixel-text" "0.1.1"
     "@mekari/pixel-textarea" "0.1.4"
     "@mekari/pixel-theme" "0.2.6"
     "@mekari/pixel-timeline" "0.1.9"
     "@mekari/pixel-toast" "0.0.16"
     "@mekari/pixel-toggle" "0.2.0"
-    "@mekari/pixel-tooltip" "0.2.1"
+    "@mekari/pixel-tooltip" "0.2.2"
     "@mekari/pixel-tour" "0.1.1"
     "@mekari/pixel-upload" "0.4.1"
     "@mekari/pixel-utils" "0.2.0"
@@ -3114,6 +3143,11 @@ clone@^1.0.2:
   resolved "https://registry.yarnpkg.com/clone/-/clone-1.0.4.tgz#da309cc263df15994c688ca902179ca3c7cd7c7e"
   integrity sha512-JQHZ2QMW6l3aH/j6xCqQThY/9OH4D/9ls34cgkUBiEeocRTU04tHfKPBsUK1PqZCUQM7GiA0IIXJSuXHI64Kbg==
 
+clone@^2.1.1:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/clone/-/clone-2.1.2.tgz#1b7f4b9f591f1e8f83670401600345a02887435f"
+  integrity sha512-3Pe/CF1Nn94hyhIYpjtiLhdCoEoz0DqQ+988E9gmeEdQZlojxnOb74wctFyuwWQHzqyf9X7C7MG8juUpqBJT8w==
+
 color-convert@^1.9.0, color-convert@^1.9.3:
   version "1.9.3"
   resolved "https://registry.yarnpkg.com/color-convert/-/color-convert-1.9.3.tgz#bb71850690e1f136567de629d2d5471deda4c1e8"
@@ -3481,6 +3515,18 @@ debug@^4.0.1, debug@^4.1.0, debug@^4.1.1, debug@^4.3.2:
   dependencies:
     ms "2.1.2"
 
+deep-equal@^1.0.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/deep-equal/-/deep-equal-1.1.1.tgz#b5c98c942ceffaf7cb051e24e1434a25a2e6076a"
+  integrity sha512-yd9c5AdiqVcR+JjcwUQb9DkhJc8ngNr0MahEBGvDiJw8puWab2yZlh+nkasOnZP+EGTAP6rRp2JzJhJZzvNF8g==
+  dependencies:
+    is-arguments "^1.0.4"
+    is-date-object "^1.0.1"
+    is-regex "^1.0.4"
+    object-is "^1.0.1"
+    object-keys "^1.1.1"
+    regexp.prototype.flags "^1.2.0"
+
 deep-is@^0.1.3:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/deep-is/-/deep-is-0.1.4.tgz#a6f2dce612fadd2ef1f519b73551f17e85199831"
@@ -3509,6 +3555,14 @@ define-lazy-prop@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/define-lazy-prop/-/define-lazy-prop-2.0.0.tgz#3f7ae421129bcaaac9bc74905c98a0009ec9ee7f"
   integrity sha512-Ds09qNh8yw3khSjiJjiUInaGX9xlqZDY7JVryGxdxV7NPeuqQfplOpQ66yJFZut3jLa5zOwkXw1g9EI2uKh4Og==
+
+define-properties@^1.1.3:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/define-properties/-/define-properties-1.2.0.tgz#52988570670c9eacedd8064f4a990f2405849bd5"
+  integrity sha512-xvqAVKGfT1+UAvPwKTVw/njhdQ8ZhXK4lI0bCIuCMrp2up9nPnaDftrLtmpTazqd1o+UY4zgzU+avtMbDP+ldA==
+  dependencies:
+    has-property-descriptors "^1.0.0"
+    object-keys "^1.1.1"
 
 define-properties@^1.1.4:
   version "1.1.4"
@@ -3896,6 +3950,11 @@ event-pubsub@4.3.0:
   resolved "https://registry.yarnpkg.com/event-pubsub/-/event-pubsub-4.3.0.tgz#f68d816bc29f1ec02c539dc58c8dd40ce72cb36e"
   integrity sha512-z7IyloorXvKbFx9Bpie2+vMJKKx1fH1EN5yiTfp8CiLOTptSYy1g8H4yDpGlEdshL1PBiFtBHepF2cNsqeEeFQ==
 
+eventemitter3@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-2.0.3.tgz#b5e1079b59fb5e1ba2771c0a993be060a58c99ba"
+  integrity sha512-jLN68Dx5kyFHaePoXWPsCGW5qdyZQtLYHkxkg02/Mz6g0kYpDx4FyP6XfArhQdlOC4b8Mv+EMxPo/8La7Tzghg==
+
 eventemitter3@^4.0.0:
   version "4.0.7"
   resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-4.0.7.tgz#2de9b68f6528d5644ef5c59526a1b4a07306169f"
@@ -3984,10 +4043,20 @@ express@^4.17.3:
     utils-merge "1.0.1"
     vary "~1.1.2"
 
+extend@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/extend/-/extend-3.0.2.tgz#f8b1136b4071fbd8eb140aff858b1019ec2915fa"
+  integrity sha512-fjquC59cD7CyW6urNXK0FBufkZcoiGG80wTuPujX590cB5Ttln20E2UB4S/WARVqhXffZl2LNgS+gQdPIIim/g==
+
 fast-deep-equal@^3.1.1, fast-deep-equal@^3.1.3:
   version "3.1.3"
   resolved "https://registry.yarnpkg.com/fast-deep-equal/-/fast-deep-equal-3.1.3.tgz#3a7d56b559d6cbc3eb512325244e619a65c6c525"
   integrity sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==
+
+fast-diff@1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/fast-diff/-/fast-diff-1.1.2.tgz#4b62c42b8e03de3f848460b639079920695d0154"
+  integrity sha512-KaJUt+M9t1qaIteSvjc6P3RbMdXsNhK61GRftR6SNxqmhthcd9MGIi4T+o0jD8LUSpSnSKXE20nLtJ3fOHxQig==
 
 fast-glob@^3.2.7, fast-glob@^3.2.9:
   version "3.2.12"
@@ -4168,6 +4237,11 @@ functional-red-black-tree@^1.0.1:
   resolved "https://registry.yarnpkg.com/functional-red-black-tree/-/functional-red-black-tree-1.0.1.tgz#1b0ab3bd553b2a0d6399d29c0e3ea0b252078327"
   integrity sha512-dsKNQNdj6xA3T+QlADDA7mOSlX0qiMINjn0cgr+eGHGsbSHzTabcIogz2+p/iqP1Xs6EP/sS2SbqH+brGTbq0g==
 
+functions-have-names@^1.2.2:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/functions-have-names/-/functions-have-names-1.2.3.tgz#0404fe4ee2ba2f607f0e0ec3c80bae994133b834"
+  integrity sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==
+
 gensync@^1.0.0-beta.2:
   version "1.0.0-beta.2"
   resolved "https://registry.yarnpkg.com/gensync/-/gensync-1.0.0-beta.2.tgz#32a6ee76c3d7f52d46b2b1ae5d93fea8580a25e0"
@@ -4293,10 +4367,17 @@ has-property-descriptors@^1.0.0:
   dependencies:
     get-intrinsic "^1.1.1"
 
-has-symbols@^1.0.3:
+has-symbols@^1.0.2, has-symbols@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/has-symbols/-/has-symbols-1.0.3.tgz#bb7b2c4349251dce87b125f7bdf874aa7c8b39f8"
   integrity sha512-l3LCuF6MgDNwTDKkdYGEihYjt5pRPbEg46rtlmnSPlUbgmB8LOIrKJbYYFBSbnPaJexMKtiPO8hmeRjRz2Td+A==
+
+has-tostringtag@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/has-tostringtag/-/has-tostringtag-1.0.0.tgz#7e133818a7d394734f941e73c3d3f9291e658b25"
+  integrity sha512-kFjcSNhnlGV1kyoGk7OXKSawH5JOb/LzUc5w9B02hOTO0dfFRjbHQKvg1d6cf3HbeUmtU9VbbV3qzZ2Teh97WQ==
+  dependencies:
+    has-symbols "^1.0.2"
 
 has@^1.0.3:
   version "1.0.3"
@@ -4513,6 +4594,14 @@ ipaddr.js@^2.0.1:
   resolved "https://registry.yarnpkg.com/ipaddr.js/-/ipaddr.js-2.0.1.tgz#eca256a7a877e917aeb368b0a7497ddf42ef81c0"
   integrity sha512-1qTgH9NG+IIJ4yfKs2e6Pp1bZg8wbDbKHT21HrLIeYBTRLgMYKnMTPAuI3Lcs61nfx5h1xlXnbJtH1kX5/d/ng==
 
+is-arguments@^1.0.4:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/is-arguments/-/is-arguments-1.1.1.tgz#15b3f88fda01f2a97fec84ca761a560f123efa9b"
+  integrity sha512-8Q7EARjzEnKpt/PCD7e1cgUS0a6X8u5tdSiMqXhojOdoV9TsMsiO+9VLC5vAmO8N7/GmXn7yjR8qnA6bVAEzfA==
+  dependencies:
+    call-bind "^1.0.2"
+    has-tostringtag "^1.0.0"
+
 is-arrayish@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/is-arrayish/-/is-arrayish-0.2.1.tgz#77c99840527aa8ecb1a8ba697b80645a7a926a9d"
@@ -4543,6 +4632,13 @@ is-core-module@^2.9.0:
   integrity sha512-RRjxlvLDkD1YJwDbroBHMb+cukurkDWNyHx7D3oNB5x9rb5ogcksMC5wHCadcXoo67gVr/+3GFySh3134zi6rw==
   dependencies:
     has "^1.0.3"
+
+is-date-object@^1.0.1:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/is-date-object/-/is-date-object-1.0.5.tgz#0841d5536e724c25597bf6ea62e1bd38298df31f"
+  integrity sha512-9YQaSxsAiSwcvS33MBk3wTCVnWK+HhF8VZR2jRxehM16QcVOdHqPn4VPHmRK4lSr38n9JriurInLcP90xsYNfQ==
+  dependencies:
+    has-tostringtag "^1.0.0"
 
 is-docker@^2.0.0, is-docker@^2.1.1:
   version "2.2.1"
@@ -4599,6 +4695,14 @@ is-plain-object@^2.0.4:
   integrity sha512-h5PpgXkWitc38BBMYawTYMWJHFZJVnBquFE57xFpjB8pJFiF6gZ+bU+WyI/yqXiFR5mdLsgYNaPe8uao6Uv9Og==
   dependencies:
     isobject "^3.0.1"
+
+is-regex@^1.0.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/is-regex/-/is-regex-1.1.4.tgz#eef5663cd59fa4c0ae339505323df6854bb15958"
+  integrity sha512-kvRdxDsxZjhzUX07ZnLydzS1TU/TJlTUHHY4YLL87e37oUA49DfkLqgy+VjFocowy29cKvcSiu+kIv728jTTVg==
+  dependencies:
+    call-bind "^1.0.2"
+    has-tostringtag "^1.0.0"
 
 is-stream@^1.1.0:
   version "1.1.0"
@@ -5189,6 +5293,14 @@ object-inspect@^1.9.0:
   resolved "https://registry.yarnpkg.com/object-inspect/-/object-inspect-1.12.2.tgz#c0641f26394532f28ab8d796ab954e43c009a8ea"
   integrity sha512-z+cPxW0QGUp0mcqcsgQyLVRDoXFQbXOwBaqyF7VIgI4TWNQsDHrBpUQslRmIfAoYWdYzs6UlKJtB2XJpTaNSpQ==
 
+object-is@^1.0.1:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/object-is/-/object-is-1.1.5.tgz#b9deeaa5fc7f1846a0faecdceec138e5778f53ac"
+  integrity sha512-3cyDsyHgtmi7I7DfSSI2LDp6SK2lwvtbg0p0R1e0RvTqF5ceGx+K2dfSjm1bKDMVCFEDAQvy+o8c6a7VujOddw==
+  dependencies:
+    call-bind "^1.0.2"
+    define-properties "^1.1.3"
+
 object-keys@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/object-keys/-/object-keys-1.1.1.tgz#1c47f272df277f3b1daf061677d9c82e2322c60e"
@@ -5322,6 +5434,11 @@ param-case@^3.0.4:
   dependencies:
     dot-case "^3.0.4"
     tslib "^2.0.3"
+
+parchment@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/parchment/-/parchment-1.1.4.tgz#aeded7ab938fe921d4c34bc339ce1168bc2ffde5"
+  integrity sha512-J5FBQt/pM2inLzg4hEWmzQx/8h8D0CiDxaG3vyp9rKrQRSDgBlhjdP5jQGgosEajXPSQouXGHOmVdgo7QmJuOg==
 
 parent-module@^1.0.0:
   version "1.0.1"
@@ -5780,6 +5897,27 @@ queue-microtask@^1.2.2:
   resolved "https://registry.yarnpkg.com/queue-microtask/-/queue-microtask-1.2.3.tgz#4929228bbc724dfac43e0efb058caf7b6cfb6243"
   integrity sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==
 
+quill-delta@^3.6.2:
+  version "3.6.3"
+  resolved "https://registry.yarnpkg.com/quill-delta/-/quill-delta-3.6.3.tgz#b19fd2b89412301c60e1ff213d8d860eac0f1032"
+  integrity sha512-wdIGBlcX13tCHOXGMVnnTVFtGRLoP0imqxM696fIPwIf5ODIYUHIvHbZcyvGlZFiFhK5XzDC2lpjbxRhnM05Tg==
+  dependencies:
+    deep-equal "^1.0.1"
+    extend "^3.0.2"
+    fast-diff "1.1.2"
+
+quill@^1.3.7:
+  version "1.3.7"
+  resolved "https://registry.yarnpkg.com/quill/-/quill-1.3.7.tgz#da5b2f3a2c470e932340cdbf3668c9f21f9286e8"
+  integrity sha512-hG/DVzh/TiknWtE6QmWAF/pxoZKYxfe3J/d/+ShUWkDvvkZQVTPeVmUJVu1uE6DDooC4fWTiCLh84ul89oNz5g==
+  dependencies:
+    clone "^2.1.1"
+    deep-equal "^1.0.1"
+    eventemitter3 "^2.0.3"
+    extend "^3.0.2"
+    parchment "^1.1.4"
+    quill-delta "^3.6.2"
+
 randombytes@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/randombytes/-/randombytes-2.1.0.tgz#df6f84372f0270dc65cdf6291349ab7a473d4f2a"
@@ -5873,6 +6011,15 @@ regenerator-transform@^0.15.0:
   integrity sha512-knzmNAcuyxV+gQCufkYcvOqX/qIIfHLv0u5x79kRxuGojfYVky1f15TzZEu2Avte8QGepvUNTnLskf8E6X6Vyg==
   dependencies:
     "@babel/runtime" "^7.8.4"
+
+regexp.prototype.flags@^1.2.0:
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/regexp.prototype.flags/-/regexp.prototype.flags-1.4.3.tgz#87cab30f80f66660181a3bb7bf5981a872b367ac"
+  integrity sha512-fjggEOO3slI6Wvgjwflkc4NFRCTZAu5CnNfBd5qOMYhWdn67nJBBu34/TkD++eeFmd8C9r9jfXJ27+nSiRkSUA==
+  dependencies:
+    call-bind "^1.0.2"
+    define-properties "^1.1.3"
+    functions-have-names "^1.2.2"
 
 regexpp@^3.1.0:
   version "3.2.0"

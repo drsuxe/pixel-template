@@ -14,21 +14,18 @@
           <mp-table-cell as="td" scope="row" vertical-align="top">
             <mp-flex flex-direction="column">
               <mp-form-control>
-                <mp-autocomplete
-                  isClearable
-                  :content-style="{ zIndex: 'popover', width: 'full' }"
-                  :id="`pilih-product-${index}`"
-                  placeholder="Pilih produk"
+                <mp-autocomplete isClearable :content-style="{ zIndex: 'popover', width: 'full' }"
+                  :id="`pilih-product-${index}`" placeholder="Pilih produk"
                   :data="['Macbook Pro M1', 'Macbook Air M1', 'iPhone 13 Pro Max 256GB', 'iPhone 13 Pro 256GB', 'iPhone 13 256GB', 'iPad Pro Max 1TB']"
-                  :value="products[index]"
-                />
+                  :value="products[index]" />
               </mp-form-control>
             </mp-flex>
           </mp-table-cell>
           <mp-table-cell as="td" scope="row" vertical-align="top">
             <mp-flex flex-direction="column">
               <mp-form-control>
-                <mp-textarea rows="1" height="36px" min-height="36px" max-height="32" resize="vertical" transition-property="box-shadow, border-color" />
+                <mp-textarea rows="1" height="36px" min-height="36px" max-height="32" resize="vertical"
+                  transition-property="box-shadow, border-color" />
               </mp-form-control>
             </mp-flex>
           </mp-table-cell>
@@ -42,12 +39,8 @@
           <mp-table-cell as="td" scope="row" vertical-align="top">
             <mp-flex align="center" gap="6">
               <mp-form-control>
-                <mp-autocomplete
-                  :style="{ minWidth: '109px', width: '100%' }"
-                  :id="`pilih-unit-${index}`"
-                  :data="['Unit', 'Pcs']"
-                  :content-style="{ zIndex: 'popover', width: 'full' }"
-                />
+                <mp-autocomplete :style="{ minWidth: '109px', width: '100%' }" :id="`pilih-unit-${index}`"
+                  :data="['Unit', 'Pcs']" :content-style="{ zIndex: 'popover', width: 'full' }" />
               </mp-form-control>
 
               <mp-tooltip label="Hapus" :id="`delete-product-${index}`">
@@ -56,19 +49,15 @@
             </mp-flex>
           </mp-table-cell>
         </mp-table-row>
+
         <mp-table-row>
           <mp-table-cell as="td" scope="row" vertical-align="center" :style="{ borderBottomColor: 'white' }">
             <mp-flex flex-direction="column">
-              <mp-form-control>
-                <mp-autocomplete
-                  isClearable
-                  :content-style="{ zIndex: 'popover', width: 'full' }"
-                  id="pilih-product"
+              <mp-form-control >
+                <mp-autocomplete :key="renderKey" isClearable :content-style="{ zIndex: 'popover', width: 'full' }" id="pilih-product"
                   placeholder="Pilih produk"
                   :data="['Macbook Pro M1', 'Macbook Air M1', 'iPhone 13 Pro Max 256GB', 'iPhone 13 Pro 256GB', 'iPhone 13 256GB', 'iPad Pro Max 1TB']"
-                  :value="select"
-                  @change="handleSelect"
-                />
+                  :value="select" @change="handleSelect" />
               </mp-form-control>
             </mp-flex>
           </mp-table-cell>
@@ -116,6 +105,7 @@ export default {
   },
   data() {
     return {
+      renderKey: 0,
       select: "",
       products: [],
     };
@@ -124,6 +114,15 @@ export default {
     handleSelect(value) {
       console.log(value);
       this.select = value;
+      const isDuplicate = this.products.includes(value)
+
+      if (isDuplicate) {
+        this.renderKey++
+        console.log('Called')
+        this.select = "";
+        return
+      }
+
       this.products.push(value);
 
       setTimeout(() => {
@@ -134,4 +133,6 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+</style>

@@ -67,19 +67,7 @@
 </template>
 
 <script>
-import {
-  MpGrid,
-  MpBox,
-  MpFlex,
-  MpText,
-  MpHeading,
-  MpBroadcast,
-  MpTabs,
-  MpTab,
-  MpTabList,
-  MpBadge,
-  MpButton,
-} from "@mekari/pixel";
+import { MpGrid, MpBox, MpFlex, MpText, MpHeading, MpBroadcast, MpTabs, MpTab, MpTabList, MpBadge, MpButton } from "@mekari/pixel";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import SubHeader from "../components/SubHeader";
