@@ -2,11 +2,6 @@ import Vue from "vue";
 import Pixel from "@mekari/pixel";
 import App from "./App.vue";
 import router from "./router";
-import PortalVue from 'portal-vue'
-
-import './assets/css/kp-bootstrap.css'
-import './assets/css/kp-application.css'
-import './assets/css/pixel.css'
 
 const breakpoints = {
   sm: "360px",
@@ -16,7 +11,6 @@ const breakpoints = {
 };
 
 Vue.config.productionTip = false;
-Vue.use(PortalVue)
 Vue.use(Pixel, {
   extendTheme: {
     breakpoints: breakpoints,
