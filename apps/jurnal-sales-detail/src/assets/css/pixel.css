@@ -1,0 +1,30 @@
+/** Pixel 2 CSS normalizer for KlikPajak */
+
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap'); */
+
+html {
+  font-family: inter, -apple-system, "system-ui", Helvetica, Arial, sans-serif, "Apple Color Emoji";
+  font-size: 16px;
+  line-height: 1.5; 
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizelegibility;
+}
+
+body {
+  font-size: 16px;
+  letter-spacing: normal;
+  font-family: inter, -apple-system, "system-ui", Helvetica, Arial, sans-serif, "Apple Color Emoji";
+  font-size: 16px;
+  line-height: 1.5; 
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizelegibility;
+}
+
+* {
+  font-family: inter, -apple-system, "system-ui", Helvetica, Arial, sans-serif, "Apple Color Emoji";
+}
+
+
+
