@@ -9,7 +9,7 @@
           <template #right>
             <mp-button-group>
               <mp-button variant="outline" @click="isModalOpen.ModalGantiPaket = true">Ganti paket</mp-button>
-              <mp-button @click="isModalOpen.ModalMulaiLangganan = true">Mulai Berlangganan</mp-button>
+              <mp-button @click="handleMulaiBerlangganan">Mulai Berlangganan</mp-button>
             </mp-button-group>
           </template>
         </SubHeaderChild>
@@ -17,6 +17,7 @@
         <mp-box min-height="calc(100vh - 132px)" border-top-width="1px" background-color="white" padding="6">
           <ModalGantiPaket :is-open="isModalOpen.ModalGantiPaket" @handleClose="isModalOpen.ModalGantiPaket = false" @handleChange="handleGantiPaket" />
           <ModalMulaiLangganan :is-open="isModalOpen.ModalMulaiLangganan" @handleClose="isModalOpen.ModalMulaiLangganan = false" />
+          <ModalDifferentFeature :is-open="isModalOpen.ModalDifferentFeature" @handleClose="isModalOpen.ModalDifferentFeature = false" />
         </mp-box>
       </mp-box>
     </mp-flex>
@@ -31,6 +32,7 @@ import Sidebar from "../components/Sidebar";
 import SidebarChild from "../components/SidebarChild";
 import ModalGantiPaket from "./ModalGantiPaket.vue";
 import ModalMulaiLangganan from "./ModalMulaiLangganan.vue";
+import ModalDifferentFeature from "./ModalDifferentFeature.vue";
 
 export default {
   name: "IndexView",
@@ -47,16 +49,25 @@ export default {
     SidebarChild,
     ModalGantiPaket,
     ModalMulaiLangganan,
+    ModalDifferentFeature,
   },
   data() {
     return {
       isModalOpen: {
         ModalGantiPaket: false,
         ModalMulaiLangganan: false,
+        ModalDifferentFeature: false
       },
     };
   },
   methods: {
+    handleMulaiBerlangganan() {
+      this.isModalOpen.ModalMulaiLangganan = true;
+
+      setTimeout(() => {
+        this.isModalOpen.ModalDifferentFeature = true
+      }, 300);
+    },
     handleGantiPaket(value) {
       console.log(value);
 

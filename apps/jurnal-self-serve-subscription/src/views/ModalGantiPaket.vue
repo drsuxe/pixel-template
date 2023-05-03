@@ -1,5 +1,5 @@
 <template>
-  <mp-modal size="full" :is-open="isOpen" :on-close="handleClose" scroll-behavior="inside">
+  <mp-modal size="full" :is-open="isOpen" :on-close="handleClose" scroll-behavior="inside" hide-on-close>
     <mp-modal-content>
       <mp-modal-header>
         <mp-flex justify-content="space-between" align-items="center">
@@ -19,7 +19,7 @@
                 <mp-table-cell
                   as="th"
                   scope="col"
-                  widht="25%"
+                  widht="360px"
                   :style="{ borderBottom: '0px', borderRightWidth: '1px', borderColor: 'var(--colors-gray-50)' }"
                 />
                 <mp-table-cell
@@ -94,13 +94,17 @@
                   </mp-table-cell>
                 </mp-table-row>
                 <mp-table-row v-for="(data, index2) in value.datas" :key="`child-${index2}-${data.name}`">
-                  <mp-table-cell as="td" scope="row" border-color="gray.50" border-right="1px" border-right-color="gray.50">
-                    <mp-flex align-items="center">
+                  <mp-table-cell as="td" scope="row" border-color="gray.50" border-right="1px" border-right-color="gray.50" white-space="normal">
+                    <mp-flex justify="space-between" cursor="pointer" @click="handleCollapsed(index, index2)">
                       <mp-text font-weight="semibold"> {{ data.name }} </mp-text>
-                      <mp-tooltip :label="data.tooltip">
-                        <mp-icon name="info" size="sm" ml="2" />
-                      </mp-tooltip>
+                      <mp-icon name="chevrons-down" transition="transform 0.2s" :transform="data.isCollapsed ? 'rotate(-180deg)' : null" />
                     </mp-flex>
+
+                    <mp-collapse :isOpen="data.isCollapsed">
+                      <mp-text color="gray.600" line-height="md" mt="1">
+                        {{ data.description }}
+                      </mp-text>
+                    </mp-collapse>
                   </mp-table-cell>
                   <mp-table-cell as="td" scope="row" border-color="gray.50" border-right="1px" border-right-color="gray.50">
                     <mp-flex justify="center" align-items="center">
@@ -154,9 +158,9 @@ import {
   MpTableRow,
   MpTableCell,
   MpBox,
-  MpTooltip,
   MpButton,
   MpBadge,
+  MpCollapse,
 } from "@mekari/pixel";
 
 export default {
@@ -178,9 +182,9 @@ export default {
     MpTableRow,
     MpTableCell,
     MpBox,
-    MpTooltip,
     MpButton,
     MpBadge,
+    MpCollapse,
   },
   props: {
     isOpen: { type: [Boolean] },
@@ -195,92 +199,105 @@ export default {
           category: "Fitur",
           datas: [
             {
+              isCollapsed: true,
               name: "Laporan keuangan lengkap",
-              tooltip: "Buat keputusan bisnis tepat dengan laporan keuangan dari arus kas hingga laba-rugi.",
+              description: "Buat keputusan bisnis tepat dengan laporan keuangan dari arus kas hingga laba-rugi.",
               pro: true,
               enterprise: true,
               enterprisePlus: true,
             },
             {
+              isCollapsed: false,
               name: "Histori penjualan & pembelian",
-              tooltip: "Catat semua transaksi secara online dan real-time untuk hindari rekonsiliasi manual.",
+              description: "Catat semua transaksi secara online dan real-time untuk hindari rekonsiliasi manual.",
               pro: true,
               enterprise: true,
               enterprisePlus: true,
             },
             {
+              isCollapsed: false,
               name: "Manajemen inventori & aset",
-              tooltip: "Kelola semua produk dalam satu dasbor yang terupdate otomatis saat terjadi transaksi.",
+              description: "Kelola semua produk dalam satu dasbor yang terupdate otomatis saat terjadi transaksi.",
               pro: true,
               enterprise: true,
               enterprisePlus: true,
             },
             {
+              isCollapsed: false,
               name: "Monitor pengeluaran",
-              tooltip: "Pantau pengeluaran dalam 30 hari terakhir termasuk yang belum dibayar di satu laporan real-time.",
+              description: "Pantau pengeluaran dalam 30 hari terakhir termasuk yang belum dibayar di satu laporan real-time.",
               pro: true,
               enterprise: true,
               enterprisePlus: true,
             },
             {
+              isCollapsed: false,
               name: "Monitor saldo kas & bank",
-              tooltip: "Pantau pengeluaran dalam 30 hari terakhir termasuk yang belum dibayar di satu laporan real-time.",
+              description: "Pantau pengeluaran dalam 30 hari terakhir termasuk yang belum dibayar di satu laporan real-time.",
               pro: true,
               enterprise: true,
               enterprisePlus: true,
             },
             {
+              isCollapsed: false,
               name: "Template & reminder invoice",
-              tooltip: "Pantau pengeluaran dalam 30 hari terakhir termasuk yang belum dibayar di satu laporan real-time.",
+              description: "Pantau pengeluaran dalam 30 hari terakhir termasuk yang belum dibayar di satu laporan real-time.",
               pro: true,
               enterprise: true,
               enterprisePlus: true,
             },
             {
+              isCollapsed: false,
               name: "Approval & otorisasi",
-              tooltip: "Pantau pengeluaran dalam 30 hari terakhir termasuk yang belum dibayar di satu laporan real-time.",
+              description: "Pantau pengeluaran dalam 30 hari terakhir termasuk yang belum dibayar di satu laporan real-time.",
               pro: false,
               enterprise: true,
               enterprisePlus: true,
             },
             {
+              isCollapsed: false,
               name: "Budgeting",
-              tooltip: "Pantau pengeluaran dalam 30 hari terakhir termasuk yang belum dibayar di satu laporan real-time.",
+              description: "Pantau pengeluaran dalam 30 hari terakhir termasuk yang belum dibayar di satu laporan real-time.",
               pro: false,
               enterprise: true,
               enterprisePlus: true,
             },
             {
+              isCollapsed: false,
               name: "Multi-currency",
-              tooltip: "Pantau pengeluaran dalam 30 hari terakhir termasuk yang belum dibayar di satu laporan real-time.",
+              description: "Pantau pengeluaran dalam 30 hari terakhir termasuk yang belum dibayar di satu laporan real-time.",
               pro: false,
               enterprise: true,
               enterprisePlus: true,
             },
             {
+              isCollapsed: false,
               name: "Join invoice",
-              tooltip: "Pantau pengeluaran dalam 30 hari terakhir termasuk yang belum dibayar di satu laporan real-time.",
+              description: "Pantau pengeluaran dalam 30 hari terakhir termasuk yang belum dibayar di satu laporan real-time.",
               pro: false,
               enterprise: false,
               enterprisePlus: true,
             },
             {
+              isCollapsed: false,
               name: "Pro forma invoice",
-              tooltip: "Pantau pengeluaran dalam 30 hari terakhir termasuk yang belum dibayar di satu laporan real-time.",
+              description: "Pantau pengeluaran dalam 30 hari terakhir termasuk yang belum dibayar di satu laporan real-time.",
               pro: false,
               enterprise: false,
               enterprisePlus: true,
             },
             {
+              isCollapsed: false,
               name: "Profitability report",
-              tooltip: "Pantau pengeluaran dalam 30 hari terakhir termasuk yang belum dibayar di satu laporan real-time.",
+              description: "Pantau pengeluaran dalam 30 hari terakhir termasuk yang belum dibayar di satu laporan real-time.",
               pro: false,
               enterprise: false,
               enterprisePlus: true,
             },
             {
+              isCollapsed: false,
               name: "Multi-product pricing",
-              tooltip: "Pantau pengeluaran dalam 30 hari terakhir termasuk yang belum dibayar di satu laporan real-time.",
+              description: "Pantau pengeluaran dalam 30 hari terakhir termasuk yang belum dibayar di satu laporan real-time.",
               pro: false,
               enterprise: false,
               enterprisePlus: true,
@@ -292,29 +309,33 @@ export default {
           category: "Integrasi",
           datas: [
             {
+              isCollapsed: false,
               name: "Mekari Pay",
-              tooltip: "Lorem ipsum dolor sir amet.",
+              description: "Lorem ipsum dolor sir amet.",
               pro: true,
               enterprise: true,
               enterprisePlus: true,
             },
             {
+              isCollapsed: false,
               name: "Mekari Klikpajak",
-              tooltip: "Lorem ipsum dolor sir amet.",
+              description: "Lorem ipsum dolor sir amet.",
               pro: true,
               enterprise: true,
               enterprisePlus: true,
             },
             {
+              isCollapsed: false,
               name: "Mekari Capital",
-              tooltip: "Lorem ipsum dolor sir amet.",
+              description: "Lorem ipsum dolor sir amet.",
               pro: true,
               enterprise: true,
               enterprisePlus: true,
             },
             {
+              isCollapsed: false,
               name: "Aplikasi POS & e-Commerce",
-              tooltip: "Lorem ipsum dolor sir amet.",
+              description: "Lorem ipsum dolor sir amet.",
               pro: true,
               enterprise: true,
               enterprisePlus: true,
@@ -327,22 +348,25 @@ export default {
           label: "Anda bisa menambah kuota setelah pilih paket",
           datas: [
             {
+              isCollapsed: false,
               name: "Kuota pengguna",
-              tooltip: "Lorem ipsum dolor sir amet.",
+              description: "Lorem ipsum dolor sir amet.",
               pro: 3,
               enterprise: 5,
               enterprisePlus: 7,
             },
             {
+              isCollapsed: false,
               name: "Multi-gudang & lokasi produk",
-              tooltip: "Lorem ipsum dolor sir amet.",
+              description: "Lorem ipsum dolor sir amet.",
               pro: 2,
               enterprise: 5,
               enterprisePlus: 10,
             },
             {
+              isCollapsed: false,
               name: "Faktur penjualan per bulan",
-              tooltip: "Lorem ipsum dolor sir amet.",
+              description: "Lorem ipsum dolor sir amet.",
               pro: "1.500",
               enterprise: "5.000",
               enterprisePlus: "10.000",
@@ -354,15 +378,17 @@ export default {
           category: "Customer support",
           datas: [
             {
+              isCollapsed: false,
               name: "Gratis training & implementasi",
-              tooltip: "Lorem ipsum dolor sir amet.",
+              description: "Lorem ipsum dolor sir amet.",
               pro: true,
               enterprise: true,
               enterprisePlus: true,
             },
             {
+              isCollapsed: false,
               name: "Layanan pelanggan via chat",
-              tooltip: "Lorem ipsum dolor sir amet.",
+              description: "Lorem ipsum dolor sir amet.",
               pro: true,
               enterprise: true,
               enterprisePlus: true,
@@ -386,6 +412,14 @@ export default {
     },
   },
   methods: {
+    handleCollapsed(index, index2) {
+      console.log(index, index2);
+
+      const parent = this.datas[index];
+      const target = parent.datas[index2];
+
+      target.isCollapsed = !target.isCollapsed;
+    },
     isBoolean(val) {
       return typeof val === "boolean";
     },

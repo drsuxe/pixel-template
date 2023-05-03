@@ -1,5 +1,5 @@
 <template>
-  <mp-modal size="full" :is-open="isOpen" :on-close="handleClose" scroll-behavior="inside">
+  <mp-modal size="full" :is-open="isOpen" :on-close="handleClose" scroll-behavior="inside" hide-on-close>
     <mp-modal-content>
       <mp-modal-header>
         <mp-flex justify-content="space-between" align-items="center">
@@ -48,7 +48,7 @@
             />
 
             <mp-box bg="green.700" rounded="lg" color="white" px="3" ml="2" position="relative">
-              <mp-text>Hemat 10%</mp-text>
+              <mp-text color="white">Hemat 10%</mp-text>
 
               <mp-box position="absolute" left="-17px" top="-4px" bottom="0px">
                 <mp-icon name="caret-down" size="lg" color="green.700" transform="rotate(90deg)" />
@@ -62,7 +62,7 @@
                 <mp-table-cell
                   as="th"
                   scope="col"
-                  widht="25%"
+                  widht="360px"
                   :style="{ borderBottom: '0px', borderRightWidth: '1px', borderColor: 'var(--colors-gray-50)' }"
                 />
                 <mp-table-cell
@@ -77,10 +77,6 @@
                   }"
                   id="table-cell-pro"
                 >
-                  <mp-box v-if="isOpen" position="absolute" top="-24px" left="0px" bg="ice.100" rounded-top="lg" px="4" ml="-1px" :width="tableCellWidth + 2">
-                    <mp-text font-size="sm" font-weight="semibold" py="1">Paket anda saat ini </mp-text>
-                  </mp-box>
-
                   <mp-box p="2">
                     <mp-heading>Pro</mp-heading>
                     <mp-text color="gray.600" line-height="md">Cocok untuk bisnis apa? Gak mesti dari company size, lebih ke industri</mp-text>
@@ -95,7 +91,16 @@
                     <mp-button width="full" mt="132px" @click="stage = 2">Pilih paket</mp-button>
                   </mp-box>
                 </mp-table-cell>
-                <mp-table-cell as="th" scope="col" widht="25%" :style="{ borderBottom: '0px', borderRightWidth: '1px', borderColor: 'var(--colors-gray-50)' }">
+                <mp-table-cell
+                  as="th"
+                  scope="col"
+                  widht="25%"
+                  :style="{ borderBottom: '0px', borderRightWidth: '1px', borderColor: 'var(--colors-gray-50)', position: 'relative' }"
+                >
+                  <mp-box v-if="isOpen" position="absolute" top="-24px" left="0px" bg="ice.100" rounded-top="lg" px="4" ml="-1px" :width="tableCellWidth + 2">
+                    <mp-text font-size="sm" font-weight="semibold" py="1">Paket anda saat ini </mp-text>
+                  </mp-box>
+
                   <mp-box p="2">
                     <mp-heading>Enterprise</mp-heading>
                     <mp-text color="gray.600" line-height="md">Mendukung transaksi multinasional dan integrasi antar-aplikasi.</mp-text>
@@ -141,13 +146,17 @@
                   </mp-table-cell>
                 </mp-table-row>
                 <mp-table-row v-for="(data, index2) in value.datas" :key="`child-${index2}-${data.name}`">
-                  <mp-table-cell as="td" scope="row" border-color="gray.50" border-right="1px" border-right-color="gray.50">
-                    <mp-flex align-items="center">
+                  <mp-table-cell as="td" scope="row" border-color="gray.50" border-right="1px" border-right-color="gray.50" white-space="normal">
+                    <mp-flex justify="space-between" cursor="pointer" @click="handleCollapsed(index, index2)">
                       <mp-text font-weight="semibold"> {{ data.name }} </mp-text>
-                      <mp-tooltip :label="data.tooltip">
-                        <mp-icon name="info" size="sm" ml="2" />
-                      </mp-tooltip>
+                      <mp-icon name="chevrons-down" transition="transform 0.2s" :transform="data.isCollapsed ? 'rotate(-180deg)' : null" />
                     </mp-flex>
+
+                    <mp-collapse :isOpen="data.isCollapsed">
+                      <mp-text color="gray.600" line-height="md" mt="1">
+                        {{ data.description }}
+                      </mp-text>
+                    </mp-collapse>
                   </mp-table-cell>
                   <mp-table-cell as="td" scope="row" border-color="gray.50" border-right="1px" border-right-color="gray.50">
                     <mp-flex justify="center" align-items="center">
@@ -310,6 +319,7 @@ import {
   MpGridItem,
   MpAutocomplete,
   MpDivider,
+  MpCollapse,
 } from "@mekari/pixel";
 
 import TableKuotaTambahan from "./TableKuotaTambahan.vue";
@@ -345,6 +355,7 @@ export default {
     MpGridItem,
     MpAutocomplete,
     MpDivider,
+    MpCollapse,
 
     TableKuotaTambahan,
     TableFiturTambahan,
@@ -363,92 +374,105 @@ export default {
           category: "Fitur",
           datas: [
             {
+              isCollapsed: true,
               name: "Laporan keuangan lengkap",
-              tooltip: "Buat keputusan bisnis tepat dengan laporan keuangan dari arus kas hingga laba-rugi.",
+              description: "Buat keputusan bisnis tepat dengan laporan keuangan dari arus kas hingga laba-rugi.",
               pro: true,
               enterprise: true,
               enterprisePlus: true,
             },
             {
+              isCollapsed: false,
               name: "Histori penjualan & pembelian",
-              tooltip: "Catat semua transaksi secara online dan real-time untuk hindari rekonsiliasi manual.",
+              description: "Catat semua transaksi secara online dan real-time untuk hindari rekonsiliasi manual.",
               pro: true,
               enterprise: true,
               enterprisePlus: true,
             },
             {
+              isCollapsed: false,
               name: "Manajemen inventori & aset",
-              tooltip: "Kelola semua produk dalam satu dasbor yang terupdate otomatis saat terjadi transaksi.",
+              description: "Kelola semua produk dalam satu dasbor yang terupdate otomatis saat terjadi transaksi.",
               pro: true,
               enterprise: true,
               enterprisePlus: true,
             },
             {
+              isCollapsed: false,
               name: "Monitor pengeluaran",
-              tooltip: "Pantau pengeluaran dalam 30 hari terakhir termasuk yang belum dibayar di satu laporan real-time.",
+              description: "Pantau pengeluaran dalam 30 hari terakhir termasuk yang belum dibayar di satu laporan real-time.",
               pro: true,
               enterprise: true,
               enterprisePlus: true,
             },
             {
+              isCollapsed: false,
               name: "Monitor saldo kas & bank",
-              tooltip: "Integrasikan data mutasi bank yang dilengkapi dengan rekonsiliasi otomatis untuk kesesuaian data kas.",
+              description: "Pantau pengeluaran dalam 30 hari terakhir termasuk yang belum dibayar di satu laporan real-time.",
               pro: true,
               enterprise: true,
               enterprisePlus: true,
             },
             {
+              isCollapsed: false,
               name: "Template & reminder invoice",
-              tooltip: "Buat invoice hingga atur waktu penagihan secara otomatis dari satu dasbor.",
+              description: "Pantau pengeluaran dalam 30 hari terakhir termasuk yang belum dibayar di satu laporan real-time.",
               pro: true,
               enterprise: true,
               enterprisePlus: true,
             },
             {
+              isCollapsed: false,
               name: "Approval & otorisasi",
-              tooltip: "Pastikan transaksi dan aktivitas gudang melalui persetujuan manajer untuk hindari kesalahan.",
+              description: "Pantau pengeluaran dalam 30 hari terakhir termasuk yang belum dibayar di satu laporan real-time.",
               pro: false,
               enterprise: true,
               enterprisePlus: true,
             },
             {
+              isCollapsed: false,
               name: "Budgeting",
-              tooltip: "Buat rencana anggaran lebih baik dengan pantau pemasukan & pengeluaran dari satu dasbor.",
+              description: "Pantau pengeluaran dalam 30 hari terakhir termasuk yang belum dibayar di satu laporan real-time.",
               pro: false,
               enterprise: true,
               enterprisePlus: true,
             },
             {
+              isCollapsed: false,
               name: "Multi-currency",
-              tooltip: "Lakukan transaksi dengan beragam mata uang asing.",
+              description: "Pantau pengeluaran dalam 30 hari terakhir termasuk yang belum dibayar di satu laporan real-time.",
               pro: false,
               enterprise: true,
               enterprisePlus: true,
             },
             {
+              isCollapsed: false,
               name: "Join invoice",
-              tooltip: "Gabungkan semua invoice yang belum dibayar untuk memudahkan penagihan ke pelanggan Anda.",
+              description: "Pantau pengeluaran dalam 30 hari terakhir termasuk yang belum dibayar di satu laporan real-time.",
               pro: false,
               enterprise: false,
               enterprisePlus: true,
             },
             {
+              isCollapsed: false,
               name: "Pro forma invoice",
-              tooltip: "Buat faktur sementara untuk mempermudah proses transaksi dengan pelanggan Anda.",
+              description: "Pantau pengeluaran dalam 30 hari terakhir termasuk yang belum dibayar di satu laporan real-time.",
               pro: false,
               enterprise: false,
               enterprisePlus: true,
             },
             {
+              isCollapsed: false,
               name: "Profitability report",
-              tooltip: "Ketahui peforma penjualan setiap produk untuk pengambilan keputusan bisnis tepat.",
+              description: "Pantau pengeluaran dalam 30 hari terakhir termasuk yang belum dibayar di satu laporan real-time.",
               pro: false,
               enterprise: false,
               enterprisePlus: true,
             },
             {
+              isCollapsed: false,
               name: "Multi-product pricing",
-              tooltip: "Buat harga khusus sesuai kebutuhan yang otomatis diterapkan ketika terjadi transaksi.",
+              description: "Pantau pengeluaran dalam 30 hari terakhir termasuk yang belum dibayar di satu laporan real-time.",
               pro: false,
               enterprise: false,
               enterprisePlus: true,
@@ -460,29 +484,33 @@ export default {
           category: "Integrasi",
           datas: [
             {
+              isCollapsed: false,
               name: "Mekari Pay",
-              tooltip: "Terima dan kirim pembayaran transaksi bisnis dari berbagai platform.",
+              description: "Lorem ipsum dolor sir amet.",
               pro: true,
               enterprise: true,
               enterprisePlus: true,
             },
             {
+              isCollapsed: false,
               name: "Mekari Klikpajak",
-              tooltip: "Lapor dan bayar pajak secara online dengan aplikasi mitra resmi DJP.",
+              description: "Lorem ipsum dolor sir amet.",
               pro: true,
               enterprise: true,
               enterprisePlus: true,
             },
             {
+              isCollapsed: false,
               name: "Mekari Capital",
-              tooltip: "Ajukan pembiayaan instan untuk kebutuhan bisnis.",
+              description: "Lorem ipsum dolor sir amet.",
               pro: true,
               enterprise: true,
               enterprisePlus: true,
             },
             {
+              isCollapsed: false,
               name: "Aplikasi POS & e-Commerce",
-              tooltip: "Hubungkan ke Moka POS, Oktopus POS, iSeller, Pawoon, Dealpos, Olsera, Hellobill, dll., serta mengimpor transaksi dari web e-Commerce.",
+              description: "Lorem ipsum dolor sir amet.",
               pro: true,
               enterprise: true,
               enterprisePlus: true,
@@ -495,22 +523,25 @@ export default {
           label: "Anda bisa menambah kuota setelah pilih paket",
           datas: [
             {
+              isCollapsed: false,
               name: "Kuota pengguna",
-              tooltip: "Tingkatkan produktivitas tim dengan memberikan akses ke masing-masing karyawan Anda.",
+              description: "Lorem ipsum dolor sir amet.",
               pro: 3,
               enterprise: 5,
               enterprisePlus: 7,
             },
             {
+              isCollapsed: false,
               name: "Multi-gudang & lokasi produk",
-              tooltip: "Kelola jumlah produk dan transfer dari berbagai gudang langsung dari satu dasbor online.",
+              description: "Lorem ipsum dolor sir amet.",
               pro: 2,
               enterprise: 5,
               enterprisePlus: 10,
             },
             {
+              isCollapsed: false,
               name: "Faktur penjualan per bulan",
-              tooltip: "Lorem ipsum dolor sir amet.",
+              description: "Lorem ipsum dolor sir amet.",
               pro: "1.500",
               enterprise: "5.000",
               enterprisePlus: "10.000",
@@ -522,15 +553,17 @@ export default {
           category: "Customer support",
           datas: [
             {
+              isCollapsed: false,
               name: "Gratis training & implementasi",
-              tooltip: "Ikuti sesi persiapan dan pengenalan untuk mengoperasikan Jurnal.",
+              description: "Lorem ipsum dolor sir amet.",
               pro: true,
               enterprise: true,
               enterprisePlus: true,
             },
             {
+              isCollapsed: false,
               name: "Layanan pelanggan via chat",
-              tooltip: "Konsultasikan kendala atau kebutuhan Anda seputar Jurnal.",
+              description: "Lorem ipsum dolor sir amet.",
               pro: true,
               enterprise: true,
               enterprisePlus: true,
@@ -563,6 +596,14 @@ export default {
     },
   },
   methods: {
+    handleCollapsed(index, index2) {
+      console.log(index, index2);
+
+      const parent = this.datas[index];
+      const target = parent.datas[index2];
+
+      target.isCollapsed = !target.isCollapsed;
+    },
     isBoolean(val) {
       return typeof val === "boolean";
     },

@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@emotion/css": "^11.9.0",
-    "@mekari/pixel": "^0.12.3",
+    "@mekari/pixel": "^0.12.9",
     "core-js": "^3.8.3",
     "portal-vue": "2.1.7",
     "vue": "^2.6.14",
