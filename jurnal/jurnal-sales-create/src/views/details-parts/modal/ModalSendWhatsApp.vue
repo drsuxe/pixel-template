@@ -1,9 +1,9 @@
 <template>
   <mp-box>
-    <mp-modal size="lg" :isOpen="isOpen">
+    <mp-modal size="lg" :isOpen="isOpen" :on-close="handleClose" :close-on-esc="true" :close-on-overlay-click="true">
       <mp-modal-content>
         <mp-modal-header> Kirim via WhatsApp </mp-modal-header>
-        <mp-modal-close-button @click="$emit('handleClose')" />
+        <mp-modal-close-button @click="handleClose" />
         <mp-modal-body>
           <mp-grid gap="4" templateColumns="repeat(2, 1fr)">
             <mp-grid-item>
@@ -40,7 +40,7 @@
 
         <mp-modal-footer>
           <mp-button-group>
-            <mp-button variant="ghost"> Batalkan </mp-button>
+            <mp-button variant="ghost" @click="handleClose"> Batalkan </mp-button>
             <mp-button> Kirim </mp-button>
           </mp-button-group>
         </mp-modal-footer>
@@ -98,6 +98,11 @@ export default {
   },
   props: {
     isOpen: { type: [Boolean] },
+  },
+  methods: {
+    handleClose() {
+      this.$emit("handleClose");
+    },
   },
 };
 </script>

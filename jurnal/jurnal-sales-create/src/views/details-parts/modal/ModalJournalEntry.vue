@@ -2,7 +2,7 @@
   <div>
     <mp-text is-link @click.native="isOpen = true">Lihat jurnal entry</mp-text>
 
-    <mp-modal size="xl" :isOpen="isOpen">
+    <mp-modal size="xl" :is-open="isOpen" :on-close="() => isOpen = false" :close-on-esc="true" :close-on-overlay-click="true">
       <mp-modal-content>
         <mp-modal-header>Laporan jurnal SI - MKR/01/134/123</mp-modal-header>
         <mp-modal-close-button @click="isOpen = false" />
@@ -52,9 +52,7 @@
               </mp-table-row>
 
               <mp-table-row>
-                <mp-table-cell as="td" scope="row" vertical-align="top" border-bottom-color="dark">
-                  Total
-                </mp-table-cell>
+                <mp-table-cell as="td" scope="row" vertical-align="top" border-bottom-color="dark"> Total </mp-table-cell>
                 <mp-table-cell as="td" scope="row" vertical-align="top" border-bottom-color="dark">
                   <mp-text text-align="right"> Rp110.000.000,00 </mp-text>
                 </mp-table-cell>
@@ -113,6 +111,6 @@ export default {
     return {
       isOpen: false,
     };
-  },
+  }
 };
 </script>

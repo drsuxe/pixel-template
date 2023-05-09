@@ -1,9 +1,9 @@
 <template>
   <mp-box>
-    <mp-modal size="2xl" :isOpen="isOpen">
+    <mp-modal size="xl" :isOpen="isOpen" :on-close="handleClose" :close-on-esc="true" :close-on-overlay-click="true">
       <mp-modal-content>
-        <mp-modal-header>Preview permintaan pembelian</mp-modal-header>
-        <mp-modal-close-button @click="$emit('handleClose')" />
+        <mp-modal-header>Audit SI-10045</mp-modal-header>
+        <mp-modal-close-button @click="handleClose" />
         <mp-modal-body>
           <mp-table>
             <mp-table-head>
@@ -33,7 +33,7 @@
           </mp-table>
         </mp-modal-body>
         <mp-modal-footer>
-          <mp-button @click="$emit('handleClose')">Tutup</mp-button>
+          <mp-button @click="handleClose">Tutup</mp-button>
         </mp-modal-footer>
       </mp-modal-content>
       <mp-modal-overlay />
@@ -78,6 +78,11 @@ export default {
   },
   props: {
     isOpen: { type: [Boolean] },
+  },
+  methods: {
+    handleClose() {
+      this.$emit('handleClose')
+    }
   },
 };
 </script>

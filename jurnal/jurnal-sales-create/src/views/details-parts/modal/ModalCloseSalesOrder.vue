@@ -1,9 +1,9 @@
 <template>
   <mp-box>
-    <mp-modal :isOpen="isOpen" size="xl">
+    <mp-modal :isOpen="isOpen" size="xl" :on-close="handleClose" :close-on-esc="true" :close-on-overlay-click="true">
       <mp-modal-content>
         <mp-modal-header> Tutup Pemesanan Penjualan SO - MKR/01/134/123? </mp-modal-header>
-        <mp-modal-close-button @click="$emit('handleClose')" />
+        <mp-modal-close-button @click="handleClose" />
         <mp-modal-body>
           <mp-modal-body>
             <mp-table>
@@ -20,9 +20,7 @@
                   <mp-table-cell as="td" scope="row" vertical-align="top">Macbook Pro 2021 16”</mp-table-cell>
                   <mp-table-cell as="td" scope="row" vertical-align="top">4</mp-table-cell>
                   <mp-table-cell as="td" scope="row" vertical-align="top">3</mp-table-cell>
-                  <mp-table-cell as="td" scope="row" vertical-align="top"
-                    >1</mp-table-cell
-                  >
+                  <mp-table-cell as="td" scope="row" vertical-align="top">1</mp-table-cell>
                 </mp-table-row>
                 <mp-table-row>
                   <mp-table-cell as="td" scope="row" vertical-align="top">14/02/2022, 12:44 PM</mp-table-cell>
@@ -33,15 +31,13 @@
               </mp-table-body>
             </mp-table>
 
-            <mp-text mt="4">
-              Setelah ditutup, Anda tidak dapat membuat faktur dari pemesanan ini.
-            </mp-text>
+            <mp-text mt="4"> Setelah ditutup, Anda tidak dapat membuat faktur dari pemesanan ini. </mp-text>
           </mp-modal-body>
         </mp-modal-body>
 
         <mp-modal-footer>
-          <mp-button variant="ghost" mr="3" @click="$emit('handleClose')">Batalkan</mp-button>
-          <mp-button @click="handleSubmit">Tutup pemesanan</mp-button>
+          <mp-button variant="ghost" mr="3" @click="handleClose">Batalkan</mp-button>
+          <mp-button @click="handleSubmit" variant-color="red">Tutup pemesanan</mp-button>
         </mp-modal-footer>
       </mp-modal-content>
 
@@ -66,7 +62,7 @@ import {
   MpTableBody,
   MpTableRow,
   MpTableCell,
-  MpText
+  MpText,
 } from "@mekari/pixel";
 export default {
   name: "ModalCloseSalesOrder",
@@ -85,7 +81,7 @@ export default {
     MpTableBody,
     MpTableRow,
     MpTableCell,
-    MpText
+    MpText,
   },
   props: {
     isOpen: { type: [Boolean] },
@@ -94,9 +90,12 @@ export default {
     handleSubmit() {
       this.$toast({
         variant: "error",
-        title: "Pemesanan ini mempunyai transaksi pembayaran. Anda tidak diperkenankan menyelesaikan pemesanan secara langsung",
+        title: "Pemesanan ini mempunyai transaksi pembayaran sebelumnya. Anda tidak dapat menutup pemesanan secara langsung",
         position: "top",
       });
+    },
+    handleClose() {
+      this.$emit("handleClose");
     },
   },
 };

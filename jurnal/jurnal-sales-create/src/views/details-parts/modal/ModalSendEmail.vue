@@ -1,9 +1,9 @@
 <template>
   <mp-box>
-    <mp-modal size="xl" :isOpen="isOpen" scroll-behavior="auto">
+    <mp-modal size="xl" :isOpen="isOpen" scroll-behavior="auto" :on-close="handleClose" :close-on-esc="true" :close-on-overlay-click="true">
       <mp-modal-content>
         <mp-modal-header> Kirim via WhatsApp </mp-modal-header>
-        <mp-modal-close-button @click="$emit('handleClose')" />
+        <mp-modal-close-button @click="handleClose" />
         <mp-modal-body>
           <mp-grid gap="6" templateColumns="repeat(2, 1fr)">
             <mp-grid-item>
@@ -97,7 +97,7 @@
             </mp-tooltip>
           </mp-box>
           <mp-button-group>
-            <mp-button variant="ghost" @click="$emit('handleClose')"> Batalkan </mp-button>
+            <mp-button variant="ghost" @click="handleClose"> Batalkan </mp-button>
             <mp-button @click="handleSubmit"> Kirim </mp-button>
           </mp-button-group>
         </mp-modal-footer>
@@ -173,6 +173,9 @@ export default {
         title: "Email berhasil dikirim",
         position: "top",
       });
+    },
+        handleClose() {
+      this.$emit("handleClose");
     },
   },
 };

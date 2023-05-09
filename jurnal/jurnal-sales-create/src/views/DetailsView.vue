@@ -298,7 +298,7 @@
                   </mp-popover-trigger>
                   <mp-popover-content max-width="168px" bg="white" rounded="md" shadow="lg" border-width="1px" border-color="gray.400">
                     <mp-popover-list>
-                      <mp-popover-list-item>Faktur</mp-popover-list-item>
+                      <mp-popover-list-item @click="isModalPrintInvoiceDotMatrixOpen = true">Faktur</mp-popover-list-item>
                       <mp-popover-list-item>Receipt</mp-popover-list-item>
                       <mp-popover-list-item>Surat jalan</mp-popover-list-item>
                     </mp-popover-list>
@@ -336,7 +336,6 @@
           <!-- Modal -->
           <ModalAudit :is-open="isModalAuditOpen" @handleClose="isModalAuditOpen = false" />
           <ModalDeleteThisRequest :is-open="isModalDeleteThisRequestOpen" @handleClose="isModalDeleteThisRequestOpen = false" />
-          <ModalRejectThisRequest :is-open="isModalRejectThisRequestOpen" @handleClose="isModalRejectThisRequestOpen = false" />
           <ModalPrintPdf :is-open="isModalPrintPdfOpen" @handleClose="isModalPrintPdfOpen = false" />
           <ModalAttachmentPreview
             file-name="AemZaht.png"
@@ -353,6 +352,7 @@
           <ModalCreditMemo :is-open="isModalCreditMemoOpen" @handleClose="isModalCreditMemoOpen = false" />
           <ModalEmailConfirmation :is-open="isModalEmailConfirmationOpen" @handleClose="isModalEmailConfirmationOpen = false" />
           <ModalCloseSalesOrder :is-open="isModalCloseSalesOrderOpen" @handleClose="isModalCloseSalesOrderOpen = false" />
+          <ModalPrintInvoiceDotMatrix :is-open="isModalPrintInvoiceDotMatrixOpen" @handleClose="isModalPrintInvoiceDotMatrixOpen = false" />
         </mp-box>
       </mp-box>
     </mp-flex>
@@ -398,7 +398,6 @@ import {
   ModalSendWhatsApp,
   ModalSendEmail,
   ModalDeleteThisRequest,
-  ModalRejectThisRequest,
   ModalPrintPdf,
   ModalAudit,
   ModalAttachmentPreview,
@@ -408,6 +407,7 @@ import {
   ModalCreditMemo,
   ModalEmailConfirmation,
   ModalCloseSalesOrder,
+  ModalPrintInvoiceDotMatrix
 } from "./details-parts";
 
 export default {
@@ -446,7 +446,6 @@ export default {
     TableDelivery,
     ModalAudit,
     ModalDeleteThisRequest,
-    ModalRejectThisRequest,
     ModalPrintPdf,
     ModalAttachmentPreview,
     ModalSendWhatsApp,
@@ -460,6 +459,7 @@ export default {
     DisplayContent,
     ModalJournalEntry,
     PopoverTag,
+    ModalPrintInvoiceDotMatrix
   },
   data() {
     return {
@@ -468,7 +468,6 @@ export default {
       //
       isModalAuditOpen: false,
       isModalDeleteThisRequestOpen: false,
-      isModalRejectThisRequestOpen: false,
       isModalPrintPdfOpen: false,
       isModalAttachmentPreviewOpen: false,
       isModalSendWhatsAppOpen: false,
@@ -476,9 +475,10 @@ export default {
       isModalGetJournalLinkOpen: false,
       isModalDuplicateTransactionOpen: false,
       isModalRecurringTransactionOpen: false,
-      isModalCreditMemoOpen: true, // Flag from backend
-      isModalEmailConfirmationOpen: false,
+      isModalCreditMemoOpen: false, // Flag from backend
+      isModalEmailConfirmationOpen: true,
       isModalCloseSalesOrderOpen: false,
+      isModalPrintInvoiceDotMatrixOpen: false
     };
   },
   methods: {

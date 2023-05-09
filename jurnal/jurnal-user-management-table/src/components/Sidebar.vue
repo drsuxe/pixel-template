@@ -121,7 +121,7 @@ export default {
               name: "Sales",
               icon: "sales",
               link: "/",
-              isActive: true,
+              isActive: false,
             },
             {
               id: 7,
@@ -217,7 +217,7 @@ export default {
               name: "Settings",
               icon: "settings",
               link: "/",
-              isActive: false,
+              isActive: true,
             },
           ],
         },

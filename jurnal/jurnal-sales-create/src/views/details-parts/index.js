@@ -7,7 +7,6 @@ export { default as TableDelivery } from './table/TableDelivery.vue'
 export { default as ModalSendWhatsApp } from './modal/ModalSendWhatsApp.vue'
 export { default as ModalSendEmail } from './modal/ModalSendEmail.vue'
 export { default as ModalDeleteThisRequest } from './modal/ModalDeleteThisRequest.vue'
-export { default as ModalRejectThisRequest } from './modal/ModalRejectThisRequest.vue'
 export { default as ModalPrintPdf } from './modal/ModalPrintPdf.vue'
 export { default as ModalAudit } from './modal/ModalAudit.vue'
 export { default as ModalAttachmentPreview } from './modal/ModalAttachmentPreview.vue'
@@ -18,6 +17,7 @@ export { default as ModalRecurringTransaction } from './modal/ModalRecurringTran
 export { default as ModalEmailConfirmation } from './modal/ModalEmailConfirmation.vue'
 export { default as ModalCloseSalesOrder } from './modal/ModalCloseSalesOrder.vue'
 export { default as ModalJournalEntry } from './modal/ModalJournalEntry.vue'
+export { default as ModalPrintInvoiceDotMatrix } from './modal/ModalPrintInvoiceDotMatrix.vue'
 
 // Popover
 export { default as PopoverButtonApprovalLog } from './popover/ButtonApprovalLog.vue'

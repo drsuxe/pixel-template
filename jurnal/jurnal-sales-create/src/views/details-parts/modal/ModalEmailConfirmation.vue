@@ -1,9 +1,9 @@
 <template>
   <mp-box>
-    <mp-modal :isOpen="isOpen">
+    <mp-modal :isOpen="isOpen" :on-close="handleClose" :close-on-esc="true" :close-on-overlay-click="true">
       <mp-modal-content>
         <mp-modal-header> Konfirmasi email </mp-modal-header>
-        <mp-modal-close-button @click="$emit('handleClose')" />
+        <mp-modal-close-button @click="handleClose" />
         <mp-modal-body>
           <mp-text>
             Kami telah mengirimkan email konfirmasi ke
@@ -12,11 +12,11 @@
           </mp-text>
         </mp-modal-body>
 
-        <mp-modal-footer justify="space-between">
+        <mp-modal-footer justify-content="space-between" align-items="center">
           <mp-text is-link> Sudah konfirmasi? </mp-text>
 
           <mp-button-group>
-            <mp-button variant="ghost" mr="3" @click="$emit('handleClose')">Ganti email</mp-button>
+            <mp-button variant="ghost" mr="3" @click="handleClose">Ganti email</mp-button>
             <mp-button @click="handleSubmit">Kirim ulang</mp-button>
           </mp-button-group>
         </mp-modal-footer>
@@ -66,6 +66,9 @@ export default {
         title: "Konfirmasi email berhasil dikirim",
         position: "top",
       });
+    },
+    handleClose() {
+      this.$emit("handleClose");
     },
   },
 };

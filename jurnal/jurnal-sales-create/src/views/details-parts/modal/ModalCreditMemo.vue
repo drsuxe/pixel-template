@@ -1,9 +1,9 @@
 <template>
   <mp-box>
-    <mp-modal :isOpen="isOpen">
+    <mp-modal :isOpen="isOpen" :on-close="handleClose" :close-on-esc="true" :close-on-overlay-click="true">
       <mp-modal-content>
         <mp-modal-header> Terapkan kredit memo? </mp-modal-header>
-        <mp-modal-close-button @click="$emit('handleClose')" />
+        <mp-modal-close-button @click="handleClose" />
         <mp-modal-body>
           <mp-text
             >Cek ulang ringkasan faktur penjualan sebelum menerapkan kredit memo
@@ -28,7 +28,7 @@
         </mp-modal-body>
 
         <mp-modal-footer>
-          <mp-button variant="ghost" mr="3" @click="$emit('handleClose')">Batalkan</mp-button>
+          <mp-button variant="ghost" mr="3" @click="handleClose">Batalkan</mp-button>
           <mp-button>Terapkan</mp-button>
         </mp-modal-footer>
       </mp-modal-content>
@@ -77,6 +77,9 @@ export default {
         title: "Copied",
         position: "top",
       });
+    },
+        handleClose() {
+      this.$emit("handleClose");
     },
   },
 };

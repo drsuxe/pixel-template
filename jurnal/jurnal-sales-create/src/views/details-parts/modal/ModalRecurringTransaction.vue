@@ -1,9 +1,9 @@
 <template>
   <mp-box>
-    <mp-drawer :isOpen="isOpen" size="md">
+    <mp-drawer :isOpen="isOpen" size="md" :on-close="handleClose" :close-on-esc="true" :close-on-overlay-click="true">
       <mp-drawer-content>
         <mp-drawer-header> Atur transaksi berulang </mp-drawer-header>
-        <mp-drawer-close-button @click="$emit('handleClose')" />
+        <mp-drawer-close-button @click="handleClose" />
         <mp-drawer-body>
           <mp-grid gap="4">
             <mp-form-control>
@@ -71,7 +71,7 @@
         </mp-drawer-body>
 
         <mp-drawer-footer>
-          <mp-button variant="ghost" mr="3" @click="$emit('handleClose')">Batalkan</mp-button>
+          <mp-button variant="ghost" mr="3" @click="handleClose">Batalkan</mp-button>
           <mp-button @click="handleSubmit">Terapkan</mp-button>
         </mp-drawer-footer>
       </mp-drawer-content>
@@ -146,6 +146,9 @@ export default {
         position: "top",
       });
 
+      this.$emit("handleClose");
+    },
+    handleClose() {
       this.$emit("handleClose");
     },
   },

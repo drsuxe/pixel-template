@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootswatch@5.2/dist/materia/bootstrap.min.css"
+            crossorigin="anonymous"
+        />
+
+        <title>Yarn Audit Report</title>
+        <meta name="description" content="2 known vulnerabilities found." />
+
+        <style>
+            label {
+                position: relative;
+
+                display: block;
+                padding-left: 30px;
+                margin-left: -10px;
+
+                cursor: pointer;
+            }
+
+            label:before {
+                position: absolute;
+                top: 50%;
+                left: 10px;
+
+                width: 0;
+                height: 0;
+
+                border-left: 8px solid currentColor;
+                border-top: 8px solid transparent;
+                border-bottom: 8px solid transparent;
+                margin-top: -8px;
+
+                content: '';
+            }
+
+            .card-text p:last-child {
+                margin-bottom: 0;
+            }
+
+            input[type='checkbox'] {
+                display: none;
+            }
+
+            input[type='checkbox']:checked + h3 label:before {
+                border-left: 8px solid transparent;
+                border-top: 8px solid black;
+                border-right: 8px solid transparent;
+
+                margin-left: -4px;
+                margin-top: -4px;
+            }
+
+            .collapsible-wrapper {
+                max-height: 0;
+                padding: 0;
+                padding-left: 30px;
+                overflow-y: auto;
+
+                transition: max-height 0.15s ease;
+            }
+
+            input[type='checkbox']:checked + h3 + .collapsible-wrapper {
+                max-height: 500px;
+                padding: var(--bs-alert-padding-y) var(--bs-alert-padding-x);
+            }
+
+            h1,
+            .h1 {
+                font-size: calc(2.03125rem * 20 / 16);
+            }
+            h2,
+            .h2 {
+                font-size: calc(1.625rem * 20 / 16);
+            }
+            h3,
+            .h3 {
+                font-size: calc(1.421875rem * 20 / 16);
+            }
+            h4,
+            .h4 {
+                font-size: calc(1.21875rem * 20 / 16);
+            }
+            h5,
+            .h5 {
+                font-size: calc(1.015625rem * 20 / 16);
+            }
+            h6,
+            .h6 {
+                font-size: calc(0.8125rem * 20 / 16);
+            }
+            @media (min-width: 1200px) {
+                h1,
+                .h1 {
+                    font-size: calc(2.03125rem * 20 / 16);
+                }
+                h2,
+                .h2 {
+                    font-size: calc(1.625rem * 20 / 16);
+                }
+                h3,
+                .h3 {
+                    font-size: calc(1.421875rem * 20 / 16);
+                }
+                h4,
+                .h4 {
+                    font-size: calc(1.21875rem * 20 / 16);
+                }
+                h5,
+                .h5 {
+                    font-size: calc(1.015625rem * 20 / 16);
+                }
+                h6,
+                .h6 {
+                    font-size: calc(0.8125rem * 20 / 16);
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="row my-3">
+                <div class="col-md text-center">
+                    <h1 class="h2">Yarn Audit Report</h1>
+
+                    <h3 class="h5">
+                        1 unique from 2 known
+                        vulnerabilities | 217 dependencies
+                    </h3>
+                </div>
+            </div>
+            <div class="row">
+                
+                <div class="col-md-12">
+                    <div class="card mb-3">
+                        <div class="card-body p-4">
+                            <h1 class="card-title h3 d-flex align-items-center gap-2">
+                                <span class="badge text-capitalize bg-secondary">
+                                    moderate
+                                </span>
+                                Cross-site Scripting in quill
+                            </h1>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li>
+                                            Module:
+                                            <a
+                                                href="https://npmjs.com/package/quill"
+                                                target="_blank"
+                                            >
+                                                quill
+                                            </a>
+                                        </li>
+                                        
+                                        <li>Installed version: 1.3.7</li>
+                                        
+                                        <li>Published: 5/10/2021, 10:38:12 PM</li>
+                                         
+                                        <li>CWE-79</li>
+                                         
+                                        <li>CVE-2021-3163</li>
+                                        
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li>Vulnerable: &lt;=1.3.7</li>
+                                        <li>Patched: &lt;0.0.0</li>
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                            <h3>Overview</h3>
+                            <div class="card-text alert alert-secondary overflow-auto mb-3" style="max-height: 205px">
+                                <p>A vulnerability in the HTML editor of Slab Quill allows an attacker to execute arbitrary JavaScript by storing an XSS payload (a crafted <code>onloadstart</code> attribute of an IMG element) in a text field. No patch exists and no further releases are planned.</p>
+<p>This CVE is disputed. Researchers have claimed that this issue is not within the product itself, but is intended behavior in a web browser. More information can be found <a href="https://github.com/quilljs/quill/issues/3364">here</a>.</p>
+
+                            </div>
+
+                            
+                            <h3>Remediation</h3>
+                            <div class="card-text mb-3"><p>None</p>
+</div>
+                             
+                            <input id="vulnerability-references-0" type="checkbox" />
+                            <h3>
+                                <label for="vulnerability-references-0">References </label>
+                            </h3>
+                            <div class="card-text alert alert-secondary collapsible-wrapper">
+                                <ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-3163">https://nvd.nist.gov/vuln/detail/CVE-2021-3163</a></li>
+<li><a href="https://github.com/quilljs/quill/issues/3273">https://github.com/quilljs/quill/issues/3273</a></li>
+<li><a href="https://github.com/quilljs/quill/issues/3359">https://github.com/quilljs/quill/issues/3359</a></li>
+<li><a href="https://burninatorsec.blogspot.com/2021/04/cve-2021-3163-xss-slab-quill-js.html">https://burninatorsec.blogspot.com/2021/04/cve-2021-3163-xss-slab-quill-js.html</a></li>
+<li><a href="https://quilljs.com">https://quilljs.com</a></li>
+<li><a href="https://github.com/quilljs/quill/issues/3364">https://github.com/quilljs/quill/issues/3364</a></li>
+<li><a href="https://github.com/advisories/GHSA-4943-9vgg-gr5r">https://github.com/advisories/GHSA-4943-9vgg-gr5r</a></li>
+</ul>
+
+                            </div>
+                             
+                            <input id="vulnerability-reasons-0" type="checkbox" />
+                            <h3>
+                                <label for="vulnerability-reasons-0"
+                                    >Reasons this module exists</label
+                                >
+                            </h3>
+                            <div class="card-text alert alert-secondary collapsible-wrapper">
+                                
+                                <div class="card-text">
+                                    <code class="text-body">jurnal-chart-of-account&gt;@mekari/pixel&gt;@mekari/pixel-rich-text-editor&gt;quill</code>
+                                </div>
+                                
+                                <div class="card-text">
+                                    <code class="text-body">jurnal-chart-of-account&gt;@mekari/pixel&gt;@mekari/pixel-rich-text-editor&gt;quill-image-resize-vue&gt;quill</code>
+                                </div>
+                                
+                            </div>
+                            
+
+                            <div class="d-flex justify-content-end">
+                                <a
+                                    href="https://github.com/advisories/GHSA-4943-9vgg-gr5r"
+                                    class="btn btn-md btn-primary"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    More about this vulnerability
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 
+
+                <h6 class="col-md-12 mb-3 pb=3 text-right">Report generated at 5/5/2023, 10:23:14 AM</h6>
+            </div>
+        </div>
+    </body>
+</html>

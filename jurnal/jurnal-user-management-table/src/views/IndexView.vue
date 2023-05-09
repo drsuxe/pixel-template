@@ -15,21 +15,29 @@
       >
         <SubHeader>
           <mp-flex justify="space-between" align-items="center" padding-x="6" padding-y="1.063rem">
-            <mp-box>
-              <mp-text is-link text-decoration="underline">Penjualan</mp-text>
-              <mp-flex align-items="center">
-                <mp-heading as="h1" font-size="2xl" font-weight="semibold" mr="2"> Penagihan Penjualan SI - MKR/01/134/123 </mp-heading>
-                <mp-badge variant-color="orange">Terbayar sebagian</mp-badge>
-              </mp-flex>
-            </mp-box>
+            <mp-heading as="h1" font-size="2xl" font-weight="semibold" mr="2"> Pengaturan pengguna </mp-heading>
 
-            <mp-flex align-items="center" gap="2">
-            </mp-flex>
+            <mp-button-group>
+              <mp-button variant="outline" @click="isDrawerCustomRoleOpen = true">Tambah peran custom</mp-button>
+              <mp-button>Undang pengguna</mp-button>
+            </mp-button-group>
           </mp-flex>
+
+          <mp-box px="6" mb="-6">
+            <mp-tabs>
+              <mp-tab-list border-bottom="0px">
+                <mp-tab>Daftar pengguna</mp-tab>
+                <mp-tab
+                  >Peran custom
+                  <mp-badge ml="2"> Baru </mp-badge>
+                </mp-tab>
+              </mp-tab-list>
+            </mp-tabs>
+          </mp-box>
         </SubHeader>
 
         <mp-box min-height="calc(100vh - 132px)" border-top-width="1px" border-left-width="1px" rounded-top-left="md" background-color="white" padding="6">
-          
+          <DrawerCustomRole :is-open="isDrawerCustomRoleOpen" @close="isDrawerCustomRoleOpen = false" />
         </mp-box>
       </mp-box>
     </mp-flex>
@@ -37,34 +45,34 @@
 </template>
 
 <script>
-import {
-  MpBox,
-  MpFlex,
-  MpText,
-  MpHeading,
-  MpBadge,
-} from "@mekari/pixel";
+import { MpBox, MpFlex, MpHeading, MpButtonGroup, MpButton, MpTabs, MpTab, MpTabList, MpBadge } from "@mekari/pixel";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import SubHeader from "../components/SubHeader";
+import DrawerCustomRole from "./DrawerCustomRole.vue";
 
 export default {
   name: "LayoutDefault",
   components: {
     MpBox,
     MpFlex,
-    MpText,
     MpHeading,
+    MpButtonGroup,
+    MpButton,
+    MpTabs,
+    MpTab,
+    MpTabList,
     MpBadge,
 
     //
     Header,
     Sidebar,
     SubHeader,
+    DrawerCustomRole,
   },
   data() {
     return {
-      
+      isDrawerCustomRoleOpen: true,
     };
   },
 };
