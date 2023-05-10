@@ -23,6 +23,7 @@ export { default as ModalPrintInvoiceDotMatrix } from './modal/ModalPrintInvoice
 export { default as PopoverButtonApprovalLog } from './popover/ButtonApprovalLog.vue'
 export { default as PopoverButtonComment } from './popover/ButtonComment.vue'
 export { default as PopoverTag } from './popover/PopoverTag.vue'
+export { default as PopoverButtonReturned } from './popover/PopoverButtonReturned.vue'
 
 // Others
 export { default as DisplayContent } from './DisplayContent.vue'

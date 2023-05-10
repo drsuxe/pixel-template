@@ -12,10 +12,10 @@
       <mp-button variant="outline">Setujui</mp-button>
       <PopoverButtonApprovalLog />
       <PopoverButtonComment />
-      <mp-tooltip label="Sebelumnya">
+      <mp-tooltip label="Sebelumnya" position="top" use-portal>
         <mp-button-icon name="chevrons-left" />
       </mp-tooltip>
-      <mp-tooltip label="Selanjutnya">
+      <mp-tooltip label="Selanjutnya" position="top" use-portal>
         <mp-button-icon name="chevrons-right" />
       </mp-tooltip>
     </mp-flex>

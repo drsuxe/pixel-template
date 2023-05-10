@@ -2,7 +2,7 @@
   <mp-popover>
     <mp-popover-trigger>
       <mp-box>
-        <mp-tooltip label="Log persetujuan">
+        <mp-tooltip label="Log persetujuan" position="top" use-portal>
           <mp-button-icon name="time" />
         </mp-tooltip>
       </mp-box>

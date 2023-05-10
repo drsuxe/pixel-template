@@ -8,10 +8,10 @@
           <mp-table>
             <mp-table-head>
               <mp-table-row>
-                <mp-table-cell as="th" scope="col" width="35px">Tanggal</mp-table-cell>
-                <mp-table-cell as="th" scope="col" width="25px">Tindakan</mp-table-cell>
-                <mp-table-cell as="th" scope="col" width="25px">Pengguna</mp-table-cell>
-                <mp-table-cell as="th" scope="col" width="100px">Detail</mp-table-cell>
+                <mp-table-cell as="th" scope="col" width="219px">Tanggal</mp-table-cell>
+                <mp-table-cell as="th" scope="col" width="125px">Tindakan</mp-table-cell>
+                <mp-table-cell as="th" scope="col" width="219px">Pengguna</mp-table-cell>
+                <mp-table-cell as="th" scope="col" width="325px">Detail</mp-table-cell>
               </mp-table-row>
             </mp-table-head>
             <mp-table-body>
@@ -19,9 +19,13 @@
                 <mp-table-cell as="td" scope="row" vertical-align="top">15/02/2022, 12:44 PM</mp-table-cell>
                 <mp-table-cell as="td" scope="row" vertical-align="top">Update</mp-table-cell>
                 <mp-table-cell as="td" scope="row" vertical-align="top">Jaka Permadi</mp-table-cell>
-                <mp-table-cell as="td" scope="row" vertical-align="top"
-                  >Transaksi tidak seusai dengan aturan persetujuan manapun, status transaksi sekarangdisetujui</mp-table-cell
-                >
+                <mp-table-cell as="td" scope="row" vertical-align="top">
+                  <mp-box width="300px">
+                    <TextElipsisCollapsible id="detail-1" :line-clamp="2">
+                      Transaksi tidak seusai dengan aturan persetujuan manapun, status transaksi sekarangdisetujui
+                    </TextElipsisCollapsible>
+                  </mp-box>
+                </mp-table-cell>
               </mp-table-row>
               <mp-table-row>
                 <mp-table-cell as="td" scope="row" vertical-align="top">14/02/2022, 12:44 PM</mp-table-cell>
@@ -58,6 +62,8 @@ import {
   MpTableRow,
   MpTableCell,
 } from "@mekari/pixel";
+import { TextElipsisCollapsible } from "../TextElipsisCollapsible";
+
 export default {
   name: "ModalAudit",
   components: {
@@ -75,14 +81,15 @@ export default {
     MpTableBody,
     MpTableRow,
     MpTableCell,
+    TextElipsisCollapsible,
   },
   props: {
     isOpen: { type: [Boolean] },
   },
   methods: {
     handleClose() {
-      this.$emit('handleClose')
-    }
+      this.$emit("handleClose");
+    },
   },
 };
 </script>

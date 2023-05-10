@@ -2,7 +2,7 @@
   <mp-box>
     <Header />
     <mp-flex as="main" max-height="calc(100vh - 60px)">
-      <Sidebar is-alternate is-collapsed />
+      <Sidebar is-custom default-is-toggle />
       <mp-box
         as="section"
         data-id="content"
@@ -37,7 +37,7 @@
               <mp-flex direction="column" align-items="flex-end">
                 <mp-heading font-size="xl">Sisa tagihan Rp12.500.000,00</mp-heading>
                 <ModalJournalEntry />
-
+                <PopoverButtonReturned />
                 <mp-flex gap="2" flex-wrap="wrap" mt="3">
                   <PopoverTag label="Memiliki eFaktur" trigger="hover">
                     <mp-flex direction="column" gap="2">
@@ -71,7 +71,14 @@
             <mp-grid-item col-span="4">
               <mp-stack gap="2">
                 <DisplayContent title="Alamat penagihan">
-                  <mp-text> Midplaza 2, No 4, Karet Tengsin, Tanah Abang, 10220, DKI jakarta </mp-text>
+                  <mp-text> Midplaza 2, No 4, RT 00001, RW 00018 Karet Tengsin, Tanah Abang, 10220, Daerah Khusus Ibukota Jakarta, Indonesia </mp-text>
+                </DisplayContent>
+
+                <DisplayContent title="Alamat pengiriman">
+                  <mp-text>
+                    Perum Shoji Land EF-17, Cluster Etsu Garden, RT 00001 RW 00020, Sambiroto, Karangtanjung, Kecamatan Candi, Kabupaten Sidoarjo, Provinsi Jawa
+                    Timur, Indonesia
+                  </mp-text>
                 </DisplayContent>
               </mp-stack>
             </mp-grid-item>
@@ -395,6 +402,7 @@ import {
   TableDelivery,
   ModalJournalEntry,
   PopoverTag,
+  PopoverButtonReturned,
   ModalSendWhatsApp,
   ModalSendEmail,
   ModalDeleteThisRequest,
@@ -407,7 +415,7 @@ import {
   ModalCreditMemo,
   ModalEmailConfirmation,
   ModalCloseSalesOrder,
-  ModalPrintInvoiceDotMatrix
+  ModalPrintInvoiceDotMatrix,
 } from "./details-parts";
 
 export default {
@@ -459,7 +467,8 @@ export default {
     DisplayContent,
     ModalJournalEntry,
     PopoverTag,
-    ModalPrintInvoiceDotMatrix
+    PopoverButtonReturned,
+    ModalPrintInvoiceDotMatrix,
   },
   data() {
     return {
@@ -478,7 +487,7 @@ export default {
       isModalCreditMemoOpen: false, // Flag from backend
       isModalEmailConfirmationOpen: true,
       isModalCloseSalesOrderOpen: false,
-      isModalPrintInvoiceDotMatrixOpen: false
+      isModalPrintInvoiceDotMatrixOpen: false,
     };
   },
   methods: {
@@ -498,7 +507,7 @@ export default {
       document.body.removeChild(link);
     },
     handleChangeTab(index) {
-      this.currentTabIndex = index
+      this.currentTabIndex = index;
     },
   },
 };

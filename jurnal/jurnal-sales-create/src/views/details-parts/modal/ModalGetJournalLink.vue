@@ -57,7 +57,7 @@ export default {
     handleSubmit() {
       this.$toast({
         variant: "success",
-        title: "Copied",
+        title: "Link berhasil disalin",
         position: "top",
       });
     },

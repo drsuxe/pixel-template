@@ -7,7 +7,7 @@
           <mp-input-left-addon :with-background="false">
             <mp-icon name="search" size="sm" />
           </mp-input-left-addon>
-          <mp-input placeholder="Ketik untuk mencari" />
+          <mp-input placeholder="Ketik untuk mencari" is-clearable />
         </mp-input-group>
       </mp-box>
     </mp-flex>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <mp-box position="relative">
-      <mp-tooltip label="Komentar">
+      <mp-tooltip label="Komentar" position="top" use-portal>
         <mp-button-icon name="comment" @click="isOpen = true" />
       </mp-tooltip>
       <mp-badge variant-color="blue" size="sm" position="absolute" top="-4px" right="-4px" border-width="2px" border-color="white"> 0 </mp-badge>
