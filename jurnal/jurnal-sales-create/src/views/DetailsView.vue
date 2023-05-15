@@ -95,6 +95,18 @@
                 <DisplayContent title="Syarat pembayaran">
                   <mp-text> Net 30 </mp-text>
                 </DisplayContent>
+
+                <DisplayContent title="Tgl. pengiriman">
+                  <mp-text> 02/12/2022 </mp-text>
+                </DisplayContent>
+
+                <DisplayContent title="Kirim melalui">
+                  <mp-text> JNE </mp-text>
+                </DisplayContent>
+
+                <DisplayContent title="No. pelacakan">
+                  <mp-text> 123712301239120938 </mp-text>
+                </DisplayContent>
               </mp-stack>
             </mp-grid-item>
             <mp-grid-item col-span="4">
