@@ -6,17 +6,8 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    name: "Details",
-    component: () => import("@/views/DetailsView.vue"),
-    meta: {
-      title: "Jurnal - Pixel 2",
-      icon:"favicon.ico" 
-    }
-  },
-  {
-    path: "/create",
-    name: "Create",
-    component: () => import("@/views/CreateView.vue"),
+    name: "Jurnal - Pixel 2",
+    component: () => import("@/views/IndexView.vue"),
     meta: {
       title: "Jurnal - Pixel 2",
       icon:"favicon.ico" 
