@@ -156,16 +156,23 @@
               </mp-form-control>
 
               <mp-form-control>
-                <mp-form-label>Tag</mp-form-label>
-                <mp-input-tag />
+                <mp-form-label align-items="center"
+                  >Tag
+                  <mp-text as="span" color="gray.600" ml="1">(10)</mp-text>
+                </mp-form-label>
+                <mp-input-tag
+                  :trigger-style="{ maxHeight: '24', overflowY: 'auto' }"
+                  is-show-suggestions
+                  :suggestions="['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5', 'Option 6', 'Option 7']"
+                />
               </mp-form-control>
 
               <mp-form-control>
-                <mp-form-label
+                <mp-form-label align-items="center"
                   >Pengiriman
-                  <mp-text as="span" color="gray.600">(1)</mp-text>
+                  <mp-text as="span" color="gray.600" ml="1">(10)</mp-text>
                 </mp-form-label>
-                <mp-input-tag />
+                <mp-input-tag is-show-suggestions :suggestions="['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5', 'Option 6', 'Option 7']" />
               </mp-form-control>
             </mp-grid-item>
           </mp-grid>
@@ -271,9 +278,9 @@
                 </mp-flex>
                 <mp-flex justify="space-between" align-items="center" mb="4">
                   <mp-flex align-items="center" gap="2" width="256px">
-                   <mp-tooltip label="Tooltip">
-                     <mp-icon name="chevrons-down" size="sm" />
-                   </mp-tooltip>
+                    <mp-tooltip label="Tooltip">
+                      <mp-icon name="chevrons-down" size="sm" />
+                    </mp-tooltip>
                     <mp-text>Diskon</mp-text>
                     <mp-input-group>
                       <mp-input-left-addon>
@@ -295,8 +302,8 @@
                               box-shadow="lg"
                             >
                               <mp-popover-list>
-                                <mp-popover-list-item is-active> Prosentase (%) </mp-popover-list-item>
-                                <mp-popover-list-item> Amount (Rp) </mp-popover-list-item>
+                                <mp-popover-list-item is-active> % </mp-popover-list-item>
+                                <mp-popover-list-item> Rp </mp-popover-list-item>
                               </mp-popover-list>
                             </mp-popover-content>
                           </mp-popover>
@@ -374,11 +381,21 @@
                   </mp-box>
                 </mp-box>
 
+                <mp-flex justify="space-between" mt="6">
+                  <mp-text font-weight="semibold"> Jumlah terbayar </mp-text>
+                  <mp-text font-weight="semibold"> Rp1.000.000,00 </mp-text>
+                </mp-flex>
+
                 <mp-divider border-style="dashed" my="6" />
 
                 <mp-flex justify="space-between">
                   <mp-text font-size="xl" font-weight="semibold"> Sisa tagihan </mp-text>
                   <mp-text font-size="xl" font-weight="semibold"> Rp0,00 </mp-text>
+                </mp-flex>
+
+                <mp-flex justify="space-between" mt="2">
+                  <mp-text color="gray.600"> Total kredit memo </mp-text>
+                  <mp-text color="gray.600"> Rp0,00 </mp-text>
                 </mp-flex>
               </mp-box>
             </mp-box>

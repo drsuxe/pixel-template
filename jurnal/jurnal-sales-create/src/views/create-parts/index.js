@@ -10,6 +10,7 @@ export { default as ModalSendEmail } from './modal/ModalSendEmail.vue'
 export { default as ModalSendWhatsApp } from './modal/ModalSendWhatsApp.vue'
 export { default as ModalPriceRule } from './modal/ModalPriceRule.vue'
 export { default as ModalAddProduct } from './modal/ModalAddProduct.vue'
+export { default as ModalAddNewTax } from './modal/ModalAddNewTax.vue'
 
 // Drawer
 export { default as DrawerAddContact } from './drawer/DrawerAddContact.vue'

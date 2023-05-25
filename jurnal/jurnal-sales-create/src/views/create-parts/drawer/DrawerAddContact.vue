@@ -14,6 +14,16 @@
 
             <FormContainer label="Nama panggilan" is-required tooltip-label="Tooltip">
               <mp-input />
+
+              <template #tooltipLabel>
+                <mp-text color="white"> Tambahkan nomor atau info spesifik lain untuk membedakan nama panggilan. </mp-text>
+
+                <mp-text mt="2" color="white"> Contoh lainnya: </mp-text>
+                <mp-flex direction="column" as="ul" list-style-position="inside">
+                  <mp-text color="white" as="li" lineHeigt="sm"> Agus - 113 </mp-text>
+                  <mp-text color="white" as="li"> PT Rejeki (Agus) </mp-text>
+                </mp-flex>
+              </template>
             </FormContainer>
 
             <FormContainer label="Email">

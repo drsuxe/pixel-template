@@ -256,6 +256,11 @@
                   <mp-text font-size="xl" font-weight="semibold"> Sisa tagihan </mp-text>
                   <mp-text font-size="xl" font-weight="semibold"> Rp12.500.000,00 </mp-text>
                 </mp-flex>
+
+                <mp-flex justify="space-between" mt="2">
+                  <mp-text color="gray.600"> Total kredit memo </mp-text>
+                  <mp-text color="gray.600"> Rp0,00 </mp-text>
+                </mp-flex>
               </mp-box>
             </mp-grid-item>
           </mp-grid>

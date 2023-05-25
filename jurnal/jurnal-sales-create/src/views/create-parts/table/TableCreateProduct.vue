@@ -114,8 +114,8 @@
                           box-shadow="lg"
                         >
                           <mp-popover-list>
-                            <mp-popover-list-item is-active> Prosentase (%) </mp-popover-list-item>
-                            <mp-popover-list-item> Amount (Rp) </mp-popover-list-item>
+                            <mp-popover-list-item is-active> % </mp-popover-list-item>
+                            <mp-popover-list-item> Rp </mp-popover-list-item>
                           </mp-popover-list>
                         </mp-popover-content>
                       </mp-popover>
@@ -132,6 +132,9 @@
                   :style="{ minWidth: '109px', width: '100%' }"
                   :data="['10%', '11%']"
                   :content-style="{ zIndex: 'popover', width: '109px' }"
+                  is-show-button-action
+                  button-action-text="Tambah"
+                  @button-action="isModalAddNewTaxOpen = true"
                 />
               </mp-form-control>
             </mp-table-cell>
@@ -191,6 +194,7 @@
 
     <ModalPriceRule :isOpen="isModalPriceRuleOpen" @handleClose="isModalPriceRuleOpen = false" />
     <ModalAddProduct :isOpen="isModalAddProductOpen" @handleClose="isModalAddProductOpen = false" />
+    <ModalAddNewTax :isOpen="isModalAddNewTaxOpen" @handleClose="isModalAddNewTaxOpen = false" />
   </div>
 </template>
 
@@ -222,6 +226,7 @@ import {
 } from "@mekari/pixel";
 import ModalPriceRule from "../modal/ModalPriceRule.vue";
 import ModalAddProduct from "../modal/ModalAddProduct.vue";
+import ModalAddNewTax from "../modal/ModalAddNewTax.vue";
 
 export default {
   components: {
@@ -252,6 +257,7 @@ export default {
     // Parts
     ModalPriceRule,
     ModalAddProduct,
+    ModalAddNewTax,
   },
   data() {
     return {
@@ -259,6 +265,7 @@ export default {
       products: [],
       isModalPriceRuleOpen: false,
       isModalAddProductOpen: false,
+      isModalAddNewTaxOpen: false,
       indexShowTooltip: null,
     };
   },
