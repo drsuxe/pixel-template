@@ -4,10 +4,10 @@ import App from "./App.vue";
 import router from "./router";
 
 const breakpoints = {
-  sm: "360px",
-  md: "768px",
-  lg: "1024px",
-  xl: "1280px",
+  sm: "600px",
+  md: "810px",
+  lg: "1200px",
+  xl: "1300px",
 };
 
 Vue.config.productionTip = false;

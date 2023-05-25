@@ -2,7 +2,7 @@
   <mp-box>
     <mp-modal size="xl" :isOpen="isOpen" scroll-behavior="auto" :on-close="handleClose" :close-on-esc="true" :close-on-overlay-click="true">
       <mp-modal-content>
-        <mp-modal-header> Kirim via WhatsApp </mp-modal-header>
+        <mp-modal-header> Kirim faktur via email </mp-modal-header>
         <mp-modal-close-button @click="handleClose" />
         <mp-modal-body>
           <mp-grid gap="6" templateColumns="repeat(2, 1fr)">
@@ -67,6 +67,7 @@
                 <mp-form-control control-id="template">
                   <mp-form-label>Template</mp-form-label>
                   <mp-autocomplete is-searchable :data="['1', '2', '3']" :content-style="{ width: 'max-content', minWidth: 'full', maxWidth: '90vw' }" />
+                  <mp-checkbox mt="2">Tetapkan sebagai default</mp-checkbox>
                 </mp-form-control>
 
                 <mp-form-control control-id="preview-template">
@@ -133,6 +134,7 @@ import {
   MpButtonIcon,
   MpFlex,
   MpTooltip,
+  MpCheckbox
 } from "@mekari/pixel";
 export default {
   name: "ModalSendEmail",
@@ -160,6 +162,7 @@ export default {
     MpButtonIcon,
     MpFlex,
     MpTooltip,
+    MpCheckbox
   },
   props: {
     isOpen: { type: [Boolean] },

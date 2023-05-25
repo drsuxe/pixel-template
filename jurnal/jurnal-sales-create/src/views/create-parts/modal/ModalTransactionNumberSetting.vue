@@ -2,12 +2,12 @@
   <mp-box>
     <mp-modal :isOpen="isOpen">
       <mp-modal-content>
-        <mp-modal-header>Transaction number format settings</mp-modal-header>
+        <mp-modal-header>Pengaturan nomor transaksi</mp-modal-header>
         <mp-modal-close-button @click="$emit('handleClose')" />
         <mp-modal-body>
           <mp-flex direction="column" gap="1">
             <mp-text font-weight="semibold"
-              >Pengaturan format nomor transaksi</mp-text
+              >Format nomor</mp-text
             >
 
             <mp-radio-group
@@ -15,9 +15,9 @@
               :value="check"
               @change="handleChange"
             >
-              <mp-radio id="automatic" value="automatic">Otomatis</mp-radio>
+              <mp-radio id="automatic" value="automatic">Otomatis terbuat</mp-radio>
               <mp-radio id="custom-format" value="custom-format"
-                >Format custom</mp-radio
+                >Custom</mp-radio
               >
               <mp-radio id="tambah-baru" value="tambah-baru"
                 >Tambah baru</mp-radio
@@ -63,27 +63,19 @@
               gap="3"
             >
               <mp-form-control>
-                <mp-input placeholder="Example: INV/" />
+                <mp-input placeholder="Contoh: SA/" />
               </mp-form-control>
               <mp-form-control isDisabled>
-                <mp-input placeholder="Number" />
+                <mp-input placeholder="Contoh: 001" />
               </mp-form-control>
               <mp-form-control>
-                <mp-input placeholder="Example: /XV" />
+                <mp-input placeholder="Contoh /XV" />
               </mp-form-control>
               <mp-grid-item col-span="3">
                 <mp-form-control>
-                  <mp-text
-                    font-weight="semibold"
-                    display="inline"
-                    margin-bottom="1"
-                  >
-                    Start from number
-                  </mp-text>
+                  <mp-form-label> Mulai dari nomor</mp-form-label>
                   <mp-input />
-                  <mp-text font-size="sm" color="gray.600" margin-top="1">
-                    The transaction number will be added automatically
-                  </mp-text>
+                  <mp-form-help-text>Nomor transaksi akan bertambah secara otomatis</mp-form-help-text>
                 </mp-form-control>
               </mp-grid-item>
             </mp-grid>
@@ -128,6 +120,8 @@ import {
   MpGridItem,
   MpFormControl,
   MpInput,
+      MpFormLabel,
+    MpFormHelpText,
 } from "@mekari/pixel";
 export default {
   name: "ModalTransactionNumberSetting",
@@ -151,6 +145,8 @@ export default {
     MpGrid,
     MpGridItem,
     MpFormControl,
+    MpFormLabel,
+    MpFormHelpText,
     MpInput,
   },
   props: {

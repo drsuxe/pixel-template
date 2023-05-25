@@ -5,9 +5,7 @@
         <mp-modal-header> Tinggalkan halaman ini? </mp-modal-header>
         <mp-modal-close-button @click="handleClose" />
         <mp-modal-body>
-          <mp-modal-body>
-            <mp-text> Perubahan yang Anda lakukan di halaman ini tidak akan disimpan. </mp-text>
-          </mp-modal-body>
+          <mp-text> Perubahan yang Anda lakukan di halaman ini tidak akan disimpan. </mp-text>
         </mp-modal-body>
 
         <mp-modal-footer>
@@ -22,19 +20,7 @@
 </template>
 
 <script>
-import {
-  MpModal,
-  MpModalOverlay,
-  MpModalContent,
-  MpModalHeader,
-  MpModalBody,
-  MpModalCloseButton,
-  MpBox,
-  MpButton,
-  MpModalFooter,
-
-  MpText,
-} from "@mekari/pixel";
+import { MpModal, MpModalOverlay, MpModalContent, MpModalHeader, MpModalBody, MpModalCloseButton, MpBox, MpButton, MpModalFooter, MpText } from "@mekari/pixel";
 export default {
   name: "ModalCancel",
   components: {
@@ -54,7 +40,7 @@ export default {
   },
   methods: {
     handleSubmit() {
-      this.handleClose()
+      this.handleClose();
     },
     handleClose() {
       this.$emit("handleClose");

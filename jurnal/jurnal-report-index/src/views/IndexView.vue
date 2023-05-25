@@ -18,9 +18,9 @@
             <mp-heading as="h1" font-size="2xl" font-weight="semibold" mr="2"> Laporan </mp-heading>
           </mp-flex>
 
-          <mp-box px="4" mb="-8">
+          <mp-box px="4" mb="-8" position="relative">
             <mp-tabs :index="currentTab" is-manual @change.self="handleChange">
-              <mp-tab-list border-bottom="0px" overflow-x="auto" p="2">
+              <mp-tab-list id="awesome-tab" border-bottom="0px" overflow-x="auto" p="2" @scroll.native="(e) => handleScrollCalculation(e.target)">
                 <mp-tab flex="none">Sekilas bisnis</mp-tab>
                 <mp-tab flex="none">Penjualan</mp-tab>
                 <mp-tab flex="none">Pembelian</mp-tab>
@@ -35,6 +35,45 @@
                 </mp-tab>
               </mp-tab-list>
             </mp-tabs>
+
+            <mp-box
+              v-if="isShowLeft"
+              as="button"
+              border-width="1px"
+              rounded="full"
+              bg="white"
+              position="absolute"
+              top="4"
+              left="2"
+              h="8"
+              w="8"
+              display="flex"
+              align-items="center"
+              justify-content="center"
+              shadow="lg"
+              @click="handleScrollLeft"
+            >
+              <mp-icon name="chevrons-left" size="sm" />
+            </mp-box>
+            <mp-box
+              v-if="isShowRight"
+              as="button"
+              border-width="1px"
+              rounded="full"
+              bg="white"
+              position="absolute"
+              top="4"
+              right="2"
+              h="8"
+              w="8"
+              display="flex"
+              align-items="center"
+              justify-content="center"
+              shadow="lg"
+              @click="handleScrollRight"
+            >
+              <mp-icon name="chevrons-right" size="sm" />
+            </mp-box>
           </mp-box>
         </SubHeader>
 
@@ -56,7 +95,17 @@
 
                     <mp-badge v-if="report.badgeLabel"> {{ report.badgeLabel }} </mp-badge>
                   </mp-heading>
-                  <mp-box v-if="report.isMekariAirine" as="span" ml="6px" bg="background" border-width="1px" border-color="gray.100" rounded="full" py="3px" px="8px">
+                  <mp-box
+                    v-if="report.isMekariAirine"
+                    as="span"
+                    ml="6px"
+                    bg="background"
+                    border-width="1px"
+                    border-color="gray.100"
+                    rounded="full"
+                    py="3px"
+                    px="8px"
+                  >
                     <svg width="48" height="14" viewBox="0 0 48 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <g clip-path="url(#clip0_1_19)">
                         <path
@@ -161,14 +210,14 @@
 </template>
 
 <script>
-import { MpBox, MpFlex, MpHeading, MpButton, MpTabs, MpTab, MpTabList, MpBadge, MpGrid, MpText } from "@mekari/pixel";
+import { MpBox, MpFlex, MpHeading, MpButton, MpTabs, MpTab, MpTabList, MpBadge, MpGrid, MpText, MpIcon } from "@mekari/pixel";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import SubHeader from "../components/SubHeader";
 import BlankSlate from "./BlankSlate.vue";
 
 export default {
-  name: "LayoutDefault",
+  name: "ReportIndex",
   components: {
     MpBox,
     MpFlex,
@@ -180,6 +229,7 @@ export default {
     MpBadge,
     MpGrid,
     MpText,
+    MpIcon,
 
     //
     Header,
@@ -268,12 +318,74 @@ export default {
           buttonSecondary: "",
         },
       ],
+      oberserver: "",
+      isShowRight: false,
+      isShowLeft: false,
     };
+  },
+  mounted() {
+    this.handleActiveObserver();
+  },
+  beforeDestroy() {
+    this.oberserver.disconnect()
   },
   methods: {
     handleChange(e) {
       console.log(e);
       this.currentTab = e;
+    },
+    handleScrollLeft() {
+      const tabElement = document.getElementById("awesome-tab");
+      tabElement.scrollBy({
+        top: 0,
+        left: -150,
+        behavior: "smooth",
+      });
+    },
+    handleScrollRight() {
+      const tabElement = document.getElementById("awesome-tab");
+
+      tabElement.scrollBy({
+        top: 0,
+        left: +150,
+        behavior: "smooth",
+      });
+    },
+
+    handleActiveObserver() {
+      const tabElement = document.getElementById("awesome-tab");
+
+      this.observer = new ResizeObserver(([entry]) => {
+        this.handleScrollCalculation(entry.target);
+      }, {});
+
+      this.observer.observe(tabElement);
+    },
+    handleScrollCalculation(el) {
+      const { clientWidth, scrollWidth, scrollLeft } = el;
+      const isHorizontalScroll = clientWidth < scrollWidth;
+
+      if (isHorizontalScroll) {
+        const isScrollRightEnd = Math.round(scrollLeft) >= scrollWidth - clientWidth;
+        const isScrollLeftEnd = scrollLeft === 0;
+        const isScrollBoth = !isScrollLeftEnd && !isScrollRightEnd;
+
+        if (isScrollLeftEnd) {
+          this.isShowRight = true;
+          this.isShowLeft = false;
+        }
+        if (isScrollBoth) {
+          this.isShowRight = true;
+          this.isShowLeft = true;
+        }
+        if (isScrollRightEnd) {
+          this.isShowRight = false;
+          this.isShowLeft = true;
+        }
+      } else {
+        this.isShowRight = false;
+        this.isShowLeft = false;
+      }
     },
   },
 };
